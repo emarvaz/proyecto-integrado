@@ -8,24 +8,31 @@
         <meta name="author" content="Eduardo Martínez Vázquez" />
 
         <link rel="stylesheet" href="assets/styles/index.css" />
+        <link rel="stylesheet" href="assets/styles/components/header.css" />
 
         <script type="importmap">
             {
                 "imports": {
-                    "Component": "/core/Component.js",
-                    "card-deck": "/components/card-deck/card-deck.js"
+                    "component": "/core/component.js",
+                    "card-deck": "/components/card-deck.js",
+                    "card": "/components/card.js"
                 }
             }
         </script>
     </head>
-
     <body>
-        <header></header>
-
+        <header>
+            <nav>
+                <ul>
+                    <li>Portada</li>
+                    <li>Manual</li>
+                    <li>Sobre nosotros</li>
+                </ul>
+            </nav>
+        </header>
         <main>
             <card-deck-container></card-deck-container>
         </main>
-
         <footer></footer>
         
         <script type="module" src="index.js"></script>

@@ -1,4 +1,4 @@
-export default class Component extends HTMLElement {
+export class Component extends HTMLElement {
     static shadow = false;
     static template = null;
     static templateCache = null;
@@ -13,9 +13,10 @@ export default class Component extends HTMLElement {
     }
 
     /**
+     * Método proporcionado por la API de Web Components.
+     * 
      * Observa los atributos definidos en el componente y llama al método
      * attributeChangedCallback cuando cambian.
-     * Método estandar proporcionado por la API de Web Components.
      */
     static get observedAttributes() {
         return Object.keys(this.attributes);
@@ -34,8 +35,7 @@ export default class Component extends HTMLElement {
         }
 
         try {
-            const url = new URL(templateRoute, import.meta.url);
-            const response = await fetch(url);
+            const response = await fetch(templateRoute);
             const content = await response.text();
 
             const parser = new DOMParser();
@@ -130,14 +130,28 @@ export default class Component extends HTMLElement {
         }.bind(this));
     }
 
+    /**
+     * Aplica los valores por defecto a los atributos definidos en el
+     * componente.
+     * 
+     * @returns
+     */
     applyAttributeValues() {
         const attributes = this.constructor.attributes;
 
         for (const attribute in attributes) {
-            const definition = attributes[attribute];
+            const attributeDefault = attributes[attribute].default;
+            const attributeType = attributes[attribute].type;
 
-            if (!this.hasAttribute(attribute) && definition.default !== undefined) {
-                this[attribute] = definition.default;
+            if (Object.is(attributeType, Boolean)) {
+                if (attributeDefault) {
+                    this.setAttribute(attribute, '');
+                }
+            }
+
+            if (!this.hasAttribute(attribute)
+                    && attributeDefault !== undefined) {
+                this[attribute] = attributeDefault;
             }
         }
     }
@@ -159,7 +173,7 @@ export default class Component extends HTMLElement {
     handleAttribute(attribute) {
         const handler = `handle${attribute.charAt(0).toUpperCase() + attribute.slice(1)}`;
 
-        if (typeof this[handler] !== 'function') {
+        if (!Object.is(typeof this[handler], 'function')) {
             console.warn(`No se encontró el método "${handler}" para manejar el atributo "${attribute}".`);
 
             return;
@@ -167,4 +181,12 @@ export default class Component extends HTMLElement {
 
         this[handler]();
     }
+}
+
+export function define(elementName, componentClass) {
+    componentClass.templatePromise.then(function () {
+        if (!customElements.get(elementName)) {
+            customElements.define(elementName, componentClass);
+        }
+    });
 }

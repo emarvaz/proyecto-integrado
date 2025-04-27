@@ -1,0 +1,14 @@
+header {
+    display: flex;
+    flex-direction: row;
+    background-color: lightcoral;
+
+    & > nav {
+        & > ul {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            list-style: none;
+        }
+    }
+}

@@ -1,17 +1,21 @@
-import Component from 'Component';
+import { Component, define } from 'component';
+import 'card';
 
 class CardDeck extends Component {
     static shadow = false;
-    static templateRoute = '/components/card-deck/card-deck.html';
+    static templateRoute = '/templates/card-deck.html';
     static attributes = {
         cards: {
+            data: true,
             default: 10,
             type: Number
         },
         displayed: {
+            data: true,
+            default: true,
             type: Boolean
         }
-    }
+    };
     
     constructor() {
         super();
@@ -21,7 +25,7 @@ class CardDeck extends Component {
         await super.connectedCallback();
 
         this.addEventListener('click', function () {
-            this.toggleAttribute('displayed')
+            this.toggleAttribute('displayed');
         }.bind(this));
     }
 
@@ -30,26 +34,21 @@ class CardDeck extends Component {
         output.textContent = '';
 
         for (let i = 0; i < this.cards; i++) {
-            const div = document.createElement('div');
-            div.textContent = `Carta ${i + 1}`;
+            const card = document.createElement('card-component');
 
-            output.appendChild(div);
+            output.appendChild(card);
         }
     }
 
     handleDisplayed() {
+        const displayedClass = 'displayed';
+
         if (this.hasAttribute('displayed')) {
-            this.style.color = 'white';
-            this.style.backgroundColor = 'blue';
+            this.classList.add(displayedClass);
         } else {
-            this.style.color = 'black';
-            this.style.backgroundColor = 'coral';
+            this.classList.remove(displayedClass);
         }
     }
 }
 
-CardDeck.templatePromise.then(function () {
-    if (!customElements.get('card-deck-container')) {
-        customElements.define('card-deck-container', CardDeck);
-    }
-});
+define('card-deck-container', CardDeck);
