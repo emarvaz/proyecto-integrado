@@ -1,15 +1,10 @@
 export class Component extends HTMLElement {
     static shadow = false;
     static template = null;
-    static templateCache = null;
     static attributes = {};
 
     static get templatePromise() {
-        if (!this.templateCache) {
-            this.templateCache = this.loadTemplate(this.templateRoute);
-        }
-
-        return this.templateCache;
+        return this.loadTemplate(this.templateRoute);
     }
 
     /**
@@ -19,7 +14,9 @@ export class Component extends HTMLElement {
      * attributeChangedCallback cuando cambian.
      */
     static get observedAttributes() {
-        return Object.keys(this.attributes);
+        return Object.keys(this.attributes).map(function (attribute) {
+            return this.prototype.camelToKebabCase(attribute);
+        }.bind(this));
     }
 
     /**
@@ -44,7 +41,7 @@ export class Component extends HTMLElement {
             const template = parsedDocument.querySelector('template');
 
             if (!template) {
-                throw new Error(`Elemento <template> no encontrado en "${templateRoute}".`);
+                throw new Error(`Elemento <template> no encontrado en '${templateRoute}'.`);
             }
     
             return this.template = template;
@@ -65,6 +62,11 @@ export class Component extends HTMLElement {
         this.defineAttributesAccessors();
     }
 
+    /**
+     * Método proporcionado por la API de Web Components.
+     * 
+     * Se llama automaticamente cuando se añade el componente al DOM.
+     */
     async connectedCallback() {
         const template = await this.constructor.loadTemplate(this.constructor.templateRoute);
         const content = template.content.cloneNode(true);
@@ -75,54 +77,84 @@ export class Component extends HTMLElement {
             this.appendChild(content);
         }
 
-        this.applyAttributeValues();
         this.callAttributeHandlers();
     }
 
     /**
-     * Se llama automaticamente cuando cambia el valor de un atributo observado.
-     * Es un estandar proporcionado por la API de Web Components.
+     * Método proporcionado por la API de Web Components.
      * 
-     * @param {*} name
+     * Se llama automaticamente cuando cambia el valor de un atributo observado.
+     * 
+     * @param {*} attribute
      * @param {*} oldValue
      * @param {*} newValue
      */
-    attributeChangedCallback(name, oldValue, newValue) {
+    attributeChangedCallback(attribute, oldValue, newValue) {
         if (oldValue === newValue) {
             return;
         }
+
+        const validAttributeName = this.kebabToCamelCase(attribute);
     
-        this.handleAttribute(name);
+        this.handleAttribute(validAttributeName);
 
         if (newValue === null) {
-            console.log(`El atributo "${name}" ha sido eliminado.`);
+            console.log(`El atributo "${attribute}" ha sido eliminado.`);
         } else if (oldValue === null) {
-            console.log(`El atributo "${name}" ha sido añadido con el valor "${newValue}".`);
+            console.log(`El atributo "${attribute}" ha sido añadido con el valor "${newValue}".`);
         } else {
-            console.log(`El atributo "${name}" cambió de "${oldValue}" a "${newValue}".`);
+            console.log(`El atributo "${attribute}" cambió de "${oldValue}" a "${newValue}".`);
         }
     }
 
     defineAttributesAccessors() {
         const attributes = this.constructor.attributes;
-
+        
         if (!attributes) {
             return;
         }
 
-        Object.keys(attributes).forEach(function (attribute) {
-            Object.defineProperty(this, attribute, {
-                get() {
-                    return this.getAttribute(attribute);
-                },
-                set(value) {
-                    if (value !== null) {
-                        this.setAttribute(attribute, value);
+        Object.keys(attributes).forEach(function (attributeName) {
+            const attribute = attributes[attributeName];
+            const attributeType = attribute.type;
+            
+            const validAttributeName = this.camelToKebabCase(attributeName);
 
-                        return;
+            Object.defineProperty(this, attributeName, {
+                get() {
+                    if (attributeType === Boolean) {
+                        return this.hasAttribute(validAttributeName);
                     }
 
-                    this.removeAttribute(attribute);
+                    return this.getAttribute(validAttributeName);
+                },
+                set(value) {
+                    // Si el valor que intentamos asignar es null o undefined,
+                    // eliminamos el atributo.
+                    if (value === null || value === undefined) {
+                        if (this.hasAttribute(validAttributeName)) {
+                            this.removeAttribute(validAttributeName);
+                        }
+                    }
+                    // Si el atributo es de tipo Boolean, se añade o elimina
+                    // dependiendo de su valor.
+                    else if (attributeType === Boolean) {
+                        if (Boolean(value)) {
+                            if (!this.hasAttribute(validAttributeName)) {
+                                this.setAttribute(validAttributeName, '');
+                            }
+                        } else {
+                            if (this.hasAttribute(validAttributeName)) {
+                                this.removeAttribute(validAttributeName);
+                            }
+                        }
+                    } else {
+                        const stringValue = String(value);
+
+                        if(this.getAttribute(validAttributeName) !== stringValue) {
+                            this.setAttribute(validAttributeName, stringValue);
+                        }
+                    }
                 },
                 enumerable: true,
                 configurable: true
@@ -130,37 +162,11 @@ export class Component extends HTMLElement {
         }.bind(this));
     }
 
-    /**
-     * Aplica los valores por defecto a los atributos definidos en el
-     * componente.
-     * 
-     * @returns
-     */
-    applyAttributeValues() {
-        const attributes = this.constructor.attributes;
-
-        for (const attribute in attributes) {
-            const attributeDefault = attributes[attribute].default;
-            const attributeType = attributes[attribute].type;
-
-            if (Object.is(attributeType, Boolean)) {
-                if (attributeDefault) {
-                    this.setAttribute(attribute, '');
-                }
-            }
-
-            if (!this.hasAttribute(attribute)
-                    && attributeDefault !== undefined) {
-                this[attribute] = attributeDefault;
-            }
-        }
-    }
-
     callAttributeHandlers() {
         const attributes = this.constructor.attributes;
 
-        for (const attribute in attributes) {
-            this.handleAttribute(attribute);
+        for (const attributeName in attributes) {
+            this.handleAttribute(attributeName);
         }
     }
 
@@ -173,13 +179,21 @@ export class Component extends HTMLElement {
     handleAttribute(attribute) {
         const handler = `handle${attribute.charAt(0).toUpperCase() + attribute.slice(1)}`;
 
-        if (!Object.is(typeof this[handler], 'function')) {
+        if (typeof this[handler] === 'function') {
+            this[handler]();
+        } else {
             console.warn(`No se encontró el método "${handler}" para manejar el atributo "${attribute}".`);
-
-            return;
         }
+    }
 
-        this[handler]();
+    camelToKebabCase(name) {
+        return name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+    }
+
+    kebabToCamelCase(name) {
+        return name.replace(/-([a-z])/g, function (group) {
+            return group[1].toUpperCase();
+        });
     }
 }
 

@@ -5,17 +5,13 @@ class CardDeck extends Component {
     static shadow = false;
     static templateRoute = '/templates/card-deck.html';
     static attributes = {
-        cards: {
-            data: true,
-            default: 10,
-            type: Number
+        dataCards: {
+            type: Number,
         },
-        displayed: {
-            data: true,
-            default: true,
-            type: Boolean
+        dataDisplayed: {
+            type: Boolean,
         }
-    };
+    }
     
     constructor() {
         super();
@@ -24,29 +20,32 @@ class CardDeck extends Component {
     async connectedCallback() {
         await super.connectedCallback();
 
-        this.addEventListener('click', function () {
-            this.toggleAttribute('displayed');
+        this.dataCards = 100;
+        this.dataDisplayed = true;
+
+        document.addEventListener('click', function () {
+            this.dataDisplayed = !this.dataDisplayed;
         }.bind(this));
     }
 
-    handleCards() {
-        const output = this.querySelector('[output-cards]');
+    handleDataCards() {
+        const output = this.querySelector('[data-output-cards]');
         output.textContent = '';
 
-        for (let i = 0; i < this.cards; i++) {
+        for (let i = 0; i < this.dataCards; i++) {
             const card = document.createElement('card-component');
 
             output.appendChild(card);
         }
     }
 
-    handleDisplayed() {
-        const displayedClass = 'displayed';
+    handleDataDisplayed() {
+        const hiddenClass = 'hidden';
 
-        if (this.hasAttribute('displayed')) {
-            this.classList.add(displayedClass);
+        if (!this.dataDisplayed) {
+            this.classList.add(hiddenClass);
         } else {
-            this.classList.remove(displayedClass);
+            this.classList.remove(hiddenClass);
         }
     }
 }
