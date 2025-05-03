@@ -3,6 +3,37 @@ export class Component extends HTMLElement {
     static template = null;
     static attributes = {};
 
+    /**
+     * 
+     * @param {*} name 
+     * @returns 
+     */
+    static camelCaseToKebabCase(name) {
+        return name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+    }
+
+    /**
+     * 
+     * @param {*} attributeWithPrefix 
+     * @returns
+     */
+    static getAttributeWithoutPrefix(attributeWithPrefix) {
+        const attributes = this.attributes;
+        
+        for (const attributeName in attributes) {
+            const attribute = attributes[attributeName];
+            const attributePrefix = attribute.prefix || '';
+
+            let validAttributeName = this.camelCaseToKebabCase(attributeName);
+
+            const attributeNameWithPrefix = attributePrefix + validAttributeName;
+
+            if (attributeWithPrefix === attributeNameWithPrefix) {
+                return attributeName;
+            }
+        }
+    }
+
     static get templatePromise() {
         return this.loadTemplate(this.templateRoute);
     }
@@ -14,13 +45,22 @@ export class Component extends HTMLElement {
      * attributeChangedCallback cuando cambian.
      */
     static get observedAttributes() {
-        return Object.keys(this.attributes).map(function (attribute) {
-            return this.prototype.camelToKebabCase(attribute);
+        return Object.keys(this.attributes).map(function (attributeName) {
+            const attribute = this.attributes[attributeName];
+            const attributePrefix = attribute.prefix;
+
+            let validAttributeName = this.camelCaseToKebabCase(attributeName);
+
+            if (attributePrefix) {
+                validAttributeName = attributePrefix + validAttributeName;
+            }
+            
+            return validAttributeName;
         }.bind(this));
     }
 
     /**
-     * Comprueba si el componente tiene un template definido y lo carga si no lo
+     * Comprueba si el componente tiene un template definido, y lo carga si no lo
      * tiene.
      * 
      * @param {*} templateRoute
@@ -78,6 +118,23 @@ export class Component extends HTMLElement {
         }
 
         this.callAttributeHandlers();
+
+        const attributes = this.constructor.attributes;
+
+        Object.keys(attributes).forEach(function (attributeName) {
+            const attribute = attributes[attributeName];
+            const attributePrefix = attribute.prefix;
+
+            let validAttributeName = this.constructor.camelCaseToKebabCase(attributeName);
+
+            if (attributePrefix) {
+                validAttributeName = attributePrefix + validAttributeName;
+            }
+
+            if (this.hasAttribute(validAttributeName)) {
+                this.handleAttribute(attributeName);
+            }
+        }.bind(this));
     }
 
     /**
@@ -85,25 +142,25 @@ export class Component extends HTMLElement {
      * 
      * Se llama automaticamente cuando cambia el valor de un atributo observado.
      * 
-     * @param {*} attribute
+     * @param {*} attributeName
      * @param {*} oldValue
      * @param {*} newValue
      */
-    attributeChangedCallback(attribute, oldValue, newValue) {
+    attributeChangedCallback(attributeName, oldValue, newValue) {
         if (oldValue === newValue) {
             return;
         }
+        
+        let validAttributeName = this.constructor.getAttributeWithoutPrefix(attributeName);
 
-        const validAttributeName = this.kebabToCamelCase(attribute);
-    
         this.handleAttribute(validAttributeName);
 
         if (newValue === null) {
-            console.log(`El atributo "${attribute}" ha sido eliminado.`);
+            console.log(`El atributo "${attributeName}" ha sido eliminado.`);
         } else if (oldValue === null) {
-            console.log(`El atributo "${attribute}" ha sido añadido con el valor "${newValue}".`);
+            console.log(`El atributo "${attributeName}" ha sido añadido con el valor "${newValue}".`);
         } else {
-            console.log(`El atributo "${attribute}" cambió de "${oldValue}" a "${newValue}".`);
+            console.log(`El atributo "${attributeName}" cambió de "${oldValue}" a "${newValue}".`);
         }
     }
 
@@ -117,8 +174,13 @@ export class Component extends HTMLElement {
         Object.keys(attributes).forEach(function (attributeName) {
             const attribute = attributes[attributeName];
             const attributeType = attribute.type;
-            
-            const validAttributeName = this.camelToKebabCase(attributeName);
+            const attributePrefix = attribute.prefix;
+
+            let validAttributeName = this.constructor.camelCaseToKebabCase(attributeName);
+
+            if (attributePrefix) {
+                validAttributeName = attributePrefix + validAttributeName;
+            }
 
             Object.defineProperty(this, attributeName, {
                 get() {
@@ -184,16 +246,6 @@ export class Component extends HTMLElement {
         } else {
             console.warn(`No se encontró el método "${handler}" para manejar el atributo "${attribute}".`);
         }
-    }
-
-    camelToKebabCase(name) {
-        return name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-    }
-
-    kebabToCamelCase(name) {
-        return name.replace(/-([a-z])/g, function (group) {
-            return group[1].toUpperCase();
-        });
     }
 }
 

@@ -5,11 +5,13 @@ class CardDeck extends Component {
     static shadow = false;
     static templateRoute = '/templates/card-deck.html';
     static attributes = {
-        dataCards: {
+        cards: {
             type: Number,
+            prefix: 'data-'
         },
-        dataDisplayed: {
+        cardsDisplayed: {
             type: Boolean,
+            prefix: 'data-'
         }
     }
     
@@ -20,29 +22,29 @@ class CardDeck extends Component {
     async connectedCallback() {
         await super.connectedCallback();
 
-        this.dataCards = 100;
-        this.dataDisplayed = true;
+        this.cards = 100;
+        this.cardsDisplayed = true;
 
         document.addEventListener('click', function () {
-            this.dataDisplayed = !this.dataDisplayed;
+            this.cardsDisplayed = !this.cardsDisplayed;
         }.bind(this));
     }
 
-    handleDataCards() {
+    handleCards() {
         const output = this.querySelector('[data-output-cards]');
         output.textContent = '';
 
-        for (let i = 0; i < this.dataCards; i++) {
+        for (let i = 0; i < this.cards; i++) {
             const card = document.createElement('card-component');
 
             output.appendChild(card);
         }
     }
 
-    handleDataDisplayed() {
+    handleCardsDisplayed() {
         const hiddenClass = 'hidden';
 
-        if (!this.dataDisplayed) {
+        if (!this.cardsDisplayed) {
             this.classList.add(hiddenClass);
         } else {
             this.classList.remove(hiddenClass);
