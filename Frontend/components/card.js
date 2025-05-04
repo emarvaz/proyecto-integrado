@@ -1,10 +1,10 @@
-import { Component, define } from 'component';
+import { Component, defineElement } from 'component';
 
 class Card extends Component {
     static shadow = false;
     static templateRoute = '/templates/card.html';
-    static attributes = {
-    }
+    static styleRoute = '/assets/styles/components/card.css';
+    static attributes = {}
     
     constructor() {
         super();
@@ -15,4 +15,4 @@ class Card extends Component {
     }
 }
 
-define('card-component', Card);
+defineElement('card-component', Card);

@@ -1,15 +1,15 @@
-import { Component, define } from 'component';
+import { Component, defineElement, extendElement } from 'component';
 import 'card';
 
 class CardDeck extends Component {
-    static shadow = false;
     static templateRoute = '/templates/card-deck.html';
+    static styleRoute = '/assets/styles/components/card-deck.css';
     static attributes = {
         cards: {
             type: Number,
-            prefix: 'data-'
+            prefix: 'data-',
         },
-        cardsDisplayed: {
+        displayed: {
             type: Boolean,
             prefix: 'data-'
         }
@@ -22,29 +22,42 @@ class CardDeck extends Component {
     async connectedCallback() {
         await super.connectedCallback();
 
-        this.cards = 100;
-        this.cardsDisplayed = true;
+        this.displayed = true;
 
         document.addEventListener('click', function () {
-            this.cardsDisplayed = !this.cardsDisplayed;
+            this.displayed = !this.displayed;
         }.bind(this));
     }
 
-    handleCards() {
+    async handleCards() {
+        try {
+            const response = await fetch('/data/data.json', { cache: 'no-store' });
+            const content = await response.json();
+        
+            this.cards = content.cards.number;
+
+            if (!this.cards) {
+                throw new Error('No se encontró el número de cartas en la respuesta.');
+            }
+        } catch (error) {
+            console.error('Error al manejar las cartas:', error.message);
+        }
+        
         const output = this.querySelector('[data-output-cards]');
-        output.textContent = '';
+        
+        output.replaceChildren();
 
         for (let i = 0; i < this.cards; i++) {
-            const card = document.createElement('card-component');
+            const cardComponentElement = document.createElement('card-component');
 
-            output.appendChild(card);
+            output.appendChild(extendElement('li', cardComponentElement));
         }
     }
 
-    handleCardsDisplayed() {
+    handleDisplayed() {
         const hiddenClass = 'hidden';
 
-        if (!this.cardsDisplayed) {
+        if (!this.displayed) {
             this.classList.add(hiddenClass);
         } else {
             this.classList.remove(hiddenClass);
@@ -52,4 +65,4 @@ class CardDeck extends Component {
     }
 }
 
-define('card-deck-container', CardDeck);
+defineElement('card-deck-container', CardDeck);

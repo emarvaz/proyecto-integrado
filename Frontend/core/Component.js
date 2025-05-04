@@ -1,6 +1,12 @@
 export class Component extends HTMLElement {
     static shadow = false;
+
+    static style = null;
+    static stylePromise = null;
+
     static template = null;
+    static templatePromise = null;
+
     static attributes = {};
 
     /**
@@ -34,10 +40,6 @@ export class Component extends HTMLElement {
         }
     }
 
-    static get templatePromise() {
-        return this.loadTemplate(this.templateRoute);
-    }
-
     /**
      * Método proporcionado por la API de Web Components.
      * 
@@ -60,6 +62,43 @@ export class Component extends HTMLElement {
     }
 
     /**
+     * 
+     * @param {*} styleRoute 
+     * @returns 
+     */
+    static async loadStyle(styleRoute) {
+        if (this.style) {
+            return this.style;
+        }
+
+        if (this.stylePromise) {
+            return this.stylePromise;
+        }
+
+        if (!styleRoute) {
+            throw new Error('No se ha definido la propiedad "styleRoute".');
+        }
+
+        this.stylePromise = (async function () {
+            try {
+                const response = await fetch(styleRoute, { cache: 'no-store' });
+                const content = await response.text();
+            
+                const styleElement = document.createElement('style');
+                styleElement.textContent = content;
+        
+                return this.style = styleElement;
+            } catch (error) {
+                console.error('Error cargando el estilo del componente:', error.message);
+    
+                return document.createElement('style');
+            }
+        }).call(this);
+
+        return this.stylePromise;
+    }
+
+    /**
      * Comprueba si el componente tiene un template definido, y lo carga si no lo
      * tiene.
      * 
@@ -71,25 +110,37 @@ export class Component extends HTMLElement {
             return this.template;
         }
 
-        try {
-            const response = await fetch(templateRoute);
-            const content = await response.text();
-
-            const parser = new DOMParser();
-            const parsedDocument = parser.parseFromString(content, 'text/html');
-        
-            const template = parsedDocument.querySelector('template');
-
-            if (!template) {
-                throw new Error(`Elemento <template> no encontrado en '${templateRoute}'.`);
-            }
-    
-            return this.template = template;
-        } catch (error) {
-            console.error(error);
-
-            return document.createElement('template');
+        if (this.templatePromise) {
+            return this.templatePromise;
         }
+
+        if (!templateRoute) {
+            throw new Error('No se ha definido la propiedad "templateRoute".');
+        }
+
+        this.templatePromise = (async function () {
+            try {
+                const response = await fetch(templateRoute, { cache: 'no-store' });
+                const content = await response.text();
+    
+                const parser = new DOMParser();
+                const parsedDocument = parser.parseFromString(content, 'text/html');
+            
+                const templateElement = parsedDocument.querySelector('template');
+    
+                if (!templateElement) {
+                    throw new Error(`"template" no encontrado en "${templateRoute}".`);
+                }
+        
+                return this.template = templateElement;
+            } catch (error) {
+                console.error('Error cargando la plantilla del componente:', error.message);
+    
+                return document.createElement('template');
+            }
+        }).call(this);
+
+        return this.templatePromise;
     }
 
     constructor() {
@@ -108,13 +159,17 @@ export class Component extends HTMLElement {
      * Se llama automaticamente cuando se añade el componente al DOM.
      */
     async connectedCallback() {
+        const style = await this.constructor.loadStyle(this.constructor.styleRoute);
+
         const template = await this.constructor.loadTemplate(this.constructor.templateRoute);
-        const content = template.content.cloneNode(true);
+        const templateContent = template.content.cloneNode(true);
 
         if (this.constructor.shadow) {
-            this.shadowRoot.appendChild(content);
+            this.shadowRoot.prepend(style);
+            this.shadowRoot.appendChild(templateContent);
         } else {
-            this.appendChild(content);
+            this.prepend(style);
+            this.appendChild(templateContent);
         }
 
         this.callAttributeHandlers();
@@ -242,15 +297,23 @@ export class Component extends HTMLElement {
         const handler = `handle${attribute.charAt(0).toUpperCase() + attribute.slice(1)}`;
 
         if (typeof this[handler] === 'function') {
-            this[handler]();
+            this[handler].call(this);
         } else {
             console.warn(`No se encontró el método "${handler}" para manejar el atributo "${attribute}".`);
         }
     }
 }
 
-export function define(elementName, componentClass) {
-    componentClass.templatePromise.then(function () {
+export function extendElement(elementNameToExtend, elementName) {
+    const elementToExtend = document.createElement(elementNameToExtend);
+
+    elementToExtend.appendChild(elementName);
+
+    return elementToExtend;
+}
+
+export function defineElement(elementName, componentClass) {
+    Promise.all([componentClass.templatePromise, componentClass.stylePromise]).then(function () {
         if (!customElements.get(elementName)) {
             customElements.define(elementName, componentClass);
         }
