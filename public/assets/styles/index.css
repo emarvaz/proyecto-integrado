@@ -1,0 +1,58 @@
+html {
+    font-size: 18px;
+}
+
+body {
+    margin: 0;
+
+    background-color: whitesmoke;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+
+    padding: 1.1rem 2.5rem;
+
+    outline: 1px solid red;
+
+    & > nav {
+        outline: 1px solid green;
+
+        & > ul {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+
+            list-style: none;
+        }
+    }
+}
+
+main {
+    margin: 0 5rem;
+
+    outline: 1px solid red;
+}
+
+footer {
+    padding: 0.5rem 2.5rem;
+
+    outline: 1px solid red;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    
+    outline: 1px solid pink;
+}
+
+p {
+    margin: 0;
+}
+
+figure {
+    margin: 0;
+}
+

@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    padding: 0.4rem;
+
+    background-color: white;
+
+    border-radius: 0.3rem;
+    border: 1px solid black;
+}
+
+.card-image {
+    height: 13rem;
+
+    background-color: black;
+    background-image: url('https://cdn.pixabay.com/photo/2024/01/01/13/55/strong-8481378_960_720.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    border-radius: 0.3rem;
+}
+
+.card-name {}
+
+.card-description {}

@@ -1,0 +1,16 @@
+:root {
+    --cell-size: 10rem;
+}
+
+.board {
+    display: grid;
+
+    border: 1px solid black;
+}
+
+.row {}
+
+.cell {
+    width: var(--cell-size);
+    aspect-ratio: 1 / 1;
+}

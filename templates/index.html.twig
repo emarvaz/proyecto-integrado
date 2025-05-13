@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+    <head>
+        <title>Web Components</title>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Eduardo Martínez Vázquez" />
+
+        <link rel="stylesheet" href="assets/styles/index.css" />
+
+        <script type="importmap">
+            {
+                "imports": {
+                    "art": "/core/art.js",
+                    "board": "/components/board.js",
+                    "card-deck": "/components/card-deck.js",
+                    "card": "/components/card.js"
+                }
+            }
+        </script>
+        <script type="module" src="index.js"></script>
+    </head>
+    
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li data-path="/">Mazo</li>
+                    <li data-path="/board">Carta</li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <art-board art-width="5" art-height="5"></art-board>
+            <art-router></art-router>
+        </main>
+        
+        <footer>
+            <ul>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+                <li>Link 4</li>
+                <li>Link 5</li>
+            </ul>
+        </footer>
+    </body>
+</html>

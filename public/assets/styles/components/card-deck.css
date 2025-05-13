@@ -1,0 +1,17 @@
+art-card-deck {
+    & > .container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 1.5rem;
+    padding: 2.5rem;
+}
+
+.hidden {
+    display: none;
+}

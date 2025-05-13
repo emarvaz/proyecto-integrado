@@ -1,6 +1,0 @@
-card-component {
-    display: flex;
-    flex-direction: column;
-    min-height: 5rem;
-    outline: 1px solid red;
-}
