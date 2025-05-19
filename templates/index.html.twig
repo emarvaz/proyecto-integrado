@@ -1,50 +1,39 @@
-<!DOCTYPE html>
-<html lang="es-ES">
-    <head>
-        <title>Web Components</title>
+{% extends 'base.html.twig' %}
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Eduardo Martínez Vázquez" />
+{% block title %}Jugar{% endblock %}
 
-        <link rel="stylesheet" href="assets/styles/index.css" />
+{% block header %}
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ path('card_list') }}">Cartas</a></li>
+        </ul>
 
-        <script type="importmap">
-            {
-                "imports": {
-                    "art": "/core/art.js",
-                    "board": "/components/board.js",
-                    "card-deck": "/components/card-deck.js",
-                    "card": "/components/card.js"
-                }
-            }
-        </script>
-        <script type="module" src="index.js"></script>
-    </head>
-    
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li data-path="/">Mazo</li>
-                    <li data-path="/board">Carta</li>
-                </ul>
-            </nav>
-        </header>
+        <ul>
+            {% if not app.user %}
+                <li><a href="{{ path('login') }}">Iniciar sesión</a></li>
+                <li><a href="{{ path('sign_in') }}">Registrarse</a></li>
+            {% else %}
+                <li><a href="#">Perfil</a></li>
+                <li><a href="{{ path('logout') }}">Cerrar sesión</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
 
-        <main>
-            <art-board art-width="5" art-height="5"></art-board>
-            <art-router></art-router>
-        </main>
-        
-        <footer>
-            <ul>
-                <li>Link 1</li>
-                <li>Link 2</li>
-                <li>Link 3</li>
-                <li>Link 4</li>
-                <li>Link 5</li>
-            </ul>
-        </footer>
-    </body>
-</html>
+{% block main %}{% endblock %}
+
+{% block aside %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <li><a href="{{ path('administration') }}">Panel de administración</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    <ul>
+        <li>Link 1</li>
+        <li>Link 2</li>
+        <li>Link 3</li>
+        <li>Link 4</li>
+        <li>Link 5</li>
+    </ul>
+{% endblock %}

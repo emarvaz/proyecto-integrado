@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+{% endblock %}
+
+{% block aside %}
+    <li><a href="{{ path('administration_user_list') }}">Listado de usuarios</a></li>
+    <li><a href="{{ path('administration_ability_list') }}">Listado de habilidades</a></li>
+    <li><a href="{{ path('administration_ability_category_list') }}">Listado de categorias de habilidades</a></li>
+    <li><a href="{{ path('administration_card_list') }}">Listado de cartas</a></li>
+{% endblock %}

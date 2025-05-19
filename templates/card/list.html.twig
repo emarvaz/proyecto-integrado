@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cartas{% endblock %}
+
+{% block main %}
+    {% for card in cards %}
+        <card-component _index="1" _name="{{ card.name }}" _description="{{ card.description }}"></card-component>
+    {% endfor %}
+{% endblock %}

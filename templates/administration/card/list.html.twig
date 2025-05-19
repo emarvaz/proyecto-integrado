@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de cartas{% endblock %}
+
+{% block main %}
+    <a href="{{ path('administration_card_create') }}">Crear carta</a>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Puntos de vida</th>
+            <th>Habilidades</th>
+            <th>Tipo</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for card in cards %}
+            <tr>
+                <td>{{ card.name }}</td>
+                <td>{{ card.description }}</td>
+                <td>{{ card.health }}</td>
+                <td>
+                    {% for ability in card.abilities %}
+                        {{ ability }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ card.type }}</td>
+                <td>{{ card.image }}</td>
+                <td>
+                    <a href="{{ path('administration_card_edit', { id: card.id }) }}">Editar</a>
+                    <a href="{{ path('administration_card_delete', { id: card.id }) }}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

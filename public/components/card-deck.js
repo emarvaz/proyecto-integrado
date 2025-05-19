@@ -7,7 +7,7 @@ class CardDeck extends ArtElement {
     static attributes = {
         cardCount: {
             type: Number,
-            prefix: 'art-'
+            prefix: 'data-'
         }
     }
     

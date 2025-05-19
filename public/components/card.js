@@ -6,11 +6,31 @@ class Card extends ArtElement {
     static attributes = {
         index: {
             type: Number,
-            prefix: 'art-'
+            prefix: '_'
         },
+        name: {
+            type: String,
+            prefix: '_'
+        },
+        description: {
+            type: String,
+            prefix: '_'
+        },
+        // health: {
+        //     type: Number,
+        //     prefix: '_'
+        // },
+        // abilities: {
+        //     type: String,
+        //     prefix: '_'
+        // },
+        // type: {
+        //     type: String,
+        //     prefix: '_'
+        // },
         selected: {
             type: Boolean,
-            prefix: 'art-'
+            prefix: '_'
         }
     }
     
@@ -23,18 +43,21 @@ class Card extends ArtElement {
 
         const container = this.querySelector('.card');
 
-        this.assignIndex(container);
+        const indexOutput = container.querySelectorAll('.card-index');
+        indexOutput.forEach(function (element) {
+            element.textContent = this.index;
+        }.bind(this));
+
+        const nameOutput = container.querySelector('.card-name');
+        nameOutput.textContent = this.name;
+
+        const descriptionOutput = container.querySelector('.card-description');
+        descriptionOutput.textContent = this.description;
+
         this.addEventListener('click', function () {
             this.selected = true;
         });
     }
-
-    assignIndex(container) {
-        const indexOutput = container.outputSelectorAll('index');
-        indexOutput.forEach(function (element) {
-            element.textContent = this.index;
-        }.bind(this));
-    }
 }
 
-defineElement('art-card', Card);
+defineElement('card-component', Card);

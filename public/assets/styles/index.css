@@ -9,23 +9,27 @@ body {
 }
 
 header {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-auto-flow: column;
 
     padding: 1.1rem 2.5rem;
 
     outline: 1px solid red;
+}
 
-    & > nav {
-        outline: 1px solid green;
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-        & > ul {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
+    outline: 1px solid green;
 
-            list-style: none;
-        }
+    & > ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+
+        list-style: none;
     }
 }
 
@@ -54,5 +58,10 @@ p {
 
 figure {
     margin: 0;
+}
+
+.layout-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
 

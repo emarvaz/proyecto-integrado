@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jugar{% endblock %}
+
+{% block main %}
+    <a href="{{ path('administration_ability_category_create') }}">Crear categoría de habilidad</a>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Valor</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for abilityCategory in abilityCategories %}
+            <tr>
+                <td>{{ abilityCategory.name }}</td>
+                <td>{{ abilityCategory.description }}</td>
+                <td>{{ abilityCategory.value }}</td>
+                <td>
+                    <a href="{{ path('administration_ability_category_edit', { id: abilityCategory.id }) }}">Editar</a>
+                    <a href="{{ path('administration_ability_category_delete', { id: abilityCategory.id }) }}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
