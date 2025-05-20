@@ -309,6 +309,18 @@ export class ArtElement extends HTMLElement {
             });
         }.bind(this));
     }
+
+    contextSelector(context, content) {
+        const contextElement = this.querySelector(context);
+        contextElement.textContent = content;
+    }
+
+    contextSelectorAll(context, content) {
+        const contextElements = this.querySelectorAll(context);
+        contextElements.forEach(function (element) {
+            element.textContent = content;
+        }.bind(this));
+    }
 }
 
 export function defineElement(name, componentClass) {

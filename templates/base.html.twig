@@ -31,7 +31,27 @@
     <body>
         {% block body %}
             <header>
-                {% block header %}{% endblock %}
+                {% block header %}
+                    <nav>
+                        <ul class="navigation__list">
+                            {% block navigationList %}
+                                <li><a href="{{ path('card_list') }}">Cartas</a></li>
+                            {% endblock %}
+                        </ul>
+                    </nav>
+
+                    <ul class="authentication__list">
+                        {% block authenticationList %}
+                            {% if not app.user %}
+                                <li><a href="{{ path('login') }}">Iniciar sesión</a></li>
+                                <li><a href="{{ path('sign_in') }}">Registrarse</a></li>
+                            {% else %}
+                                <li><a href="#">Perfil</a></li>
+                                <li><a href="{{ path('logout') }}">Cerrar sesión</a></li>
+                            {% endif %}
+                        {% endblock %}
+                    </ul>
+                {% endblock %}
             </header>
 
             <div class="layout-content">
@@ -39,9 +59,17 @@
                     {% block main %}{% endblock %}
                 </main>
 
-                <aside>
-                    {% block aside %}{% endblock %}
-                </aside>
+                {% block aside %}
+                    <aside>
+                        {% block asideList %}
+                            <ul class="aside__list">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="{{ path('administration') }}">Panel de administración</a></li>
+                                {% endif %}
+                            </ul>
+                        {% endblock %}
+                    </aside>
+                {% endblock %}
             </div>
 
             <footer>

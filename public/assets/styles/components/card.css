@@ -1,4 +1,7 @@
 .card {
+    width: 13rem;
+    aspect-ratio: 0.7;
+
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -11,7 +14,7 @@
     border: 1px solid black;
 }
 
-.card-image {
+.card__image {
     height: 13rem;
 
     background-color: black;
@@ -23,6 +26,10 @@
     border-radius: 0.3rem;
 }
 
-.card-name {}
+.card__name {}
 
-.card-description {}
+.card__abilities {}
+
+.card__abilities__ability {}
+
+.card__description {}

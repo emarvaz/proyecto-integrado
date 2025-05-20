@@ -1,17 +1,13 @@
-art-card-deck {
-    & > .container {
-        display: flex;
-        flex-direction: column;
-    }
+.card-deck {
+    display: flex;
+    flex-direction: column;
 }
 
-.cards {
+.card-deck__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
     gap: 2rem 1.5rem;
-    padding: 2.5rem;
-}
 
-.hidden {
-    display: none;
+    padding: 2.5rem;
 }

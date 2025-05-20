@@ -2,31 +2,7 @@
 
 {% block title %}Jugar{% endblock %}
 
-{% block header %}
-    <nav class="navbar">
-        <ul>
-            <li><a href="{{ path('card_list') }}">Cartas</a></li>
-        </ul>
-
-        <ul>
-            {% if not app.user %}
-                <li><a href="{{ path('login') }}">Iniciar sesión</a></li>
-                <li><a href="{{ path('sign_in') }}">Registrarse</a></li>
-            {% else %}
-                <li><a href="#">Perfil</a></li>
-                <li><a href="{{ path('logout') }}">Cerrar sesión</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-{% endblock %}
-
 {% block main %}{% endblock %}
-
-{% block aside %}
-    {% if is_granted('ROLE_ADMIN') %}
-        <li><a href="{{ path('administration') }}">Panel de administración</a></li>
-    {% endif %}
-{% endblock %}
 
 {% block footer %}
     <ul>

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,4 +41,28 @@ class UserRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function getUsersQueryBuilder(array $filters = []): QueryBuilder
+    {
+        $queryBuilder = $this->createQueryBuilder('user');
+
+        if (!empty($filters['username'])) {
+            $queryBuilder->andWhere('user.username LIKE :username')
+                         ->setParameter('username', '%' . $filters['username'] . '%');
+        }
+
+        if (!empty($filters['email'])) {
+            $queryBuilder->andWhere('user.email LIKE :email')
+                         ->setParameter('email', '%' . $filters['email'] . '%');
+        }
+
+        if (!empty($filters['name'])) {
+            $queryBuilder->andWhere('user.name LIKE :name')
+                         ->setParameter('name', '%' . $filters['name'] . '%');
+        }
+
+        $queryBuilder->orderBy('user.username', 'ASC');
+
+        return $queryBuilder;
+    }
 }

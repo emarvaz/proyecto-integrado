@@ -1,13 +1,9 @@
 import { ArtElement, defineElement } from 'art';
 
 class Card extends ArtElement {
-    static templateRoute = '/templates/card.html';
+    static templateRoute = '/templates/card.html.twig';
     static styleRoute = '/assets/styles/components/card.css';
     static attributes = {
-        index: {
-            type: Number,
-            prefix: '_'
-        },
         name: {
             type: String,
             prefix: '_'
@@ -16,18 +12,18 @@ class Card extends ArtElement {
             type: String,
             prefix: '_'
         },
-        // health: {
-        //     type: Number,
-        //     prefix: '_'
-        // },
-        // abilities: {
-        //     type: String,
-        //     prefix: '_'
-        // },
-        // type: {
-        //     type: String,
-        //     prefix: '_'
-        // },
+        health: {
+            type: Number,
+            prefix: '_'
+        },
+        abilities: {
+            type: String,
+            prefix: '_'
+        },
+        index: {
+            type: Number,
+            prefix: '_'
+        },
         selected: {
             type: Boolean,
             prefix: '_'
@@ -41,18 +37,12 @@ class Card extends ArtElement {
     async connectedCallback() {
         await super.connectedCallback();
 
-        const container = this.querySelector('.card');
+        this.contextSelector('.card-name', this.name);
+        this.contextSelector('.card-description', this.description);
+        this.contextSelector('.card-health', this.health);
+        this.contextSelector('.card-abilities', this.abilities);
 
-        const indexOutput = container.querySelectorAll('.card-index');
-        indexOutput.forEach(function (element) {
-            element.textContent = this.index;
-        }.bind(this));
-
-        const nameOutput = container.querySelector('.card-name');
-        nameOutput.textContent = this.name;
-
-        const descriptionOutput = container.querySelector('.card-description');
-        descriptionOutput.textContent = this.description;
+        this.contextSelectorAll('.card-index', this.index);
 
         this.addEventListener('click', function () {
             this.selected = true;

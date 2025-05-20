@@ -2,8 +2,37 @@
 
 {% block title %}Cartas{% endblock %}
 
+{% block styles %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('assets/styles/components/card-deck.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/styles/components/card.css') }}">
+{% endblock %}
+
 {% block main %}
-    {% for card in cards %}
-        <card-component _index="1" _name="{{ card.name }}" _description="{{ card.description }}"></card-component>
-    {% endfor %}
+    <section class="card-deck">
+        <div class="card-deck__cards">
+            {% for card in cards %}
+                <article class="card">
+                    <figure class="card__image" role="img">
+                        <data class="card__index"></data>
+                    </figure>
+
+                    <data class="card__health">{{ card.health }}</data>
+
+                    <h4 class="card__name">{{ card.name }}</h4>
+
+                    <ul class="card__abilities">
+                        {% for ability in card.abilities %}
+                            <li class="card__abilities__ability">{{ ability }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <p class="card__description">{{ card.description }}</p>
+                </article>
+            {% endfor %}
+        </div>
+
+        <data class="card-deck__count"></data>
+    </section>
 {% endblock %}
