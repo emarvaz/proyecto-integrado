@@ -29,9 +29,6 @@ class Card
     #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?array $abilities = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $type = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -94,18 +91,6 @@ class Card
     {
         $this->health = $health;
         
-        return $this;
-    }
-    
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): static
-    {
-        $this->type = $type;
-
         return $this;
     }
 }

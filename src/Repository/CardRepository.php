@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Card;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,4 +41,26 @@ class CardRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function getCardsQueryBuilder(array $filters = []): QueryBuilder
+    {
+        $queryBuilder = $this->createQueryBuilder('card');
+
+        if (!empty($filters['name'])) {
+            $queryBuilder->andWhere('card.name LIKE :name')
+                ->setParameter('name', '%' . $filters['name'] . '%');
+        }
+
+        if (!empty($filters['description'])) {
+            $queryBuilder->andWhere('card.description LIKE :description')
+                ->setParameter('description', '%' . $filters['description'] . '%');
+        }
+
+        if (!empty($filters['health'])) {
+            $queryBuilder->andWhere('card.health LIKE :health')
+                ->setParameter('health', '%' . $filters['health'] . '%');
+        }
+
+        return $queryBuilder;
+    }
 }

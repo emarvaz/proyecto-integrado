@@ -31,6 +31,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
+            'scripts' => [$this, 'block_scripts'],
             'main' => [$this, 'block_main'],
         ];
     }
@@ -87,6 +88,28 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
+    public function block_scripts(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    // line 7
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
     public function block_main(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
@@ -96,46 +119,83 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 6
-        yield "    <a href=\"";
+        // line 8
+        yield "    <section>
+        <form method=\"get\" action=\"";
+        // line 9
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_list");
+        yield "\" class=\"filter\">
+            <fieldset>
+                <label for=\"filter_name\">Nombre</label>
+                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"";
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "name", [], "any", true, true, false, 12)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 12, $this->source); })()), "name", [], "any", false, false, false, 12), "")) : ("")), "html", null, true);
+        yield "\">
+            </fieldset>
+
+            <fieldset>
+                <button type=\"submit\">Filtrar</button>
+
+                <a href=\"";
+        // line 18
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_list");
+        yield "\">Limpiar</a>
+            </fieldset>
+        </form>
+
+        <ul class=\"toolbar\">
+            <li><a href=\"";
+        // line 23
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_create");
-        yield "\">Crear carta</a>
+        yield "\">Crear carta</a></li>
+        </ul>
 
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Puntos de vida</th>
-            <th>Habilidades</th>
-            <th>Tipo</th>
-            <th>Imagen</th>
-            <th>Acciones</th>
-        </tr>
+        <table class=\"table\">
+            <thead>
+            <tr>
+                <th>";
+        // line 29
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 29, $this->source); })()), "Nombre", "card.name");
+        yield "</th>
+                <th>";
+        // line 30
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 30, $this->source); })()), "Descripción", "card.description");
+        yield "</th>
+                <th>";
+        // line 31
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 31, $this->source); })()), "Puntos de vida", "card.health");
+        yield "</th>
+                <th>Habilidades</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
 
-        ";
-        // line 19
+            <tbody>
+            ";
+        // line 39
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["cards"]) || array_key_exists("cards", $context) ? $context["cards"] : (function () { throw new RuntimeError('Variable "cards" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 39, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["card"]) {
-            // line 20
-            yield "            <tr>
-                <td>";
-            // line 21
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 21), "html", null, true);
+            // line 40
+            yield "                <tr>
+                    <td>";
+            // line 41
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 41), "html", null, true);
             yield "</td>
-                <td>";
-            // line 22
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "description", [], "any", false, false, false, 22), "html", null, true);
+                    <td>";
+            // line 42
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "description", [], "any", false, false, false, 42), "html", null, true);
             yield "</td>
-                <td>";
-            // line 23
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 23), "html", null, true);
+                    <td>";
+            // line 43
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 43), "html", null, true);
             yield "</td>
-                <td>
-                    ";
-            // line 25
+                    <td>
+                        ";
+            // line 45
             $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 25));
+            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 45));
             $context['loop'] = [
               'parent' => $context['_parent'],
               'index0' => 0,
@@ -150,14 +210,14 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
                 $context['loop']['last'] = 1 === $length;
             }
             foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-                // line 26
-                yield "                        ";
+                // line 46
+                yield "                            ";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["ability"], "html", null, true);
-                if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 26)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 46)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
                     yield ", ";
                 }
-                // line 27
-                yield "                    ";
+                // line 47
+                yield "                        ";
                 ++$context['loop']['index0'];
                 ++$context['loop']['index'];
                 $context['loop']['first'] = false;
@@ -170,34 +230,38 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 28
-            yield "                </td>
-                <td>";
-            // line 29
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "type", [], "any", false, false, false, 29), "html", null, true);
+            // line 48
+            yield "                    </td>
+                    <td>";
+            // line 49
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 49), "html", null, true);
             yield "</td>
-                <td>";
-            // line 30
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 30), "html", null, true);
-            yield "</td>
-                <td>
-                    <a href=\"";
-            // line 32
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 32)]), "html", null, true);
+                    <td class=\"actions\">
+                        <a href=\"";
+            // line 51
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 51)]), "html", null, true);
             yield "\">Editar</a>
-                    <a href=\"";
-            // line 33
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 33)]), "html", null, true);
+                        <a href=\"";
+            // line 52
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 52)]), "html", null, true);
             yield "\">Eliminar</a>
-                </td>
-            </tr>
-        ";
+                    </td>
+                </tr>
+            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['card'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 37
-        yield "    </table>
+        // line 56
+        yield "            </tbody>
+        </table>
+
+        ";
+        // line 59
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 59, $this->source); })()));
+        yield "
+    </section>
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -229,7 +293,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  200 => 37,  190 => 33,  186 => 32,  181 => 30,  177 => 29,  174 => 28,  160 => 27,  154 => 26,  137 => 25,  132 => 23,  128 => 22,  124 => 21,  121 => 20,  117 => 19,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  261 => 59,  256 => 56,  246 => 52,  242 => 51,  237 => 49,  234 => 48,  220 => 47,  214 => 46,  197 => 45,  192 => 43,  188 => 42,  184 => 41,  181 => 40,  177 => 39,  166 => 31,  162 => 30,  158 => 29,  149 => 23,  141 => 18,  132 => 12,  126 => 9,  123 => 8,  110 => 7,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -238,39 +302,63 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
 
 {% block title %}Listado de cartas{% endblock %}
 
+{% block scripts %}{% endblock %}
+
 {% block main %}
-    <a href=\"{{ path('administration_card_create') }}\">Crear carta</a>
+    <section>
+        <form method=\"get\" action=\"{{ path('administration_card_list') }}\" class=\"filter\">
+            <fieldset>
+                <label for=\"filter_name\">Nombre</label>
+                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"{{ activeFilters.name|default('') }}\">
+            </fieldset>
 
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Puntos de vida</th>
-            <th>Habilidades</th>
-            <th>Tipo</th>
-            <th>Imagen</th>
-            <th>Acciones</th>
-        </tr>
+            <fieldset>
+                <button type=\"submit\">Filtrar</button>
 
-        {% for card in cards %}
+                <a href=\"{{ path('administration_card_list') }}\">Limpiar</a>
+            </fieldset>
+        </form>
+
+        <ul class=\"toolbar\">
+            <li><a href=\"{{ path('administration_card_create') }}\">Crear carta</a></li>
+        </ul>
+
+        <table class=\"table\">
+            <thead>
             <tr>
-                <td>{{ card.name }}</td>
-                <td>{{ card.description }}</td>
-                <td>{{ card.health }}</td>
-                <td>
-                    {% for ability in card.abilities %}
-                        {{ ability }}{% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                </td>
-                <td>{{ card.type }}</td>
-                <td>{{ card.image }}</td>
-                <td>
-                    <a href=\"{{ path('administration_card_edit', { id: card.id }) }}\">Editar</a>
-                    <a href=\"{{ path('administration_card_delete', { id: card.id }) }}\">Eliminar</a>
-                </td>
+                <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'card.name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Descripción', 'card.description') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Puntos de vida', 'card.health') }}</th>
+                <th>Habilidades</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-    </table>
+            </thead>
+
+            <tbody>
+            {% for card in pagination %}
+                <tr>
+                    <td>{{ card.name }}</td>
+                    <td>{{ card.description }}</td>
+                    <td>{{ card.health }}</td>
+                    <td>
+                        {% for ability in card.abilities %}
+                            {{ ability }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ card.image }}</td>
+                    <td class=\"actions\">
+                        <a href=\"{{ path('administration_card_edit', { id: card.id }) }}\">Editar</a>
+                        <a href=\"{{ path('administration_card_delete', { id: card.id }) }}\">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {{ knp_pagination_render(pagination) }}
+    </section>
+
 {% endblock %}
 ", "administration/card/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\card\\list.html.twig");
     }

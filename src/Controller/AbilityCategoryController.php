@@ -6,6 +6,8 @@ use App\Entity\AbilityCategory;
 use App\Form\AbilityCategoryForm;
 use App\Repository\AbilityCategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +20,30 @@ final class AbilityCategoryController extends AbstractController
     {
         return $this->render('ability_category/index.html.twig', [
             'controller_name' => 'AbilityCategoryController',
+        ]);
+    }
+
+    #[Route('/administration/ability-category/list', name: 'administration_ability_category_list')]
+    public function abilityCategoryList(AbilityCategoryRepository $abilityCategoryRepository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $filters = [
+            'name' => $request->query->get('filter_name'),
+            'description' => $request->query->get('filter_description'),
+        ];
+
+        $activeFilters = array_filter($filters, fn($value) => $value !== null && $value !== '');
+
+        $queryBuilder = $abilityCategoryRepository->getAbilityCategoriesQueryBuilder($activeFilters);
+
+        $pagination = $paginator->paginate($queryBuilder, $request->query->getInt('page', 1), 10, [
+            'defaultSortFieldName' => 'abilityCategory.name',
+            'defaultSortDirection' => 'asc',
+        ]);
+
+
+        return $this->render('administration/ability-category/list.html.twig', [
+            'pagination' => $pagination,
+            'activeFilters' => $activeFilters,
         ]);
     }
 
@@ -68,13 +94,5 @@ final class AbilityCategoryController extends AbstractController
         $entityManagerInterface->flush();
 
         return $this->redirectToRoute('administration_ability_category_list');
-    }
-
-    #[Route('/administration/ability-category/list', name: 'administration_ability_category_list')]
-    public function abilityCategoryList(AbilityCategoryRepository $abilityCategoryRepository): Response
-    {
-        $abilityCategories = $abilityCategoryRepository->findAll();
-
-        return $this->render('administration/ability-category/list.html.twig', ['abilityCategories' => $abilityCategories]);
     }
 }

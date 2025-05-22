@@ -6,6 +6,7 @@ use App\Entity\Card;
 use App\Form\CardForm;
 use App\Repository\CardRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,8 +27,35 @@ final class CardController extends AbstractController
     {
         $cards = $cardRepository->findAll();
 
-        return $this->render('card/list.html.twig', ['cards' => $cards]);
+        return $this->render('card/list.html.twig', [
+            'cards' => $cards
+        ]);
     }
+
+    #[Route('/administration/card/list', name: 'administration_card_list')]
+    public function administrationCardList(CardRepository $cardRepository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $filters = [
+            'name' => $request->query->get('filter_name'),
+            'description' => $request->query->get('filter_description'),
+        ];
+
+        $activeFilters = array_filter($filters, fn($value) => $value !== null && $value !== '');
+
+        $queryBuilder = $cardRepository->getCardsQueryBuilder($activeFilters);
+
+        $pagination = $paginator->paginate($queryBuilder, $request->query->getInt('page', 1), 10, [
+            'defaultSortFieldName' => 'card.name',
+            'defaultSortDirection' => 'asc',
+        ]);
+
+
+        return $this->render('administration/card/list.html.twig', [
+            'pagination' => $pagination,
+            'activeFilters' => $activeFilters,
+        ]);
+    }
+
 
     #[Route('/administration/card/create', name: 'administration_card_create')]
     public function cardCreate(Request $request, EntityManagerInterface $entityManagerInterface): Response
@@ -48,7 +76,7 @@ final class CardController extends AbstractController
     }
 
     #[Route('/administration/card/edit/{id}', name: 'administration_card_edit')]
-    public function cardEdit(int                    $id, Request $request, CardRepository $cardRepository,
+    public function cardEdit(int $id, Request $request, CardRepository $cardRepository,
                              EntityManagerInterface $entityManagerInterface): Response
     {
         $card = $cardRepository->find($id);
@@ -77,11 +105,4 @@ final class CardController extends AbstractController
         return $this->redirectToRoute('administration_card_list');
     }
 
-    #[Route('/administration/card/list', name: 'administration_card_list')]
-    public function cardList(CardRepository $cardRepository): Response
-    {
-        $cards = $cardRepository->findAll();
-
-        return $this->render('administration/card/list.html.twig', ['cards' => $cards]);
-    }
 }

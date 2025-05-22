@@ -22,60 +22,8 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/administration/user/create', name: 'administration_user_create')]
-    public function userCreate(Request $request, EntityManagerInterface $entityManagerInterface): Response
-    {
-        $user = new User();
-
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
-
-            $entityManagerInterface->persist($user);
-            $entityManagerInterface->flush();
-
-            return $this->redirectToRoute('administration_user_list');
-        }
-
-        return $this->render('administration/user/form.html.twig', ['form' => $form->createView()]);
-    }
-
-    #[Route('/administration/user/edit/{id}', name: 'administration_user_edit')]
-    public function userEdit(int                    $id, Request $request, UserRepository $userRepository,
-                             EntityManagerInterface $entityManagerInterface): Response
-    {
-        $user = $userRepository->find($id);
-
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
-
-            $entityManagerInterface->flush();
-
-            return $this->redirectToRoute('administration_user_list');
-        }
-
-        return $this->render('administration/user/form.html.twig', ['form' => $form->createView()]);
-    }
-
-    #[Route('/administration/user/delete/{id}', name: 'administration_user_delete')]
-    public function userDelete(int $id, Request $request, UserRepository $userRepository,
-                               EntityManagerInterface $entityManagerInterface): Response
-    {
-        $user = $userRepository->find($id);
-
-        $entityManagerInterface->remove($user);
-        $entityManagerInterface->flush();
-
-        return $this->redirectToRoute('administration_user_list');
-    }
-
     #[Route('/administration/user/list', name: 'administration_user_list')]
-    public function userList(Request $request, userRepository $userRepository, PaginatorInterface $paginator): Response
+    public function administrationUserList(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $filters = [
             'username' => $request->query->get('filter_username'),
@@ -87,19 +35,69 @@ final class UserController extends AbstractController
 
         $queryBuilder = $userRepository->getUsersQueryBuilder($activeFilters);
 
-        $pagination = $paginator->paginate(
-            $queryBuilder,
-            $request->query->getInt('page', 1),
-            10,
-            [
-               'defaultSortFieldName' => 'user.username',
-               'defaultSortDirection' => 'asc',
-            ]
-        );
+        $pagination = $paginator->paginate($queryBuilder, $request->query->getInt('page', 1), 10, [
+            'defaultSortFieldName' => 'user.username',
+            'defaultSortDirection' => 'asc',
+        ]);
+
 
         return $this->render('administration/user/list.html.twig', [
             'pagination' => $pagination,
             'activeFilters' => $activeFilters,
         ]);
+    }
+
+    #[Route('/administration/user/create', name: 'administration_user_create')]
+    public function administrationUserCreate(EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $user = new User();
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('administration_user_list');
+        }
+
+        return $this->render('administration/user/form.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/administration/user/edit/{id}', name: 'administration_user_edit')]
+    public function administrationUserEdit(int $id, UserRepository $userRepository, EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $user = $userRepository->find($id);
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('administration_user_list');
+        }
+
+        return $this->render('administration/user/form.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/administration/user/delete/{id}', name: 'administration_user_delete')]
+    public function administrationUserDelete(int $id, UserRepository $userRepository, EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $user = $userRepository->find($id);
+
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('administration_user_list');
     }
 }

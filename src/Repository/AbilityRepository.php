@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Ability;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,4 +41,26 @@ class AbilityRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function getAbilitiesQueryBuilder(array $filters = []): QueryBuilder
+    {
+        $queryBuilder = $this->createQueryBuilder('ability');
+
+        if (!empty($filters['name'])) {
+            $queryBuilder->andWhere('ability.name LIKE :name')
+                ->setParameter('name', '%' . $filters['name'] . '%');
+        }
+
+        if (!empty($filters['description'])) {
+            $queryBuilder->andWhere('ability.description LIKE :description')
+                ->setParameter('description', '%' . $filters['description'] . '%');
+        }
+
+        if (!empty($filters['cost'])) {
+            $queryBuilder->andWhere('ability.cost LIKE :cost')
+                ->setParameter('cost', '%' . $filters['cost'] . '%');
+        }
+
+        return $queryBuilder;
+    }
 }

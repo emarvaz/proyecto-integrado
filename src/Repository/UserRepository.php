@@ -65,4 +65,23 @@ class UserRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }
+
+    public function getUserCountByRole(): array
+    {
+        $users = $this->findAll();
+        $roleCounts = [];
+
+        foreach ($users as $user) {
+            foreach ($user->getRoles() as $role) {
+                if (!isset($roleCounts[$role])) {
+                    $roleCounts[$role] = 0;
+                }
+                $roleCounts[$role]++;
+            }
+        }
+
+        arsort($roleCounts);
+
+        return $roleCounts;
+    }
 }

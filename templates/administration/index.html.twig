@@ -2,13 +2,60 @@
 
 {% block title %}{% endblock %}
 
-{% block navigationList %}
-    <li><a href="{{ path('administration_user_list') }}">Listado de usuarios</a></li>
-    <li><a href="{{ path('administration_ability_list') }}">Listado de habilidades</a></li>
-    <li><a href="{{ path('administration_ability_category_list') }}">Listado de categorias de habilidades</a></li>
-    <li><a href="{{ path('administration_card_list') }}">Listado de cartas</a></li>
+{% block styles %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="/assets/styles/administration.css" />
 {% endblock %}
 
-{% block main %}{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('/resources/package/dist/chart.umd.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const context = document.getElementById('user-role-chart').getContext('2d');
+
+            {#const chartData = {{ chartData|json_encode|raw }};#}
+
+            if (chartData.labels.length > 0) {
+                new Chart(context, {
+                    type: 'doughnut',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Usuarios por rol'
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block navigationList %}
+    <li><a href="{{ path('administration') }}">Gráficas</a></li>
+    <li><a href="{{ path('administration_user_list') }}">Listado de usuarios</a></li>
+    <li><a href="{{ path('administration_card_list') }}">Listado de cartas</a></li>
+    <li><a href="{{ path('administration_ability_list') }}">Listado de habilidades</a></li>
+    <li><a href="{{ path('administration_ability_category_list') }}">Listado de categorias de habilidades</a></li>
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h2>Usuarios por rol</h2>
+
+        <section class="chart-container">
+            <canvas id="user-role-chart"></canvas>
+        </section>
+    </section>
+{% endblock %}
 
 {% block aside %}{% endblock %}

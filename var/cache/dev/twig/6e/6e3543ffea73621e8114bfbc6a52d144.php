@@ -31,6 +31,7 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
+            'scripts' => [$this, 'block_scripts'],
             'main' => [$this, 'block_main'],
         ];
     }
@@ -87,6 +88,28 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
+    public function block_scripts(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    // line 7
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
     public function block_main(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
@@ -96,56 +119,101 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 6
-        yield "    <a href=\"";
+        // line 8
+        yield "    <section>
+        <form method=\"get\" action=\"";
+        // line 9
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_list");
+        yield "\" class=\"filter\">
+            <fieldset>
+                <label for=\"filter_name\">Nombre</label>
+                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"";
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "name", [], "any", true, true, false, 12)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 12, $this->source); })()), "name", [], "any", false, false, false, 12), "")) : ("")), "html", null, true);
+        yield "\">
+            </fieldset>
+
+            <fieldset>
+                <button type=\"submit\">Filtrar</button>
+
+                <a href=\"";
+        // line 18
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_list");
+        yield "\">Limpiar</a>
+            </fieldset>
+        </form>
+
+        <ul class=\"toolbar\">
+            <li><a href=\"";
+        // line 23
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_create");
-        yield "\">Crear categoría de habilidad</a>
+        yield "\">Crear categoría de habilidad</a></li>
+        </ul>
 
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Valor</th>
-            <th>Acciones</th>
-        </tr>
-
-        ";
-        // line 16
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["abilityCategories"]) || array_key_exists("abilityCategories", $context) ? $context["abilityCategories"] : (function () { throw new RuntimeError('Variable "abilityCategories" does not exist.', 16, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["abilityCategory"]) {
-            // line 17
-            yield "            <tr>
-                <td>";
-            // line 18
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "name", [], "any", false, false, false, 18), "html", null, true);
-            yield "</td>
-                <td>";
-            // line 19
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "description", [], "any", false, false, false, 19), "html", null, true);
-            yield "</td>
-                <td>";
-            // line 20
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "value", [], "any", false, false, false, 20), "html", null, true);
-            yield "</td>
-                <td>
-                    <a href=\"";
-            // line 22
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "id", [], "any", false, false, false, 22)]), "html", null, true);
-            yield "\">Editar</a>
-                    <a href=\"";
-            // line 23
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "id", [], "any", false, false, false, 23)]), "html", null, true);
-            yield "\">Eliminar</a>
-                </td>
+        <table class=\"table\">
+            <thead>
+            <tr>
+                <th>";
+        // line 29
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 29, $this->source); })()), "Nombre", "abilityCategory.name");
+        yield "</th>
+                <th>";
+        // line 30
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 30, $this->source); })()), "Descripción", "abilityCategory.description");
+        yield "</th>
+                <th>";
+        // line 31
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 31, $this->source); })()), "Valor", "abilityCategory.value");
+        yield "</th>
+                <th>Acciones</th>
             </tr>
-        ";
+            </thead>
+
+            <tbody>
+                ";
+        // line 37
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 37, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["abilityCategory"]) {
+            // line 38
+            yield "                    <tr>
+                        <td>";
+            // line 39
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "name", [], "any", false, false, false, 39), "html", null, true);
+            yield "</td>
+                        <td>";
+            // line 40
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "description", [], "any", false, false, false, 40), "html", null, true);
+            yield "</td>
+                        <td>";
+            // line 41
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "value", [], "any", false, false, false, 41), "html", null, true);
+            yield "</td>
+                        <td class=\"actions\">
+                            <a href=\"";
+            // line 43
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "id", [], "any", false, false, false, 43)]), "html", null, true);
+            yield "\">Editar</a>
+                            <a href=\"";
+            // line 44
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["abilityCategory"], "id", [], "any", false, false, false, 44)]), "html", null, true);
+            yield "\">Eliminar</a>
+                        </td>
+                    </tr>
+                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['abilityCategory'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
-        yield "    </table>
+        // line 48
+        yield "            </tbody>
+        </table>
+    </section>
+
+    ";
+        // line 52
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 52, $this->source); })()));
+        yield "
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -177,7 +245,7 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  148 => 27,  138 => 23,  134 => 22,  129 => 20,  125 => 19,  121 => 18,  118 => 17,  114 => 16,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  215 => 52,  209 => 48,  199 => 44,  195 => 43,  190 => 41,  186 => 40,  182 => 39,  179 => 38,  175 => 37,  166 => 31,  162 => 30,  158 => 29,  149 => 23,  141 => 18,  132 => 12,  126 => 9,  123 => 8,  110 => 7,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -186,29 +254,54 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
 
 {% block title %}Jugar{% endblock %}
 
+{% block scripts %}{% endblock %}
+
 {% block main %}
-    <a href=\"{{ path('administration_ability_category_create') }}\">Crear categoría de habilidad</a>
+    <section>
+        <form method=\"get\" action=\"{{ path('administration_ability_category_list') }}\" class=\"filter\">
+            <fieldset>
+                <label for=\"filter_name\">Nombre</label>
+                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"{{ activeFilters.name|default('') }}\">
+            </fieldset>
 
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Valor</th>
-            <th>Acciones</th>
-        </tr>
+            <fieldset>
+                <button type=\"submit\">Filtrar</button>
 
-        {% for abilityCategory in abilityCategories %}
+                <a href=\"{{ path('administration_ability_category_list') }}\">Limpiar</a>
+            </fieldset>
+        </form>
+
+        <ul class=\"toolbar\">
+            <li><a href=\"{{ path('administration_ability_category_create') }}\">Crear categoría de habilidad</a></li>
+        </ul>
+
+        <table class=\"table\">
+            <thead>
             <tr>
-                <td>{{ abilityCategory.name }}</td>
-                <td>{{ abilityCategory.description }}</td>
-                <td>{{ abilityCategory.value }}</td>
-                <td>
-                    <a href=\"{{ path('administration_ability_category_edit', { id: abilityCategory.id }) }}\">Editar</a>
-                    <a href=\"{{ path('administration_ability_category_delete', { id: abilityCategory.id }) }}\">Eliminar</a>
-                </td>
+                <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'abilityCategory.name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Descripción', 'abilityCategory.description') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Valor', 'abilityCategory.value') }}</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-    </table>
+            </thead>
+
+            <tbody>
+                {% for abilityCategory in pagination %}
+                    <tr>
+                        <td>{{ abilityCategory.name }}</td>
+                        <td>{{ abilityCategory.description }}</td>
+                        <td>{{ abilityCategory.value }}</td>
+                        <td class=\"actions\">
+                            <a href=\"{{ path('administration_ability_category_edit', { id: abilityCategory.id }) }}\">Editar</a>
+                            <a href=\"{{ path('administration_ability_category_delete', { id: abilityCategory.id }) }}\">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    {{ knp_pagination_render(pagination) }}
 {% endblock %}
 ", "administration/ability-category/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\ability-category\\list.html.twig");
     }

@@ -29,12 +29,16 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
 
         $this->source = $this->getSourceContext();
 
-        $this->parent = false;
-
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'main' => [$this, 'block_main'],
         ];
+    }
+
+    protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
+    {
+        // line 1
+        return "/administration/index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -46,23 +50,17 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "administration/user/form.html.twig"));
 
-        // line 1
-        yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
-        // line 2
-        yield "
-";
-        // line 3
-        yield from $this->unwrap()->yieldBlock('main', $context, $blocks);
+        $this->parent = $this->load("/administration/index.html.twig", 1);
+        yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-        yield from [];
     }
 
-    // line 1
+    // line 3
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -85,7 +83,7 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
         yield from [];
     }
 
-    // line 3
+    // line 5
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -98,19 +96,19 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 4
+        // line 6
         yield "    ";
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 4, $this->source); })()), 'form_start');
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 6, $this->source); })()), 'form_start');
         yield "
         ";
-        // line 5
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 5, $this->source); })()), 'widget');
+        // line 7
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 7, $this->source); })()), 'widget');
         yield "
 
         <input type=\"submit\" value=\"Crear\">
     ";
-        // line 8
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 8, $this->source); })()), 'form_end');
+        // line 10
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 10, $this->source); })()), 'form_end');
         yield "
 ";
         
@@ -133,14 +131,24 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo(): array
     {
-        return array (  113 => 8,  107 => 5,  102 => 4,  89 => 3,  66 => 1,  55 => 3,  52 => 2,  50 => 1,);
+        return array (  111 => 10,  105 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("{% block title %}Crear usuario{% endblock %}
+        return new Source("{% extends '/administration/index.html.twig' %}
+
+{% block title %}Crear usuario{% endblock %}
 
 {% block main %}
     {{ form_start(form) }}

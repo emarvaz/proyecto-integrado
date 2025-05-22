@@ -2,37 +2,61 @@
 
 {% block title %}Listado de cartas{% endblock %}
 
+{% block scripts %}{% endblock %}
+
 {% block main %}
-    <a href="{{ path('administration_card_create') }}">Crear carta</a>
+    <section>
+        <form method="get" action="{{ path('administration_card_list') }}" class="filter">
+            <fieldset>
+                <label for="filter_name">Nombre</label>
+                <input type="text" id="filter_name" name="filter_name" value="{{ activeFilters.name|default('') }}">
+            </fieldset>
 
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Puntos de vida</th>
-            <th>Habilidades</th>
-            <th>Tipo</th>
-            <th>Imagen</th>
-            <th>Acciones</th>
-        </tr>
+            <fieldset>
+                <button type="submit">Filtrar</button>
 
-        {% for card in cards %}
+                <a href="{{ path('administration_card_list') }}">Limpiar</a>
+            </fieldset>
+        </form>
+
+        <ul class="toolbar">
+            <li><a href="{{ path('administration_card_create') }}">Crear carta</a></li>
+        </ul>
+
+        <table class="table">
+            <thead>
             <tr>
-                <td>{{ card.name }}</td>
-                <td>{{ card.description }}</td>
-                <td>{{ card.health }}</td>
-                <td>
-                    {% for ability in card.abilities %}
-                        {{ ability }}{% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                </td>
-                <td>{{ card.type }}</td>
-                <td>{{ card.image }}</td>
-                <td>
-                    <a href="{{ path('administration_card_edit', { id: card.id }) }}">Editar</a>
-                    <a href="{{ path('administration_card_delete', { id: card.id }) }}">Eliminar</a>
-                </td>
+                <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'card.name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Descripción', 'card.description') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Puntos de vida', 'card.health') }}</th>
+                <th>Habilidades</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-    </table>
+            </thead>
+
+            <tbody>
+            {% for card in pagination %}
+                <tr>
+                    <td>{{ card.name }}</td>
+                    <td>{{ card.description }}</td>
+                    <td>{{ card.health }}</td>
+                    <td>
+                        {% for ability in card.abilities %}
+                            {{ ability }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ card.image }}</td>
+                    <td class="actions">
+                        <a href="{{ path('administration_card_edit', { id: card.id }) }}">Editar</a>
+                        <a href="{{ path('administration_card_delete', { id: card.id }) }}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {{ knp_pagination_render(pagination) }}
+    </section>
+
 {% endblock %}
