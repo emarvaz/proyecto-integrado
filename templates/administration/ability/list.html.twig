@@ -5,34 +5,35 @@
 {% block scripts %}{% endblock %}
 
 {% block main %}
-    <form method="get" action="{{ path('administration_ability_list') }}" class="filter">
-        <fieldset>
-            <label for="filter_name">Nombre</label>
-            <input type="text" id="filter_name" name="filter_name" value="{{ activeFilters.name|default('') }}">
-        </fieldset>
+    <main>
+        <form method="get" action="{{ path('administration_ability_list') }}" class="filter">
+            <fieldset>
+                <label for="filter_name">Nombre</label>
+                <input type="text" id="filter_name" name="filter_name" value="{{ activeFilters.name|default('') }}">
+            </fieldset>
 
-        <fieldset>
-            <button type="submit">Filtrar</button>
+            <fieldset>
+                <button type="submit">Filtrar</button>
 
-            <a href="{{ path('administration_ability_list') }}">Limpiar</a>
-        </fieldset>
-    </form>
+                <a href="{{ path('administration_ability_list') }}">Limpiar</a>
+            </fieldset>
+        </form>
 
-    <ul class="toolbar">
-        <li><a href="{{ path('administration_ability_create') }}">Crear habilidad</a></li>
-    </ul>
+        <ul class="toolbar">
+            <li><a href="{{ path('administration_ability_create') }}">Crear habilidad</a></li>
+        </ul>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'ability.name') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Descripción', 'ability.description') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Coste', 'ability.cost') }}</th>
                 <th>Acciones</th>
             </tr>
-        </thead>
+            </thead>
 
-        <tbody>
+            <tbody>
             {% for ability in pagination %}
                 <tr>
                     <td>{{ ability.name }}</td>
@@ -44,8 +45,9 @@
                     </td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    {{ knp_pagination_render(pagination) }}
+        {{ knp_pagination_render(pagination) }}
+    </main>
 {% endblock %}

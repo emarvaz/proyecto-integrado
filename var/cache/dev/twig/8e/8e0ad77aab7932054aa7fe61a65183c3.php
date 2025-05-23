@@ -120,7 +120,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 8
-        yield "    <section>
+        yield "    <main>
         <form method=\"get\" action=\"";
         // line 9
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_list");
@@ -212,7 +212,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
             foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
                 // line 46
                 yield "                            ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["ability"], "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 46), "html", null, true);
                 if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 46)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
                     yield ", ";
                 }
@@ -260,7 +260,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
         // line 59
         yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 59, $this->source); })()));
         yield "
-    </section>
+    </main>
 
 ";
         
@@ -305,7 +305,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
 {% block scripts %}{% endblock %}
 
 {% block main %}
-    <section>
+    <main>
         <form method=\"get\" action=\"{{ path('administration_card_list') }}\" class=\"filter\">
             <fieldset>
                 <label for=\"filter_name\">Nombre</label>
@@ -343,7 +343,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
                     <td>{{ card.health }}</td>
                     <td>
                         {% for ability in card.abilities %}
-                            {{ ability }}{% if not loop.last %}, {% endif %}
+                            {{ ability.name }}{% if not loop.last %}, {% endif %}
                         {% endfor %}
                     </td>
                     <td>{{ card.image }}</td>
@@ -357,7 +357,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
         </table>
 
         {{ knp_pagination_render(pagination) }}
-    </section>
+    </main>
 
 {% endblock %}
 ", "administration/card/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\card\\list.html.twig");

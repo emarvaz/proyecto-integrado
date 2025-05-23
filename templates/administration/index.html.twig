@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Administración{% endblock %}
 
 {% block styles %}
     {{ parent() }}
@@ -10,12 +10,13 @@
 
 {% block scripts %}
     {{ parent() }}
+
     <script type="text/javascript" src="{{ asset('/resources/package/dist/chart.umd.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const context = document.getElementById('user-role-chart').getContext('2d');
 
-            {#const chartData = {{ chartData|json_encode|raw }};#}
+            const chartData = {{ chartData|json_encode|raw }};
 
             if (chartData.labels.length > 0) {
                 new Chart(context, {
@@ -40,7 +41,7 @@
     </script>
 {% endblock %}
 
-{% block navigationList %}
+{% block navigationListContent %}
     <li><a href="{{ path('administration') }}">Gráficas</a></li>
     <li><a href="{{ path('administration_user_list') }}">Listado de usuarios</a></li>
     <li><a href="{{ path('administration_card_list') }}">Listado de cartas</a></li>
@@ -49,13 +50,13 @@
 {% endblock %}
 
 {% block main %}
-    <section>
+    <main>
         <h2>Usuarios por rol</h2>
 
         <section class="chart-container">
             <canvas id="user-role-chart"></canvas>
         </section>
-    </section>
+    </main>
 {% endblock %}
 
 {% block aside %}{% endblock %}

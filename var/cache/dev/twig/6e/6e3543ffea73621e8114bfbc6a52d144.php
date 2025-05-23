@@ -120,7 +120,7 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 8
-        yield "    <section>
+        yield "    <main>
         <form method=\"get\" action=\"";
         // line 9
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_list");
@@ -208,7 +208,7 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
         // line 48
         yield "            </tbody>
         </table>
-    </section>
+    </main>
 
     ";
         // line 52
@@ -257,7 +257,7 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
 {% block scripts %}{% endblock %}
 
 {% block main %}
-    <section>
+    <main>
         <form method=\"get\" action=\"{{ path('administration_ability_category_list') }}\" class=\"filter\">
             <fieldset>
                 <label for=\"filter_name\">Nombre</label>
@@ -299,7 +299,7 @@ class __TwigTemplate_e1e244b1a8b724d4b3517889aeaea943 extends Template
                 {% endfor %}
             </tbody>
         </table>
-    </section>
+    </main>
 
     {{ knp_pagination_render(pagination) }}
 {% endblock %}

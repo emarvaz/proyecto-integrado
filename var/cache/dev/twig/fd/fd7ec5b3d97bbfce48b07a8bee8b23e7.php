@@ -35,10 +35,10 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
             'title' => [$this, 'block_title'],
             'styles' => [$this, 'block_styles'],
             'scripts' => [$this, 'block_scripts'],
-            'body' => [$this, 'block_body'],
+            'bodyContent' => [$this, 'block_bodyContent'],
             'header' => [$this, 'block_header'],
-            'navigationList' => [$this, 'block_navigationList'],
-            'authenticationList' => [$this, 'block_authenticationList'],
+            'navigationListContent' => [$this, 'block_navigationListContent'],
+            'authenticationListContent' => [$this, 'block_authenticationListContent'],
             'main' => [$this, 'block_main'],
             'aside' => [$this, 'block_aside'],
             'asideList' => [$this, 'block_asideList'],
@@ -84,8 +84,8 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
     <body>
         ";
         // line 32
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 79
+        yield from $this->unwrap()->yieldBlock('bodyContent', $context, $blocks);
+        // line 81
         yield "    </body>
 </html>
 ";
@@ -184,44 +184,37 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
-    public function block_body(array $context, array $blocks = []): iterable
+    public function block_bodyContent(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "bodyContent"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "bodyContent"));
 
         // line 33
-        yield "            <header>
-                ";
-        // line 34
+        yield "            ";
         yield from $this->unwrap()->yieldBlock('header', $context, $blocks);
-        // line 55
-        yield "            </header>
-
+        // line 58
+        yield "
             <div class=\"layout-content\">
-                <main>
-                    ";
-        // line 59
-        yield from $this->unwrap()->yieldBlock('main', $context, $blocks);
-        // line 60
-        yield "                </main>
-
                 ";
-        // line 62
+        // line 60
+        yield from $this->unwrap()->yieldBlock('main', $context, $blocks);
+        // line 63
+        yield "
+                ";
+        // line 64
         yield from $this->unwrap()->yieldBlock('aside', $context, $blocks);
-        // line 73
+        // line 75
         yield "            </div>
 
-            <footer>
-                ";
-        // line 76
-        yield from $this->unwrap()->yieldBlock('footer', $context, $blocks);
+            ";
         // line 77
-        yield "            </footer>
-        ";
+        yield from $this->unwrap()->yieldBlock('footer', $context, $blocks);
+        // line 80
+        yield "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -231,7 +224,7 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
         yield from [];
     }
 
-    // line 34
+    // line 33
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -244,23 +237,27 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "header"));
 
-        // line 35
-        yield "                    <nav>
+        // line 34
+        yield "                <header>
+                    <nav class=\"navigation\">
                         <ul class=\"navigation__list\">
                             ";
         // line 37
-        yield from $this->unwrap()->yieldBlock('navigationList', $context, $blocks);
+        yield from $this->unwrap()->yieldBlock('navigationListContent', $context, $blocks);
         // line 40
         yield "                        </ul>
                     </nav>
 
-                    <ul class=\"authentication__list\">
-                        ";
-        // line 44
-        yield from $this->unwrap()->yieldBlock('authenticationList', $context, $blocks);
-        // line 53
-        yield "                    </ul>
-                ";
+                    <section class=\"authentication\">
+                        <ul class=\"authentication__list\">
+                            ";
+        // line 45
+        yield from $this->unwrap()->yieldBlock('authenticationListContent', $context, $blocks);
+        // line 54
+        yield "                        </ul>
+                    </section>
+                </header>
+            ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -274,14 +271,14 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
-    public function block_navigationList(array $context, array $blocks = []): iterable
+    public function block_navigationListContent(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigationList"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigationListContent"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigationList"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigationListContent"));
 
         // line 38
         yield "                                <li><a href=\"";
@@ -297,42 +294,42 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
         yield from [];
     }
 
-    // line 44
+    // line 45
     /**
      * @return iterable<null|scalar|\Stringable>
      */
-    public function block_authenticationList(array $context, array $blocks = []): iterable
+    public function block_authenticationListContent(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "authenticationList"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "authenticationListContent"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "authenticationList"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "authenticationListContent"));
 
-        // line 45
-        yield "                            ";
-        if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "user", [], "any", false, false, false, 45)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 46
-            yield "                                <li><a href=\"";
+        // line 46
+        yield "                                ";
+        if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 47
+            yield "                                    <li><a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
             yield "\">Iniciar sesión</a></li>
-                                <li><a href=\"";
-            // line 47
+                                    <li><a href=\"";
+            // line 48
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("sign_in");
             yield "\">Registrarse</a></li>
-                            ";
+                                ";
         } else {
-            // line 49
-            yield "                                <li><a href=\"#\">Perfil</a></li>
-                                <li><a href=\"";
             // line 50
+            yield "                                    <li><a href=\"#\">Perfil</a></li>
+                                    <li><a href=\"";
+            // line 51
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
             yield "\">Cerrar sesión</a></li>
-                            ";
+                                ";
         }
-        // line 52
-        yield "                        ";
+        // line 53
+        yield "                            ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -342,7 +339,7 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
         yield from [];
     }
 
-    // line 59
+    // line 60
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -355,35 +352,8 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-        yield from [];
-    }
-
-    // line 62
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_aside(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "aside"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "aside"));
-
-        // line 63
-        yield "                    <aside>
-                        ";
-        // line 64
-        yield from $this->unwrap()->yieldBlock('asideList', $context, $blocks);
-        // line 71
-        yield "                    </aside>
+        // line 61
+        yield "                    <main></main>
                 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -398,6 +368,36 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
+    public function block_aside(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "aside"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "aside"));
+
+        // line 65
+        yield "                    <aside>
+                        ";
+        // line 66
+        yield from $this->unwrap()->yieldBlock('asideList', $context, $blocks);
+        // line 73
+        yield "                    </aside>
+                ";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    // line 66
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
     public function block_asideList(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
@@ -407,18 +407,18 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "asideList"));
 
-        // line 65
+        // line 67
         yield "                            <ul class=\"aside__list\">
                                 ";
-        // line 66
+        // line 68
         if ((($tmp = $this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 67
+            // line 69
             yield "                                    <li><a href=\"";
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration");
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_list");
             yield "\">Panel de administración</a></li>
                                 ";
         }
-        // line 69
+        // line 71
         yield "                            </ul>
                         ";
         
@@ -430,7 +430,7 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
         yield from [];
     }
 
-    // line 76
+    // line 77
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -443,6 +443,9 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
+        // line 78
+        yield "                <footer></footer>
+            ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -465,7 +468,7 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  434 => 76,  422 => 69,  416 => 67,  414 => 66,  411 => 65,  398 => 64,  386 => 71,  384 => 64,  381 => 63,  368 => 62,  346 => 59,  335 => 52,  330 => 50,  327 => 49,  322 => 47,  317 => 46,  314 => 45,  301 => 44,  287 => 38,  274 => 37,  262 => 53,  260 => 44,  254 => 40,  252 => 37,  248 => 35,  235 => 34,  223 => 77,  221 => 76,  216 => 73,  214 => 62,  210 => 60,  208 => 59,  202 => 55,  200 => 34,  197 => 33,  184 => 32,  162 => 17,  149 => 16,  137 => 13,  124 => 12,  102 => 4,  89 => 79,  87 => 32,  82 => 29,  80 => 16,  77 => 15,  75 => 12,  64 => 4,  59 => 1,);
+        return array (  447 => 78,  434 => 77,  422 => 71,  416 => 69,  414 => 68,  411 => 67,  398 => 66,  386 => 73,  384 => 66,  381 => 65,  368 => 64,  356 => 61,  343 => 60,  332 => 53,  327 => 51,  324 => 50,  319 => 48,  314 => 47,  311 => 46,  298 => 45,  284 => 38,  271 => 37,  257 => 54,  255 => 45,  248 => 40,  246 => 37,  241 => 34,  228 => 33,  217 => 80,  215 => 77,  211 => 75,  209 => 64,  206 => 63,  204 => 60,  200 => 58,  197 => 33,  184 => 32,  162 => 17,  149 => 16,  137 => 13,  124 => 12,  102 => 4,  89 => 81,  87 => 32,  82 => 29,  80 => 16,  77 => 15,  75 => 12,  64 => 4,  59 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -501,42 +504,44 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
     </head>
 
     <body>
-        {% block body %}
-            <header>
-                {% block header %}
-                    <nav>
+        {% block bodyContent %}
+            {% block header %}
+                <header>
+                    <nav class=\"navigation\">
                         <ul class=\"navigation__list\">
-                            {% block navigationList %}
+                            {% block navigationListContent %}
                                 <li><a href=\"{{ path('card_list') }}\">Cartas</a></li>
                             {% endblock %}
                         </ul>
                     </nav>
 
-                    <ul class=\"authentication__list\">
-                        {% block authenticationList %}
-                            {% if not app.user %}
-                                <li><a href=\"{{ path('login') }}\">Iniciar sesión</a></li>
-                                <li><a href=\"{{ path('sign_in') }}\">Registrarse</a></li>
-                            {% else %}
-                                <li><a href=\"#\">Perfil</a></li>
-                                <li><a href=\"{{ path('logout') }}\">Cerrar sesión</a></li>
-                            {% endif %}
-                        {% endblock %}
-                    </ul>
-                {% endblock %}
-            </header>
+                    <section class=\"authentication\">
+                        <ul class=\"authentication__list\">
+                            {% block authenticationListContent %}
+                                {% if not app.user %}
+                                    <li><a href=\"{{ path('login') }}\">Iniciar sesión</a></li>
+                                    <li><a href=\"{{ path('sign_in') }}\">Registrarse</a></li>
+                                {% else %}
+                                    <li><a href=\"#\">Perfil</a></li>
+                                    <li><a href=\"{{ path('logout') }}\">Cerrar sesión</a></li>
+                                {% endif %}
+                            {% endblock %}
+                        </ul>
+                    </section>
+                </header>
+            {% endblock %}
 
             <div class=\"layout-content\">
-                <main>
-                    {% block main %}{% endblock %}
-                </main>
+                {% block main %}
+                    <main></main>
+                {% endblock %}
 
                 {% block aside %}
                     <aside>
                         {% block asideList %}
                             <ul class=\"aside__list\">
                                 {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href=\"{{ path('administration') }}\">Panel de administración</a></li>
+                                    <li><a href=\"{{ path('administration_user_list') }}\">Panel de administración</a></li>
                                 {% endif %}
                             </ul>
                         {% endblock %}
@@ -544,9 +549,9 @@ class __TwigTemplate_6a026ab944184e1a361da463725407ac extends Template
                 {% endblock %}
             </div>
 
-            <footer>
-                {% block footer %}{% endblock %}
-            </footer>
+            {% block footer %}
+                <footer></footer>
+            {% endblock %}
         {% endblock %}
     </body>
 </html>

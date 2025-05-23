@@ -74,7 +74,7 @@ class __TwigTemplate_bbfe3601060ab92f50d3a8998222990b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Jugar";
+        yield "World of Cards";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -165,7 +165,7 @@ class __TwigTemplate_bbfe3601060ab92f50d3a8998222990b extends Template
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Jugar{% endblock %}
+{% block title %}World of Cards{% endblock %}
 
 {% block main %}{% endblock %}
 

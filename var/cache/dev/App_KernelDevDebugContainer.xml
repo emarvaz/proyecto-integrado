@@ -400,7 +400,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.XTLkaZ."/>
+      <argument type="service" id=".service_locator.YXm4yUX"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -2681,7 +2681,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.XTLkaZ."/>
+      <argument type="service" id=".service_locator.YXm4yUX"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -6485,6 +6485,12 @@
         <argument key="cardRepository" type="service_closure" id="App\Repository\CardRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.NMBx11d.App\Controller\CardController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CardController::index()"/>
+      <argument>App\Controller\CardController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.NMBx11d" method="withContext"/>
+    </service>
     <service id=".service_locator.NMBx11d.App\Controller\CardController::list()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\CardController::list()"/>
       <argument>App\Controller\CardController::list()</argument>
@@ -6591,7 +6597,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.d8rsN5P" method="withContext"/>
     </service>
-    <service id=".service_locator.XTLkaZ." class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.YXm4yUX" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
@@ -6607,6 +6613,7 @@
         <argument key="App\Controller\AbilityController::abilityEdit" type="service_closure" id=".service_locator.VaGu42r.App\Controller\AbilityController::abilityEdit()"/>
         <argument key="App\Controller\AbilityController::abilityDelete" type="service_closure" id=".service_locator.VaGu42r.App\Controller\AbilityController::abilityDelete()"/>
         <argument key="App\Controller\AdministrationController::index" type="service_closure" id=".service_locator.OzEre6h.App\Controller\AdministrationController::index()"/>
+        <argument key="App\Controller\CardController::index" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::index()"/>
         <argument key="App\Controller\CardController::list" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::list()"/>
         <argument key="App\Controller\CardController::administrationCardList" type="service_closure" id=".service_locator.1_hm3sa.App\Controller\CardController::administrationCardList()"/>
         <argument key="App\Controller\CardController::cardCreate" type="service_closure" id=".service_locator.UmW841m.App\Controller\CardController::cardCreate()"/>
@@ -6629,6 +6636,7 @@
         <argument key="App\Controller\AbilityController:abilityEdit" type="service_closure" id=".service_locator.VaGu42r.App\Controller\AbilityController::abilityEdit()"/>
         <argument key="App\Controller\AbilityController:abilityDelete" type="service_closure" id=".service_locator.VaGu42r.App\Controller\AbilityController::abilityDelete()"/>
         <argument key="App\Controller\AdministrationController:index" type="service_closure" id=".service_locator.OzEre6h.App\Controller\AdministrationController::index()"/>
+        <argument key="App\Controller\CardController:index" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::index()"/>
         <argument key="App\Controller\CardController:list" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::list()"/>
         <argument key="App\Controller\CardController:administrationCardList" type="service_closure" id=".service_locator.1_hm3sa.App\Controller\CardController::administrationCardList()"/>
         <argument key="App\Controller\CardController:cardCreate" type="service_closure" id=".service_locator.UmW841m.App\Controller\CardController::cardCreate()"/>
@@ -8044,7 +8052,7 @@
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.XTLkaZ."/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.YXm4yUX"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>

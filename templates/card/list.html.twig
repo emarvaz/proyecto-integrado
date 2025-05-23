@@ -10,29 +10,29 @@
 {% endblock %}
 
 {% block main %}
-    <section class="card-deck">
-        <div class="card-deck__cards">
+    <main class="main-content">
+        <section class="card-deck">
             {% for card in cards %}
-                <article class="card">
-                    <figure class="card__image" role="img">
-                        <data class="card__index"></data>
-                    </figure>
+                <a href="{{ path('card', { id: card.id }) }}" class="link__clicker">
+                    <article class="card">
+                        <figure class="card__image" role="img">
+                            <data class="card__index"></data>
+                        </figure>
 
-                    <data class="card__health">{{ card.health }}</data>
+                        <data class="card__health">{{ card.health }}</data>
 
-                    <h4 class="card__name">{{ card.name }}</h4>
+                        <h4 class="card__name">{{ card.name }}</h4>
 
-                    <ul class="card__abilities">
-                        {% for ability in card.abilities %}
-                            <li class="card__abilities__ability">{{ ability }}</li>
-                        {% endfor %}
-                    </ul>
+                        <ul class="card__abilities">
+                            {% for ability in card.abilities %}
+                                <li class="card__abilities__ability">{{ ability.name }}</li>
+                            {% endfor %}
+                        </ul>
 
-                    <p class="card__description">{{ card.description }}</p>
-                </article>
+                        <p class="card__description">{{ card.description }}</p>
+                    </article>
+                </a>
             {% endfor %}
-        </div>
-
-        <data class="card-deck__count"></data>
-    </section>
+        </section>
+    </main>
 {% endblock %}

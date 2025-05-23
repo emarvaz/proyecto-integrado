@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CardRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,8 +28,16 @@ class Card
     #[ORM\Column]
     private ?int $health = null;
 
-    #[ORM\Column(type: Types::JSON, nullable: true)]
-    private ?array $abilities = null;
+    /**
+     * @var Collection<int, Ability>
+     */
+    #[ORM\ManyToMany(targetEntity: Ability::class, inversedBy: 'cards')]
+    private Collection $abilities;
+
+    public function __construct()
+    {
+        $this->abilities = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -70,18 +80,6 @@ class Card
         return $this;
     }
     
-    public function getAbilities(): ?array
-    {
-        return $this->abilities;
-    }
-    
-    public function setAbilities(?array $abilities): static
-    {
-        $this->abilities = $abilities;
-        
-        return $this;
-    }
-    
     public function getHealth(): ?int
     {
         return $this->health;
@@ -91,6 +89,35 @@ class Card
     {
         $this->health = $health;
         
+        return $this;
+    }
+
+    public function setAbilities(Collection $abilities): void
+    {
+        $this->abilities = $abilities;
+    }
+
+    /**
+     * @return Collection<int, Ability>
+     */
+    public function getAbilities(): Collection
+    {
+        return $this->abilities;
+    }
+
+    public function addAbility(Ability $ability): static
+    {
+        if (!$this->abilities->contains($ability)) {
+            $this->abilities->add($ability);
+        }
+
+        return $this;
+    }
+
+    public function removeAbility(Ability $ability): static
+    {
+        $this->abilities->removeElement($ability);
+
         return $this;
     }
 }

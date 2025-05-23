@@ -14,11 +14,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class CardController extends AbstractController
 {
-    #[Route('/card', name: 'app_card')]
-    public function index(): Response
+    #[Route('/card/{id}', name: 'card', requirements: ['id' => '\d+'])]
+    public function index(int $id, CardRepository $cardRepository): Response
     {
+        $card = $cardRepository->find($id);
+
         return $this->render('card/index.html.twig', [
-            'controller_name' => 'CardController',
+            'card' => $card,
         ]);
     }
 

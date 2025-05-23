@@ -14,7 +14,7 @@ use Twig\Source;
 use Twig\Template;
 use Twig\TemplateWrapper;
 
-/* /administration/index.html.twig */
+/* administration/index.html.twig */
 class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
 {
     private Source $source;
@@ -33,7 +33,7 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
             'title' => [$this, 'block_title'],
             'styles' => [$this, 'block_styles'],
             'scripts' => [$this, 'block_scripts'],
-            'navigationList' => [$this, 'block_navigationList'],
+            'navigationListContent' => [$this, 'block_navigationListContent'],
             'main' => [$this, 'block_main'],
             'aside' => [$this, 'block_aside'],
         ];
@@ -49,10 +49,10 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "/administration/index.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "administration/index.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "/administration/index.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "administration/index.html.twig"));
 
         $this->parent = $this->load("base.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
@@ -77,6 +77,7 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
+        yield "Administración";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -132,17 +133,20 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
         yield "    ";
         yield from $this->yieldParentBlock("scripts", $context, $blocks);
         yield "
+
     <script type=\"text/javascript\" src=\"";
-        // line 13
+        // line 14
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/resources/package/dist/chart.umd.js"), "html", null, true);
         yield "\"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const context = document.getElementById('user-role-chart').getContext('2d');
 
-            ";
+            const chartData = ";
         // line 19
-        yield "
+        yield json_encode((isset($context["chartData"]) || array_key_exists("chartData", $context) ? $context["chartData"] : (function () { throw new RuntimeError('Variable "chartData" does not exist.', 19, $this->source); })()));
+        yield ";
+
             if (chartData.labels.length > 0) {
                 new Chart(context, {
                     type: 'doughnut',
@@ -174,37 +178,37 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
         yield from [];
     }
 
-    // line 43
+    // line 44
     /**
      * @return iterable<null|scalar|\Stringable>
      */
-    public function block_navigationList(array $context, array $blocks = []): iterable
+    public function block_navigationListContent(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigationList"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigationListContent"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigationList"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navigationListContent"));
 
-        // line 44
+        // line 45
         yield "    <li><a href=\"";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration");
         yield "\">Gráficas</a></li>
     <li><a href=\"";
-        // line 45
+        // line 46
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_list");
         yield "\">Listado de usuarios</a></li>
     <li><a href=\"";
-        // line 46
+        // line 47
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_list");
         yield "\">Listado de cartas</a></li>
     <li><a href=\"";
-        // line 47
+        // line 48
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_list");
         yield "\">Listado de habilidades</a></li>
     <li><a href=\"";
-        // line 48
+        // line 49
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_category_list");
         yield "\">Listado de categorias de habilidades</a></li>
 ";
@@ -217,7 +221,7 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
         yield from [];
     }
 
-    // line 51
+    // line 52
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -230,14 +234,14 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 52
-        yield "    <section>
+        // line 53
+        yield "    <main>
         <h2>Usuarios por rol</h2>
 
         <section class=\"chart-container\">
             <canvas id=\"user-role-chart\"></canvas>
         </section>
-    </section>
+    </main>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -248,7 +252,7 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
         yield from [];
     }
 
-    // line 61
+    // line 62
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -275,7 +279,7 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
      */
     public function getTemplateName(): string
     {
-        return "/administration/index.html.twig";
+        return "administration/index.html.twig";
     }
 
     /**
@@ -291,14 +295,14 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  252 => 61,  234 => 52,  221 => 51,  208 => 48,  204 => 47,  200 => 46,  196 => 45,  191 => 44,  178 => 43,  145 => 19,  137 => 13,  132 => 12,  119 => 11,  103 => 6,  90 => 5,  68 => 3,  45 => 1,);
+        return array (  256 => 62,  238 => 53,  225 => 52,  212 => 49,  208 => 48,  204 => 47,  200 => 46,  195 => 45,  182 => 44,  147 => 19,  139 => 14,  133 => 12,  120 => 11,  104 => 6,  91 => 5,  68 => 3,  45 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Administración{% endblock %}
 
 {% block styles %}
     {{ parent() }}
@@ -308,12 +312,13 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
 
 {% block scripts %}
     {{ parent() }}
+
     <script type=\"text/javascript\" src=\"{{ asset('/resources/package/dist/chart.umd.js') }}\"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const context = document.getElementById('user-role-chart').getContext('2d');
 
-            {#const chartData = {{ chartData|json_encode|raw }};#}
+            const chartData = {{ chartData|json_encode|raw }};
 
             if (chartData.labels.length > 0) {
                 new Chart(context, {
@@ -338,7 +343,7 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
     </script>
 {% endblock %}
 
-{% block navigationList %}
+{% block navigationListContent %}
     <li><a href=\"{{ path('administration') }}\">Gráficas</a></li>
     <li><a href=\"{{ path('administration_user_list') }}\">Listado de usuarios</a></li>
     <li><a href=\"{{ path('administration_card_list') }}\">Listado de cartas</a></li>
@@ -347,15 +352,15 @@ class __TwigTemplate_e8f5b88d61bf07f510e918da031f8f5d extends Template
 {% endblock %}
 
 {% block main %}
-    <section>
+    <main>
         <h2>Usuarios por rol</h2>
 
         <section class=\"chart-container\">
             <canvas id=\"user-role-chart\"></canvas>
         </section>
-    </section>
+    </main>
 {% endblock %}
 
-{% block aside %}{% endblock %}", "/administration/index.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\index.html.twig");
+{% block aside %}{% endblock %}", "administration/index.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\index.html.twig");
     }
 }

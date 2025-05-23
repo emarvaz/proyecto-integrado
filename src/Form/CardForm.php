@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Ability;
 use App\Entity\Card;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,16 +18,12 @@ class CardForm extends AbstractType
                 ->add('image')
                 ->add('description')
                 ->add('health')
-                ->add('abilities', ChoiceType::class, [
-                    'choices' => [
-                        'Puñetazo' => 'punch',
-                        'Patada' => 'kick',
-                        'Corte' => 'cut'
-                    ],
+                ->add('abilities', EntityType::class, [
+                    'class' => Ability::class,
+                    'choice_label' => 'name',
                     'multiple' => true,
                     'expanded' => true
-                ])
-                ->add('type');
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

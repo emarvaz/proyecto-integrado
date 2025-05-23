@@ -120,81 +120,83 @@ class __TwigTemplate_de755004df110991e2f9c62626e2cdd1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 8
-        yield "    <form method=\"get\" action=\"";
+        yield "    <main>
+        <form method=\"get\" action=\"";
+        // line 9
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_list");
         yield "\" class=\"filter\">
-        <fieldset>
-            <label for=\"filter_name\">Nombre</label>
-            <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"";
-        // line 11
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "name", [], "any", true, true, false, 11)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 11, $this->source); })()), "name", [], "any", false, false, false, 11), "")) : ("")), "html", null, true);
+            <fieldset>
+                <label for=\"filter_name\">Nombre</label>
+                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"";
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "name", [], "any", true, true, false, 12)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 12, $this->source); })()), "name", [], "any", false, false, false, 12), "")) : ("")), "html", null, true);
         yield "\">
-        </fieldset>
+            </fieldset>
 
-        <fieldset>
-            <button type=\"submit\">Filtrar</button>
+            <fieldset>
+                <button type=\"submit\">Filtrar</button>
 
-            <a href=\"";
-        // line 17
+                <a href=\"";
+        // line 18
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_list");
         yield "\">Limpiar</a>
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
 
-    <ul class=\"toolbar\">
-        <li><a href=\"";
-        // line 22
+        <ul class=\"toolbar\">
+            <li><a href=\"";
+        // line 23
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_create");
         yield "\">Crear habilidad</a></li>
-    </ul>
+        </ul>
 
-    <table class=\"table\">
-        <thead>
+        <table class=\"table\">
+            <thead>
             <tr>
                 <th>";
-        // line 28
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 28, $this->source); })()), "Nombre", "ability.name");
-        yield "</th>
-                <th>";
         // line 29
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 29, $this->source); })()), "Descripción", "ability.description");
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 29, $this->source); })()), "Nombre", "ability.name");
         yield "</th>
                 <th>";
         // line 30
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 30, $this->source); })()), "Coste", "ability.cost");
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 30, $this->source); })()), "Descripción", "ability.description");
+        yield "</th>
+                <th>";
+        // line 31
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 31, $this->source); })()), "Coste", "ability.cost");
         yield "</th>
                 <th>Acciones</th>
             </tr>
-        </thead>
+            </thead>
 
-        <tbody>
+            <tbody>
             ";
-        // line 36
+        // line 37
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 36, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 37, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-            // line 37
+            // line 38
             yield "                <tr>
                     <td>";
-            // line 38
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 38), "html", null, true);
-            yield "</td>
-                    <td>";
             // line 39
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "description", [], "any", false, false, false, 39), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 39), "html", null, true);
             yield "</td>
                     <td>";
             // line 40
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 40), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "description", [], "any", false, false, false, 40), "html", null, true);
+            yield "</td>
+                    <td>";
+            // line 41
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 41), "html", null, true);
             yield "</td>
                     <td class=\"actions\">
                         <a href=\"";
-            // line 42
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "id", [], "any", false, false, false, 42)]), "html", null, true);
+            // line 43
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "id", [], "any", false, false, false, 43)]), "html", null, true);
             yield "\">Editar</a>
                         <a href=\"";
-            // line 43
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "id", [], "any", false, false, false, 43)]), "html", null, true);
+            // line 44
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "id", [], "any", false, false, false, 44)]), "html", null, true);
             yield "\">Eliminar</a>
                     </td>
                 </tr>
@@ -203,14 +205,15 @@ class __TwigTemplate_de755004df110991e2f9c62626e2cdd1 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 47
-        yield "        </tbody>
-    </table>
+        // line 48
+        yield "            </tbody>
+        </table>
 
-    ";
-        // line 50
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 50, $this->source); })()));
+        ";
+        // line 51
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 51, $this->source); })()));
         yield "
+    </main>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -242,7 +245,7 @@ class __TwigTemplate_de755004df110991e2f9c62626e2cdd1 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  212 => 50,  207 => 47,  197 => 43,  193 => 42,  188 => 40,  184 => 39,  180 => 38,  177 => 37,  173 => 36,  164 => 30,  160 => 29,  156 => 28,  147 => 22,  139 => 17,  130 => 11,  123 => 8,  110 => 7,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  214 => 51,  209 => 48,  199 => 44,  195 => 43,  190 => 41,  186 => 40,  182 => 39,  179 => 38,  175 => 37,  166 => 31,  162 => 30,  158 => 29,  149 => 23,  141 => 18,  132 => 12,  126 => 9,  123 => 8,  110 => 7,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -254,34 +257,35 @@ class __TwigTemplate_de755004df110991e2f9c62626e2cdd1 extends Template
 {% block scripts %}{% endblock %}
 
 {% block main %}
-    <form method=\"get\" action=\"{{ path('administration_ability_list') }}\" class=\"filter\">
-        <fieldset>
-            <label for=\"filter_name\">Nombre</label>
-            <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"{{ activeFilters.name|default('') }}\">
-        </fieldset>
+    <main>
+        <form method=\"get\" action=\"{{ path('administration_ability_list') }}\" class=\"filter\">
+            <fieldset>
+                <label for=\"filter_name\">Nombre</label>
+                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"{{ activeFilters.name|default('') }}\">
+            </fieldset>
 
-        <fieldset>
-            <button type=\"submit\">Filtrar</button>
+            <fieldset>
+                <button type=\"submit\">Filtrar</button>
 
-            <a href=\"{{ path('administration_ability_list') }}\">Limpiar</a>
-        </fieldset>
-    </form>
+                <a href=\"{{ path('administration_ability_list') }}\">Limpiar</a>
+            </fieldset>
+        </form>
 
-    <ul class=\"toolbar\">
-        <li><a href=\"{{ path('administration_ability_create') }}\">Crear habilidad</a></li>
-    </ul>
+        <ul class=\"toolbar\">
+            <li><a href=\"{{ path('administration_ability_create') }}\">Crear habilidad</a></li>
+        </ul>
 
-    <table class=\"table\">
-        <thead>
+        <table class=\"table\">
+            <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'ability.name') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Descripción', 'ability.description') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Coste', 'ability.cost') }}</th>
                 <th>Acciones</th>
             </tr>
-        </thead>
+            </thead>
 
-        <tbody>
+            <tbody>
             {% for ability in pagination %}
                 <tr>
                     <td>{{ ability.name }}</td>
@@ -293,10 +297,11 @@ class __TwigTemplate_de755004df110991e2f9c62626e2cdd1 extends Template
                     </td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    {{ knp_pagination_render(pagination) }}
+        {{ knp_pagination_render(pagination) }}
+    </main>
 {% endblock %}
 ", "administration/ability/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\ability\\list.html.twig");
     }

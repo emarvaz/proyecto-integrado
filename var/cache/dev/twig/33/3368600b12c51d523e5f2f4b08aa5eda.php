@@ -120,7 +120,7 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 8
-        yield "    <section>
+        yield "    <main>
         <form method=\"get\" action=\"";
         // line 9
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_list");
@@ -279,7 +279,7 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
         // line 69
         yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 69, $this->source); })()));
         yield "
-    </section>
+    </main>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -323,7 +323,7 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
 {% block scripts %}{% endblock %}
 
 {% block main %}
-    <section>
+    <main>
         <form method=\"get\" action=\"{{ path('administration_user_list') }}\" class=\"filter\">
             <fieldset>
                 <label for=\"filter_username\">Nombre de usuario</label>
@@ -385,7 +385,7 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
         </table>
 
         {{ knp_pagination_render(pagination) }}
-    </section>
+    </main>
 {% endblock %}
 ", "administration/user/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\user\\list.html.twig");
     }

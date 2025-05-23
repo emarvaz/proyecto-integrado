@@ -134,62 +134,64 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 13
-        yield "    <section class=\"card-deck\">
-        <div class=\"card-deck__cards\">
+        yield "    <main class=\"main-content\">
+        <section class=\"card-deck\">
             ";
         // line 15
         $context['_parent'] = $context;
         $context['_seq'] = CoreExtension::ensureTraversable((isset($context["cards"]) || array_key_exists("cards", $context) ? $context["cards"] : (function () { throw new RuntimeError('Variable "cards" does not exist.', 15, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["card"]) {
             // line 16
-            yield "                <article class=\"card\">
-                    <figure class=\"card__image\" role=\"img\">
-                        <data class=\"card__index\"></data>
-                    </figure>
+            yield "                <a href=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 16)]), "html", null, true);
+            yield "\" class=\"link__clicker\">
+                    <article class=\"card\">
+                        <figure class=\"card__image\" role=\"img\">
+                            <data class=\"card__index\"></data>
+                        </figure>
 
-                    <data class=\"card__health\">";
-            // line 21
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 21), "html", null, true);
+                        <data class=\"card__health\">";
+            // line 22
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 22), "html", null, true);
             yield "</data>
 
-                    <h4 class=\"card__name\">";
-            // line 23
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 23), "html", null, true);
+                        <h4 class=\"card__name\">";
+            // line 24
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 24), "html", null, true);
             yield "</h4>
 
-                    <ul class=\"card__abilities\">
-                        ";
-            // line 26
+                        <ul class=\"card__abilities\">
+                            ";
+            // line 27
             $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 26));
+            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 27));
             foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-                // line 27
-                yield "                            <li class=\"card__abilities__ability\">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["ability"], "html", null, true);
+                // line 28
+                yield "                                <li class=\"card__abilities__ability\">";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 28), "html", null, true);
                 yield "</li>
-                        ";
+                            ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 29
-            yield "                    </ul>
+            // line 30
+            yield "                        </ul>
 
-                    <p class=\"card__description\">";
-            // line 31
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "description", [], "any", false, false, false, 31), "html", null, true);
+                        <p class=\"card__description\">";
+            // line 32
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "description", [], "any", false, false, false, 32), "html", null, true);
             yield "</p>
-                </article>
+                    </article>
+                </a>
             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['card'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
-        yield "        </div>
-
-        <data class=\"card-deck__count\"></data>
-    </section>
+        // line 36
+        yield "        </section>
+    </main>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -221,7 +223,7 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  189 => 34,  180 => 31,  176 => 29,  167 => 27,  163 => 26,  157 => 23,  152 => 21,  145 => 16,  141 => 15,  137 => 13,  124 => 12,  111 => 9,  107 => 8,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  193 => 36,  183 => 32,  179 => 30,  170 => 28,  166 => 27,  160 => 24,  155 => 22,  145 => 16,  141 => 15,  137 => 13,  124 => 12,  111 => 9,  107 => 8,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -238,31 +240,31 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
 {% endblock %}
 
 {% block main %}
-    <section class=\"card-deck\">
-        <div class=\"card-deck__cards\">
+    <main class=\"main-content\">
+        <section class=\"card-deck\">
             {% for card in cards %}
-                <article class=\"card\">
-                    <figure class=\"card__image\" role=\"img\">
-                        <data class=\"card__index\"></data>
-                    </figure>
+                <a href=\"{{ path('card', { id: card.id }) }}\" class=\"link__clicker\">
+                    <article class=\"card\">
+                        <figure class=\"card__image\" role=\"img\">
+                            <data class=\"card__index\"></data>
+                        </figure>
 
-                    <data class=\"card__health\">{{ card.health }}</data>
+                        <data class=\"card__health\">{{ card.health }}</data>
 
-                    <h4 class=\"card__name\">{{ card.name }}</h4>
+                        <h4 class=\"card__name\">{{ card.name }}</h4>
 
-                    <ul class=\"card__abilities\">
-                        {% for ability in card.abilities %}
-                            <li class=\"card__abilities__ability\">{{ ability }}</li>
-                        {% endfor %}
-                    </ul>
+                        <ul class=\"card__abilities\">
+                            {% for ability in card.abilities %}
+                                <li class=\"card__abilities__ability\">{{ ability.name }}</li>
+                            {% endfor %}
+                        </ul>
 
-                    <p class=\"card__description\">{{ card.description }}</p>
-                </article>
+                        <p class=\"card__description\">{{ card.description }}</p>
+                    </article>
+                </a>
             {% endfor %}
-        </div>
-
-        <data class=\"card-deck__count\"></data>
-    </section>
+        </section>
+    </main>
 {% endblock %}
 ", "card/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\card\\list.html.twig");
     }

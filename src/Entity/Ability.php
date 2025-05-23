@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AbilityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AbilityRepository::class)]
@@ -25,6 +27,17 @@ class Ability
     #[ORM\ManyToOne(inversedBy: 'abilities')]
     #[ORM\JoinColumn(nullable: false)]
     private ?AbilityCategory $category = null;
+
+    /**
+     * @var Collection<int, Card>
+     */
+    #[ORM\ManyToMany(targetEntity: Card::class, mappedBy: 'abilities')]
+    private Collection $cards;
+
+    public function __construct()
+    {
+        $this->cards = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,6 +100,33 @@ class Ability
     public function setCategory(?AbilityCategory $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Card>
+     */
+    public function getCards(): Collection
+    {
+        return $this->cards;
+    }
+
+    public function addCard(Card $card): static
+    {
+        if (!$this->cards->contains($card)) {
+            $this->cards->add($card);
+            $card->addAbility($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCard(Card $card): static
+    {
+        if ($this->cards->removeElement($card)) {
+            $card->removeAbility($this);
+        }
 
         return $this;
     }

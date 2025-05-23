@@ -31,6 +31,7 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
+            'styles' => [$this, 'block_styles'],
             'main' => [$this, 'block_main'],
         ];
     }
@@ -38,7 +39,7 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
         // line 1
-        return "/administration/index.html.twig";
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -50,7 +51,7 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "administration/user/form.html.twig"));
 
-        $this->parent = $this->load("/administration/index.html.twig", 1);
+        $this->parent = $this->load("base.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -87,6 +88,35 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
+    public function block_styles(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "styles"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "styles"));
+
+        // line 6
+        yield "    ";
+        yield from $this->yieldParentBlock("styles", $context, $blocks);
+        yield "
+
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"/assets/styles/form.css\" />
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    // line 11
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
     public function block_main(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
@@ -96,20 +126,23 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 6
-        yield "    ";
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 6, $this->source); })()), 'form_start');
-        yield "
+        // line 12
+        yield "    <main>
         ";
-        // line 7
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 7, $this->source); })()), 'widget');
+        // line 13
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()), 'form_start');
+        yield "
+            ";
+        // line 14
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 14, $this->source); })()), 'widget');
         yield "
 
-        <input type=\"submit\" value=\"Crear\">
-    ";
-        // line 10
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 10, $this->source); })()), 'form_end');
+            <input type=\"submit\" value=\"Crear\">
+        ";
+        // line 17
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 17, $this->source); })()), 'form_end');
         yield "
+    </main>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -141,21 +174,29 @@ class __TwigTemplate_d8c2c4645bae85b60f7c57040b9e2adb extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  111 => 10,  105 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  143 => 17,  137 => 14,  133 => 13,  130 => 12,  117 => 11,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("{% extends '/administration/index.html.twig' %}
+        return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}Crear usuario{% endblock %}
 
-{% block main %}
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
+{% block styles %}
+    {{ parent() }}
 
-        <input type=\"submit\" value=\"Crear\">
-    {{ form_end(form) }}
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"/assets/styles/form.css\" />
+{% endblock %}
+
+{% block main %}
+    <main>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+
+            <input type=\"submit\" value=\"Crear\">
+        {{ form_end(form) }}
+    </main>
 {% endblock %}", "administration/user/form.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\user\\form.html.twig");
     }
 }

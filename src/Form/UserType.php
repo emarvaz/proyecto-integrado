@@ -16,20 +16,24 @@ class UserType extends AbstractType
                 ->add('email')
                 ->add('password')
                 ->add('name')
-                ->add('lastname')
-                ->add('roles', ChoiceType::class, [
+                ->add('lastname');
+
+            if ($options['administration']) {
+                $builder->add('roles', ChoiceType::class, [
                     'choices' => [
                         'Administrador' => 'ROLE_ADMIN',
                     ],
                     'multiple' => true,
                     'expanded' => true
                 ]);
+            }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'administration' => false
         ]);
     }
 }

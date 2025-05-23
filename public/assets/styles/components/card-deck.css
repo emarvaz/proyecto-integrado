@@ -1,13 +1,7 @@
 .card-deck {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-deck__cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem 1rem;
 
-    padding: 2.5rem;
+    background-color: beige;
 }

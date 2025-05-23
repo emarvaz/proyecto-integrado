@@ -23,7 +23,6 @@ return [
         '/administration/ability/create' => [[['_route' => 'administration_ability_create', '_controller' => 'App\\Controller\\AbilityController::abilityCreate'], null, null, null, false, false, null]],
         '/administration' => [[['_route' => 'administration', '_controller' => 'App\\Controller\\AdministrationController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'index', '_controller' => 'App\\Controller\\ApplicationController::index'], null, null, null, false, false, null]],
-        '/card' => [[['_route' => 'app_card', '_controller' => 'App\\Controller\\CardController::index'], null, null, null, false, false, null]],
         '/card/list' => [[['_route' => 'card_list', '_controller' => 'App\\Controller\\CardController::list'], null, null, null, false, false, null]],
         '/administration/card/list' => [[['_route' => 'administration_card_list', '_controller' => 'App\\Controller\\CardController::administrationCardList'], null, null, null, false, false, null]],
         '/administration/card/create' => [[['_route' => 'administration_card_create', '_controller' => 'App\\Controller\\CardController::cardCreate'], null, null, null, false, false, null]],
@@ -74,6 +73,7 @@ return [
                         .'|delete/([^/]++)(*:437)'
                     .')'
                 .')'
+                .'|/card/(\\d+)(*:458)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -92,8 +92,9 @@ return [
         361 => [[['_route' => 'administration_card_edit', '_controller' => 'App\\Controller\\CardController::cardEdit'], ['id'], null, null, false, true, null]],
         384 => [[['_route' => 'administration_card_delete', '_controller' => 'App\\Controller\\CardController::cardDelete'], ['id'], null, null, false, true, null]],
         414 => [[['_route' => 'administration_user_edit', '_controller' => 'App\\Controller\\UserController::administrationUserEdit'], ['id'], null, null, false, true, null]],
-        437 => [
-            [['_route' => 'administration_user_delete', '_controller' => 'App\\Controller\\UserController::administrationUserDelete'], ['id'], null, null, false, true, null],
+        437 => [[['_route' => 'administration_user_delete', '_controller' => 'App\\Controller\\UserController::administrationUserDelete'], ['id'], null, null, false, true, null]],
+        458 => [
+            [['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

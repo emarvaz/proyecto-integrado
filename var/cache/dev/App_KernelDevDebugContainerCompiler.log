@@ -728,7 +728,6 @@ Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inl
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service ".service_locator.raa5GFv" to ".service_locator.raa5GFv.App\Controller\AbilityCategoryController::abilityCategoryList()".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service ".service_locator.Cx3b8LV" to ".service_locator.Cx3b8LV.App\Controller\AbilityController::abilityList()".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service ".service_locator.OzEre6h" to ".service_locator.OzEre6h.App\Controller\AdministrationController::index()".
-Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service ".service_locator.NMBx11d" to ".service_locator.NMBx11d.App\Controller\CardController::list()".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service ".service_locator.1_hm3sa" to ".service_locator.1_hm3sa.App\Controller\CardController::administrationCardList()".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service ".service_locator.3QECKYg" to ".service_locator.3QECKYg.App\Controller\SecurityController::login()".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service ".service_locator.bQ78HV5" to ".service_locator.bQ78HV5.App\Controller\UserController::administrationUserList()".

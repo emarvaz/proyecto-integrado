@@ -1,9 +1,19 @@
+{% extends 'base.html.twig' %}
+
 {% block title %}Crear usuario{% endblock %}
 
-{% block main %}
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
+{% block styles %}
+    {{ parent() }}
 
-        <input type="submit" value="Crear">
-    {{ form_end(form) }}
+    <link rel="stylesheet" type="text/css" href="/assets/styles/form.css" />
+{% endblock %}
+
+{% block main %}
+    <main>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+
+            <input type="submit" value="Crear">
+        {{ form_end(form) }}
+    </main>
 {% endblock %}
