@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CardDeck;
 use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,6 +25,15 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
+
+            $cardDeckNumber = 4;
+
+            for ($cardDeckIterator = 1; $cardDeckIterator <= $cardDeckNumber; $cardDeckIterator++) {
+                $cardDeck = new CardDeck();
+                $cardDeck->setName("Mazo {$cardDeckIterator}");
+
+                $user->addCardDeck($cardDeck);
+            }
 
             $entityManagerInterface->persist($user);
             $entityManagerInterface->flush();

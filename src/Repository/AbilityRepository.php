@@ -46,20 +46,21 @@ class AbilityRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('ability');
 
-        if (!empty($filters['name'])) {
-            $queryBuilder->andWhere('ability.name LIKE :name')
-                ->setParameter('name', '%' . $filters['name'] . '%');
+        if (!empty($filters['filter'])) {
+            $filter = '%' . $filters['filter'] . '%';
+
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like('ability.name', ':filter'),
+                    $queryBuilder->expr()->like('ability.description', ':filter'),
+                    $queryBuilder->expr()->like('ability.cost', ':filter'),
+                    $queryBuilder->expr()->like('ability.value', ':filter')
+                )
+            )
+                ->setParameter('filter', $filter);
         }
 
-        if (!empty($filters['description'])) {
-            $queryBuilder->andWhere('ability.description LIKE :description')
-                ->setParameter('description', '%' . $filters['description'] . '%');
-        }
-
-        if (!empty($filters['cost'])) {
-            $queryBuilder->andWhere('ability.cost LIKE :cost')
-                ->setParameter('cost', '%' . $filters['cost'] . '%');
-        }
+        $queryBuilder->orderBy('ability.name', 'ASC');
 
         return $queryBuilder;
     }

@@ -24,6 +24,9 @@ class Ability
     #[ORM\Column]
     private ?int $cost = null;
 
+    #[ORM\Column]
+    private ?int $value = null;
+
     #[ORM\ManyToOne(inversedBy: 'abilities')]
     #[ORM\JoinColumn(nullable: false)]
     private ?AbilityCategory $category = null;
@@ -102,6 +105,16 @@ class Ability
         $this->category = $category;
 
         return $this;
+    }
+
+    public function getValue(): ?int
+    {
+        return $this->value;
+    }
+
+    public function setValue(?int $value): void
+    {
+        $this->value = $value;
     }
 
     /**

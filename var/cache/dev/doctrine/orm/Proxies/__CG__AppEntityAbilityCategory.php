@@ -26,12 +26,10 @@ class AbilityCategory extends \App\Entity\AbilityCategory implements \Doctrine\O
         "\0".parent::class."\0".'description' => [parent::class, 'description', null, 16],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null, 16],
         "\0".parent::class."\0".'name' => [parent::class, 'name', null, 16],
-        "\0".parent::class."\0".'value' => [parent::class, 'value', null, 16],
         'abilities' => [parent::class, 'abilities', null, 16],
         'description' => [parent::class, 'description', null, 16],
         'id' => [parent::class, 'id', null, 16],
         'name' => [parent::class, 'name', null, 16],
-        'value' => [parent::class, 'value', null, 16],
     ];
 
     public function __isInitialized(): bool

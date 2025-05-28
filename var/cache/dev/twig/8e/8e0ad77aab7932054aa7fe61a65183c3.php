@@ -31,7 +31,6 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'scripts' => [$this, 'block_scripts'],
             'main' => [$this, 'block_main'],
         ];
     }
@@ -39,7 +38,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
         // line 1
-        return "/administration/index.html.twig";
+        return "administration/index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -51,7 +50,7 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "administration/card/list.html.twig"));
 
-        $this->parent = $this->load("/administration/index.html.twig", 1);
+        $this->parent = $this->load("administration/index.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -88,28 +87,6 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
-    public function block_scripts(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
-
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-        yield from [];
-    }
-
-    // line 7
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
     public function block_main(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
@@ -119,149 +96,186 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 8
-        yield "    <main>
+        // line 6
+        yield "    <section class=\"mx-auto px-4 py-6\">
         <form method=\"get\" action=\"";
-        // line 9
+        // line 7
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_list");
-        yield "\" class=\"filter\">
-            <fieldset>
-                <label for=\"filter_name\">Nombre</label>
-                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"";
-        // line 12
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "name", [], "any", true, true, false, 12)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 12, $this->source); })()), "name", [], "any", false, false, false, 12), "")) : ("")), "html", null, true);
-        yield "\">
-            </fieldset>
+        yield "\"
+              class=\"flex flex-wrap items-center gap-2 bg-[#fdfcfa] dark:bg-[#1e1e2f] px-4 py-3 rounded-lg border
+           border-gray-300 dark:border-gray-600 mb-6 w-full max-w-full\">
 
-            <fieldset>
-                <button type=\"submit\">Filtrar</button>
+            <input type=\"text\" id=\"filter\" name=\"filter\" value=\"";
+        // line 11
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "filter", [], "any", true, true, false, 11)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 11, $this->source); })()), "filter", [], "any", false, false, false, 11), "")) : ("")), "html", null, true);
+        yield "\"
+                   placeholder=\"Buscar carta...\"
+                   class=\"flex-1 min-w-[180px] sm:min-w-[240px] text-sm px-3 py-1.5 border border-gray-300
+               dark:border-gray-500 rounded-md bg-white dark:bg-[#2c2c44] text-[#1e1e1e] dark:text-[#f1f1f1]
+               focus:ring-1 focus:ring-[#4a3aff] focus:outline-none\">
 
-                <a href=\"";
-        // line 18
+            <button type=\"submit\"
+                    class=\"text-sm px-3 py-1.5 rounded-md text-white bg-[#4a3aff] hover:bg-[#3a2aff] transition\">
+                Filtrar
+            </button>
+
+            <a href=\"";
+        // line 22
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_list");
-        yield "\">Limpiar</a>
-            </fieldset>
+        yield "\"
+               class=\"text-sm text-[#4a3aff] dark:text-[#7f70ff] hover:underline transition\">Limpiar</a>
         </form>
 
-        <ul class=\"toolbar\">
-            <li><a href=\"";
-        // line 23
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_create");
-        yield "\">Crear carta</a></li>
-        </ul>
-
-        <table class=\"table\">
-            <thead>
-            <tr>
-                <th>";
-        // line 29
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 29, $this->source); })()), "Nombre", "card.name");
+        <section class=\"overflow-x-auto rounded-lg ring-1 ring-gray-300 dark:ring-gray-600\">
+            <table class=\"min-w-full text-sm text-left text-[#1e1e1e] dark:text-[#f1f1f1] bg-[#fdfcfa]
+                      dark:bg-[#1e1e2f]\">
+                <thead class=\"bg-[#eeeafc] dark:bg-[#2c2c44] uppercase text-xs text-[#4a3aff] dark:text-[#7f70ff]
+                          tracking-wider\">
+                <tr>
+                    <th class=\"px-4 py-3\">";
+        // line 32
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 32, $this->source); })()), "Nombre", "card.name");
         yield "</th>
-                <th>";
-        // line 30
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 30, $this->source); })()), "Descripción", "card.description");
+                    <th class=\"px-4 py-3\">";
+        // line 33
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 33, $this->source); })()), "Descripción", "card.description");
         yield "</th>
-                <th>";
-        // line 31
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 31, $this->source); })()), "Puntos de vida", "card.health");
+                    <th class=\"px-4 py-3\">";
+        // line 34
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 34, $this->source); })()), "Puntos de vida", "card.health");
         yield "</th>
-                <th>Habilidades</th>
-                <th>Imagen</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            ";
+                    <th class=\"px-4 py-3\">Habilidades</th>
+                    <th class=\"px-4 py-3\">Imagen</th>
+                    <th class=\"px-4 py-3 flex flex-row items-center justify-between\">
+                        <span>Acciones</span>
+                        <a href=\"";
         // line 39
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 39, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["card"]) {
-            // line 40
-            yield "                <tr>
-                    <td>";
-            // line 41
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 41), "html", null, true);
-            yield "</td>
-                    <td>";
-            // line 42
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "description", [], "any", false, false, false, 42), "html", null, true);
-            yield "</td>
-                    <td>";
-            // line 43
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 43), "html", null, true);
-            yield "</td>
-                    <td>
-                        ";
-            // line 45
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_create");
+        yield "\"
+                           class=\"ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8
+                              rounded-full bg-[#4a3aff] hover:bg-[#3a2aff] text-white dark:bg-[#7f70ff]
+                              dark:hover:bg-[#6e60ff]\"
+                           title=\"Crear nueva carta\">+</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class=\"divide-y divide-gray-200 dark:divide-gray-700\">
+                    ";
+        // line 48
+        if ((Twig\Extension\CoreExtension::length($this->env->getCharset(), (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 48, $this->source); })())) > 0)) {
+            // line 49
+            yield "                        ";
             $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 45));
-            $context['loop'] = [
-              'parent' => $context['_parent'],
-              'index0' => 0,
-              'index'  => 1,
-              'first'  => true,
-            ];
-            if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
-                $length = count($context['_seq']);
-                $context['loop']['revindex0'] = $length - 1;
-                $context['loop']['revindex'] = $length;
-                $context['loop']['length'] = $length;
-                $context['loop']['last'] = 1 === $length;
-            }
-            foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-                // line 46
-                yield "                            ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 46), "html", null, true);
-                if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 46)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                    yield ", ";
+            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 49, $this->source); })()));
+            foreach ($context['_seq'] as $context["_key"] => $context["card"]) {
+                // line 50
+                yield "                            <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f] transition\">
+                                <td class=\"px-4 py-2\">";
+                // line 51
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 51), "html", null, true);
+                yield "</td>
+                                <td class=\"px-4 py-2\">";
+                // line 52
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "description", [], "any", false, false, false, 52), "html", null, true);
+                yield "</td>
+                                <td class=\"px-4 py-2\">";
+                // line 53
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 53), "html", null, true);
+                yield "</td>
+                                <td class=\"px-4 py-2\">
+                                    ";
+                // line 55
+                $context['_parent'] = $context;
+                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 55));
+                $context['loop'] = [
+                  'parent' => $context['_parent'],
+                  'index0' => 0,
+                  'index'  => 1,
+                  'first'  => true,
+                ];
+                if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+                    $length = count($context['_seq']);
+                    $context['loop']['revindex0'] = $length - 1;
+                    $context['loop']['revindex'] = $length;
+                    $context['loop']['length'] = $length;
+                    $context['loop']['last'] = 1 === $length;
                 }
-                // line 47
-                yield "                        ";
-                ++$context['loop']['index0'];
-                ++$context['loop']['index'];
-                $context['loop']['first'] = false;
-                if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
-                    --$context['loop']['revindex0'];
-                    --$context['loop']['revindex'];
-                    $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
+                    // line 56
+                    yield "                                        ";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 56), "html", null, true);
+                    if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 56)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                        yield ", ";
+                    }
+                    // line 57
+                    yield "                                    ";
+                    ++$context['loop']['index0'];
+                    ++$context['loop']['index'];
+                    $context['loop']['first'] = false;
+                    if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
+                        --$context['loop']['revindex0'];
+                        --$context['loop']['revindex'];
+                        $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                    }
                 }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 58
+                yield "                                </td>
+                                <td class=\"px-4 py-2\">";
+                // line 59
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 59), "html", null, true);
+                yield "</td>
+                                <td class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">
+                                    <a href=\"";
+                // line 61
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 61)]), "html", null, true);
+                yield "\"
+                                       class=\"text-[#4a3aff] dark:text-[#7f70ff] hover:underline\" title=\"Editar carta\">
+                                        <img src=\"";
+                // line 63
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/icons/boton-editar.png"), "html", null, true);
+                yield "\" alt=\"Editar\" class=\"w-4\" />
+                                    </a>
+                                    <a href=\"";
+                // line 65
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 65)]), "html", null, true);
+                yield "\"
+                                       class=\"text-[#ff4a4a] dark:text-[#ff7373] hover:underline\" title=\"Eliminar carta\">
+                                        <img src=\"";
+                // line 67
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/icons/boton-eliminar.png"), "html", null, true);
+                yield "\" alt=\"Eliminar\" class=\"w-4\" />
+                                    </a>
+                                </td>
+                            </tr>
+                        ";
             }
             $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent'], $context['loop']);
+            unset($context['_seq'], $context['_key'], $context['card'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 48
-            yield "                    </td>
-                    <td>";
-            // line 49
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 49), "html", null, true);
-            yield "</td>
-                    <td class=\"actions\">
-                        <a href=\"";
-            // line 51
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 51)]), "html", null, true);
-            yield "\">Editar</a>
-                        <a href=\"";
-            // line 52
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_card_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 52)]), "html", null, true);
-            yield "\">Eliminar</a>
-                    </td>
-                </tr>
-            ";
+            // line 72
+            yield "                    ";
+        } else {
+            // line 73
+            yield "                        <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f] transition\">
+                            <td colspan=\"6\" class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">No hay cartas registradas.</td>
+                        </tr>
+                    ";
         }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_key'], $context['card'], $context['_parent']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 56
-        yield "            </tbody>
-        </table>
+        // line 77
+        yield "                </tbody>
+            </table>
+        </section>
 
-        ";
-        // line 59
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 59, $this->source); })()));
+        <div class=\"mt-4\">
+            ";
+        // line 82
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 82, $this->source); })()));
         yield "
-    </main>
-
+        </div>
+    </section>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -293,72 +307,95 @@ class __TwigTemplate_de7e4cb6855764e3160b21468048ba2b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  261 => 59,  256 => 56,  246 => 52,  242 => 51,  237 => 49,  234 => 48,  220 => 47,  214 => 46,  197 => 45,  192 => 43,  188 => 42,  184 => 41,  181 => 40,  177 => 39,  166 => 31,  162 => 30,  158 => 29,  149 => 23,  141 => 18,  132 => 12,  126 => 9,  123 => 8,  110 => 7,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  275 => 82,  268 => 77,  262 => 73,  259 => 72,  248 => 67,  243 => 65,  238 => 63,  233 => 61,  228 => 59,  225 => 58,  211 => 57,  205 => 56,  188 => 55,  183 => 53,  179 => 52,  175 => 51,  172 => 50,  167 => 49,  165 => 48,  153 => 39,  145 => 34,  141 => 33,  137 => 32,  124 => 22,  110 => 11,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("{% extends '/administration/index.html.twig' %}
+        return new Source("{% extends 'administration/index.html.twig' %}
 
 {% block title %}Listado de cartas{% endblock %}
 
-{% block scripts %}{% endblock %}
-
 {% block main %}
-    <main>
-        <form method=\"get\" action=\"{{ path('administration_card_list') }}\" class=\"filter\">
-            <fieldset>
-                <label for=\"filter_name\">Nombre</label>
-                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"{{ activeFilters.name|default('') }}\">
-            </fieldset>
+    <section class=\"mx-auto px-4 py-6\">
+        <form method=\"get\" action=\"{{ path('administration_card_list') }}\"
+              class=\"flex flex-wrap items-center gap-2 bg-[#fdfcfa] dark:bg-[#1e1e2f] px-4 py-3 rounded-lg border
+           border-gray-300 dark:border-gray-600 mb-6 w-full max-w-full\">
 
-            <fieldset>
-                <button type=\"submit\">Filtrar</button>
+            <input type=\"text\" id=\"filter\" name=\"filter\" value=\"{{ activeFilters.filter|default('') }}\"
+                   placeholder=\"Buscar carta...\"
+                   class=\"flex-1 min-w-[180px] sm:min-w-[240px] text-sm px-3 py-1.5 border border-gray-300
+               dark:border-gray-500 rounded-md bg-white dark:bg-[#2c2c44] text-[#1e1e1e] dark:text-[#f1f1f1]
+               focus:ring-1 focus:ring-[#4a3aff] focus:outline-none\">
 
-                <a href=\"{{ path('administration_card_list') }}\">Limpiar</a>
-            </fieldset>
+            <button type=\"submit\"
+                    class=\"text-sm px-3 py-1.5 rounded-md text-white bg-[#4a3aff] hover:bg-[#3a2aff] transition\">
+                Filtrar
+            </button>
+
+            <a href=\"{{ path('administration_card_list') }}\"
+               class=\"text-sm text-[#4a3aff] dark:text-[#7f70ff] hover:underline transition\">Limpiar</a>
         </form>
 
-        <ul class=\"toolbar\">
-            <li><a href=\"{{ path('administration_card_create') }}\">Crear carta</a></li>
-        </ul>
-
-        <table class=\"table\">
-            <thead>
-            <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'card.name') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Descripción', 'card.description') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Puntos de vida', 'card.health') }}</th>
-                <th>Habilidades</th>
-                <th>Imagen</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {% for card in pagination %}
+        <section class=\"overflow-x-auto rounded-lg ring-1 ring-gray-300 dark:ring-gray-600\">
+            <table class=\"min-w-full text-sm text-left text-[#1e1e1e] dark:text-[#f1f1f1] bg-[#fdfcfa]
+                      dark:bg-[#1e1e2f]\">
+                <thead class=\"bg-[#eeeafc] dark:bg-[#2c2c44] uppercase text-xs text-[#4a3aff] dark:text-[#7f70ff]
+                          tracking-wider\">
                 <tr>
-                    <td>{{ card.name }}</td>
-                    <td>{{ card.description }}</td>
-                    <td>{{ card.health }}</td>
-                    <td>
-                        {% for ability in card.abilities %}
-                            {{ ability.name }}{% if not loop.last %}, {% endif %}
-                        {% endfor %}
-                    </td>
-                    <td>{{ card.image }}</td>
-                    <td class=\"actions\">
-                        <a href=\"{{ path('administration_card_edit', { id: card.id }) }}\">Editar</a>
-                        <a href=\"{{ path('administration_card_delete', { id: card.id }) }}\">Eliminar</a>
-                    </td>
+                    <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Nombre', 'card.name') }}</th>
+                    <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Descripción', 'card.description') }}</th>
+                    <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Puntos de vida', 'card.health') }}</th>
+                    <th class=\"px-4 py-3\">Habilidades</th>
+                    <th class=\"px-4 py-3\">Imagen</th>
+                    <th class=\"px-4 py-3 flex flex-row items-center justify-between\">
+                        <span>Acciones</span>
+                        <a href=\"{{ path('administration_card_create') }}\"
+                           class=\"ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8
+                              rounded-full bg-[#4a3aff] hover:bg-[#3a2aff] text-white dark:bg-[#7f70ff]
+                              dark:hover:bg-[#6e60ff]\"
+                           title=\"Crear nueva carta\">+</a>
+                    </th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody class=\"divide-y divide-gray-200 dark:divide-gray-700\">
+                    {% if pagination|length > 0 %}
+                        {% for card in pagination %}
+                            <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f] transition\">
+                                <td class=\"px-4 py-2\">{{ card.name }}</td>
+                                <td class=\"px-4 py-2\">{{ card.description }}</td>
+                                <td class=\"px-4 py-2\">{{ card.health }}</td>
+                                <td class=\"px-4 py-2\">
+                                    {% for ability in card.abilities %}
+                                        {{ ability.name }}{% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td class=\"px-4 py-2\">{{ card.image }}</td>
+                                <td class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">
+                                    <a href=\"{{ path('administration_card_edit', { id: card.id }) }}\"
+                                       class=\"text-[#4a3aff] dark:text-[#7f70ff] hover:underline\" title=\"Editar carta\">
+                                        <img src=\"{{ asset('assets/images/icons/boton-editar.png') }}\" alt=\"Editar\" class=\"w-4\" />
+                                    </a>
+                                    <a href=\"{{ path('administration_card_delete', { id: card.id }) }}\"
+                                       class=\"text-[#ff4a4a] dark:text-[#ff7373] hover:underline\" title=\"Eliminar carta\">
+                                        <img src=\"{{ asset('assets/images/icons/boton-eliminar.png') }}\" alt=\"Eliminar\" class=\"w-4\" />
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f] transition\">
+                            <td colspan=\"6\" class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">No hay cartas registradas.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </section>
 
-        {{ knp_pagination_render(pagination) }}
-    </main>
-
+        <div class=\"mt-4\">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
 {% endblock %}
 ", "administration/card/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\card\\list.html.twig");
     }

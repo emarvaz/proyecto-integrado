@@ -34,9 +34,16 @@ class Card
     #[ORM\ManyToMany(targetEntity: Ability::class, inversedBy: 'cards')]
     private Collection $abilities;
 
+    /**
+     * @var Collection<int, CardDeck>
+     */
+    #[ORM\ManyToMany(targetEntity: CardDeck::class, mappedBy: 'cards')]
+    private Collection $cardDecks;
+
     public function __construct()
     {
         $this->abilities = new ArrayCollection();
+        $this->cardDecks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,6 +124,33 @@ class Card
     public function removeAbility(Ability $ability): static
     {
         $this->abilities->removeElement($ability);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CardDeck>
+     */
+    public function getCardDecks(): Collection
+    {
+        return $this->cardDecks;
+    }
+
+    public function addCardDeck(CardDeck $cardDeck): static
+    {
+        if (!$this->cardDecks->contains($cardDeck)) {
+            $this->cardDecks->add($cardDeck);
+            $cardDeck->addCard($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCardDeck(CardDeck $cardDeck): static
+    {
+        if ($this->cardDecks->removeElement($cardDeck)) {
+            $cardDeck->removeCard($this);
+        }
 
         return $this;
     }

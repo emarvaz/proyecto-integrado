@@ -18,7 +18,7 @@ final class AbilityCategoryController extends AbstractController
     #[Route('/ability/category', name: 'app_ability_category')]
     public function index(): Response
     {
-        return $this->render('ability_category/index.html.twig', [
+        return $this->render('ability_category/create.html.twig', [
             'controller_name' => 'AbilityCategoryController',
         ]);
     }
@@ -27,8 +27,7 @@ final class AbilityCategoryController extends AbstractController
     public function abilityCategoryList(AbilityCategoryRepository $abilityCategoryRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $filters = [
-            'name' => $request->query->get('filter_name'),
-            'description' => $request->query->get('filter_description'),
+            'filter' => $request->query->get('filter'),
         ];
 
         $activeFilters = array_filter($filters, fn($value) => $value !== null && $value !== '');
@@ -62,7 +61,7 @@ final class AbilityCategoryController extends AbstractController
             return $this->redirectToRoute('administration_ability_category_list');
         }
 
-        return $this->render('administration/ability-category/form.html.twig', ['form' => $form->createView()]);
+        return $this->render('administration/ability-category/create.html.twig', ['form' => $form->createView()]);
     }
 
     #[Route('/administration/ability-category/edit/{id}', name: 'administration_ability_category_edit')]
@@ -80,13 +79,11 @@ final class AbilityCategoryController extends AbstractController
             return $this->redirectToRoute('administration_ability_category_list');
         }
 
-        return $this->render('administration/ability-category/form.html.twig', ['form' => $form->createView()]);
+        return $this->render('administration/ability-category/edit.html.twig', ['form' => $form->createView()]);
     }
 
     #[Route('/administration/ability-category/delete/{id}', name: 'administration_ability_category_delete')]
-    public function abilityCategoryDelete(int $id, Request $request,
-                                          AbilityCategoryRepository $abilityCategoryRepository,
-                                          EntityManagerInterface $entityManagerInterface): Response
+    public function abilityCategoryDelete(int $id, Request $request, AbilityCategoryRepository $abilityCategoryRepository, EntityManagerInterface $entityManagerInterface): Response
     {
         $abilityCategory = $abilityCategoryRepository->find($id);
 

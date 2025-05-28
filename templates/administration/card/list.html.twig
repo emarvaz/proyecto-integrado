@@ -1,62 +1,83 @@
-{% extends '/administration/index.html.twig' %}
+{% extends 'administration/index.html.twig' %}
 
 {% block title %}Listado de cartas{% endblock %}
 
-{% block scripts %}{% endblock %}
-
 {% block main %}
-    <main>
-        <form method="get" action="{{ path('administration_card_list') }}" class="filter">
-            <fieldset>
-                <label for="filter_name">Nombre</label>
-                <input type="text" id="filter_name" name="filter_name" value="{{ activeFilters.name|default('') }}">
-            </fieldset>
+    <section class="mx-auto px-4 py-6">
+        <form method="get" action="{{ path('administration_card_list') }}"
+              class="flex flex-wrap items-center gap-2 bg-[#fdfcfa] dark:bg-[#1e1e2f] px-4 py-3 rounded-lg border
+           border-gray-300 dark:border-gray-600 mb-6 w-full max-w-full">
 
-            <fieldset>
-                <button type="submit">Filtrar</button>
+            <input type="text" id="filter" name="filter" value="{{ activeFilters.filter|default('') }}"
+                   placeholder="Buscar carta..."
+                   class="flex-1 min-w-[180px] sm:min-w-[240px] text-sm px-3 py-1.5 border border-gray-300
+               dark:border-gray-500 rounded-md bg-white dark:bg-[#2c2c44] text-[#1e1e1e] dark:text-[#f1f1f1]
+               focus:ring-1 focus:ring-[#4a3aff] focus:outline-none">
 
-                <a href="{{ path('administration_card_list') }}">Limpiar</a>
-            </fieldset>
+            <button type="submit"
+                    class="text-sm px-3 py-1.5 rounded-md text-white bg-[#4a3aff] hover:bg-[#3a2aff] transition">
+                Filtrar
+            </button>
+
+            <a href="{{ path('administration_card_list') }}"
+               class="text-sm text-[#4a3aff] dark:text-[#7f70ff] hover:underline transition">Limpiar</a>
         </form>
 
-        <ul class="toolbar">
-            <li><a href="{{ path('administration_card_create') }}">Crear carta</a></li>
-        </ul>
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'card.name') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Descripción', 'card.description') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Puntos de vida', 'card.health') }}</th>
-                <th>Habilidades</th>
-                <th>Imagen</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {% for card in pagination %}
+        <section class="overflow-x-auto rounded-lg ring-1 ring-gray-300 dark:ring-gray-600">
+            <table class="min-w-full text-sm text-left text-[#1e1e1e] dark:text-[#f1f1f1] bg-[#fdfcfa] dark:bg-[#1e1e2f]">
+                <thead class="bg-[#eeeafc] dark:bg-[#2c2c44] uppercase text-xs text-[#4a3aff] dark:text-[#7f70ff] tracking-wider">
                 <tr>
-                    <td>{{ card.name }}</td>
-                    <td>{{ card.description }}</td>
-                    <td>{{ card.health }}</td>
-                    <td>
-                        {% for ability in card.abilities %}
-                            {{ ability.name }}{% if not loop.last %}, {% endif %}
-                        {% endfor %}
-                    </td>
-                    <td>{{ card.image }}</td>
-                    <td class="actions">
-                        <a href="{{ path('administration_card_edit', { id: card.id }) }}">Editar</a>
-                        <a href="{{ path('administration_card_delete', { id: card.id }) }}">Eliminar</a>
-                    </td>
+                    <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Nombre', 'card.name') }}</th>
+                    <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Descripción', 'card.description') }}</th>
+                    <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Puntos de vida', 'card.health') }}</th>
+                    <th class="px-4 py-3">Habilidades</th>
+                    <th class="px-4 py-3">Imagen</th>
+                    <th class="px-4 py-3 flex flex-row items-center justify-between">
+                        <span>Acciones</span>
+                        <a href="{{ path('administration_card_create') }}"
+                           class="ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8
+                              rounded-full bg-[#4a3aff] hover:bg-[#3a2aff] text-white dark:bg-[#7f70ff]
+                              dark:hover:bg-[#6e60ff]"
+                           title="Crear nueva carta">+</a>
+                    </th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                    {% if pagination|length > 0 %}
+                        {% for card in pagination %}
+                            <tr class="hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f] transition">
+                                <td class="px-4 py-2">{{ card.name }}</td>
+                                <td class="px-4 py-2">{{ card.description }}</td>
+                                <td class="px-4 py-2">{{ card.health }}</td>
+                                <td class="px-4 py-2">
+                                    {% for ability in card.abilities %}
+                                        {{ ability.name }}{% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td class="px-4 py-2">{{ card.image }}</td>
+                                <td class="flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap">
+                                    <a href="{{ path('administration_card_edit', { id: card.id }) }}"
+                                       class="text-[#4a3aff] dark:text-[#7f70ff] hover:underline" title="Editar carta">
+                                        <img src="{{ asset('assets/images/icons/boton-editar.png') }}" alt="Editar" class="w-4" />
+                                    </a>
+                                    <a href="{{ path('administration_card_delete', { id: card.id }) }}"
+                                       class="text-[#ff4a4a] dark:text-[#ff7373] hover:underline" title="Eliminar carta">
+                                        <img src="{{ asset('assets/images/icons/boton-eliminar.png') }}" alt="Eliminar" class="w-4" />
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr class="hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f] transition">
+                            <td colspan="6" class="flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap">No hay cartas registradas.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </section>
 
-        {{ knp_pagination_render(pagination) }}
-    </main>
-
+        <div class="mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
 {% endblock %}

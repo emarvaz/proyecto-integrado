@@ -46,25 +46,25 @@ class UserRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('user');
 
-        if (!empty($filters['username'])) {
-            $queryBuilder->andWhere('user.username LIKE :username')
-                         ->setParameter('username', '%' . $filters['username'] . '%');
-        }
+        if (!empty($filters['filter'])) {
+            $filter = '%' . $filters['filter'] . '%';
 
-        if (!empty($filters['email'])) {
-            $queryBuilder->andWhere('user.email LIKE :email')
-                         ->setParameter('email', '%' . $filters['email'] . '%');
-        }
-
-        if (!empty($filters['name'])) {
-            $queryBuilder->andWhere('user.name LIKE :name')
-                         ->setParameter('name', '%' . $filters['name'] . '%');
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like('user.username', ':filter'),
+                    $queryBuilder->expr()->like('user.email', ':filter'),
+                    $queryBuilder->expr()->like('user.name', ':filter'),
+                    $queryBuilder->expr()->like('user.lastname', ':filter')
+                )
+            )
+                ->setParameter('filter', $filter);
         }
 
         $queryBuilder->orderBy('user.username', 'ASC');
 
         return $queryBuilder;
     }
+
 
     public function getUserCountByRole(): array
     {

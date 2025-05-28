@@ -1,53 +1,79 @@
-{% extends '/administration/index.html.twig' %}
+{% extends 'administration/index.html.twig' %}
 
 {% block title %}Listado de habilidades{% endblock %}
 
-{% block scripts %}{% endblock %}
-
 {% block main %}
-    <main>
-        <form method="get" action="{{ path('administration_ability_list') }}" class="filter">
-            <fieldset>
-                <label for="filter_name">Nombre</label>
-                <input type="text" id="filter_name" name="filter_name" value="{{ activeFilters.name|default('') }}">
-            </fieldset>
+    <section class="mx-auto px-4 py-6">
+        <form method="get" action="{{ path('administration_ability_list') }}"
+              class="flex flex-wrap items-center gap-2 bg-[#fdfcfa] dark:bg-[#1e1e2f] px-4 py-3 rounded-lg border
+                 border-gray-300 dark:border-gray-600 mb-6 w-full max-w-full">
 
-            <fieldset>
-                <button type="submit">Filtrar</button>
+            <input type="text" id="filter" name="filter" value="{{ activeFilters.filter|default('') }}"
+                   placeholder="Buscar habilidad..."
+                   class="flex-1 min-w-[180px] sm:min-w-[240px] text-sm px-3 py-1.5 border border-gray-300
+               dark:border-gray-500 rounded-md bg-white dark:bg-[#2c2c44] text-[#1e1e1e] dark:text-[#f1f1f1]
+               focus:ring-1 focus:ring-[#4a3aff] focus:outline-none">
 
-                <a href="{{ path('administration_ability_list') }}">Limpiar</a>
-            </fieldset>
+            <button type="submit"
+                    class="text-sm px-3 py-1.5 rounded-md text-white bg-[#4a3aff] hover:bg-[#3a2aff] transition">
+                Filtrar
+            </button>
+
+            <a href="{{ path('administration_ability_list') }}"
+               class="text-sm text-[#4a3aff] dark:text-[#7f70ff] hover:underline transition">Limpiar</a>
         </form>
 
-        <ul class="toolbar">
-            <li><a href="{{ path('administration_ability_create') }}">Crear habilidad</a></li>
-        </ul>
+        <section class="overflow-x-auto rounded-lg ring-1 ring-gray-300 dark:ring-gray-600">
+            <table class="min-w-full text-sm text-left text-[#1e1e1e] dark:text-[#f1f1f1] bg-[#fdfcfa]
+                      dark:bg-[#1e1e2f]">
+                <thead class="bg-[#eeeafc] dark:bg-[#2c2c44] uppercase text-xs text-[#4a3aff] dark:text-[#7f70ff] tracking-wider">
+                    <tr>
+                        <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Nombre', 'ability.name') }}</th>
+                        <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Descripción', 'ability.description') }}</th>
+                        <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Coste', 'ability.cost') }}</th>
+                        <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Valor', 'ability.value') }}</th>
+                        <th class="px-4 py-3 flex flex-row items-center">
+                            <span>Acciones</span>
+                            <a href="{{ path('administration_ability_create') }}"
+                               class="ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8
+                                  rounded-full bg-[#4a3aff] hover:bg-[#3a2aff] text-white dark:bg-[#7f70ff]
+                                  dark:hover:bg-[#6e60ff]"
+                               title="Crear nueva habilidad">+</a>
+                        </th>
+                    </tr>
+                </thead>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'ability.name') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Descripción', 'ability.description') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Coste', 'ability.cost') }}</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
+                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                {% if pagination|length > 0 %}
+                    {% for ability in pagination %}
+                        <tr class="hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f] transition">
+                            <td class="px-4 py-2">{{ ability.name }}</td>
+                            <td class="px-4 py-2">{{ ability.description }}</td>
+                            <td class="px-4 py-2">{{ ability.cost }}</td>
+                            <td class="px-4 py-2">{{ ability.value }}</td>
+                            <td class="flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap">
+                                <a href="{{ path('administration_ability_edit', { id: ability.id }) }}"
+                                   class="text-[#4a3aff] dark:text-[#7f70ff] hover:underline" title="Editar habilidad">
+                                    <img src="{{ asset('assets/images/icons/boton-editar.png') }}" alt="Editar" class="w-4" />
+                                </a>
+                                <a href="{{ path('administration_ability_delete', { id: ability.id }) }}"
+                                   class="text-[#ff4a4a] dark:text-[#ff7373] hover:underline" title="Eliminar habilidad">
+                                    <img src="{{ asset('assets/images/icons/boton-eliminar.png') }}" alt="Eliminar" class="w-4" />
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr class="hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f]">
+                        <td colspan="5" class="px-4 py-2">No hay usuarios registrados.</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </section>
 
-            <tbody>
-            {% for ability in pagination %}
-                <tr>
-                    <td>{{ ability.name }}</td>
-                    <td>{{ ability.description }}</td>
-                    <td>{{ ability.cost }}</td>
-                    <td class="actions">
-                        <a href="{{ path('administration_ability_edit', { id: ability.id }) }}">Editar</a>
-                        <a href="{{ path('administration_ability_delete', { id: ability.id }) }}">Eliminar</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        {{ knp_pagination_render(pagination) }}
-    </main>
+        <div class="mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
 {% endblock %}

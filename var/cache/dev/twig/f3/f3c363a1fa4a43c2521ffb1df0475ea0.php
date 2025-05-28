@@ -175,6 +175,11 @@ class __TwigTemplate_8fba2e6c4580a639ee375402d3c64491 extends Template
 
             <button class=\"btn btn-lg btn-primary\" type=\"submit\">Registrarse</button>
         </form>
+
+        <p>¿No tienes una cuenta? <a href=\"";
+        // line 39
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("sign_in");
+        yield "\">Registrate</a></p>
     </main>
 ";
         
@@ -207,7 +212,7 @@ class __TwigTemplate_8fba2e6c4580a639ee375402d3c64491 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  167 => 28,  159 => 23,  155 => 21,  147 => 19,  145 => 18,  142 => 17,  136 => 15,  134 => 14,  130 => 12,  117 => 11,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  181 => 39,  167 => 28,  159 => 23,  155 => 21,  147 => 19,  145 => 18,  142 => 17,  136 => 15,  134 => 14,  130 => 12,  117 => 11,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -249,6 +254,8 @@ class __TwigTemplate_8fba2e6c4580a639ee375402d3c64491 extends Template
 
             <button class=\"btn btn-lg btn-primary\" type=\"submit\">Registrarse</button>
         </form>
+
+        <p>¿No tienes una cuenta? <a href=\"{{ path('sign_in') }}\">Registrate</a></p>
     </main>
 {% endblock %}
 ", "security/login.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\security\\login.html.twig");

@@ -10,73 +10,29 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 
         {% block styles %}
-            <link rel="stylesheet" href="/assets/styles/index.css" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/base.css') }}" />
         {% endblock %}
 
         {% block scripts %}
-            <script type="importmap">
-                {
-                    "imports": {
-                        "art": "/core/art.js",
-                        "board": "/components/board.js",
-                        "card-deck": "/components/card-deck.js",
-                        "card": "/components/card.js"
-                    }
-                }
-            </script>
-            <script type="module" src="/index.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         {% endblock %}
     </head>
 
-    <body>
-        {% block bodyContent %}
-            {% block header %}
-                <header>
-                    <nav class="navigation">
-                        <ul class="navigation__list">
-                            {% block navigationListContent %}
-                                <li><a href="{{ path('card_list') }}">Cartas</a></li>
-                            {% endblock %}
-                        </ul>
-                    </nav>
+    <body class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+        {% block header %}
+            {% include '_header.html.twig' %}
+        {% endblock %}
 
-                    <section class="authentication">
-                        <ul class="authentication__list">
-                            {% block authenticationListContent %}
-                                {% if not app.user %}
-                                    <li><a href="{{ path('login') }}">Iniciar sesión</a></li>
-                                    <li><a href="{{ path('sign_in') }}">Registrarse</a></li>
-                                {% else %}
-                                    <li><a href="#">Perfil</a></li>
-                                    <li><a href="{{ path('logout') }}">Cerrar sesión</a></li>
-                                {% endif %}
-                            {% endblock %}
-                        </ul>
-                    </section>
-                </header>
-            {% endblock %}
+        <div class="grid grid-cols-[1fr_4fr]">
+            {% block aside %}{% endblock %}
 
-            <div class="layout-content">
-                {% block main %}
-                    <main></main>
-                {% endblock %}
+            <main class="flex flex-col mx-10 px-6 py-8">
+                {% block main %}{% endblock %}
+            </main>
+        </div>
 
-                {% block aside %}
-                    <aside>
-                        {% block asideList %}
-                            <ul class="aside__list">
-                                {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="{{ path('administration_user_list') }}">Panel de administración</a></li>
-                                {% endif %}
-                            </ul>
-                        {% endblock %}
-                    </aside>
-                {% endblock %}
-            </div>
-
-            {% block footer %}
-                <footer></footer>
-            {% endblock %}
+        {% block footer %}
+            {% include '_footer.html.twig' %}
         {% endblock %}
     </body>
 </html>

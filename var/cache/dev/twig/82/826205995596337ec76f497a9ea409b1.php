@@ -32,7 +32,6 @@ class __TwigTemplate_bbfe3601060ab92f50d3a8998222990b extends Template
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'main' => [$this, 'block_main'],
-            'footer' => [$this, 'block_footer'],
         ];
     }
 
@@ -97,36 +96,8 @@ class __TwigTemplate_bbfe3601060ab92f50d3a8998222990b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-        yield from [];
-    }
-
-    // line 7
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_footer(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
-
-        // line 8
-        yield "    <ul>
-        <li>Link 1</li>
-        <li>Link 2</li>
-        <li>Link 3</li>
-        <li>Link 4</li>
-        <li>Link 5</li>
-    </ul>
+        // line 6
+        yield "    <h1>Po</h1>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -158,7 +129,7 @@ class __TwigTemplate_bbfe3601060ab92f50d3a8998222990b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  123 => 8,  110 => 7,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -167,16 +138,8 @@ class __TwigTemplate_bbfe3601060ab92f50d3a8998222990b extends Template
 
 {% block title %}World of Cards{% endblock %}
 
-{% block main %}{% endblock %}
-
-{% block footer %}
-    <ul>
-        <li>Link 1</li>
-        <li>Link 2</li>
-        <li>Link 3</li>
-        <li>Link 4</li>
-        <li>Link 5</li>
-    </ul>
+{% block main %}
+    <h1>Po</h1>
 {% endblock %}
 ", "index.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\index.html.twig");
     }

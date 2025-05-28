@@ -1,0 +1,9 @@
+.card {
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+
+    &:hover {
+        transform: perspective(1000px) rotateX(10deg) rotateY(3deg);
+    }
+}

@@ -22,9 +22,6 @@ class AbilityCategory
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?int $value = null;
-
     /**
      * @var Collection<int, Ability>
      */
@@ -63,16 +60,6 @@ class AbilityCategory
         $this->description = $description;
 
         return $this;
-    }
-
-    public function getValue(): ?int
-    {
-        return $this->value;
-    }
-
-    public function setValue(?int $value): void
-    {
-        $this->value = $value;
     }
 
     /**

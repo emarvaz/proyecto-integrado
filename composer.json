@@ -23,9 +23,11 @@
     "require-dev": {
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.14",
+        "doctrine/doctrine-fixtures-bundle": "^4.1",
         "doctrine/doctrine-migrations-bundle": "^3.4",
         "doctrine/orm": "^3.3",
         "symfony/maker-bundle": "^1.63",
+        "symfony/mime": "7.2.*",
         "symfony/stopwatch": "7.2.*",
         "symfony/web-profiler-bundle": "7.2.*"
     },

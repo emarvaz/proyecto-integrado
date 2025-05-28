@@ -4,37 +4,79 @@
 
 {% block styles %}
     {{ parent() }}
-
-    <link rel="stylesheet" href="{{ asset('assets/styles/components/card.css') }}">
 {% endblock %}
 
 {% block main %}
-    <main class="card__layout">
-        <figure class="card-layout__image" role="img"></figure>
+    <section class="w-full px-4 py-8 flex flex-col md:flex-row max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl border border-gray-300 dark:border-gray-700 shadow-md overflow-hidden">
+        <figure class="w-full md:w-2/5 bg-black bg-center bg-no-repeat bg-contain min-h-[400px]"
+                style="background-image: url('{{ asset('/assets/images/content/cards/' ~ card.image) }}');"
+                role="img">
+        </figure>
 
-        <section class="card-layout__information">
-            <header>
-                <h1>{{ card.name }}</h1>
+        <section class="w-full md:w-3/5 p-6 flex flex-col gap-6">
 
-                <data>{{ card.health }}</data>
-            </header>
+            <div class="flex justify-between items-center border-b border-gray-300 dark:border-gray-600 pb-4">
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">{{ card.name }}</h1>
+
+                <data class="text-xl font-semibold text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900 px-3 py-1 rounded-full border border-red-300 dark:border-red-600">{{ card.health }} ❤️</data>
+            </div>
 
             <section>
-                <h2>Habilidades</h2>
+                <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Habilidades</h2>
 
-                <dl class="card-information__abilities">
+                <dl class="space-y-4">
                     {% for ability in card.abilities %}
-                        <dt>{{ ability.name }}</dt>
-                        <dd>{{ ability.description }}</dd>
+                        <div>
+                            <dt class="text-md font-semibold text-gray-800 dark:text-gray-100">
+                                {{ ability.name }}
+                            </dt>
+                            <dd class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                                <div class="col-span-3 text-sm text-gray-600 dark:text-gray-300">
+                                    {{ ability.description }}
+                                </div>
+
+                                <div class="col-span-2 text-right">
+                                    <button onclick="document.getElementById('dialog-{{ loop.index }}').showModal()"
+                                            class="text-blue-600 dark:text-blue-400 hover:underline text-sm
+                                                   font-medium">{{ ability.category.name }}</button>
+
+                                    <dialog id="dialog-{{ loop.index }}"
+                                            class="fixed inset-0 m-auto w-full max-w-md rounded-lg p-6 bg-white
+                                                   dark:bg-gray-900 border border-gray-300 dark:border-gray-700
+                                                   shadow-xl backdrop:bg-black/30">
+                                        <h1 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{{ ability.category.name }}</h1>
+
+                                        <p class="text-sm text-gray-700 dark:text-gray-300">{{ ability.category.description }}</p>
+                                    </dialog>
+                                </div>
+                            </dd>
+                        </div>
                     {% endfor %}
                 </dl>
             </section>
 
             <section>
-                <h2>Descripción</h2>
+                <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Descripción</h2>
 
-                <p>{{ card.description }}</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{{ card.description }}</p>
             </section>
         </section>
-    </main>
+
+        <script>
+            document.querySelectorAll("dialog").forEach((dialog) => {
+                dialog.addEventListener("click", (e) => {
+                    const dialogRect = dialog.getBoundingClientRect();
+                    const clickedOutside =
+                        e.clientX < dialogRect.left ||
+                        e.clientX > dialogRect.right ||
+                        e.clientY < dialogRect.top ||
+                        e.clientY > dialogRect.bottom;
+
+                    if (clickedOutside) {
+                        dialog.close();
+                    }
+                });
+            });
+        </script>
+    </section>
 {% endblock %}

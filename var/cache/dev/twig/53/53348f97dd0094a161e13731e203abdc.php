@@ -142,6 +142,11 @@ class __TwigTemplate_d54886ef0f85acf51f5a2dd7fc3354ae extends Template
         // line 17
         yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 17, $this->source); })()), 'form_end');
         yield "
+
+        <p>¿Ya tienes una cuenta? <a href=\"";
+        // line 19
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
+        yield "\">Inicia sesión</a></p>
     </main>
 ";
         
@@ -174,7 +179,7 @@ class __TwigTemplate_d54886ef0f85acf51f5a2dd7fc3354ae extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  143 => 17,  137 => 14,  133 => 13,  130 => 12,  117 => 11,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  148 => 19,  143 => 17,  137 => 14,  133 => 13,  130 => 12,  117 => 11,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -196,6 +201,8 @@ class __TwigTemplate_d54886ef0f85acf51f5a2dd7fc3354ae extends Template
 
             <input type=\"submit\" value=\"Registrarse\">
         {{ form_end(form) }}
+
+        <p>¿Ya tienes una cuenta? <a href=\"{{ path('login') }}\">Inicia sesión</a></p>
     </main>
 {% endblock %}", "security/sign-in.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\security\\sign-in.html.twig");
     }

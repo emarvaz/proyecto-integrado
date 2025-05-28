@@ -46,20 +46,20 @@ class CardRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('card');
 
-        if (!empty($filters['name'])) {
-            $queryBuilder->andWhere('card.name LIKE :name')
-                ->setParameter('name', '%' . $filters['name'] . '%');
+        if (!empty($filters['filter'])) {
+            $filter = '%' . $filters['filter'] . '%';
+
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like('card.name', ':filter'),
+                    $queryBuilder->expr()->like('card.description', ':filter'),
+                    $queryBuilder->expr()->like('card.health', ':filter'),
+                )
+            )
+                ->setParameter('filter', $filter);
         }
 
-        if (!empty($filters['description'])) {
-            $queryBuilder->andWhere('card.description LIKE :description')
-                ->setParameter('description', '%' . $filters['description'] . '%');
-        }
-
-        if (!empty($filters['health'])) {
-            $queryBuilder->andWhere('card.health LIKE :health')
-                ->setParameter('health', '%' . $filters['health'] . '%');
-        }
+        $queryBuilder->orderBy('card.name', 'ASC');
 
         return $queryBuilder;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CardDeck;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -14,11 +15,34 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class UserController extends AbstractController
 {
-    #[Route('/user', name: 'user')]
-    public function index(): Response
+    #[Route('/profile', name: 'profile')]
+    public function profile(): Response
     {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
+        $user = $this->getUser();
+
+        return $this->render('user/profile.html.twig', [
+            'user' => $user
+        ]);
+    }
+
+    #[Route('/profile/edit/{id}', name: 'profile_edit')]
+    public function profileEdit(int $id, UserRepository $userRepository, EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $user = $userRepository->find($id);
+
+        $form = $this->createForm(UserType::class, $user, []);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
@@ -26,9 +50,7 @@ final class UserController extends AbstractController
     public function administrationUserList(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $filters = [
-            'username' => $request->query->get('filter_username'),
-            'email' => $request->query->get('filter_email'),
-            'name' => $request->query->get('filter_name'),
+            'filter' => $request->query->get('filter'),
         ];
 
         $activeFilters = array_filter($filters, fn($value) => $value !== null && $value !== '');
@@ -60,13 +82,22 @@ final class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
 
+            $cardDeckNumber = 4;
+
+            for ($cardDeckIterator = 1; $cardDeckIterator <= $cardDeckNumber; $cardDeckIterator++) {
+                $cardDeck = new CardDeck();
+                $cardDeck->setName("Mazo {$cardDeckIterator}");
+
+                $user->addCardDeck($cardDeck);
+            }
+
             $entityManager->persist($user);
             $entityManager->flush();
 
             return $this->redirectToRoute('administration_user_list');
         }
 
-        return $this->render('administration/user/form.html.twig', [
+        return $this->render('administration/user/create.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -76,18 +107,29 @@ final class UserController extends AbstractController
     {
         $user = $userRepository->find($id);
 
-        $form = $this->createForm(UserType::class, $user);
+        $originalPassword = $user->getPassword();
+
+        $form = $this->createForm(UserType::class, $user, [
+            'administration' => true,
+            'edit_mode' => true,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
+            $newPassword = $user->getPassword();
+
+            if (!$newPassword) {
+                $user->setPassword($originalPassword);
+            } else {
+                $user->setPassword(password_hash($newPassword, PASSWORD_BCRYPT));
+            }
 
             $entityManager->flush();
 
             return $this->redirectToRoute('administration_user_list');
         }
 
-        return $this->render('administration/user/form.html.twig', [
+        return $this->render('administration/user/edit.html.twig', [
             'form' => $form->createView()
         ]);
     }

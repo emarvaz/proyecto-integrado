@@ -31,7 +31,6 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'scripts' => [$this, 'block_scripts'],
             'main' => [$this, 'block_main'],
         ];
     }
@@ -39,7 +38,7 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
         // line 1
-        return "/administration/index.html.twig";
+        return "administration/index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -51,7 +50,7 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "administration/user/list.html.twig"));
 
-        $this->parent = $this->load("/administration/index.html.twig", 1);
+        $this->parent = $this->load("administration/index.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -88,28 +87,6 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
-    public function block_scripts(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
-
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-        yield from [];
-    }
-
-    // line 7
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
     public function block_main(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
@@ -119,167 +96,157 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 8
-        yield "    <main>
+        // line 6
+        yield "    <section class=\"mx-auto px-4 py-6\">
         <form method=\"get\" action=\"";
-        // line 9
+        // line 7
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_list");
-        yield "\" class=\"filter\">
-            <fieldset>
-                <label for=\"filter_username\">Nombre de usuario</label>
-                <input type=\"text\" id=\"filter_username\" name=\"filter_username\" value=\"";
-        // line 12
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "username", [], "any", true, true, false, 12)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 12, $this->source); })()), "username", [], "any", false, false, false, 12), "")) : ("")), "html", null, true);
-        yield "\">
-            </fieldset>
+        yield "\"
+              class=\"flex flex-wrap items-center gap-2 bg-[#fdfcfa] dark:bg-[#1e1e2f] px-4 py-3 rounded-lg border
+               border-gray-300 dark:border-gray-600 mb-6 w-full max-w-full\">
 
-            <fieldset>
-                <label for=\"filter_email\">Correo electrónico</label>
-                <input type=\"text\" id=\"filter_email\" name=\"filter_email\" value=\"";
-        // line 17
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "email", [], "any", true, true, false, 17)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 17, $this->source); })()), "email", [], "any", false, false, false, 17), "")) : ("")), "html", null, true);
-        yield "\">
-            </fieldset>
+            <input type=\"text\" id=\"filter\" name=\"filter\" value=\"";
+        // line 11
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "filter", [], "any", true, true, false, 11)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 11, $this->source); })()), "filter", [], "any", false, false, false, 11), "")) : ("")), "html", null, true);
+        yield "\"
+                   placeholder=\"Buscar usuario...\"
+                   class=\"flex-1 min-w-[180px] sm:min-w-[240px] text-sm px-3 py-1.5 border border-gray-300
+                   dark:border-gray-500 rounded-md bg-white dark:bg-[#2c2c44] text-[#1e1e1e] dark:text-[#f1f1f1]
+                   focus:ring-1 focus:ring-[#4a3aff] focus:outline-none\">
 
-            <fieldset>
-                <label for=\"filter_name\">Nombre</label>
-                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"";
-        // line 22
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, ($context["activeFilters"] ?? null), "name", [], "any", true, true, false, 22)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, (isset($context["activeFilters"]) || array_key_exists("activeFilters", $context) ? $context["activeFilters"] : (function () { throw new RuntimeError('Variable "activeFilters" does not exist.', 22, $this->source); })()), "name", [], "any", false, false, false, 22), "")) : ("")), "html", null, true);
-        yield "\">
-            </fieldset>
+            <button type=\"submit\"
+                    class=\"text-sm px-3 py-1.5 rounded-md text-white\">Filtrar</button>
 
-            <fieldset>
-                <button type=\"submit\">Filtrar</button>
-
-                <a href=\"";
-        // line 28
+            <a href=\"";
+        // line 20
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_list");
-        yield "\">Limpiar</a>
-            </fieldset>
+        yield "\"
+               class=\"text-sm text-[#4a3aff] dark:text-[#7f70ff] hover:underline\">Limpiar</a>
         </form>
 
-        <ul class=\"toolbar\">
-            <li><a href=\"";
-        // line 33
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_create");
-        yield "\">Crear usuario</a></li>
-        </ul>
-
-        <table class=\"table\">
-            <thead>
+        <section class=\"overflow-x-auto rounded-lg ring-1 ring-gray-300 dark:ring-gray-600\">
+            <table class=\"min-w-full text-sm text-left text-[#1e1e1e] dark:text-[#f1f1f1] bg-[#fdfcfa]
+                          dark:bg-[#1e1e2f]\">
+                <thead class=\"bg-[#eeeafc] dark:bg-[#2c2c44] uppercase text-xs text-[#4a3aff] dark:text-[#7f70ff]
+                              tracking-wider\">
                 <tr>
-                    <th>";
-        // line 39
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 39, $this->source); })()), "Nombre de usuario", "user.username");
+                    <th class=\"px-4 py-3\">";
+        // line 30
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 30, $this->source); })()), "Nombre de usuario", "user.username");
         yield "</th>
-                    <th>";
-        // line 40
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 40, $this->source); })()), "Correo electrónico", "user.email");
+                    <th class=\"px-4 py-3\">";
+        // line 31
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 31, $this->source); })()), "Correo electrónico", "user.email");
         yield "</th>
-                    <th>";
-        // line 41
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 41, $this->source); })()), "Nombre", "user.name");
+                    <th class=\"px-4 py-3\">";
+        // line 32
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 32, $this->source); })()), "Nombre", "user.name");
         yield "</th>
-                    <th>";
-        // line 42
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 42, $this->source); })()), "Apellidos", "user.lastname");
+                    <th class=\"px-4 py-3\">";
+        // line 33
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 33, $this->source); })()), "Apellidos", "user.lastname");
         yield "</th>
-                    <th>Roles</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
+                    <th class=\"px-4 py-3\">Roles</th>
+                    <th class=\"px-4 py-3 flex flex-row items-center\">
+                        <span>Acciones</span>
 
-            <tbody>
-                ";
-        // line 49
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 49, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 50
-            yield "                    <tr>
-                        <td>";
-            // line 51
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "username", [], "any", false, false, false, 51), "html", null, true);
-            yield "</td>
-                        <td>";
-            // line 52
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 52), "html", null, true);
-            yield "</td>
-                        <td>";
-            // line 53
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "name", [], "any", false, false, false, 53), "html", null, true);
-            yield "</td>
-                        <td>";
-            // line 54
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 54), "html", null, true);
-            yield "</td>
-                        <td>
-                            ";
-            // line 56
+                        <a href=\"";
+        // line 38
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_create");
+        yield "\"
+                           class=\"ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8
+                                  rounded-full bg-[#4a3aff] hover:bg-[#3a2aff] text-white dark:bg-[#7f70ff]
+                                  dark:hover:bg-[#6e60ff]\"
+                           title=\"Crear nuevo usuario\">+</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class=\"divide-y divide-gray-200 dark:divide-gray-700\">
+                    ";
+        // line 47
+        if ((Twig\Extension\CoreExtension::length($this->env->getCharset(), (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 47, $this->source); })())) > 0)) {
+            // line 48
+            yield "                        ";
             $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 56));
-            $context['loop'] = [
-              'parent' => $context['_parent'],
-              'index0' => 0,
-              'index'  => 1,
-              'first'  => true,
-            ];
-            if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
-                $length = count($context['_seq']);
-                $context['loop']['revindex0'] = $length - 1;
-                $context['loop']['revindex'] = $length;
-                $context['loop']['length'] = $length;
-                $context['loop']['last'] = 1 === $length;
-            }
-            foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
-                // line 57
-                yield "                                ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["role"], "html", null, true);
-                if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 57)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                    yield ", ";
+            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 48, $this->source); })()));
+            foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
+                // line 49
+                yield "                            <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f]\">
+                                <td class=\"px-4 py-2\">";
+                // line 50
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "username", [], "any", false, false, false, 50), "html", null, true);
+                yield "</td>
+                                <td class=\"px-4 py-2\">";
+                // line 51
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 51), "html", null, true);
+                yield "</td>
+                                <td class=\"px-4 py-2\">";
+                // line 52
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "name", [], "any", false, false, false, 52), "html", null, true);
+                yield "</td>
+                                <td class=\"px-4 py-2\">";
+                // line 53
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 53), "html", null, true);
+                yield "</td>
+                                <td class=\"px-4 py-2 space-x-1\">
+                                    ";
+                // line 55
+                $context['_parent'] = $context;
+                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 55));
+                foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
+                    // line 56
+                    yield "                                        <span class=\"inline-block text-[#333] dark:text-white px-2 py-0.5 rounded text-xs font-medium\">";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["role"], "html", null, true);
+                    yield "</span>
+                                    ";
                 }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_key'], $context['role'], $context['_parent']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
                 // line 58
-                yield "                            ";
-                ++$context['loop']['index0'];
-                ++$context['loop']['index'];
-                $context['loop']['first'] = false;
-                if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
-                    --$context['loop']['revindex0'];
-                    --$context['loop']['revindex'];
-                    $context['loop']['last'] = 0 === $context['loop']['revindex0'];
-                }
+                yield "                                </td>
+                                <td class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">
+                                    <a href=\"";
+                // line 60
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 60)]), "html", null, true);
+                yield "\"
+                                       class=\"text-[#4a3aff] dark:text-[#7f70ff] hover:underline\">
+                                        <img src=\"";
+                // line 62
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/icons/boton-editar.png"), "html", null, true);
+                yield "\" title=\"Editar usuario\" class=\"w-4\" />
+                                    </a>
+                                    <a href=\"";
+                // line 64
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 64)]), "html", null, true);
+                yield "\"
+                                       class=\"text-[#ff4a4a] dark:text-[#ff7373] hover:underline\">
+                                        <img src=\"";
+                // line 66
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/icons/boton-eliminar.png"), "html", null, true);
+                yield "\" title=\"Eliminar usuario\" class=\"w-4\" />
+                                    </a>
+                                </td>
+                            </tr>
+                        ";
             }
             $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
+            unset($context['_seq'], $context['_key'], $context['user'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 59
-            yield "                        </td>
-                        <td class=\"actions\">
-                            <a href=\"";
-            // line 61
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 61)]), "html", null, true);
-            yield "\">Editar</a>
-                            <a href=\"";
-            // line 62
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 62)]), "html", null, true);
-            yield "\">Eliminar</a>
-                        </td>
+            // line 71
+            yield "                    ";
+        } else {
+            // line 72
+            yield "                    <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f]\">
+                        <td colspan=\"6\" class=\"px-4 py-2\">No hay usuarios registrados.</td>
                     </tr>
-                ";
+                    ";
         }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_key'], $context['user'], $context['_parent']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 66
-        yield "            </tbody>
-        </table>
-
-        ";
-        // line 69
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 69, $this->source); })()));
-        yield "
-    </main>
+        // line 76
+        yield "                </tbody>
+            </table>
+        </section>
+    </section>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -311,82 +278,90 @@ class __TwigTemplate_77b9dfe24a5354e6345626ceb660ec39 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  280 => 69,  275 => 66,  265 => 62,  261 => 61,  257 => 59,  243 => 58,  237 => 57,  220 => 56,  215 => 54,  211 => 53,  207 => 52,  203 => 51,  200 => 50,  196 => 49,  186 => 42,  182 => 41,  178 => 40,  174 => 39,  165 => 33,  157 => 28,  148 => 22,  140 => 17,  132 => 12,  126 => 9,  123 => 8,  110 => 7,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  246 => 76,  240 => 72,  237 => 71,  226 => 66,  221 => 64,  216 => 62,  211 => 60,  207 => 58,  198 => 56,  194 => 55,  189 => 53,  185 => 52,  181 => 51,  177 => 50,  174 => 49,  169 => 48,  167 => 47,  155 => 38,  147 => 33,  143 => 32,  139 => 31,  135 => 30,  122 => 20,  110 => 11,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("{% extends '/administration/index.html.twig' %}
+        return new Source("{% extends 'administration/index.html.twig' %}
 
 {% block title %}Listado de usuarios{% endblock %}
 
-{% block scripts %}{% endblock %}
-
 {% block main %}
-    <main>
-        <form method=\"get\" action=\"{{ path('administration_user_list') }}\" class=\"filter\">
-            <fieldset>
-                <label for=\"filter_username\">Nombre de usuario</label>
-                <input type=\"text\" id=\"filter_username\" name=\"filter_username\" value=\"{{ activeFilters.username|default('') }}\">
-            </fieldset>
+    <section class=\"mx-auto px-4 py-6\">
+        <form method=\"get\" action=\"{{ path('administration_user_list') }}\"
+              class=\"flex flex-wrap items-center gap-2 bg-[#fdfcfa] dark:bg-[#1e1e2f] px-4 py-3 rounded-lg border
+               border-gray-300 dark:border-gray-600 mb-6 w-full max-w-full\">
 
-            <fieldset>
-                <label for=\"filter_email\">Correo electrónico</label>
-                <input type=\"text\" id=\"filter_email\" name=\"filter_email\" value=\"{{ activeFilters.email|default('') }}\">
-            </fieldset>
+            <input type=\"text\" id=\"filter\" name=\"filter\" value=\"{{ activeFilters.filter|default('') }}\"
+                   placeholder=\"Buscar usuario...\"
+                   class=\"flex-1 min-w-[180px] sm:min-w-[240px] text-sm px-3 py-1.5 border border-gray-300
+                   dark:border-gray-500 rounded-md bg-white dark:bg-[#2c2c44] text-[#1e1e1e] dark:text-[#f1f1f1]
+                   focus:ring-1 focus:ring-[#4a3aff] focus:outline-none\">
 
-            <fieldset>
-                <label for=\"filter_name\">Nombre</label>
-                <input type=\"text\" id=\"filter_name\" name=\"filter_name\" value=\"{{ activeFilters.name|default('') }}\">
-            </fieldset>
+            <button type=\"submit\"
+                    class=\"text-sm px-3 py-1.5 rounded-md text-white\">Filtrar</button>
 
-            <fieldset>
-                <button type=\"submit\">Filtrar</button>
-
-                <a href=\"{{ path('administration_user_list') }}\">Limpiar</a>
-            </fieldset>
+            <a href=\"{{ path('administration_user_list') }}\"
+               class=\"text-sm text-[#4a3aff] dark:text-[#7f70ff] hover:underline\">Limpiar</a>
         </form>
 
-        <ul class=\"toolbar\">
-            <li><a href=\"{{ path('administration_user_create') }}\">Crear usuario</a></li>
-        </ul>
-
-        <table class=\"table\">
-            <thead>
+        <section class=\"overflow-x-auto rounded-lg ring-1 ring-gray-300 dark:ring-gray-600\">
+            <table class=\"min-w-full text-sm text-left text-[#1e1e1e] dark:text-[#f1f1f1] bg-[#fdfcfa]
+                          dark:bg-[#1e1e2f]\">
+                <thead class=\"bg-[#eeeafc] dark:bg-[#2c2c44] uppercase text-xs text-[#4a3aff] dark:text-[#7f70ff]
+                              tracking-wider\">
                 <tr>
-                    <th>{{ knp_pagination_sortable(pagination, 'Nombre de usuario', 'user.username') }}</th>
-                    <th>{{ knp_pagination_sortable(pagination, 'Correo electrónico', 'user.email') }}</th>
-                    <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'user.name') }}</th>
-                    <th>{{ knp_pagination_sortable(pagination, 'Apellidos', 'user.lastname') }}</th>
-                    <th>Roles</th>
-                    <th>Acciones</th>
+                    <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Nombre de usuario', 'user.username') }}</th>
+                    <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Correo electrónico', 'user.email') }}</th>
+                    <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Nombre', 'user.name') }}</th>
+                    <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Apellidos', 'user.lastname') }}</th>
+                    <th class=\"px-4 py-3\">Roles</th>
+                    <th class=\"px-4 py-3 flex flex-row items-center\">
+                        <span>Acciones</span>
+
+                        <a href=\"{{ path('administration_user_create') }}\"
+                           class=\"ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8
+                                  rounded-full bg-[#4a3aff] hover:bg-[#3a2aff] text-white dark:bg-[#7f70ff]
+                                  dark:hover:bg-[#6e60ff]\"
+                           title=\"Crear nuevo usuario\">+</a>
+                    </th>
                 </tr>
-            </thead>
-
-            <tbody>
-                {% for user in pagination %}
-                    <tr>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.lastname }}</td>
-                        <td>
-                            {% for role in user.roles %}
-                                {{ role }}{% if not loop.last %}, {% endif %}
-                            {% endfor %}
-                        </td>
-                        <td class=\"actions\">
-                            <a href=\"{{ path('administration_user_edit', { id: user.id }) }}\">Editar</a>
-                            <a href=\"{{ path('administration_user_delete', { id: user.id }) }}\">Eliminar</a>
-                        </td>
+                </thead>
+                <tbody class=\"divide-y divide-gray-200 dark:divide-gray-700\">
+                    {% if pagination|length > 0 %}
+                        {% for user in pagination %}
+                            <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f]\">
+                                <td class=\"px-4 py-2\">{{ user.username }}</td>
+                                <td class=\"px-4 py-2\">{{ user.email }}</td>
+                                <td class=\"px-4 py-2\">{{ user.name }}</td>
+                                <td class=\"px-4 py-2\">{{ user.lastname }}</td>
+                                <td class=\"px-4 py-2 space-x-1\">
+                                    {% for role in user.roles %}
+                                        <span class=\"inline-block text-[#333] dark:text-white px-2 py-0.5 rounded text-xs font-medium\">{{ role }}</span>
+                                    {% endfor %}
+                                </td>
+                                <td class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">
+                                    <a href=\"{{ path('administration_user_edit', { id: user.id }) }}\"
+                                       class=\"text-[#4a3aff] dark:text-[#7f70ff] hover:underline\">
+                                        <img src=\"{{ asset('assets/images/icons/boton-editar.png') }}\" title=\"Editar usuario\" class=\"w-4\" />
+                                    </a>
+                                    <a href=\"{{ path('administration_user_delete', { id: user.id }) }}\"
+                                       class=\"text-[#ff4a4a] dark:text-[#ff7373] hover:underline\">
+                                        <img src=\"{{ asset('assets/images/icons/boton-eliminar.png') }}\" title=\"Eliminar usuario\" class=\"w-4\" />
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                    <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f]\">
+                        <td colspan=\"6\" class=\"px-4 py-2\">No hay usuarios registrados.</td>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        {{ knp_pagination_render(pagination) }}
-    </main>
-{% endblock %}
-", "administration/user/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\user\\list.html.twig");
+                    {% endif %}
+                </tbody>
+            </table>
+        </section>
+    </section>
+{% endblock %}", "administration/user/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\administration\\user\\list.html.twig");
     }
 }

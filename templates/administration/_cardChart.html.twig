@@ -1,0 +1,32 @@
+<section class="chart-container w-full max-w-full rounded-lg relative">
+    <canvas id="card-chart" class="w-full h-full"></canvas>
+</section>
+
+<script type="text/javascript" src="{{ asset('/resources/package/dist/chart.umd.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const context = document.getElementById('card-chart').getContext('2d');
+
+        const chartData = {{ chartData|json_encode|raw }};
+
+        if (chartData.labels.length > 0) {
+            new Chart(context, {
+                type: 'doughnut',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Usuarios por rol'
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>

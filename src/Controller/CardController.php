@@ -8,6 +8,7 @@ use App\Repository\CardRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -38,8 +39,7 @@ final class CardController extends AbstractController
     public function administrationCardList(CardRepository $cardRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $filters = [
-            'name' => $request->query->get('filter_name'),
-            'description' => $request->query->get('filter_description'),
+            'filter' => $request->query->get('filter'),
         ];
 
         $activeFilters = array_filter($filters, fn($value) => $value !== null && $value !== '');
@@ -68,13 +68,27 @@ final class CardController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('imageFile')->getData();
+
+            if ($imageFile) {
+                $newFilename = uniqid().'.'.$imageFile->guessExtension();
+
+                $imageFile->move(
+                    $this->getParameter('cards_images_directory'),
+                    $newFilename
+                );
+
+                $card->setImage($newFilename);
+            }
+
             $entityManagerInterface->persist($card);
             $entityManagerInterface->flush();
 
             return $this->redirectToRoute('administration_card_list');
         }
 
-        return $this->render('administration/card/form.html.twig', ['form' => $form->createView()]);
+        return $this->render('administration/card/create.html.twig', ['form' => $form->createView()]);
     }
 
     #[Route('/administration/card/edit/{id}', name: 'administration_card_edit')]
@@ -92,7 +106,7 @@ final class CardController extends AbstractController
             return $this->redirectToRoute('administration_card_list');
         }
 
-        return $this->render('administration/card/form.html.twig', ['form' => $form->createView()]);
+        return $this->render('administration/card/edit.html.twig', ['form' => $form->createView()]);
     }
 
     #[Route('/administration/card/delete/{id}', name: 'administration_card_delete')]

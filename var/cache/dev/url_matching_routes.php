@@ -29,7 +29,7 @@ return [
         '/sign-in' => [[['_route' => 'sign_in', '_controller' => 'App\\Controller\\SecurityController::signIn'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
-        '/user' => [[['_route' => 'user', '_controller' => 'App\\Controller\\UserController::index'], null, null, null, false, false, null]],
+        '/profile' => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], null, null, null, false, false, null]],
         '/administration/user/list' => [[['_route' => 'administration_user_list', '_controller' => 'App\\Controller\\UserController::administrationUserList'], null, null, null, false, false, null]],
         '/administration/user/create' => [[['_route' => 'administration_user_create', '_controller' => 'App\\Controller\\UserController::administrationUserCreate'], null, null, null, false, false, null]],
     ],
@@ -73,7 +73,11 @@ return [
                         .'|delete/([^/]++)(*:437)'
                     .')'
                 .')'
-                .'|/card/(\\d+)(*:458)'
+                .'|/card(?'
+                    .'|/(\\d+)(*:461)'
+                    .'|\\-deck(?:/(\\d+))?(*:486)'
+                .')'
+                .'|/profile/edit/([^/]++)(*:517)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -93,8 +97,10 @@ return [
         384 => [[['_route' => 'administration_card_delete', '_controller' => 'App\\Controller\\CardController::cardDelete'], ['id'], null, null, false, true, null]],
         414 => [[['_route' => 'administration_user_edit', '_controller' => 'App\\Controller\\UserController::administrationUserEdit'], ['id'], null, null, false, true, null]],
         437 => [[['_route' => 'administration_user_delete', '_controller' => 'App\\Controller\\UserController::administrationUserDelete'], ['id'], null, null, false, true, null]],
-        458 => [
-            [['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null],
+        461 => [[['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null]],
+        486 => [[['_route' => 'card_deck__list', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::list'], ['id'], null, null, false, true, null]],
+        517 => [
+            [['_route' => 'profile_edit', '_controller' => 'App\\Controller\\UserController::profileEdit'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

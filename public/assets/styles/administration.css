@@ -1,195 +1,102 @@
-.filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-
-    & fieldset {
-        border: none;
-        padding: 0;
-        margin: 0;
-        flex: 1 1 160px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-
-    & label {
-        font-weight: 500;
-        color: #444;
-        font-size: 0.8rem;
-    }
-
-    & input[type="text"] {
-        padding: 0.35rem 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        background-color: #fff;
-        transition: border-color 0.2s ease;
-
-        &:focus {
-            border-color: #0078d4;
-            outline: none;
-        }
-    }
-
-    & button[type="submit"] {
-        padding: 0.4rem 0.8rem;
-        background-color: #0078d4;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-
-        &:hover {
-            background-color: #005fa3;
-        }
-    }
-
-    & a {
-        align-self: center;
-        color: #555;
-        font-size: 0.75rem;
-        text-decoration: none;
-        margin-top: 0.3rem;
-        transition: color 0.2s ease;
-
-        &:hover {
-            color: #0078d4;
-        }
-    }
-}
-
-.toolbar {
-    list-style: none;
-    margin: 1rem 0;
-    padding: 0;
-    display: flex;
-    gap: 0.75rem;
-
-    & > li {
-        display: inline-flex;
-
-        & > a {
-            display: inline-block;
-            padding: 0.4rem 0.9rem;
-            background-color: #0078d4;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-
-            &:hover {
-                background-color: #005fa3;
-            }
-        }
-    }
-}
-
-.table {
+table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    font-size: 0.8rem;
-    color: #2e2e2e;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-
-    & > thead {
-        background-color: #f7f9fa;
-
-        & th {
-            padding: 12px 16px;
-            text-align: left;
-            font-weight: 600;
-            color: #444;
-            border-bottom: 1px solid #ddd;
-            position: relative;
-            cursor: pointer;
-
-            & > a {
-                text-decoration: none;
-            }
-        }
-    }
-
-    & > tbody {
-        & > tr {
-            &:hover {
-                background-color: #f5f8fb;
-            }
-        }
-
-        & td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #f0f0f0;
-
-            &.actions {
-                & a {
-                    text-decoration: none;
-                }
-            }
-        }
-    }
+    border: 1px solid #d1d5db; /* gray-300 */
+    font-size: 0.875rem; /* text-sm */
+    background-color: white;
+    border-radius: 0.375rem; /* rounded */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* shadow-sm */
 }
 
-.pagination {
+table th, table td {
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    text-align: left;
+}
+
+table thead {
+    background-color: #f3f4f6; /* gray-100 */
+}
+
+table tbody tr:hover {
+    background-color: #f9fafb; /* gray-50 */
+}
+
+form {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
     display: flex;
-    justify-content: center;
-    gap: 4px;
-    margin-top: 16px;
-    font-size: 0.8rem;
-    list-style: none;
-    padding: 0;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-    & > li {
-        display: inline-block;
-    }
+form fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
 
-    & a,
-    & span {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 26px;
-        height: 26px;
-        border-radius: 4px;
-        font-weight: 500;
-        color: #444;
-        text-decoration: none;
-        background-color: #fafafa;
-        box-shadow: inset 0 0 0 1px #d0d0d0;
-        transition: background-color 0.2s ease, box-shadow 0.2s ease;
-        user-select: none;
-    }
+form label {
+    font-weight: 600;
+    color: #374151; /* gray-700 */
+}
 
-    & a:hover {
-        background-color: #e9eff5;
-        box-shadow: inset 0 0 0 1px #0078d4;
-        color: #0078d4;
-    }
+form input[type="text"] {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    outline: none;
+    font-size: 1rem;
+}
 
-    & .current,
-    & span.current {
-        background-color: #0078d4;
-        color: #fff;
-        box-shadow: inset 0 0 0 1px #0078d4;
-        pointer-events: none;
-    }
+form input[type="text"]:focus {
+    border-color: #3b82f6; /* blue-500 */
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.5);
+}
 
-    & a.disabled,
-    & span.disabled {
-        opacity: 0.4;
-        pointer-events: none;
-    }
+button[type="submit"] {
+    background-color: #2563eb; /* blue-600 */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #1e40af; /* blue-700 */
+}
+
+/* Acciones */
+td.actions a.edit {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+td.actions a.edit:hover {
+    text-decoration: underline;
+}
+
+td.actions a.delete {
+    color: #dc2626; /* red-600 */
+    text-decoration: none;
+}
+
+td.actions a.delete:hover {
+    text-decoration: underline;
+}
+
+/* Para roles */
+td.roles span {
+    background-color: #e5e7eb; /* gray-200 */
+    color: #374151; /* gray-700 */
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem; /* text-xs */
+    margin-right: 0.25rem;
+    display: inline-block;
 }

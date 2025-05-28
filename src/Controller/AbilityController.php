@@ -17,7 +17,7 @@ final class AbilityController extends AbstractController
     #[Route('/ability', name: 'app_ability')]
     public function index(): Response
     {
-        return $this->render('ability/index.html.twig', [
+        return $this->render('ability/create.html.twig', [
             'controller_name' => 'AbilityController',
         ]);
     }
@@ -26,8 +26,7 @@ final class AbilityController extends AbstractController
     public function abilityList(AbilityRepository $abilityRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $filters = [
-            'name' => $request->query->get('filter_name'),
-            'description' => $request->query->get('filter_description'),
+            'filter' => $request->query->get('filter'),
         ];
 
         $activeFilters = array_filter($filters, fn($value) => $value !== null && $value !== '');
@@ -61,7 +60,7 @@ final class AbilityController extends AbstractController
             return $this->redirectToRoute('administration_ability_list');
         }
 
-        return $this->render('administration/ability/form.html.twig', ['form' => $form->createView()]);
+        return $this->render('administration/ability/create.html.twig', ['form' => $form->createView()]);
     }
 
     #[Route('/administration/ability/edit/{id}', name: 'administration_ability_edit')]
@@ -79,7 +78,7 @@ final class AbilityController extends AbstractController
             return $this->redirectToRoute('administration_ability_list');
         }
 
-        return $this->render('administration/ability/form.html.twig', ['form' => $form->createView()]);
+        return $this->render('administration/ability/edit.html.twig', ['form' => $form->createView()]);
     }
 
     #[Route('/administration/ability/delete/{id}', name: 'administration_ability_delete')]

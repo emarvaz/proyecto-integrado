@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -33,6 +35,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'json')]
     private ?array $roles = [];
+
+    /**
+     * @var Collection<int, CardDeck>
+     */
+    #[ORM\OneToMany(targetEntity: CardDeck::class, mappedBy: 'user', cascade: ['persist'], orphanRemoval: true)]
+    private Collection $cardDecks;
+
+    #[ORM\Column]
+    private ?\DateTime $registerDate = null;
+
+    public function __construct()
+    {
+        $this->cardDecks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -124,5 +140,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return $this->getUsername();
+    }
+
+    /**
+     * @return Collection<int, CardDeck>
+     */
+    public function getCardDecks(): Collection
+    {
+        return $this->cardDecks;
+    }
+
+    public function addCardDeck(CardDeck $cardDeck): static
+    {
+        if (!$this->cardDecks->contains($cardDeck)) {
+            $this->cardDecks->add($cardDeck);
+            $cardDeck->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCardDeck(CardDeck $cardDeck): static
+    {
+        if ($this->cardDecks->removeElement($cardDeck)) {
+            // set the owning side to null (unless already changed)
+            if ($cardDeck->getUser() === $this) {
+                $cardDeck->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getRegisterDate(): ?\DateTime
+    {
+        return $this->registerDate;
+    }
+
+    public function setRegisterDate(\DateTime $registerDate): static
+    {
+        $this->registerDate = $registerDate;
+
+        return $this;
     }
 }

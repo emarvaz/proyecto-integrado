@@ -104,11 +104,7 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
 
     <link rel=\"stylesheet\" href=\"";
         // line 8
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/styles/components/card-deck.css"), "html", null, true);
-        yield "\">
-    <link rel=\"stylesheet\" href=\"";
-        // line 9
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/styles/components/card.css"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/styles/card.css"), "html", null, true);
         yield "\">
 ";
         
@@ -120,7 +116,7 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
         yield from [];
     }
 
-    // line 12
+    // line 11
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -133,55 +129,42 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 13
-        yield "    <main class=\"main-content\">
-        <section class=\"card-deck\">
+        // line 12
+        yield "    <section class=\"w-full px-4 py-8\">
+        <div class=\"grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6\">
             ";
-        // line 15
+        // line 14
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["cards"]) || array_key_exists("cards", $context) ? $context["cards"] : (function () { throw new RuntimeError('Variable "cards" does not exist.', 15, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["cards"]) || array_key_exists("cards", $context) ? $context["cards"] : (function () { throw new RuntimeError('Variable "cards" does not exist.', 14, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["card"]) {
-            // line 16
+            // line 15
             yield "                <a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 16)]), "html", null, true);
-            yield "\" class=\"link__clicker\">
-                    <article class=\"card\">
-                        <figure class=\"card__image\" role=\"img\">
-                            <data class=\"card__index\"></data>
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 15)]), "html", null, true);
+            yield "\">
+                    <article class=\"card aspect-[0.7] flex flex-col bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
+
+                        <figure class=\"h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('";
+            // line 18
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/content/cards/" . CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 18))), "html", null, true);
+            yield "');\">
+                            <data class=\"block p-1 text-xs text-white\"></data>
                         </figure>
 
-                        <data class=\"card__health\">";
-            // line 22
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 22), "html", null, true);
-            yield "</data>
-
-                        <h4 class=\"card__name\">";
+                        <div class=\"p-4 flex flex-col gap-2\">
+                            <data class=\"text-sm font-semibold text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900 px-2 py-1 rounded-full self-start\">
+                                ";
             // line 24
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 24), "html", null, true);
-            yield "</h4>
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 24), "html", null, true);
+            yield " ❤️
+                            </data>
 
-                        <ul class=\"card__abilities\">
-                            ";
-            // line 27
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 27));
-            foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-                // line 28
-                yield "                                <li class=\"card__abilities__ability\">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 28), "html", null, true);
-                yield "</li>
-                            ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 30
-            yield "                        </ul>
-
-                        <p class=\"card__description\">";
-            // line 32
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "description", [], "any", false, false, false, 32), "html", null, true);
-            yield "</p>
+                            <h4 class=\"text-lg font-bold text-gray-800 dark:text-gray-100\">
+                                ";
+            // line 28
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 28), "html", null, true);
+            yield "
+                            </h4>
+                        </div>
                     </article>
                 </a>
             ";
@@ -189,9 +172,9 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['card'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 36
-        yield "        </section>
-    </main>
+        // line 34
+        yield "        </div>
+    </section>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -223,7 +206,7 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  193 => 36,  183 => 32,  179 => 30,  170 => 28,  166 => 27,  160 => 24,  155 => 22,  145 => 16,  141 => 15,  137 => 13,  124 => 12,  111 => 9,  107 => 8,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  176 => 34,  164 => 28,  157 => 24,  148 => 18,  141 => 15,  137 => 14,  133 => 12,  120 => 11,  107 => 8,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -235,36 +218,34 @@ class __TwigTemplate_cc762281f68b9bde9a9333f00168c08c extends Template
 {% block styles %}
     {{ parent() }}
 
-    <link rel=\"stylesheet\" href=\"{{ asset('assets/styles/components/card-deck.css') }}\">
-    <link rel=\"stylesheet\" href=\"{{ asset('assets/styles/components/card.css') }}\">
+    <link rel=\"stylesheet\" href=\"{{ asset('assets/styles/card.css') }}\">
 {% endblock %}
 
 {% block main %}
-    <main class=\"main-content\">
-        <section class=\"card-deck\">
+    <section class=\"w-full px-4 py-8\">
+        <div class=\"grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6\">
             {% for card in cards %}
-                <a href=\"{{ path('card', { id: card.id }) }}\" class=\"link__clicker\">
-                    <article class=\"card\">
-                        <figure class=\"card__image\" role=\"img\">
-                            <data class=\"card__index\"></data>
+                <a href=\"{{ path('card', { id: card.id }) }}\">
+                    <article class=\"card aspect-[0.7] flex flex-col bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
+
+                        <figure class=\"h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('{{ asset('/assets/images/content/cards/' ~ card.image) }}');\">
+                            <data class=\"block p-1 text-xs text-white\"></data>
                         </figure>
 
-                        <data class=\"card__health\">{{ card.health }}</data>
+                        <div class=\"p-4 flex flex-col gap-2\">
+                            <data class=\"text-sm font-semibold text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900 px-2 py-1 rounded-full self-start\">
+                                {{ card.health }} ❤️
+                            </data>
 
-                        <h4 class=\"card__name\">{{ card.name }}</h4>
-
-                        <ul class=\"card__abilities\">
-                            {% for ability in card.abilities %}
-                                <li class=\"card__abilities__ability\">{{ ability.name }}</li>
-                            {% endfor %}
-                        </ul>
-
-                        <p class=\"card__description\">{{ card.description }}</p>
+                            <h4 class=\"text-lg font-bold text-gray-800 dark:text-gray-100\">
+                                {{ card.name }}
+                            </h4>
+                        </div>
                     </article>
                 </a>
             {% endfor %}
-        </section>
-    </main>
+        </div>
+    </section>
 {% endblock %}
 ", "card/list.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\card\\list.html.twig");
     }
