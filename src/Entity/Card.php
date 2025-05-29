@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CardRepository::class)]
 class Card
@@ -17,27 +18,33 @@ class Card
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['card:read'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['card:read'])]
     private ?string $image = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['card:read'])]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Groups(['card:read'])]
     private ?int $health = null;
 
     /**
      * @var Collection<int, Ability>
      */
     #[ORM\ManyToMany(targetEntity: Ability::class, inversedBy: 'cards')]
+    #[Groups(['card:read'])]
     private Collection $abilities;
 
     /**
      * @var Collection<int, CardDeck>
      */
     #[ORM\ManyToMany(targetEntity: CardDeck::class, mappedBy: 'cards')]
+    #[Groups(['card:read'])]
     private Collection $cardDecks;
 
     public function __construct()

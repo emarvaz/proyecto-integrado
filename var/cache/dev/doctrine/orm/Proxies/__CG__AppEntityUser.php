@@ -28,6 +28,7 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
         "\0".parent::class."\0".'lastname' => [parent::class, 'lastname', null, 16],
         "\0".parent::class."\0".'name' => [parent::class, 'name', null, 16],
         "\0".parent::class."\0".'password' => [parent::class, 'password', null, 16],
+        "\0".parent::class."\0".'registerDate' => [parent::class, 'registerDate', null, 16],
         "\0".parent::class."\0".'roles' => [parent::class, 'roles', null, 16],
         "\0".parent::class."\0".'username' => [parent::class, 'username', null, 16],
         'cardDecks' => [parent::class, 'cardDecks', null, 16],
@@ -36,6 +37,7 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
         'lastname' => [parent::class, 'lastname', null, 16],
         'name' => [parent::class, 'name', null, 16],
         'password' => [parent::class, 'password', null, 16],
+        'registerDate' => [parent::class, 'registerDate', null, 16],
         'roles' => [parent::class, 'roles', null, 16],
         'username' => [parent::class, 'username', null, 16],
     ];

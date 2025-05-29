@@ -9,11 +9,15 @@
 {% endblock %}
 
 {% block main %}
-    <main>
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
+    {{ form_start(form) }}
+        {% for field in form %}
+            <div>
+                {{ form_label(field) }}
+                {{ form_widget(field) }}
+                {{ form_errors(field) }}
+            </div>
+        {% endfor %}
 
-            <input type="submit" value="Editar">
-        {{ form_end(form) }}
-    </main>
+        <input type="submit" value="Editar">
+    {{ form_end(form) }}
 {% endblock %}

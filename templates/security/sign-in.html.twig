@@ -9,13 +9,17 @@
 {% endblock %}
 
 {% block main %}
-    <main>
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
+    {{ form_start(form) }}
+        {% for field in form %}
+            <div>
+                {{ form_label(field) }}
+                {{ form_widget(field) }}
+                {{ form_errors(field) }}
+            </div>
+        {% endfor %}
 
-            <input type="submit" value="Registrarse">
-        {{ form_end(form) }}
+        <input type="submit" value="Registrarse">
+    {{ form_end(form) }}
 
-        <p>¿Ya tienes una cuenta? <a href="{{ path('login') }}">Inicia sesión</a></p>
-    </main>
+    <p>¿Ya tienes una cuenta? <a href="{{ path('login') }}">Inicia sesión</a></p>
 {% endblock %}

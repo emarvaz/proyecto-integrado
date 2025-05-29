@@ -6,6 +6,7 @@ use App\Entity\CardDeck;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -81,6 +82,7 @@ final class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
+            $user->setRegisterDate(new DateTime('now'));
 
             $cardDeckNumber = 4;
 
@@ -116,12 +118,12 @@ final class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $newPassword = $user->getPassword();
+            $newPassword = $form->get('password')->getData();
 
-            if (!$newPassword) {
-                $user->setPassword($originalPassword);
-            } else {
+            if ($newPassword) {
                 $user->setPassword(password_hash($newPassword, PASSWORD_BCRYPT));
+            } else {
+                $user->setPassword($originalPassword);
             }
 
             $entityManager->flush();

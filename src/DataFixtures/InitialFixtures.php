@@ -27,7 +27,7 @@ class InitialFixtures extends Fixture
         $administrator->setLastname('de la aplicación');
         $administrator->setRegisterDate(new DateTime('now'));
 
-        $hashedPassword = $this->passwordHasher->hashPassword($administrator, 'admin123');
+        $hashedPassword = $this->passwordHasher->hashPassword($administrator, 'Administrador1234.');
         $administrator->setPassword($hashedPassword);
 
         $administrator->setRoles(['ROLE_ADMIN']);

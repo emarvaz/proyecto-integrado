@@ -33,12 +33,6 @@ class UserType extends AbstractType
             ])
             ->add('lastname', TextType::class, [
                 'label' => 'Apellidos',
-            ])
-            ->add('register_date', DateTimeType::class, [
-                'label' => 'Fecha de registro',
-                'widget' => 'single_text',
-                'html5' => true,
-                'required' => false,
             ]);
 
         if ($options['administration']) {
@@ -48,7 +42,8 @@ class UserType extends AbstractType
                         'Administrador' => 'ROLE_ADMIN',
                     ],
                     'multiple' => true,
-                    'expanded' => true
+                    'expanded' => true,
+                    'required' => false,
                 ]);
             }
     }
