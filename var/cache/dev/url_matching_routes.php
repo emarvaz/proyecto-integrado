@@ -106,7 +106,7 @@ return [
         440 => [[['_route' => 'administration_user_delete', '_controller' => 'App\\Controller\\UserController::administrationUserDelete'], ['id'], null, null, false, true, null]],
         467 => [[['_route' => 'api_card_show', '_controller' => 'App\\Controller\\CardAPIController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         490 => [[['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null]],
-        515 => [[['_route' => 'card_deck__list', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::list'], ['id'], null, null, false, true, null]],
+        515 => [[['_route' => 'card_deck__list', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
         546 => [
             [['_route' => 'profile_edit', '_controller' => 'App\\Controller\\UserController::profileEdit'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],

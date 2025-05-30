@@ -31,7 +31,7 @@ class SecurityController extends AbstractController
             for ($cardDeckIterator = 1; $cardDeckIterator <= $cardDeckNumber; $cardDeckIterator++) {
                 $cardDeck = new CardDeck();
                 $cardDeck->setName("Mazo {$cardDeckIterator}");
-                $cardDeck->isFavorite(false);
+                $cardDeck->setIsFavorite(false);
 
                 $user->addCardDeck($cardDeck);
             }

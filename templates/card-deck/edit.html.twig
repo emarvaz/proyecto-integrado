@@ -11,16 +11,16 @@
 
 {% block main %}
     <ul class="flex flex-wrap gap-2 mb-6">
-        {% for deck in cardDecks %}
+        {% for cardDeck in cardDecks %}
             <li>
-                <a href="{{ path('card_deck__list', {'id': deck.id}) }}"
+                <a href="{{ path('card_deck__list', {'id': cardDeck.id}) }}"
                    class="px-4 py-2 rounded-tl-sm rounded-tr-sm font-semibold transition-colors duration-300 border-t border-r border-l
-                      {% if deck.id == currentCardDeckId %}
+                      {% if cardDeck.id == currentCardDeckId %}
                           bg-grey-600 text-white
                       {% else %}
                           bg-grey-200 text-gray-800 hover:bg-grey-100 hover:text-blue-600
                       {% endif %}">
-                    {{ deck.name }}
+                    {{ cardDeck.name }}
                 </a>
             </li>
         {% endfor %}
@@ -29,7 +29,6 @@
     <section class="card-deck__list__content">
         {% if form is defined and form is not null %}
             {{ form_start(form) }}
-
                 {{ form_row(form.name) }}
                 {{ form_row(form.isFavorite) }}
 

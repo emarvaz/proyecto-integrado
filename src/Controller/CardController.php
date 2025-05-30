@@ -110,9 +110,10 @@ final class CardController extends AbstractController
     }
 
     #[Route('/administration/card/delete/{id}', name: 'administration_card_delete')]
-    public function cardDelete(int                    $id, Request $request, CardRepository $cardRepository,
-                               EntityManagerInterface $entityManagerInterface): Response
-    {
+    public function cardDelete(int                    $id,
+                               Request                $request,
+                               CardRepository         $cardRepository,
+                               EntityManagerInterface $entityManagerInterface): Response {
         $card = $cardRepository->find($id);
 
         $entityManagerInterface->remove($card);
