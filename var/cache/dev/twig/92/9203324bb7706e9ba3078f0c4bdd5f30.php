@@ -147,10 +147,14 @@ class __TwigTemplate_0d12be35144227cfdce6d65aee07317f extends Template
         // line 34
         yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 34, $this->source); })()), "Valor", "ability.value");
         yield "</th>
+                        <th class=\"px-4 py-3\">";
+        // line 35
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 35, $this->source); })()), "Categoría", "ability.category.name");
+        yield "</th>
                         <th class=\"px-4 py-3 flex flex-row items-center\">
                             <span>Acciones</span>
                             <a href=\"";
-        // line 37
+        // line 38
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_create");
         yield "\"
                                class=\"ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8
@@ -163,49 +167,53 @@ class __TwigTemplate_0d12be35144227cfdce6d65aee07317f extends Template
 
                 <tbody class=\"divide-y divide-gray-200 dark:divide-gray-700\">
                 ";
-        // line 47
-        if ((Twig\Extension\CoreExtension::length($this->env->getCharset(), (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 47, $this->source); })())) > 0)) {
-            // line 48
+        // line 48
+        if ((Twig\Extension\CoreExtension::length($this->env->getCharset(), (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 48, $this->source); })())) > 0)) {
+            // line 49
             yield "                    ";
             $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 48, $this->source); })()));
+            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 49, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-                // line 49
+                // line 50
                 yield "                        <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f] transition\">
                             <td class=\"px-4 py-2\">";
-                // line 50
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 50), "html", null, true);
-                yield "</td>
-                            <td class=\"px-4 py-2\">";
                 // line 51
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "description", [], "any", false, false, false, 51), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 51), "html", null, true);
                 yield "</td>
                             <td class=\"px-4 py-2\">";
                 // line 52
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 52), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "description", [], "any", false, false, false, 52), "html", null, true);
                 yield "</td>
                             <td class=\"px-4 py-2\">";
                 // line 53
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 53), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 53), "html", null, true);
+                yield "</td>
+                            <td class=\"px-4 py-2\">";
+                // line 54
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 54), "html", null, true);
+                yield "</td>
+                            <td class=\"px-4 py-2\">";
+                // line 55
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "category", [], "any", false, false, false, 55), "name", [], "any", false, false, false, 55), "html", null, true);
                 yield "</td>
                             <td class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">
                                 <a href=\"";
-                // line 55
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "id", [], "any", false, false, false, 55)]), "html", null, true);
+                // line 57
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "id", [], "any", false, false, false, 57)]), "html", null, true);
                 yield "\"
                                    class=\"text-[#4a3aff] dark:text-[#7f70ff] hover:underline\" title=\"Editar habilidad\">
                                     <img src=\"";
-                // line 57
+                // line 59
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/icons/boton-editar.png"), "html", null, true);
                 yield "\" alt=\"Editar\" class=\"w-4\" />
                                 </a>
                                 <a href=\"";
-                // line 59
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "id", [], "any", false, false, false, 59)]), "html", null, true);
+                // line 61
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_ability_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "id", [], "any", false, false, false, 61)]), "html", null, true);
                 yield "\"
                                    class=\"text-[#ff4a4a] dark:text-[#ff7373] hover:underline\" title=\"Eliminar habilidad\">
                                     <img src=\"";
-                // line 61
+                // line 63
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/icons/boton-eliminar.png"), "html", null, true);
                 yield "\" alt=\"Eliminar\" class=\"w-4\" />
                                 </a>
@@ -216,24 +224,24 @@ class __TwigTemplate_0d12be35144227cfdce6d65aee07317f extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 66
+            // line 68
             yield "                ";
         } else {
-            // line 67
+            // line 69
             yield "                    <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f]\">
                         <td colspan=\"5\" class=\"px-4 py-2\">No hay usuarios registrados.</td>
                     </tr>
                 ";
         }
-        // line 71
+        // line 73
         yield "                </tbody>
             </table>
         </section>
 
         <div class=\"mt-4\">
             ";
-        // line 76
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 76, $this->source); })()));
+        // line 78
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 78, $this->source); })()));
         yield "
         </div>
     </section>
@@ -268,7 +276,7 @@ class __TwigTemplate_0d12be35144227cfdce6d65aee07317f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  236 => 76,  229 => 71,  223 => 67,  220 => 66,  209 => 61,  204 => 59,  199 => 57,  194 => 55,  189 => 53,  185 => 52,  181 => 51,  177 => 50,  174 => 49,  169 => 48,  167 => 47,  154 => 37,  148 => 34,  144 => 33,  140 => 32,  136 => 31,  124 => 22,  110 => 11,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  244 => 78,  237 => 73,  231 => 69,  228 => 68,  217 => 63,  212 => 61,  207 => 59,  202 => 57,  197 => 55,  193 => 54,  189 => 53,  185 => 52,  181 => 51,  178 => 50,  173 => 49,  171 => 48,  158 => 38,  152 => 35,  148 => 34,  144 => 33,  140 => 32,  136 => 31,  124 => 22,  110 => 11,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -307,6 +315,7 @@ class __TwigTemplate_0d12be35144227cfdce6d65aee07317f extends Template
                         <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Descripción', 'ability.description') }}</th>
                         <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Coste', 'ability.cost') }}</th>
                         <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Valor', 'ability.value') }}</th>
+                        <th class=\"px-4 py-3\">{{ knp_pagination_sortable(pagination, 'Categoría', 'ability.category.name') }}</th>
                         <th class=\"px-4 py-3 flex flex-row items-center\">
                             <span>Acciones</span>
                             <a href=\"{{ path('administration_ability_create') }}\"
@@ -326,6 +335,7 @@ class __TwigTemplate_0d12be35144227cfdce6d65aee07317f extends Template
                             <td class=\"px-4 py-2\">{{ ability.description }}</td>
                             <td class=\"px-4 py-2\">{{ ability.cost }}</td>
                             <td class=\"px-4 py-2\">{{ ability.value }}</td>
+                            <td class=\"px-4 py-2\">{{ ability.category.name }}</td>
                             <td class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">
                                 <a href=\"{{ path('administration_ability_edit', { id: ability.id }) }}\"
                                    class=\"text-[#4a3aff] dark:text-[#7f70ff] hover:underline\" title=\"Editar habilidad\">

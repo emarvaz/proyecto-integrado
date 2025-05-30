@@ -17,6 +17,7 @@ class AbilityForm extends AbstractType
             ->add('name')
             ->add('description')
             ->add('cost')
+            ->add('value')
             ->add('category', EntityType::class, [
                 'class' => AbilityCategory::class,
                 'choice_label' => 'name',

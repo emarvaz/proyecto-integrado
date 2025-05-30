@@ -5,61 +5,12 @@
     --card-slot-border: 2px dashed #bbb;
 }
 
-.card-deck__layout {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem;
-    min-height: 100vh;
-    border-radius: 1.5rem;
-}
-
-.card-deck__list {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.card-deck__list__tab {
-    border: 2px solid #cce0ff;
-    border-radius: 1rem;
-    padding: 1rem 1.5rem;
-    text-decoration: none;
-    box-sizing: border-box;
-
-    &:hover {
-        border: 2px solid #173563;
-
-        & a {
-            color: #173563;
-        }
-    }
-}
-
-.card-deck__list__tab a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.card-deck__list__content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
-    border-radius: 1rem;
-    border: 1px solid #dbe3ea;
-}
-
 .card-deck__container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem 1rem;
     padding: 1rem;
     border-radius: 1rem;
-    border: 2px solid #e0e0e0;
     min-height: 200px;
 }
 
@@ -87,7 +38,6 @@
     }
 
     &:hover {
-        border: var(--card-hover);
         cursor: pointer;
     }
 }

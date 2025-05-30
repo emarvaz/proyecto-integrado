@@ -125,8 +125,8 @@ class __TwigTemplate_21f59eba3b96fec6463bcf2ecd226ada extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 10
-        yield "    <section class=\"w-full px-4 py-8 flex flex-col md:flex-row max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl border border-gray-300 dark:border-gray-700 shadow-md overflow-hidden\">
-        <figure class=\"w-full md:w-2/5 bg-black bg-center bg-no-repeat bg-contain min-h-[400px]\"
+        yield "    <article class=\"w-full px-6 py-8 flex flex-col gap-8 md:flex-row max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl border border-gray-300 dark:border-gray-700 shadow-md overflow-hidden\">
+        <figure class=\"rounded-lg w-full md:w-2/5 bg-black bg-center bg-no-repeat bg-contain min-h-[400px]\"
                 style=\"background-image: url('";
         // line 12
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/content/cards/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 12, $this->source); })()), "image", [], "any", false, false, false, 12))), "html", null, true);
@@ -134,28 +134,33 @@ class __TwigTemplate_21f59eba3b96fec6463bcf2ecd226ada extends Template
                 role=\"img\">
         </figure>
 
-        <section class=\"w-full md:w-3/5 p-6 flex flex-col gap-6\">
-
-            <div class=\"flex justify-between items-center border-b border-gray-300 dark:border-gray-600 pb-4\">
+        <section class=\"w-full md:w-3/5 flex flex-col gap-6\">
+            <section class=\"flex justify-between items-center border-gray-300 dark:border-gray-600 pb-4\">
                 <h1 class=\"text-2xl font-bold text-gray-800 dark:text-gray-100\">";
-        // line 19
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 19, $this->source); })()), "name", [], "any", false, false, false, 19), "html", null, true);
+        // line 18
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 18, $this->source); })()), "name", [], "any", false, false, false, 18), "html", null, true);
         yield "</h1>
 
-                <data class=\"text-xl font-semibold text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900 px-3 py-1 rounded-full border border-red-300 dark:border-red-600\">";
+                <data class=\"flex flex-row gap-2 items-center text-xl font-semibold text-black-600 dark:white\">
+                    <span>";
         // line 21
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 21, $this->source); })()), "health", [], "any", false, false, false, 21), "html", null, true);
-        yield " ❤️</data>
-            </div>
+        yield "</span>
+
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                        <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" />
+                    </svg>
+                </data>
+            </section>
 
             <section>
-                <h2 class=\"text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2\">Habilidades</h2>
+                <h2 class=\"text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4\">Habilidades</h2>
 
                 <dl class=\"space-y-4\">
                     ";
-        // line 28
+        // line 33
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 28, $this->source); })()), "abilities", [], "any", false, false, false, 28));
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 33, $this->source); })()), "abilities", [], "any", false, false, false, 33));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -170,53 +175,70 @@ class __TwigTemplate_21f59eba3b96fec6463bcf2ecd226ada extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-            // line 29
-            yield "                        <div>
-                            <dt class=\"text-md font-semibold text-gray-800 dark:text-gray-100\">
-                                ";
-            // line 31
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 31), "html", null, true);
-            yield "
-                            </dt>
-                            <dd class=\"grid grid-cols-1 md:grid-cols-5 gap-2\">
-                                <div class=\"col-span-3 text-sm text-gray-600 dark:text-gray-300\">
-                                    ";
+            // line 34
+            yield "                        <dt class=\"grid grid-cols-[1fr_0.5fr] text-md font-semibold text-gray-800 dark:text-gray-100 mb-2\">
+                            <span>";
             // line 35
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "description", [], "any", false, false, false, 35), "html", null, true);
-            yield "
-                                </div>
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 35), "html", null, true);
+            yield "</span>
 
-                                <div class=\"col-span-2 text-right\">
-                                    <button onclick=\"document.getElementById('dialog-";
+                            <div class=\"grid grid-cols-2 gap-8 justify-self-end\">
+                                <data class=\"flex flex-row gap-2 items-center text-xl font-semibold text-black-600 dark:text-white-400\">
+                                    <span>";
             // line 39
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 39), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 39), "html", null, true);
+            yield "</span>
+
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                        <path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z\" clip-rule=\"evenodd\" />
+                                    </svg>
+                                </data>
+
+                                <data class=\"flex flex-row gap-2 items-center text-xl font-semibold text-black-600 dark:text-white-400\">
+                                    <span>";
+            // line 47
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 47), "html", null, true);
+            yield "</span>
+
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                        <path fill-rule=\"evenodd\" d=\"M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z\" clip-rule=\"evenodd\" />
+                                    </svg>
+                                </data>
+                            </div>
+                        </dt>
+                        <dd class=\"grid grid-cols-1 md:grid-cols-5 gap-2\">
+                            <p class=\"col-span-3 text-sm text-gray-600 dark:text-gray-300\">";
+            // line 56
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "description", [], "any", false, false, false, 56), "html", null, true);
+            yield "</p>
+
+                            <span class=\"col-span-2 justify-self-end\">
+                                <button onclick=\"document.getElementById('dialog-";
+            // line 59
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 59), "html", null, true);
             yield "').showModal()\"
-                                            class=\"text-blue-600 dark:text-blue-400 hover:underline text-sm
-                                                   font-medium\">";
-            // line 41
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "category", [], "any", false, false, false, 41), "name", [], "any", false, false, false, 41), "html", null, true);
+                                        class=\"text-blue-600 dark:text-blue-400 hover:text-blue-400 cursor-pointer text-sm font-medium\">";
+            // line 60
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "category", [], "any", false, false, false, 60), "name", [], "any", false, false, false, 60), "html", null, true);
             yield "</button>
 
-                                    <dialog id=\"dialog-";
-            // line 43
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 43), "html", null, true);
+                                <dialog id=\"dialog-";
+            // line 62
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 62), "html", null, true);
             yield "\"
-                                            class=\"fixed inset-0 m-auto w-full max-w-md rounded-lg p-6 bg-white
-                                                   dark:bg-gray-900 border border-gray-300 dark:border-gray-700
-                                                   shadow-xl backdrop:bg-black/30\">
-                                        <h1 class=\"text-lg font-bold text-gray-900 dark:text-white mb-2\">";
-            // line 47
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "category", [], "any", false, false, false, 47), "name", [], "any", false, false, false, 47), "html", null, true);
+                                        class=\"fixed inset-0 m-auto w-full max-w-md rounded-lg p-6 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 backdrop:bg-black/30\">
+                                    <h1 class=\"text-lg font-bold text-gray-900 dark:text-white mb-2\">";
+            // line 64
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "category", [], "any", false, false, false, 64), "name", [], "any", false, false, false, 64), "html", null, true);
             yield "</h1>
 
-                                        <p class=\"text-sm text-gray-700 dark:text-gray-300\">";
-            // line 49
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "category", [], "any", false, false, false, 49), "description", [], "any", false, false, false, 49), "html", null, true);
+                                    <p class=\"text-sm text-gray-700 dark:text-gray-300\">";
+            // line 66
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "category", [], "any", false, false, false, 66), "description", [], "any", false, false, false, 66), "html", null, true);
             yield "</p>
-                                    </dialog>
-                                </div>
-                            </dd>
-                        </div>
+                                </dialog>
+                            </span>
+                        </dd>
                     ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -230,16 +252,16 @@ class __TwigTemplate_21f59eba3b96fec6463bcf2ecd226ada extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 55
+        // line 71
         yield "                </dl>
             </section>
 
             <section>
-                <h2 class=\"text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2\">Descripción</h2>
+                <h2 class=\"text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4\">Descripción</h2>
 
                 <p class=\"text-sm text-gray-600 dark:text-gray-400 leading-relaxed\">";
-        // line 61
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 61, $this->source); })()), "description", [], "any", false, false, false, 61), "html", null, true);
+        // line 77
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 77, $this->source); })()), "description", [], "any", false, false, false, 77), "html", null, true);
         yield "</p>
             </section>
         </section>
@@ -260,7 +282,7 @@ class __TwigTemplate_21f59eba3b96fec6463bcf2ecd226ada extends Template
                 });
             });
         </script>
-    </section>
+    </article>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -292,7 +314,7 @@ class __TwigTemplate_21f59eba3b96fec6463bcf2ecd226ada extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  242 => 61,  234 => 55,  214 => 49,  209 => 47,  202 => 43,  197 => 41,  192 => 39,  185 => 35,  178 => 31,  174 => 29,  157 => 28,  147 => 21,  142 => 19,  132 => 12,  128 => 10,  115 => 9,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  264 => 77,  256 => 71,  237 => 66,  232 => 64,  227 => 62,  222 => 60,  218 => 59,  212 => 56,  200 => 47,  189 => 39,  182 => 35,  179 => 34,  162 => 33,  147 => 21,  141 => 18,  132 => 12,  128 => 10,  115 => 9,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -306,56 +328,72 @@ class __TwigTemplate_21f59eba3b96fec6463bcf2ecd226ada extends Template
 {% endblock %}
 
 {% block main %}
-    <section class=\"w-full px-4 py-8 flex flex-col md:flex-row max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl border border-gray-300 dark:border-gray-700 shadow-md overflow-hidden\">
-        <figure class=\"w-full md:w-2/5 bg-black bg-center bg-no-repeat bg-contain min-h-[400px]\"
+    <article class=\"w-full px-6 py-8 flex flex-col gap-8 md:flex-row max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl border border-gray-300 dark:border-gray-700 shadow-md overflow-hidden\">
+        <figure class=\"rounded-lg w-full md:w-2/5 bg-black bg-center bg-no-repeat bg-contain min-h-[400px]\"
                 style=\"background-image: url('{{ asset('/assets/images/content/cards/' ~ card.image) }}');\"
                 role=\"img\">
         </figure>
 
-        <section class=\"w-full md:w-3/5 p-6 flex flex-col gap-6\">
-
-            <div class=\"flex justify-between items-center border-b border-gray-300 dark:border-gray-600 pb-4\">
+        <section class=\"w-full md:w-3/5 flex flex-col gap-6\">
+            <section class=\"flex justify-between items-center border-gray-300 dark:border-gray-600 pb-4\">
                 <h1 class=\"text-2xl font-bold text-gray-800 dark:text-gray-100\">{{ card.name }}</h1>
 
-                <data class=\"text-xl font-semibold text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900 px-3 py-1 rounded-full border border-red-300 dark:border-red-600\">{{ card.health }} ❤️</data>
-            </div>
+                <data class=\"flex flex-row gap-2 items-center text-xl font-semibold text-black-600 dark:white\">
+                    <span>{{ card.health }}</span>
+
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                        <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" />
+                    </svg>
+                </data>
+            </section>
 
             <section>
-                <h2 class=\"text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2\">Habilidades</h2>
+                <h2 class=\"text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4\">Habilidades</h2>
 
                 <dl class=\"space-y-4\">
                     {% for ability in card.abilities %}
-                        <div>
-                            <dt class=\"text-md font-semibold text-gray-800 dark:text-gray-100\">
-                                {{ ability.name }}
-                            </dt>
-                            <dd class=\"grid grid-cols-1 md:grid-cols-5 gap-2\">
-                                <div class=\"col-span-3 text-sm text-gray-600 dark:text-gray-300\">
-                                    {{ ability.description }}
-                                </div>
+                        <dt class=\"grid grid-cols-[1fr_0.5fr] text-md font-semibold text-gray-800 dark:text-gray-100 mb-2\">
+                            <span>{{ ability.name }}</span>
 
-                                <div class=\"col-span-2 text-right\">
-                                    <button onclick=\"document.getElementById('dialog-{{ loop.index }}').showModal()\"
-                                            class=\"text-blue-600 dark:text-blue-400 hover:underline text-sm
-                                                   font-medium\">{{ ability.category.name }}</button>
+                            <div class=\"grid grid-cols-2 gap-8 justify-self-end\">
+                                <data class=\"flex flex-row gap-2 items-center text-xl font-semibold text-black-600 dark:text-white-400\">
+                                    <span>{{ ability.cost }}</span>
 
-                                    <dialog id=\"dialog-{{ loop.index }}\"
-                                            class=\"fixed inset-0 m-auto w-full max-w-md rounded-lg p-6 bg-white
-                                                   dark:bg-gray-900 border border-gray-300 dark:border-gray-700
-                                                   shadow-xl backdrop:bg-black/30\">
-                                        <h1 class=\"text-lg font-bold text-gray-900 dark:text-white mb-2\">{{ ability.category.name }}</h1>
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                        <path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z\" clip-rule=\"evenodd\" />
+                                    </svg>
+                                </data>
 
-                                        <p class=\"text-sm text-gray-700 dark:text-gray-300\">{{ ability.category.description }}</p>
-                                    </dialog>
-                                </div>
-                            </dd>
-                        </div>
+                                <data class=\"flex flex-row gap-2 items-center text-xl font-semibold text-black-600 dark:text-white-400\">
+                                    <span>{{ ability.value }}</span>
+
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                        <path fill-rule=\"evenodd\" d=\"M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z\" clip-rule=\"evenodd\" />
+                                    </svg>
+                                </data>
+                            </div>
+                        </dt>
+                        <dd class=\"grid grid-cols-1 md:grid-cols-5 gap-2\">
+                            <p class=\"col-span-3 text-sm text-gray-600 dark:text-gray-300\">{{ ability.description }}</p>
+
+                            <span class=\"col-span-2 justify-self-end\">
+                                <button onclick=\"document.getElementById('dialog-{{ loop.index }}').showModal()\"
+                                        class=\"text-blue-600 dark:text-blue-400 hover:text-blue-400 cursor-pointer text-sm font-medium\">{{ ability.category.name }}</button>
+
+                                <dialog id=\"dialog-{{ loop.index }}\"
+                                        class=\"fixed inset-0 m-auto w-full max-w-md rounded-lg p-6 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 backdrop:bg-black/30\">
+                                    <h1 class=\"text-lg font-bold text-gray-900 dark:text-white mb-2\">{{ ability.category.name }}</h1>
+
+                                    <p class=\"text-sm text-gray-700 dark:text-gray-300\">{{ ability.category.description }}</p>
+                                </dialog>
+                            </span>
+                        </dd>
                     {% endfor %}
                 </dl>
             </section>
 
             <section>
-                <h2 class=\"text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2\">Descripción</h2>
+                <h2 class=\"text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4\">Descripción</h2>
 
                 <p class=\"text-sm text-gray-600 dark:text-gray-400 leading-relaxed\">{{ card.description }}</p>
             </section>
@@ -377,7 +415,7 @@ class __TwigTemplate_21f59eba3b96fec6463bcf2ecd226ada extends Template
                 });
             });
         </script>
-    </section>
+    </article>
 {% endblock %}
 ", "card/index.html.twig", "C:\\Users\\eduar\\Documents\\GitHub\\proyecto-integrado\\templates\\card\\index.html.twig");
     }

@@ -13,9 +13,7 @@ class AbilityCategoryForm extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description')
-            ->add('value')
-        ;
+            ->add('description');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -32,12 +32,11 @@
                         <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Descripción', 'ability.description') }}</th>
                         <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Coste', 'ability.cost') }}</th>
                         <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Valor', 'ability.value') }}</th>
+                        <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Categoría', 'ability.category.name') }}</th>
                         <th class="px-4 py-3 flex flex-row items-center">
                             <span>Acciones</span>
                             <a href="{{ path('administration_ability_create') }}"
-                               class="ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8
-                                  rounded-full bg-[#4a3aff] hover:bg-[#3a2aff] text-white dark:bg-[#7f70ff]
-                                  dark:hover:bg-[#6e60ff]"
+                               class="ml-2 inline-flex items-center justify-center text-sm font-semibold w-8 h-8 rounded-full bg-[#4a3aff] hover:bg-[#3a2aff] text-white dark:bg-[#7f70ff] dark:hover:bg-[#6e60ff]"
                                title="Crear nueva habilidad">+</a>
                         </th>
                     </tr>
@@ -51,6 +50,7 @@
                             <td class="px-4 py-2">{{ ability.description }}</td>
                             <td class="px-4 py-2">{{ ability.cost }}</td>
                             <td class="px-4 py-2">{{ ability.value }}</td>
+                            <td class="px-4 py-2">{{ ability.category.name }}</td>
                             <td class="flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap">
                                 <a href="{{ path('administration_ability_edit', { id: ability.id }) }}"
                                    class="text-[#4a3aff] dark:text-[#7f70ff] hover:underline" title="Editar habilidad">

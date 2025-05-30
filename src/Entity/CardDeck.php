@@ -28,6 +28,9 @@ class CardDeck
     #[ORM\ManyToMany(targetEntity: Card::class, inversedBy: 'cardDecks')]
     private Collection $cards;
 
+    #[ORM\Column]
+    private ?bool $isFavorite = null;
+
     public function __construct()
     {
         $this->cards = new ArrayCollection();
@@ -82,6 +85,18 @@ class CardDeck
     public function removeCard(Card $card): static
     {
         $this->cards->removeElement($card);
+
+        return $this;
+    }
+
+    public function isFavorite(): ?bool
+    {
+        return $this->isFavorite;
+    }
+
+    public function setIsFavorite(bool $isFavorite): static
+    {
+        $this->isFavorite = $isFavorite;
 
         return $this;
     }
