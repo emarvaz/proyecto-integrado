@@ -22,7 +22,6 @@ return [
         '/administration/ability/list' => [[['_route' => 'administration_ability_list', '_controller' => 'App\\Controller\\AbilityController::abilityList'], null, null, null, false, false, null]],
         '/administration/ability/create' => [[['_route' => 'administration_ability_create', '_controller' => 'App\\Controller\\AbilityController::abilityCreate'], null, null, null, false, false, null]],
         '/administration' => [[['_route' => 'administration', '_controller' => 'App\\Controller\\AdministrationController::index'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'index', '_controller' => 'App\\Controller\\ApplicationController::index'], null, null, null, false, false, null]],
         '/api/cards' => [
             [['_route' => 'api_card_list', '_controller' => 'App\\Controller\\CardAPIController::list'], null, ['GET' => 0], null, false, false, null],
             [['_route' => 'api_card_create', '_controller' => 'App\\Controller\\CardAPIController::create'], null, ['POST' => 0], null, false, false, null],
@@ -30,6 +29,7 @@ return [
         '/card/list' => [[['_route' => 'card_list', '_controller' => 'App\\Controller\\CardController::list'], null, null, null, false, false, null]],
         '/administration/card/list' => [[['_route' => 'administration_card_list', '_controller' => 'App\\Controller\\CardController::administrationCardList'], null, null, null, false, false, null]],
         '/administration/card/create' => [[['_route' => 'administration_card_create', '_controller' => 'App\\Controller\\CardController::cardCreate'], null, null, null, false, false, null]],
+        '/community' => [[['_route' => 'card_deck_list', '_controller' => 'App\\Controller\\CardDeckController::list'], null, null, null, false, false, null]],
         '/sign-in' => [[['_route' => 'sign_in', '_controller' => 'App\\Controller\\SecurityController::signIn'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
@@ -106,7 +106,7 @@ return [
         440 => [[['_route' => 'administration_user_delete', '_controller' => 'App\\Controller\\UserController::administrationUserDelete'], ['id'], null, null, false, true, null]],
         467 => [[['_route' => 'api_card_show', '_controller' => 'App\\Controller\\CardAPIController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         490 => [[['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null]],
-        515 => [[['_route' => 'card_deck__list', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
+        515 => [[['_route' => 'card_deck_edit', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
         546 => [
             [['_route' => 'profile_edit', '_controller' => 'App\\Controller\\UserController::profileEdit'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],

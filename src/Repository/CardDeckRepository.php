@@ -40,4 +40,14 @@ class CardDeckRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findFavorites(): array
+    {
+        return $this->createQueryBuilder('cardDeck')
+            ->andWhere('cardDeck.isFavorite = :true')
+            ->setParameter('true', true)
+            ->orderBy('cardDeck.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }
