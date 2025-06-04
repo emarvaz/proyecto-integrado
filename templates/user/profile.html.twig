@@ -8,12 +8,12 @@
 
 {% block main %}
     <section class="w-full flex flex-col items-center gap-8 py-10 px-4">
-        <div class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-10">
-            <div class="flex-shrink-0">
+        <section class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-10">
+            <section class="flex-shrink-0">
                 <img src="#" alt="Avatar de {{ user.username }}" class="w-40 h-40 rounded-full object-cover border-4 border-white shadow dark:border-gray-700">
-            </div>
+            </section>
 
-            <div class="flex-1 w-full">
+            <section class="flex-1 w-full">
                 <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">{{ user.username }}</h1>
 
                 <ul class="space-y-3 text-lg text-gray-700 dark:text-gray-300">
@@ -23,10 +23,14 @@
                     <li><span class="font-semibold text-gray-900 dark:text-white">Fecha de registro:</span> {{ user.name }}</li>
                 </ul>
 
-                <div class="mt-6">
-                    <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl shadow transition">Editar perfil</a>
-                </div>
-            </div>
-        </div>
+                {% if user.id == app.user.id %}
+                    <section class="mt-6">
+                        <a href="{{ path('user_edit', { 'id': user.id}) }}"
+                           class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl
+                                  shadow transition">Editar perfil</a>
+                    </section>
+                {% endif %}
+            </section>
+        </section>
     </section>
 {% endblock %}

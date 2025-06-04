@@ -422,6 +422,9 @@
     <service id="App\Form\CardForm" class="App\Form\CardForm" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
+    <service id="App\Form\CopyCardDeckForm" class="App\Form\CopyCardDeckForm" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
     <service id="App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
@@ -444,6 +447,9 @@
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Security\AccessDeniedHandler" class="App\Security\AccessDeniedHandler" autowire="true" autoconfigure="true">
+      <argument type="service" id="router.default"/>
     </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
@@ -473,7 +479,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.AI1Bxyz"/>
+      <argument type="service" id=".service_locator.SCC.See"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1201,6 +1207,7 @@
         <argument>App\Form\AbilityForm</argument>
         <argument>App\Form\CardDeckForm</argument>
         <argument>App\Form\CardForm</argument>
+        <argument>App\Form\CopyCardDeckForm</argument>
         <argument>App\Form\UserType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -2802,7 +2809,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.AI1Bxyz"/>
+      <argument type="service" id=".service_locator.SCC.See"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -3347,7 +3354,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.UGQ9nh9"/>
+      <argument type="service" id=".service_locator.q5YU0sl"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3449,6 +3456,7 @@
         <argument key="App\Form\AbilityForm">submit</argument>
         <argument key="App\Form\CardDeckForm">submit</argument>
         <argument key="App\Form\CardForm">submit</argument>
+        <argument key="App\Form\CopyCardDeckForm">submit</argument>
         <argument key="App\Form\UserType">submit</argument>
       </argument>
     </service>
@@ -5832,7 +5840,7 @@
       <argument>security.user.provider.concrete.user_provider</argument>
       <argument>main</argument>
       <argument>security.authenticator.form_login.main</argument>
-      <argument>null</argument>
+      <argument>App\Security\AccessDeniedHandler</argument>
       <argument>null</argument>
       <argument type="collection">
         <argument>form_login</argument>
@@ -5975,7 +5983,7 @@
       <argument>main</argument>
       <argument type="service" id="security.authenticator.form_login.main"/>
       <argument>null</argument>
-      <argument>null</argument>
+      <argument type="service" id="App\Security\AccessDeniedHandler"/>
       <argument type="service" id="logger" on-invalid="null"/>
       <argument>false</argument>
     </service>
@@ -6250,6 +6258,8 @@
     <service id=".abstract.instanceof.App\Form\CardDeckForm" class="App\Form\CardDeckForm" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CardForm" class="App\Form\CardForm" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CardForm" class="App\Form\CardForm" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CopyCardDeckForm" class="App\Form\CopyCardDeckForm" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CopyCardDeckForm" class="App\Form\CopyCardDeckForm" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserType" class="App\Form\UserType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AbilityCategoryRepository" class="App\Repository\AbilityCategoryRepository" autowire="true" abstract="true"/>
@@ -7023,6 +7033,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.3QECKYg" method="withContext"/>
     </service>
+    <service id=".service_locator.OzEre6h.App\Controller\UserController::profile()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\UserController::profile()"/>
+      <argument>App\Controller\UserController::profile()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.OzEre6h" method="withContext"/>
+    </service>
     <service id=".service_locator.d8rsN5P" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7073,7 +7089,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.d8rsN5P" method="withContext"/>
     </service>
-    <service id=".service_locator.AI1Bxyz" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.SCC.See" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
@@ -7102,6 +7118,7 @@
         <argument key="App\Controller\CardDeckController::edit" type="service_closure" id=".service_locator.JfWF6yZ.App\Controller\CardDeckController::edit()"/>
         <argument key="App\Controller\SecurityController::signIn" type="service_closure" id=".service_locator.UmW841m.App\Controller\SecurityController::signIn()"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.3QECKYg.App\Controller\SecurityController::login()"/>
+        <argument key="App\Controller\UserController::profile" type="service_closure" id=".service_locator.OzEre6h.App\Controller\UserController::profile()"/>
         <argument key="App\Controller\UserController::profileEdit" type="service_closure" id=".service_locator.d8rsN5P.App\Controller\UserController::profileEdit()"/>
         <argument key="App\Controller\UserController::administrationUserList" type="service_closure" id=".service_locator.bQ78HV5.App\Controller\UserController::administrationUserList()"/>
         <argument key="App\Controller\UserController::administrationUserCreate" type="service_closure" id=".service_locator.egipcEH.App\Controller\UserController::administrationUserCreate()"/>
@@ -7131,6 +7148,7 @@
         <argument key="App\Controller\CardDeckController:edit" type="service_closure" id=".service_locator.JfWF6yZ.App\Controller\CardDeckController::edit()"/>
         <argument key="App\Controller\SecurityController:signIn" type="service_closure" id=".service_locator.UmW841m.App\Controller\SecurityController::signIn()"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.3QECKYg.App\Controller\SecurityController::login()"/>
+        <argument key="App\Controller\UserController:profile" type="service_closure" id=".service_locator.OzEre6h.App\Controller\UserController::profile()"/>
         <argument key="App\Controller\UserController:profileEdit" type="service_closure" id=".service_locator.d8rsN5P.App\Controller\UserController::profileEdit()"/>
         <argument key="App\Controller\UserController:administrationUserList" type="service_closure" id=".service_locator.bQ78HV5.App\Controller\UserController::administrationUserList()"/>
         <argument key="App\Controller\UserController:administrationUserCreate" type="service_closure" id=".service_locator.egipcEH.App\Controller\UserController::administrationUserCreate()"/>
@@ -7310,13 +7328,14 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.UGQ9nh9" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.q5YU0sl" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AbilityCategoryForm" type="service_closure" id="App\Form\AbilityCategoryForm"/>
         <argument key="App\Form\AbilityForm" type="service_closure" id="App\Form\AbilityForm"/>
         <argument key="App\Form\CardDeckForm" type="service_closure" id="App\Form\CardDeckForm"/>
         <argument key="App\Form\CardForm" type="service_closure" id="App\Form\CardForm"/>
+        <argument key="App\Form\CopyCardDeckForm" type="service_closure" id="App\Form\CopyCardDeckForm"/>
         <argument key="App\Form\UserType" type="service_closure" id="App\Form\UserType"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service_closure" id="form.type.form"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -8810,7 +8829,7 @@
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.AI1Bxyz"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.SCC.See"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>

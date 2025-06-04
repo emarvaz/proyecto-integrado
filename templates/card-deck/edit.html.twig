@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block main %}
-    <ul class="flex flex-wrap gap-2 mb-6">
+    <ul class="flex flex-wrap gap-6 mb-6">
         {% for cardDeck in cardDecks %}
             <li>
                 <a href="{{ path('card_deck_edit', {'id': cardDeck.id}) }}"

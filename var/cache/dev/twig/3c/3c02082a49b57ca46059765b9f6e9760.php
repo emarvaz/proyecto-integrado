@@ -130,7 +130,7 @@ class __TwigTemplate_ccfbba68feecf019b0d3d051bbe053b4 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 12
-        yield "    <section class=\"w-full px-4 py-8\">
+        yield "    <section class=\"w-full\">
         <div class=\"grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6\">
             ";
         // line 14
@@ -266,7 +266,7 @@ class __TwigTemplate_ccfbba68feecf019b0d3d051bbe053b4 extends Template
 {% endblock %}
 
 {% block main %}
-    <section class=\"w-full px-4 py-8\">
+    <section class=\"w-full\">
         <div class=\"grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6\">
             {% for card in cards %}
                 <a href=\"{{ path('card', { id: card.id }) }}\">

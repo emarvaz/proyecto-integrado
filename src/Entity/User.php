@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -32,6 +33,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 60, nullable: true)]
     private ?string $lastname = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $profilePic= null;
+
+    public function getProfilePic(): ?string
+    {
+        return $this->profilePic;
+    }
+
+    public function setProfilePic(?string $profilePic): void
+    {
+        $this->profilePic = $profilePic;
+    }
 
     #[ORM\Column(type: 'json')]
     private ?array $roles = [];

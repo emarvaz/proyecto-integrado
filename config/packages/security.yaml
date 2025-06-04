@@ -27,6 +27,8 @@ security:
             logout:
                 path: logout
 
+            access_denied_handler: App\Security\AccessDeniedHandler
+
     access_control:
         - { path: ^/administration, roles: ROLE_ADMIN }
         - { path: ^/card-deck, roles: ROLE_USER }

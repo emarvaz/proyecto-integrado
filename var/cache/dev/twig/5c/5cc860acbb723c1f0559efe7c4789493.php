@@ -89,7 +89,7 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         yield from $this->unwrap()->yieldBlock('aside', $context, $blocks);
         // line 28
         yield "
-            <main class=\"flex flex-col mx-10 px-6 py-8 flex-1\">
+            <main class=\"flex flex-col mx-18 py-8 flex-1\">
                 ";
         // line 30
         yield from $this->unwrap()->yieldBlock('main', $context, $blocks);
@@ -331,7 +331,7 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         <div class=\"flex flex-row\">
             {% block aside %}{% endblock %}
 
-            <main class=\"flex flex-col mx-10 px-6 py-8 flex-1\">
+            <main class=\"flex flex-col mx-18 py-8 flex-1\">
                 {% block main %}{% endblock %}
             </main>
         </div>

@@ -89,6 +89,13 @@ class CardDeck
         return $this;
     }
 
+    public function clearCards(): self
+    {
+        $this->cards->clear();
+        return $this;
+    }
+
+
     public function isFavorite(): ?bool
     {
         return $this->isFavorite;

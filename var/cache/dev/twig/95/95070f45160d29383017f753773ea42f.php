@@ -134,7 +134,7 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 13
-        yield "    <ul class=\"flex flex-wrap gap-2 mb-6\">
+        yield "    <ul class=\"flex flex-wrap gap-6 mb-6\">
         ";
         // line 14
         $context['_parent'] = $context;
@@ -447,7 +447,7 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
 {% endblock %}
 
 {% block main %}
-    <ul class=\"flex flex-wrap gap-2 mb-6\">
+    <ul class=\"flex flex-wrap gap-6 mb-6\">
         {% for cardDeck in cardDecks %}
             <li>
                 <a href=\"{{ path('card_deck_edit', {'id': cardDeck.id}) }}\"

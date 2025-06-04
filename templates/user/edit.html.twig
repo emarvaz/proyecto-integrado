@@ -11,11 +11,11 @@
 {% block main %}
     {{ form_start(form) }}
         {% for field in form %}
-            <div>
+            <fieldset>
                 {{ form_label(field) }}
                 {{ form_widget(field) }}
                 {{ form_errors(field) }}
-            </div>
+            </fieldset>
         {% endfor %}
 
         <input type="submit" value="Editar">

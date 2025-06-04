@@ -98,7 +98,7 @@ class __TwigTemplate_eb026bd0355213761897903cf738be29 extends Template
         } else {
             // line 27
             yield "                <a href=\"";
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile");
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "user", [], "any", false, false, false, 27), "id", [], "any", false, false, false, 27)]), "html", null, true);
             yield "\" class=\"hover:text-blue-600\">Perfil</a>
                 <a href=\"";
             // line 28
@@ -144,7 +144,7 @@ class __TwigTemplate_eb026bd0355213761897903cf738be29 extends Template
         } else {
             // line 44
             yield "                <a href=\"";
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile");
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 44, $this->source); })()), "user", [], "any", false, false, false, 44), "id", [], "any", false, false, false, 44)]), "html", null, true);
             yield "\" class=\"hover:text-blue-600\">Perfil</a>
                 <a href=\"";
             // line 45
@@ -223,7 +223,7 @@ class __TwigTemplate_eb026bd0355213761897903cf738be29 extends Template
                 <a href=\"{{ path('login') }}\" class=\"text-blue-600 hover:underline\">Iniciar sesión</a>
                 <a href=\"{{ path('sign_in') }}\" class=\"bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700\">Registrarse</a>
             {% else %}
-                <a href=\"{{ path('profile') }}\" class=\"hover:text-blue-600\">Perfil</a>
+                <a href=\"{{ path('profile', { 'id': app.user.id }) }}\" class=\"hover:text-blue-600\">Perfil</a>
                 <a href=\"{{ path('logout') }}\" class=\"hover:text-red-600\">Cerrar sesión</a>
             {% endif %}
         </div>
@@ -240,7 +240,7 @@ class __TwigTemplate_eb026bd0355213761897903cf738be29 extends Template
                 <a href=\"{{ path('login') }}\" class=\"hover:text-blue-600\">Iniciar sesión</a>
                 <a href=\"{{ path('sign_in') }}\" class=\"hover:text-blue-600\">Registrarse</a>
             {% else %}
-                <a href=\"{{ path('profile') }}\" class=\"hover:text-blue-600\">Perfil</a>
+                <a href=\"{{ path('profile', { 'id': app.user.id }) }}\" class=\"hover:text-blue-600\">Perfil</a>
                 <a href=\"{{ path('logout') }}\" class=\"hover:text-red-600\">Cerrar sesión</a>
             {% endif %}
         </nav>

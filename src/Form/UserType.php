@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -36,16 +37,25 @@ class UserType extends AbstractType
             ]);
 
         if ($options['administration']) {
-                $builder->add('roles', ChoiceType::class, [
-                    'label' => 'Roles',
-                    'choices' => [
-                        'Administrador' => 'ROLE_ADMIN',
-                    ],
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,
-                ]);
-            }
+            $builder->add('roles', ChoiceType::class, [
+                'label' => 'Roles',
+                'choices' => [
+                    'Administrador' => 'ROLE_ADMIN',
+                ],
+                'multiple' => true,
+                'expanded' => true,
+                'required' => false,
+            ]);
+        }
+
+        if ($options['edit_mode']) {
+            $builder->add('profilePic', FileType::class, [
+                'label' => 'Imagen',
+                'mapped' => false,
+                'required' => false,
+                'attr' => ['accept' => 'image/*'],
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

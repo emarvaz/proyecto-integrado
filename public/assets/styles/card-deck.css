@@ -6,7 +6,7 @@
 }
 
 .card-deck__container {
-    gap: 1.5rem 1rem;
+    gap: 1.5rem 2.5rem;
     padding: 1rem;
     border-radius: 1rem;
     min-height: 200px;

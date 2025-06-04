@@ -136,7 +136,7 @@ class __TwigTemplate_42eb3c9007eb83f5f2af839bace84c58 extends Template
         $context['_seq'] = CoreExtension::ensureTraversable((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["field"]) {
             // line 14
-            yield "            <div>
+            yield "            <fieldset>
                 ";
             // line 15
             yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($context["field"], 'label');
@@ -149,7 +149,7 @@ class __TwigTemplate_42eb3c9007eb83f5f2af839bace84c58 extends Template
             // line 17
             yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($context["field"], 'errors');
             yield "
-            </div>
+            </fieldset>
         ";
         }
         $_parent = $context['_parent'];
@@ -211,11 +211,11 @@ class __TwigTemplate_42eb3c9007eb83f5f2af839bace84c58 extends Template
 {% block main %}
     {{ form_start(form) }}
         {% for field in form %}
-            <div>
+            <fieldset>
                 {{ form_label(field) }}
                 {{ form_widget(field) }}
                 {{ form_errors(field) }}
-            </div>
+            </fieldset>
         {% endfor %}
 
         <input type=\"submit\" value=\"Editar\">

@@ -24,7 +24,7 @@
                 <a href="{{ path('login') }}" class="text-blue-600 hover:underline">Iniciar sesión</a>
                 <a href="{{ path('sign_in') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Registrarse</a>
             {% else %}
-                <a href="{{ path('profile') }}" class="hover:text-blue-600">Perfil</a>
+                <a href="{{ path('profile', { 'id': app.user.id }) }}" class="hover:text-blue-600">Perfil</a>
                 <a href="{{ path('logout') }}" class="hover:text-red-600">Cerrar sesión</a>
             {% endif %}
         </div>
@@ -41,7 +41,7 @@
                 <a href="{{ path('login') }}" class="hover:text-blue-600">Iniciar sesión</a>
                 <a href="{{ path('sign_in') }}" class="hover:text-blue-600">Registrarse</a>
             {% else %}
-                <a href="{{ path('profile') }}" class="hover:text-blue-600">Perfil</a>
+                <a href="{{ path('profile', { 'id': app.user.id }) }}" class="hover:text-blue-600">Perfil</a>
                 <a href="{{ path('logout') }}" class="hover:text-red-600">Cerrar sesión</a>
             {% endif %}
         </nav>
