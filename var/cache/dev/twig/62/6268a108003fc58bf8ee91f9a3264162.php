@@ -89,7 +89,7 @@ class __TwigTemplate_48fdb08d6a5d6f58bbf8fc26239995c6 extends Template
         yield from $this->unwrap()->yieldBlock('aside', $context, $blocks);
         // line 28
         yield "
-            <main class=\"flex flex-col mx-10 px-6 py-8 flex-1\">
+            <main class=\"flex flex-col mx-18 py-8 flex-1\">
                 ";
         // line 30
         yield from $this->unwrap()->yieldBlock('main', $context, $blocks);
@@ -331,7 +331,7 @@ class __TwigTemplate_48fdb08d6a5d6f58bbf8fc26239995c6 extends Template
         <div class=\"flex flex-row\">
             {% block aside %}{% endblock %}
 
-            <main class=\"flex flex-col mx-10 px-6 py-8 flex-1\">
+            <main class=\"flex flex-col mx-18 py-8 flex-1\">
                 {% block main %}{% endblock %}
             </main>
         </div>
@@ -341,6 +341,6 @@ class __TwigTemplate_48fdb08d6a5d6f58bbf8fc26239995c6 extends Template
         {% endblock %}
     </body>
 </html>
-", "base.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/base.html.twig");
+", "base.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/base.html.twig");
     }
 }

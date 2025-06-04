@@ -2704,6 +2704,6 @@ $context["attrvalue"] === false)) && $tmp instanceof Markup ? (string) $tmp : $t
         {%- endif -%}
     {%- endfor -%}
 {%- endblock attributes -%}
-", "form_div_layout.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/vendor/symfony/twig-bridge/Resources/views/Form/form_div_layout.html.twig");
+", "form_div_layout.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/vendor/symfony/twig-bridge/Resources/views/Form/form_div_layout.html.twig");
     }
 }

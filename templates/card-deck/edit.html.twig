@@ -30,13 +30,13 @@
         {{ form_start(form) }}
             <article class="rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 flex flex-col gap-4">
                 <header class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-sm">
-                    <div class="w-full md:w-1/3">
+                    <section class="w-full md:w-1/3">
                         {{ form_widget(form.name, {
                             attr: {
                                 class: "w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             }
                         }) }}
-                    </div>
+                    </section>
 
                     <label class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
                         ¿Favorito?
@@ -68,7 +68,7 @@
                             {{ form_widget(cardLabel, { attr: { class: 'hidden' } }) }}
 
                             <article class="card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700">
-                                <figure class="flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain" style="background-image: url('{{ asset('/assets/images/content/cards/' ~ card.image) }}');">
+                                <figure class="flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain" style="background-image: url('{{ asset('/assets/images/card/' ~ card.image) }}');">
                                     <data class="flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white">
                                         <span>{{ card.health }}</span>
 

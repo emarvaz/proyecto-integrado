@@ -40,7 +40,7 @@ class CardDeck extends ArtElement {
         const cardCountOutput = container.outputSelector('card-count');
         cardCountOutput.textContent = this.cardCount;
 
-        const cardsOutput = container.outputSelector('cards');
+        const cardsOutput = container.outputSelector('card');
         this.appendChildren(cardsOutput, 'art-card');
     }
 

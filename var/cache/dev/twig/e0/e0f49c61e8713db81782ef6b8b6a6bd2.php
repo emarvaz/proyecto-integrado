@@ -110,6 +110,6 @@ class __TwigTemplate_ada9d9759fde8dc9eb744fb95eb7b046 extends Template
         </div>
     </div>
 </footer>
-", "_footer.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/_footer.html.twig");
+", "_footer.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/_footer.html.twig");
     }
 }

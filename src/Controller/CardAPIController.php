@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-#[Route('/api/cards')]
+#[Route('/api/card')]
 class CardAPIController extends AbstractController
 {
     #[Route('', name: 'api_card_list', methods: ['GET'])]

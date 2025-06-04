@@ -393,6 +393,6 @@ class __TwigTemplate_c973f673f490a2156af8c03125b731cf extends Template
         </div>
     </section>
 {% endblock %}
-", "administration/card/list.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/card/list.html.twig");
+", "administration/card/list.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/card/list.html.twig");
     }
 }

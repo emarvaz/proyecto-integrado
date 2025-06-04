@@ -1441,6 +1441,6 @@ class __TwigTemplate_9fe281cb87881924693495092817cf6a extends Template
 
     Sfjs.loadToolbar('{{ token }}');
 /*]]>*/</script>
-", "@WebProfiler/Profiler/toolbar_js.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/toolbar_js.html.twig");
+", "@WebProfiler/Profiler/toolbar_js.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/toolbar_js.html.twig");
     }
 }

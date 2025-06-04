@@ -22,7 +22,7 @@ return [
         '/administration/ability/list' => [[['_route' => 'administration_ability_list', '_controller' => 'App\\Controller\\AbilityController::abilityList'], null, null, null, false, false, null]],
         '/administration/ability/create' => [[['_route' => 'administration_ability_create', '_controller' => 'App\\Controller\\AbilityController::abilityCreate'], null, null, null, false, false, null]],
         '/administration' => [[['_route' => 'administration', '_controller' => 'App\\Controller\\AdministrationController::index'], null, null, null, false, false, null]],
-        '/api/cards' => [
+        '/api/card' => [
             [['_route' => 'api_card_list', '_controller' => 'App\\Controller\\CardAPIController::list'], null, ['GET' => 0], null, false, false, null],
             [['_route' => 'api_card_create', '_controller' => 'App\\Controller\\CardAPIController::create'], null, ['POST' => 0], null, false, false, null],
         ],
@@ -77,15 +77,15 @@ return [
                             .'|delete/([^/]++)(*:440)'
                         .')'
                     .')'
-                    .'|pi/cards/([^/]++)(*:467)'
+                    .'|pi/card/([^/]++)(*:466)'
                 .')'
                 .'|/card(?'
-                    .'|/(\\d+)(*:490)'
-                    .'|\\-deck(?:/(\\d+))?(*:515)'
+                    .'|/(\\d+)(*:489)'
+                    .'|\\-deck(?:/(\\d+))?(*:514)'
                 .')'
                 .'|/profile/(?'
-                    .'|([^/]++)(*:544)'
-                    .'|edit/([^/]++)(*:565)'
+                    .'|([^/]++)(*:543)'
+                    .'|edit/([^/]++)(*:564)'
                 .')'
             .')/?$}sDu',
     ],
@@ -106,11 +106,11 @@ return [
         387 => [[['_route' => 'administration_card_delete', '_controller' => 'App\\Controller\\CardController::cardDelete'], ['id'], null, null, false, true, null]],
         417 => [[['_route' => 'administration_user_edit', '_controller' => 'App\\Controller\\UserController::administrationUserEdit'], ['id'], null, null, false, true, null]],
         440 => [[['_route' => 'administration_user_delete', '_controller' => 'App\\Controller\\UserController::administrationUserDelete'], ['id'], null, null, false, true, null]],
-        467 => [[['_route' => 'api_card_show', '_controller' => 'App\\Controller\\CardAPIController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        490 => [[['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null]],
-        515 => [[['_route' => 'card_deck_edit', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
-        544 => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], ['id'], null, null, false, true, null]],
-        565 => [
+        466 => [[['_route' => 'api_card_show', '_controller' => 'App\\Controller\\CardAPIController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        489 => [[['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null]],
+        514 => [[['_route' => 'card_deck_edit', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
+        543 => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], ['id'], null, null, false, true, null]],
+        564 => [
             [['_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::profileEdit'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

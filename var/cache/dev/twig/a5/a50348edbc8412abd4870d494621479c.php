@@ -149,6 +149,6 @@ class __TwigTemplate_51afdcd2bce1843bc81b0ffcf5198c15 extends Template
             });
         }
     });
-</script>", "administration/_cardChart.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/_cardChart.html.twig");
+</script>", "administration/_cardChart.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/_cardChart.html.twig");
     }
 }

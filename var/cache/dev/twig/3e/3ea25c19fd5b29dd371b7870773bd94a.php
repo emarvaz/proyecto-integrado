@@ -141,6 +141,6 @@ class __TwigTemplate_1da4d19123f4a7b5a739b5f61d2efcf0 extends Template
 {% block main %}
     <h1>Po</h1>
 {% endblock %}
-", "index.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/index.html.twig");
+", "index.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/index.html.twig");
     }
 }

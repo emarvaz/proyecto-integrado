@@ -75,7 +75,7 @@ final class CardController extends AbstractController
                 $newFilename = uniqid().'.'.$imageFile->guessExtension();
 
                 $imageFile->move(
-                    $this->getParameter('cards_images_directory'),
+                    $this->getParameter('card_images_directory'),
                     $newFilename
                 );
 
@@ -101,6 +101,20 @@ final class CardController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('imageFile')->getData();
+
+            if ($imageFile) {
+                $newFilename = uniqid().'.'.$imageFile->guessExtension();
+
+                $imageFile->move(
+                    $this->getParameter('card_images_directory'),
+                    $newFilename
+                );
+
+                $card->setImage($newFilename);
+            }
+
             $entityManagerInterface->flush();
 
             return $this->redirectToRoute('administration_card_list');

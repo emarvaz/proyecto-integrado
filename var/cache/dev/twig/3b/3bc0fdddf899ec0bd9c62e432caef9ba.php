@@ -130,7 +130,7 @@ class __TwigTemplate_2e503d72228871d8e3babfd3e0d3ef3c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 12
-        yield "    <section class=\"w-full px-4 py-8\">
+        yield "    <section class=\"w-full\">
         <div class=\"grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6\">
             ";
         // line 14
@@ -144,7 +144,7 @@ class __TwigTemplate_2e503d72228871d8e3babfd3e0d3ef3c extends Template
                     <article class=\"card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
                         <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('";
             // line 17
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/content/cards/" . CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 17))), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/card/" . CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 17))), "html", null, true);
             yield "');\">
                             <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
                                 <span>";
@@ -266,12 +266,12 @@ class __TwigTemplate_2e503d72228871d8e3babfd3e0d3ef3c extends Template
 {% endblock %}
 
 {% block main %}
-    <section class=\"w-full px-4 py-8\">
+    <section class=\"w-full\">
         <div class=\"grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6\">
             {% for card in cards %}
                 <a href=\"{{ path('card', { id: card.id }) }}\">
                     <article class=\"card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
-                        <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('{{ asset('/assets/images/content/cards/' ~ card.image) }}');\">
+                        <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('{{ asset('/assets/images/card/' ~ card.image) }}');\">
                             <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
                                 <span>{{ card.health }}</span>
 
@@ -316,6 +316,6 @@ class __TwigTemplate_2e503d72228871d8e3babfd3e0d3ef3c extends Template
         </div>
     </section>
 {% endblock %}
-", "card/list.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/card/list.html.twig");
+", "card/list.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/card/list.html.twig");
     }
 }

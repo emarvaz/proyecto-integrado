@@ -31,6 +31,7 @@
                     <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Correo electrónico', 'user.email') }}</th>
                     <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Nombre', 'user.name') }}</th>
                     <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Apellidos', 'user.lastname') }}</th>
+                    <th class="px-4 py-3">{{ knp_pagination_sortable(pagination, 'Foto de perfil', 'user.profilePic') }}</th>
                     <th class="px-4 py-3">Roles</th>
                     <th class="px-4 py-3 flex flex-row items-center">
                         <span>Acciones</span>
@@ -51,6 +52,7 @@
                                 <td class="px-4 py-2">{{ user.email }}</td>
                                 <td class="px-4 py-2">{{ user.name }}</td>
                                 <td class="px-4 py-2">{{ user.lastname }}</td>
+                                <td class="px-4 py-2">{{ user.profilePic }}</td>
                                 <td class="px-4 py-2 space-x-1">
                                     {% for role in user.roles %}
                                         <span class="inline-block text-[#333] dark:text-white px-2 py-0.5 rounded text-xs font-medium">{{ role }}</span>

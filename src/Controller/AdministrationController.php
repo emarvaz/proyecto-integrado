@@ -41,7 +41,7 @@ final class AdministrationController extends AbstractController
             'rgba(83, 102, 255, 0.7)',
             'rgba(100, 255, 100, 0.7)',
         ];
-        $chartBorderColors = str_replace('0.7', '1', $chartBackgroundColors); // Versión más opaca para bordes
+        $chartBorderColors = str_replace('0.7', '1', $chartBackgroundColors);
 
 
         $chartData = [

@@ -149,6 +149,6 @@ class __TwigTemplate_160d76adb9e32926ba24bbe3c62ed5d7 extends Template
             });
         }
     });
-</script>", "administration/_abilityChart.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/_abilityChart.html.twig");
+</script>", "administration/_abilityChart.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/_abilityChart.html.twig");
     }
 }

@@ -212,6 +212,6 @@ class __TwigTemplate_3b5bcd27496216d287532a8ec30bae3b extends Template
         {% endif %}
     </div>
 {% endif %}
-", "@KnpPaginator/Pagination/sliding.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/vendor/knplabs/knp-paginator-bundle/templates/Pagination/sliding.html.twig");
+", "@KnpPaginator/Pagination/sliding.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/vendor/knplabs/knp-paginator-bundle/templates/Pagination/sliding.html.twig");
     }
 }

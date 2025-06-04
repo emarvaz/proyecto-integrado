@@ -15,7 +15,7 @@
                 <header class="flex items-center gap-4">
                     <section>
                         <a href="{{ path('profile', { 'id': cardDeck.user.id }) }}">
-                            <img src="#{# asset('uploads/profiles/' ~ cardDeck.user.profileImage) #}"
+                            <img src="{{ asset('assets/images/user/' ~ cardDeck.user.profilePic) }}"
                                  alt="{{ cardDeck.user.username }}"
                                  class="w-12 h-12 rounded-full border border-gray-400 object-cover">
                         </a>
@@ -44,7 +44,7 @@
                         <a href="{{ path('card', { id: card.id }) }}">
                             <article class="card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700">
                                 <figure class="flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain"
-                                        style="background-image: url('{{ asset('/assets/images/content/cards/' ~ card.image) }}');">
+                                        style="background-image: url('{{ asset('/assets/images/content/card/' ~ card.image) }}');">
                                     <data class="flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white">
                                         <span>{{ card.health }}</span>
                                         <!-- Icono de vida -->

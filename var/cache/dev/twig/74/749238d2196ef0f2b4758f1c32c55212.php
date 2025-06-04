@@ -220,6 +220,6 @@ class __TwigTemplate_bee3635477f586b372a548be9f6e667b extends Template
 
         <input type=\"submit\" value=\"Editar\">
     {{ form_end(form) }}
-{% endblock %}", "administration/user/edit.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/user/edit.html.twig");
+{% endblock %}", "administration/user/edit.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/user/edit.html.twig");
     }
 }

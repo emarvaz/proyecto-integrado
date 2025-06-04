@@ -43,7 +43,7 @@ final class UserController extends AbstractController
             $profilePic = $form->get('profilePic')->getData();
 
             if ($profilePic) {
-                $newFilename = uniqid().'.'.$profilePic->guessExtension();
+                $newFilename = uniqid() . '.' . $profilePic->guessExtension();
 
                 $profilePic->move(
                     $this->getParameter('user_images_directory'),

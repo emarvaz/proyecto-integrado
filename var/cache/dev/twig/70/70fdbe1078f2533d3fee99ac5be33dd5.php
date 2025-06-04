@@ -386,6 +386,6 @@ class __TwigTemplate_ccc428937136d328bd2864402b943683 extends Template
             {% include 'administration/_valuePerAbilityCategoryChart.html.twig' with { chartData: chartData } %}
         </section>
     </section>
-{% endblock %}", "administration/index.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/index.html.twig");
+{% endblock %}", "administration/index.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/index.html.twig");
     }
 }

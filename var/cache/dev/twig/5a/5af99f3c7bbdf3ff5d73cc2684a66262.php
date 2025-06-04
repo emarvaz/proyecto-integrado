@@ -362,6 +362,6 @@ class __TwigTemplate_29f009f2feb98e59e793f1587ea36495 extends Template
             </table>
         </section>
     </section>
-{% endblock %}", "administration/user/list.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/user/list.html.twig");
+{% endblock %}", "administration/user/list.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/user/list.html.twig");
     }
 }

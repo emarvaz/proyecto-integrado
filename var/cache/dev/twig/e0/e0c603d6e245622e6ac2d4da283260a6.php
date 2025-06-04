@@ -358,6 +358,6 @@ class __TwigTemplate_858d1b356949d722432e1530217f5294 extends Template
         </div>
     </section>
 {% endblock %}
-", "administration/ability/list.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/ability/list.html.twig");
+", "administration/ability/list.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/ability/list.html.twig");
     }
 }

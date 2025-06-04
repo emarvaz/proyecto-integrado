@@ -258,6 +258,6 @@ class __TwigTemplate_29a0de58b300e9071cc04c8330597aec extends Template
         <p>¿No tienes una cuenta? <a href=\"{{ path('sign_in') }}\">Registrate</a></p>
     </main>
 {% endblock %}
-", "security/login.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/security/login.html.twig");
+", "security/login.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/security/login.html.twig");
     }
 }

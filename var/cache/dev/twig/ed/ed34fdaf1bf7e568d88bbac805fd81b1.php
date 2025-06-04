@@ -336,6 +336,6 @@ class __TwigTemplate_f48ff824acd145fff0045dcd155e6de1 extends Template
         </div>
     </section>
 {% endblock %}
-", "administration/ability-category/list.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/ability-category/list.html.twig");
+", "administration/ability-category/list.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/ability-category/list.html.twig");
     }
 }

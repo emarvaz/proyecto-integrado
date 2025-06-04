@@ -129,7 +129,7 @@ class __TwigTemplate_03946dc900b36f2357c3ca7bedbc5e74 extends Template
         <figure class=\"rounded-lg w-full md:w-2/5 bg-black bg-center bg-no-repeat bg-contain min-h-[400px]\"
                 style=\"background-image: url('";
         // line 12
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/content/cards/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 12, $this->source); })()), "image", [], "any", false, false, false, 12))), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/card/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["card"]) || array_key_exists("card", $context) ? $context["card"] : (function () { throw new RuntimeError('Variable "card" does not exist.', 12, $this->source); })()), "image", [], "any", false, false, false, 12))), "html", null, true);
         yield "');\"
                 role=\"img\">
         </figure>
@@ -330,7 +330,7 @@ class __TwigTemplate_03946dc900b36f2357c3ca7bedbc5e74 extends Template
 {% block main %}
     <article class=\"w-full px-6 py-8 flex flex-col gap-8 md:flex-row max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl border border-gray-300 dark:border-gray-700 shadow-md overflow-hidden\">
         <figure class=\"rounded-lg w-full md:w-2/5 bg-black bg-center bg-no-repeat bg-contain min-h-[400px]\"
-                style=\"background-image: url('{{ asset('/assets/images/content/cards/' ~ card.image) }}');\"
+                style=\"background-image: url('{{ asset('/assets/images/card/' ~ card.image) }}');\"
                 role=\"img\">
         </figure>
 
@@ -417,6 +417,6 @@ class __TwigTemplate_03946dc900b36f2357c3ca7bedbc5e74 extends Template
         </script>
     </article>
 {% endblock %}
-", "card/index.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/card/index.html.twig");
+", "card/index.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/card/index.html.twig");
     }
 }

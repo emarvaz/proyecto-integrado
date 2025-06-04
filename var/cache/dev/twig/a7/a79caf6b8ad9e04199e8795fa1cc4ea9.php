@@ -220,6 +220,6 @@ class __TwigTemplate_c04182e26b7b48bf16d9c3aea686f27d extends Template
 
         <input type=\"submit\" value=\"Crear\">
     {{ form_end(form) }}
-{% endblock %}", "administration/user/create.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/administration/user/create.html.twig");
+{% endblock %}", "administration/user/create.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/administration/user/create.html.twig");
     }
 }

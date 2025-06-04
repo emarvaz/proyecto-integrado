@@ -126,15 +126,17 @@ class __TwigTemplate_c40c8d089ac124e3fffd75b3bb242038 extends Template
 
         // line 10
         yield "    <section class=\"w-full flex flex-col items-center gap-8 py-10 px-4\">
-        <div class=\"w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-10\">
-            <div class=\"flex-shrink-0\">
-                <img src=\"#\" alt=\"Avatar de ";
+        <section class=\"w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-10\">
+            <section class=\"flex-shrink-0\">
+                <img src=\"";
         // line 13
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("assets/images/user/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 13, $this->source); })()), "profilePic", [], "any", false, false, false, 13))), "html", null, true);
+        yield "\" alt=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 13, $this->source); })()), "username", [], "any", false, false, false, 13), "html", null, true);
         yield "\" class=\"w-40 h-40 rounded-full object-cover border-4 border-white shadow dark:border-gray-700\">
-            </div>
+            </section>
 
-            <div class=\"flex-1 w-full\">
+            <section class=\"flex-1 w-full\">
                 <h1 class=\"text-3xl font-bold text-gray-900 dark:text-white mb-4\">";
         // line 17
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 17, $this->source); })()), "username", [], "any", false, false, false, 17), "html", null, true);
@@ -159,11 +161,23 @@ class __TwigTemplate_c40c8d089ac124e3fffd75b3bb242038 extends Template
         yield "</li>
                 </ul>
 
-                <div class=\"mt-6\">
-                    <a href=\"#\" class=\"inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl shadow transition\">Editar perfil</a>
-                </div>
-            </div>
-        </div>
+                ";
+        // line 26
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 26, $this->source); })()), "id", [], "any", false, false, false, 26) == CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "user", [], "any", false, false, false, 26), "id", [], "any", false, false, false, 26))) {
+            // line 27
+            yield "                    <section class=\"mt-6\">
+                        <a href=\"";
+            // line 28
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 28, $this->source); })()), "id", [], "any", false, false, false, 28)]), "html", null, true);
+            yield "\"
+                           class=\"inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl
+                                  shadow transition\">Editar perfil</a>
+                    </section>
+                ";
+        }
+        // line 33
+        yield "            </section>
+        </section>
     </section>
 ";
         
@@ -196,7 +210,7 @@ class __TwigTemplate_c40c8d089ac124e3fffd75b3bb242038 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  158 => 23,  154 => 22,  150 => 21,  146 => 20,  140 => 17,  133 => 13,  128 => 10,  115 => 9,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  179 => 33,  171 => 28,  168 => 27,  166 => 26,  160 => 23,  156 => 22,  152 => 21,  148 => 20,  142 => 17,  133 => 13,  128 => 10,  115 => 9,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -211,12 +225,12 @@ class __TwigTemplate_c40c8d089ac124e3fffd75b3bb242038 extends Template
 
 {% block main %}
     <section class=\"w-full flex flex-col items-center gap-8 py-10 px-4\">
-        <div class=\"w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-10\">
-            <div class=\"flex-shrink-0\">
-                <img src=\"#\" alt=\"Avatar de {{ user.username }}\" class=\"w-40 h-40 rounded-full object-cover border-4 border-white shadow dark:border-gray-700\">
-            </div>
+        <section class=\"w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-10\">
+            <section class=\"flex-shrink-0\">
+                <img src=\"{{ asset('assets/images/user/' ~ user.profilePic) }}\" alt=\"{{ user.username }}\" class=\"w-40 h-40 rounded-full object-cover border-4 border-white shadow dark:border-gray-700\">
+            </section>
 
-            <div class=\"flex-1 w-full\">
+            <section class=\"flex-1 w-full\">
                 <h1 class=\"text-3xl font-bold text-gray-900 dark:text-white mb-4\">{{ user.username }}</h1>
 
                 <ul class=\"space-y-3 text-lg text-gray-700 dark:text-gray-300\">
@@ -226,13 +240,17 @@ class __TwigTemplate_c40c8d089ac124e3fffd75b3bb242038 extends Template
                     <li><span class=\"font-semibold text-gray-900 dark:text-white\">Fecha de registro:</span> {{ user.name }}</li>
                 </ul>
 
-                <div class=\"mt-6\">
-                    <a href=\"#\" class=\"inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl shadow transition\">Editar perfil</a>
-                </div>
-            </div>
-        </div>
+                {% if user.id == app.user.id %}
+                    <section class=\"mt-6\">
+                        <a href=\"{{ path('user_edit', { 'id': user.id}) }}\"
+                           class=\"inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl
+                                  shadow transition\">Editar perfil</a>
+                    </section>
+                {% endif %}
+            </section>
+        </section>
     </section>
 {% endblock %}
-", "user/profile.html.twig", "/Users/ulises/Documents/workspaces/php/2025/proyecto-integrado/templates/user/profile.html.twig");
+", "user/profile.html.twig", "/Users/ulises/PhpstormProjects/proyecto-integrado/templates/user/profile.html.twig");
     }
 }
