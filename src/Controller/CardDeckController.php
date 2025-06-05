@@ -66,6 +66,26 @@ class CardDeckController extends AbstractController
         ]);
     }
 
+    #[Route('/card-deck/{id}/export', name: 'card_deck_export_json')]
+    public function export(CardDeck $cardDeck): Response
+    {
+        $data = [
+            'name' => $cardDeck->getName(),
+            'cards' => []
+        ];
+
+        foreach ($cardDeck->getCards() as $card) {
+            $data['cards'][] = $card->getId();
+        }
+
+        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+        return new Response($json, 200, [
+            'Content-Type' => 'application/json',
+            'Content-Disposition' => 'attachment; filename="' . $cardDeck->getName() . '.json"',
+        ]);
+    }
+
     #[Route('/card-deck/{id?}', name: 'card_deck_edit', requirements: ['id' => '\d+'], defaults: ['id' => null])]
     public function edit(?int $id, CardDeckRepository $cardDeckRepository, CardRepository $cardRepository, EntityManagerInterface $entityManager, Request $request): Response
     {
@@ -78,14 +98,14 @@ class CardDeckController extends AbstractController
             if (!empty($allCardDecks)) {
                 return $this->redirectToRoute('card_deck_edit', ['id' => $allCardDecks[0]->getId()]);
             }
-
             $currentCardDeck = new CardDeck();
+            $currentCardDeck->setUser($user); // Asignar usuario si es nuevo
         } else {
-            $currentCardDeck = $cardDeckRepository->find($id);
+            $currentCardDeck = $cardDeckRepository->findOneBy(['id' => $id, 'user' => $user]); // Asegurar que el mazo pertenece al usuario
 
             if (!$currentCardDeck) {
-                $this->addFlash('error', 'Mazo no encontrado.');
-                return $this->redirectToRoute('card_deck_edit');
+                $this->addFlash('error', 'Mazo no encontrado o no tienes permiso para editarlo.');
+                return $this->redirectToRoute('card_deck_edit'); // Redirigir a la creación de mazo o al primero disponible
             }
         }
 
@@ -93,7 +113,11 @@ class CardDeckController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if (!$currentCardDeck->getId() && $user) {
+            // Symfony ya ha actualizado $currentCardDeck->getCards()
+            // gracias al EntityType field 'cards' con 'expanded' => true y 'multiple' => true.
+
+            // Si es un mazo nuevo y aún no tiene usuario (aunque lo asignamos antes).
+            if (!$currentCardDeck->getUser() && $user) {
                 $currentCardDeck->setUser($user);
             }
 
@@ -101,6 +125,7 @@ class CardDeckController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Mazo guardado correctamente.');
+
             return $this->redirectToRoute('card_deck_edit', ['id' => $currentCardDeck->getId()]);
         }
 
@@ -108,7 +133,10 @@ class CardDeckController extends AbstractController
             'form' => $form->createView(),
             'cardDecks' => $allCardDecks,
             'currentCardDeckId' => $currentCardDeck ? $currentCardDeck->getId() : null,
-            'cards' => $cardRepository->findAll(),
+            // 'cards' => $cardRepository->findAll(), // Esto ya no es necesario pasarlo así,
+            // form.cards contiene las entidades Card.
+            // El bucle en Twig {% for card_checkbox in form.cards %}
+            // y card_checkbox.vars.data te da la entidad.
         ]);
     }
 }

@@ -6,7 +6,7 @@ use App\Entity\Card;
 use App\Entity\CardDeck;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType; // No se usa directamente si EntityType lo hace
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,17 +16,16 @@ class CardDeckForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'Nombre',
-            ])
+            ->add('name', TextType::class)
+            ->add('isFavorite') // Symfony deducirá CheckboxType
             ->add('cards', EntityType::class, [
                 'class' => Card::class,
-                'choice_label' => 'name',
+                'choice_label' => 'name', // Lo que se muestra al usuario
+                'choice_value' => 'id',   // El valor del checkbox será el ID de la carta
                 'multiple' => true,
-                'expanded' => true,
-            ])
-            ->add('isFavorite', CheckboxType::class, [
-                'required' => false,
+                'expanded' => true,      // ¡Importante! Para renderizar como checkboxes individuales
+                'label' => false,        // Para que no renderice un label general para el grupo de checkboxes
+                'by_reference' => false, // Importante para colecciones Doctrine para que los setters sean llamados
             ]);
     }
 

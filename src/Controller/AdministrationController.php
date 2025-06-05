@@ -23,12 +23,12 @@ use Symfony\Component\Routing\Attribute\Route;
 final class AdministrationController extends AbstractController
 {
     #[Route('/administration', name: 'administration')]
-    public function index(UserRepository $userRepository, Request $request): Response
+    public function index(AbilityRepository $abilityRepository, CardRepository $cardRepository): Response
     {
-        $roleCounts = $userRepository->getUserCountByRole();
+        $categoryCounts = $abilityRepository->countAbilitiesByCategory();
 
-        $chartLabels = array_keys($roleCounts);
-        $chartDataValues = array_values($roleCounts);
+        $chart1Labels = array_keys($categoryCounts);
+        $chart1DataValues = array_values($categoryCounts);
 
         $chartBackgroundColors = [
             'rgba(255, 99, 132, 0.7)',
@@ -43,22 +43,44 @@ final class AdministrationController extends AbstractController
         ];
         $chartBorderColors = str_replace('0.7', '1', $chartBackgroundColors);
 
+        $abilitiesPerAbilityCategoryChartData = [
+            'labels' => $chart1Labels,
+            'datasets' => [[
+                'label' => 'Número de habilidades por categoría',
+                'data' => $chart1DataValues,
+                'backgroundColor' => array_slice($chartBackgroundColors, 0, count($chart1Labels)),
+                'borderColor' => array_slice($chartBorderColors, 0, count($chart1Labels)),
+                'borderWidth' => 1
+            ]]
+        ];
 
-        $chartData = [
-            'labels' => $chartLabels,
-            'datasets' => [
-                [
-                    'label' => 'Usuarios por rol',
-                    'data' => $chartDataValues,
-                    'backgroundColor' => array_slice($chartBackgroundColors, 0, count($chartLabels)),
-                    'borderColor' => array_slice($chartBorderColors, 0, count($chartLabels)),
-                    'borderWidth' => 1
-                ]
-            ]
+        $abilityCounts = $cardRepository->countCardsByAbility();
+
+        $chart2Labels = array_keys($abilityCounts);
+        $chart2DataValues = array_values($abilityCounts);
+
+        $generateColor = function ($i) {
+            $hue = ($i * 37) % 360;
+            return "hsl($hue, 70%, 60%)";
+        };
+
+        $backgroundColors2 = array_map($generateColor, array_keys($chart2Labels));
+        $borderColors2 = array_map(fn($c) => str_replace('60%', '40%', $c), $backgroundColors2);
+
+        $cardsPerAbilityChartData = [
+            'labels' => $chart2Labels,
+            'datasets' => [[
+                'label' => 'Número de cartas por habilidad',
+                'data' => $chart2DataValues,
+                'backgroundColor' => $backgroundColors2,
+                'borderColor' => $borderColors2,
+                'borderWidth' => 1
+            ]]
         ];
 
         return $this->render('administration/index.html.twig', [
-            'chartData' => $chartData,
+            'abilitiesPerAbilityCategoryChartData' => $abilitiesPerAbilityCategoryChartData,
+            'cardsPerAbilityChartData' => $cardsPerAbilityChartData,
         ]);
     }
 }

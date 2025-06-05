@@ -65,16 +65,8 @@
 
 {% block main %}
     <section class="grid gap-4">
-        {% include 'administration/_userChart.html.twig' with { chartData: chartData } %}
+        {% include 'administration/_abilities-per-ability-category.html.twig' with { abilitiesPerAbilityCategoryChartData: abilitiesPerAbilityCategoryChartData } %}
 
-        <section class="grid grid-cols-4 gap-w-4">
-            {% include 'administration/_cardChart.html.twig' with { chartData: chartData } %}
-
-            {% include 'administration/_abilityChart.html.twig' with { chartData: chartData } %}
-
-            {% include 'administration/_abilityCategoryChart.html.twig' with { chartData: chartData } %}
-
-            {% include 'administration/_valuePerAbilityCategoryChart.html.twig' with { chartData: chartData } %}
-        </section>
+        {% include 'administration/_cards-per-ability.html.twig' with { cardsPerAbilityChartData: cardsPerAbilityChartData } %}
     </section>
 {% endblock %}

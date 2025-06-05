@@ -1,0 +1,38 @@
+<section class="chart-container w-full max-w-full rounded-lg relative">
+    <canvas id="ability-category-chart" class="w-full h-full"></canvas>
+</section>
+
+<script type="text/javascript" src="{{ asset('/resources/package/dist/chart.umd.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const context = document.getElementById('ability-category-chart').getContext('2d');
+
+        const chartData = {{ cardsPerAbilityChartData|json_encode|raw }};
+
+        if (chartData.labels.length > 0) {
+            new Chart(context, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Número de cartas por habilidad'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>

@@ -1,0 +1,37 @@
+<section class="chart-container w-full max-w-full rounded-lg relative">
+    <canvas id="user-chart" class="w-full h-full"></canvas>
+</section>
+
+<script type="text/javascript" src="{{ asset('/resources/package/dist/chart.umd.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const context = document.getElementById('user-chart').getContext('2d');
+
+        const chartData = {{ abilitiesPerAbilityCategoryChartData|json_encode|raw }};
+
+        if (chartData.labels.length > 0) {
+            new Chart(context, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Número de habilidades por categoría'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>

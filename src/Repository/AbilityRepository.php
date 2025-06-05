@@ -64,4 +64,21 @@ class AbilityRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }
+
+    public function countAbilitiesByCategory(): array
+    {
+        $queryBuilder = $this->createQueryBuilder('a')
+            ->select('c.name AS category', 'COUNT(a.id) AS abilityCount')
+            ->join('a.category', 'c')
+            ->groupBy('c.id');
+
+        $results = $queryBuilder->getQuery()->getResult();
+
+        $data = [];
+        foreach ($results as $row) {
+            $data[$row['category']] = (int) $row['abilityCount'];
+        }
+
+        return $data;
+    }
 }

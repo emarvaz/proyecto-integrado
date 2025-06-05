@@ -63,4 +63,22 @@ class CardRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }
+
+    public function countCardsByAbility(): array
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->select('a.name AS ability', 'COUNT(c.id) AS cardCount')
+            ->join('c.abilities', 'a')
+            ->groupBy('a.id')
+            ->orderBy('cardCount', 'DESC');
+
+        $results = $queryBuilder->getQuery()->getResult();
+
+        $data = [];
+        foreach ($results as $row) {
+            $data[$row['ability']] = (int) $row['cardCount'];
+        }
+
+        return $data;
+    }
 }

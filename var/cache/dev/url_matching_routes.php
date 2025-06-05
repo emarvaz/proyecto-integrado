@@ -81,11 +81,14 @@ return [
                 .')'
                 .'|/card(?'
                     .'|/(\\d+)(*:489)'
-                    .'|\\-deck(?:/(\\d+))?(*:514)'
+                    .'|\\-deck(?'
+                        .'|/([^/]++)/export(*:522)'
+                        .'|(?:/(\\d+))?(*:541)'
+                    .')'
                 .')'
                 .'|/profile/(?'
-                    .'|([^/]++)(*:543)'
-                    .'|edit/([^/]++)(*:564)'
+                    .'|([^/]++)(*:571)'
+                    .'|edit/([^/]++)(*:592)'
                 .')'
             .')/?$}sDu',
     ],
@@ -108,9 +111,10 @@ return [
         440 => [[['_route' => 'administration_user_delete', '_controller' => 'App\\Controller\\UserController::administrationUserDelete'], ['id'], null, null, false, true, null]],
         466 => [[['_route' => 'api_card_show', '_controller' => 'App\\Controller\\CardAPIController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         489 => [[['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null]],
-        514 => [[['_route' => 'card_deck_edit', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
-        543 => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], ['id'], null, null, false, true, null]],
-        564 => [
+        522 => [[['_route' => 'card_deck_export_json', '_controller' => 'App\\Controller\\CardDeckController::export'], ['id'], null, null, false, false, null]],
+        541 => [[['_route' => 'card_deck_edit', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
+        571 => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], ['id'], null, null, false, true, null]],
+        592 => [
             [['_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::profileEdit'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
