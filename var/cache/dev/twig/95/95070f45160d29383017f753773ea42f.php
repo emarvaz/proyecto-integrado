@@ -133,37 +133,35 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 12
-        yield "    ";
-        // line 13
-        yield "    <ul class=\"flex flex-wrap gap-6 mb-6\">
+        yield "    <ul class=\"flex flex-wrap gap-6\">
         ";
-        // line 14
+        // line 13
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["cardDecks"]) || array_key_exists("cardDecks", $context) ? $context["cardDecks"] : (function () { throw new RuntimeError('Variable "cardDecks" does not exist.', 14, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["cardDecks"]) || array_key_exists("cardDecks", $context) ? $context["cardDecks"] : (function () { throw new RuntimeError('Variable "cardDecks" does not exist.', 13, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["cardDeck"]) {
-            // line 15
+            // line 14
             yield "            <li>
                 <a href=\"";
-            // line 16
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_deck_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 16)]), "html", null, true);
+            // line 15
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_deck_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 15)]), "html", null, true);
             yield "\"
-                   class=\"px-4 py-2 rounded-tl-sm rounded-tr-sm font-semibold transition-colors duration-300 border-t border-r border-l
+                   class=\"px-4 font-semibold py-4 border-t rounded-t-2xl border-r border-l bg-white dark:bg-gray-800
                       ";
-            // line 18
-            if ((CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 18) == (isset($context["currentCardDeckId"]) || array_key_exists("currentCardDeckId", $context) ? $context["currentCardDeckId"] : (function () { throw new RuntimeError('Variable "currentCardDeckId" does not exist.', 18, $this->source); })()))) {
-                // line 19
-                yield "                          bg-grey-600 text-white
+            // line 17
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 17) == (isset($context["currentCardDeckId"]) || array_key_exists("currentCardDeckId", $context) ? $context["currentCardDeckId"] : (function () { throw new RuntimeError('Variable "currentCardDeckId" does not exist.', 17, $this->source); })()))) {
+                // line 18
+                yield "                          text-white
                       ";
             } else {
-                // line 21
-                yield "                          bg-grey-200 text-gray-800 hover:bg-grey-100 hover:text-blue-600
+                // line 20
+                yield "                          text-gray-800 hover:text-blue-600
                       ";
             }
-            // line 22
+            // line 21
             yield "\">
                     ";
-            // line 23
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "name", [], "any", false, false, false, 23), "html", null, true);
+            // line 22
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "name", [], "any", false, false, false, 22), "html", null, true);
             yield "
                 </a>
             </li>
@@ -172,216 +170,179 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['cardDeck'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
+        // line 26
         yield "    </ul>
 
 
     ";
-        // line 30
-        if ((array_key_exists("form", $context) &&  !(null === (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 30, $this->source); })())))) {
-            // line 31
+        // line 29
+        if ((array_key_exists("form", $context) &&  !(null === (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 29, $this->source); })())))) {
+            // line 30
             yield "        ";
-            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 31, $this->source); })()), 'form_start');
+            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 30, $this->source); })()), 'form_start');
             yield "
-        <article class=\"rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 flex flex-col gap-4\">
-            <header class=\"flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-sm\">
-                <section class=\"w-full md:w-1/3\">
-                    ";
-            // line 35
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 35, $this->source); })()), "name", [], "any", false, false, false, 35), 'row', ["attr" => ["class" => "w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"]]);
-            // line 39
+            <article class=\"rounded-2xl border rounded-tl-none border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 flex flex-col gap-4\">
+                <header class=\"flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-sm\">
+                    <section class=\"w-full md:w-1/3\">
+                        ";
+            // line 34
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 34, $this->source); })()), "name", [], "any", false, false, false, 34), 'row', ["attr" => ["class" => "w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"]]);
+            // line 38
             yield "
-                </section>
+                    </section>
 
-                <label class=\"flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300\">
-                    ¿Favorito?
-                    ";
-            // line 44
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 44, $this->source); })()), "isFavorite", [], "any", false, false, false, 44), 'widget', ["attr" => ["class" => "rounded text-blue-600 focus:ring-blue-500"]]);
-            // line 48
+                    <label class=\"flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300\">
+                        ¿Favorito?
+                        ";
+            // line 43
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 43, $this->source); })()), "isFavorite", [], "any", false, false, false, 43), 'widget', ["attr" => ["class" => "rounded text-blue-600 focus:ring-blue-500"]]);
+            // line 47
             yield "
-                </label>
+                    </label>
 
-                <section class=\"flex items-center gap-2\"> ";
-            // line 52
-            yield "                    <input type=\"submit\" value=\"Guardar\"
-                           class=\"px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition shadow-sm cursor-pointer\">
+                    <section class=\"flex items-center gap-2\">
+                        <input type=\"submit\" value=\"Guardar\"
+                               class=\"px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition shadow-sm cursor-pointer\">
 
+                        <input id=\"import-deck-json\" type=\"file\" accept=\"application/json\"
+                               class=\"text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700\">
+
+                        <button type=\"button\" id=\"load-json-btn\"
+                                class=\"px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm font-semibold transition shadow-sm cursor-pointer\">Importar mazo</button>
+                    </section>
+                </header>
+
+                <section class=\"card-deck__container grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4\">
                     ";
-            // line 56
-            yield "                    <input id=\"import-deck-json\" type=\"file\" accept=\"application/json\"
-                           class=\"text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0
-                                      file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700\">
-
-                    <button type=\"button\" id=\"load-json-btn\" ";
-            // line 61
-            yield "                            class=\"px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm
-                                       font-semibold transition shadow-sm cursor-pointer\">Importar mazo</button>
-                </section>
-            </header>
-
-            <section class=\"card-deck__container grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4\">
-                ";
-            // line 67
+            // line 63
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(range(1, 8));
             foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-                yield " ";
-                // line 68
-                yield "                    <article class=\"card-slot\"></article>
-                ";
+                // line 64
+                yield "                        <article class=\"card-slot\"></article>
+                    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['i'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 70
-            yield "            </section>
-        </article>
+            // line 66
+            yield "                </section>
+            </article>
 
-        ";
-            // line 73
-            if (CoreExtension::getAttribute($this->env, $this->source, ($context["form"] ?? null), "cards", [], "any", true, true, false, 73)) {
-                // line 74
-                yield "            <section class=\"cards__container grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-6\">
-                ";
-                // line 76
-                yield "                ";
-                $context['_parent'] = $context;
-                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 76, $this->source); })()), "cards", [], "any", false, false, false, 76), "vars", [], "any", false, false, false, 76), "choices", [], "any", false, false, false, 76));
-                foreach ($context['_seq'] as $context["_key"] => $context["choice_view"]) {
-                    // line 77
-                    yield "                    ";
-                    // line 78
-                    yield "                    ";
-                    $context["card_entity"] = CoreExtension::getAttribute($this->env, $this->source, $context["choice_view"], "data", [], "any", false, false, false, 78);
-                    // line 79
-                    yield "                    ";
-                    // line 80
-                    yield "                    ";
-                    $context["card_checkbox_widget"] = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 80, $this->source); })()), "cards", [], "any", false, false, false, 80), CoreExtension::getAttribute($this->env, $this->source, $context["choice_view"], "value", [], "any", false, false, false, 80), [], "array", false, false, false, 80);
-                    // line 81
-                    yield "
+            ";
+            // line 69
+            if (CoreExtension::getAttribute($this->env, $this->source, ($context["form"] ?? null), "cards", [], "any", true, true, false, 69)) {
+                // line 70
+                yield "                <section class=\"cards__container grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-6\">
                     ";
-                    // line 82
-                    if (( !(null === (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 82, $this->source); })())) &&  !((isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 82, $this->source); })()) === false))) {
-                        yield " ";
-                        // line 83
-                        yield "                        <label for=\"";
-                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_checkbox_widget"]) || array_key_exists("card_checkbox_widget", $context) ? $context["card_checkbox_widget"] : (function () { throw new RuntimeError('Variable "card_checkbox_widget" does not exist.', 83, $this->source); })()), "vars", [], "any", false, false, false, 83), "id", [], "any", false, false, false, 83), "html", null, true);
+                // line 71
+                $context['_parent'] = $context;
+                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 71, $this->source); })()), "cards", [], "any", false, false, false, 71), "vars", [], "any", false, false, false, 71), "choices", [], "any", false, false, false, 71));
+                foreach ($context['_seq'] as $context["_key"] => $context["choice_view"]) {
+                    // line 72
+                    yield "                        ";
+                    $context["card_entity"] = CoreExtension::getAttribute($this->env, $this->source, $context["choice_view"], "data", [], "any", false, false, false, 72);
+                    // line 73
+                    yield "                        ";
+                    $context["card_checkbox_widget"] = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 73, $this->source); })()), "cards", [], "any", false, false, false, 73), CoreExtension::getAttribute($this->env, $this->source, $context["choice_view"], "value", [], "any", false, false, false, 73), [], "array", false, false, false, 73);
+                    // line 74
+                    yield "
+                        ";
+                    // line 75
+                    if (( !(null === (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 75, $this->source); })())) &&  !((isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 75, $this->source); })()) === false))) {
+                        // line 76
+                        yield "                            <label for=\"";
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_checkbox_widget"]) || array_key_exists("card_checkbox_widget", $context) ? $context["card_checkbox_widget"] : (function () { throw new RuntimeError('Variable "card_checkbox_widget" does not exist.', 76, $this->source); })()), "vars", [], "any", false, false, false, 76), "id", [], "any", false, false, false, 76), "html", null, true);
                         yield "\" class=\"card__label\">
-                            ";
-                        // line 84
-                        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["card_checkbox_widget"]) || array_key_exists("card_checkbox_widget", $context) ? $context["card_checkbox_widget"] : (function () { throw new RuntimeError('Variable "card_checkbox_widget" does not exist.', 84, $this->source); })()), 'widget', ["attr" => ["class" => "hidden"]]);
-                        yield " ";
-                        // line 85
-                        yield "
-                            <article class=\"card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
                                 ";
-                        // line 88
-                        yield "                                <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('";
-                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/card/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 88, $this->source); })()), "image", [], "any", false, false, false, 88))), "html", null, true);
+                        // line 77
+                        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["card_checkbox_widget"]) || array_key_exists("card_checkbox_widget", $context) ? $context["card_checkbox_widget"] : (function () { throw new RuntimeError('Variable "card_checkbox_widget" does not exist.', 77, $this->source); })()), 'widget', ["attr" => ["class" => "hidden"]]);
+                        yield "
+
+                                <article class=\"card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
+                                    <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('";
+                        // line 80
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/card/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 80, $this->source); })()), "image", [], "any", false, false, false, 80))), "html", null, true);
                         yield "');\">
-                                    <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
-                                        <span>";
-                        // line 90
-                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 90, $this->source); })()), "health", [], "any", false, false, false, 90), "html", null, true);
+                                        <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
+                                            <span>";
+                        // line 82
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 82, $this->source); })()), "health", [], "any", false, false, false, 82), "html", null, true);
                         yield "</span>
-                                        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
-                                            <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" />
-                                        </svg>
-                                    </data>
-                                </figure>
-                                <section class=\"p-3 grid grid-rows-[0.5fr_1.5fr] gap-2\">
-                                    <h4 class=\"text-lg font-bold text-gray-800 dark:text-gray-100\">";
-                        // line 97
-                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 97, $this->source); })()), "name", [], "any", false, false, false, 97), "html", null, true);
+                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                                <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" />
+                                            </svg>
+                                        </data>
+                                    </figure>
+                                    <section class=\"p-3 grid grid-rows-[0.5fr_1.5fr] gap-2\">
+                                        <h4 class=\"text-lg font-bold text-gray-800 dark:text-gray-100\">";
+                        // line 89
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 89, $this->source); })()), "name", [], "any", false, false, false, 89), "html", null, true);
                         yield "</h4>
-                                    <ul class=\"flex flex-col\">
-                                        ";
-                        // line 99
+                                        <ul class=\"flex flex-col\">
+                                            ";
+                        // line 91
                         $context['_parent'] = $context;
-                        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 99, $this->source); })()), "abilities", [], "any", false, false, false, 99));
+                        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["card_entity"]) || array_key_exists("card_entity", $context) ? $context["card_entity"] : (function () { throw new RuntimeError('Variable "card_entity" does not exist.', 91, $this->source); })()), "abilities", [], "any", false, false, false, 91));
                         foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-                            // line 100
-                            yield "                                            <li class=\"flex-1 grid grid-cols-2 items-center\">
-                                                <span>";
-                            // line 101
-                            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 101), "html", null, true);
+                            // line 92
+                            yield "                                                <li class=\"flex-1 grid grid-cols-2 items-center\">
+                                                    <span>";
+                            // line 93
+                            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 93), "html", null, true);
                             yield "</span>
-                                                <div class=\"grid grid-cols-2 gap-8 justify-self-end text-xs\">
-                                                    <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
-                                                        <span>";
-                            // line 104
-                            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 104), "html", null, true);
+                                                    <div class=\"grid grid-cols-2 gap-8 justify-self-end text-xs\">
+                                                        <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
+                                                            <span>";
+                            // line 96
+                            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 96), "html", null, true);
                             yield "</span>
-                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
-                                                            <path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z\" clip-rule=\"evenodd\" />
-                                                        </svg>
-                                                    </data>
-                                                    <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
-                                                        <span>";
-                            // line 110
-                            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 110), "html", null, true);
+                                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                                                <path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z\" clip-rule=\"evenodd\" />
+                                                            </svg>
+                                                        </data>
+                                                        <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
+                                                            <span>";
+                            // line 102
+                            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 102), "html", null, true);
                             yield "</span>
-                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
-                                                            <path fill-rule=\"evenodd\" d=\"M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183.395c.447-.15.799.5.948.948l.395-1.183A.75.75 0 0 1 16.5 15Z\" clip-rule=\"evenodd\" />
-                                                        </svg>
-                                                    </data>
-                                                </div>
-                                            </li>
-                                        ";
+                                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                                                <path fill-rule=\"evenodd\" d=\"M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183.395c.447-.15.799.5.948.948l.395-1.183A.75.75 0 0 1 16.5 15Z\" clip-rule=\"evenodd\" />
+                                                            </svg>
+                                                        </data>
+                                                    </div>
+                                                </li>
+                                            ";
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 118
-                        yield "                                    </ul>
-                                </section>
-                            </article>
-                        </label>
-                    ";
+                        // line 110
+                        yield "                                        </ul>
+                                    </section>
+                                </article>
+                            </label>
+                        ";
                     }
-                    // line 123
-                    yield "                ";
+                    // line 115
+                    yield "                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_key'], $context['choice_view'], $context['_parent']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 124
-                yield "            </section>
-        ";
+                // line 116
+                yield "                </section>
+            ";
             }
-            // line 126
-            yield "
-        ";
-            // line 128
+            // line 118
             yield "        ";
-            // line 129
-            yield "        ";
-            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 129, $this->source); })()), 'form_end');
+            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 118, $this->source); })()), 'form_end');
             yield "
     ";
         }
-        // line 131
+        // line 120
         yield "
     <script>
-        // Ya no necesitas esta función si EntityType maneja la selección
-        /*
-        function updateSelectedCardsInput() {
-            const selectedCardsInput = document.getElementById('selected-cards-input'); // Este ID ya no existiría
-            const checkboxes = document.querySelectorAll('.cards__container input[type=\"checkbox\"]');
-            const selectedIds = [];
-
-            checkboxes.forEach(cb => {
-                if (cb.checked) {
-                    selectedIds.push(parseInt(cb.value));
-                }
-            });
-
-            selectedCardsInput.value = JSON.stringify(selectedIds);
-        }
-        */
-
         document.getElementById('load-json-btn').addEventListener('click', function () {
             const fileInput = document.getElementById('import-deck-json');
             const file = fileInput.files[0];
@@ -403,52 +364,40 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
                     }
 
                     const selectedCardIdsFromJson = data.cards;
-                    // Obtén todos los checkboxes que Symfony renderizó para 'form.cards'
                     const allCardCheckboxes = document.querySelectorAll('input[name=\"";
-        // line 172
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 172, $this->source); })()), "cards", [], "any", false, false, false, 172), "vars", [], "any", false, false, false, 172), "full_name", [], "any", false, false, false, 172), "html", null, true);
+        // line 143
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 143, $this->source); })()), "cards", [], "any", false, false, false, 143), "vars", [], "any", false, false, false, 143), "full_name", [], "any", false, false, false, 143), "html", null, true);
         yield "[]\"]');
 
-                    // Desmarcar todos primero
                     allCardCheckboxes.forEach(cb => {
                         if (cb.checked) {
                             cb.checked = false;
-                            // Disparar evento change para que tu otra lógica de UI reaccione si es necesario
                             cb.dispatchEvent(new Event('change', { bubbles: true }));
                         }
                     });
 
-                    // Marcar los que vienen del JSON
                     selectedCardIdsFromJson.forEach(cardId => {
-                        // Encuentra el checkbox por su valor (que debería ser el ID de la carta)
                         const checkboxToSelect = Array.from(allCardCheckboxes).find(cb => parseInt(cb.value) === cardId);
                         if (checkboxToSelect && !checkboxToSelect.checked) {
                             checkboxToSelect.checked = true;
-                            // Disparar evento change para que tu otra lógica de UI reaccione
                             checkboxToSelect.dispatchEvent(new Event('change', { bubbles: true }));
                         }
                     });
 
-                    // Ya no es necesario llamar a updateSelectedCardsInput()
-                    // updateSelectedCardsInput();
-
-                    // Actualizar el nombre del mazo si viene en el JSON
                     if (data.name) {
-                        // El nombre del input de Symfony para 'name' es 'card_deck_form[name]'
                         const nameInput = document.querySelector('input[name=\"";
-        // line 200
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 200, $this->source); })()), "name", [], "any", false, false, false, 200), "vars", [], "any", false, false, false, 200), "full_name", [], "any", false, false, false, 200), "html", null, true);
+        // line 161
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 161, $this->source); })()), "name", [], "any", false, false, false, 161), "vars", [], "any", false, false, false, 161), "full_name", [], "any", false, false, false, 161), "html", null, true);
         yield "\"]');
                         if (nameInput) {
                             nameInput.value = data.name;
                         }
                     }
 
-                    // Actualizar isFavorite si viene en el JSON
                     if (data.isFavorite !== undefined) {
                         const favoriteInput = document.querySelector('input[name=\"";
-        // line 208
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 208, $this->source); })()), "isFavorite", [], "any", false, false, false, 208), "vars", [], "any", false, false, false, 208), "full_name", [], "any", false, false, false, 208), "html", null, true);
+        // line 168
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 168, $this->source); })()), "isFavorite", [], "any", false, false, false, 168), "vars", [], "any", false, false, false, 168), "full_name", [], "any", false, false, false, 168), "html", null, true);
         yield "\"]');
                         if (favoriteInput) {
                             favoriteInput.checked = data.isFavorite;
@@ -465,16 +414,10 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
             reader.readAsText(file);
         });
 
-        // Tu script para mover cartas seleccionadas al \"deck container\"
-        // Asegúrate de que los selectores siguen siendo válidos
         document.addEventListener('DOMContentLoaded', function () {
             const cardDeckContainer = document.querySelector('.card-deck__container');
-            const cardsContainer = document.querySelector('.cards__container'); // Contenedor de todas las cartas disponibles
-            const selectedClass = 'card-deck__card--selected'; // Clase para la carta cuando está en el mazo visual
-
-            // Es importante que esto se ejecute después de que Symfony haya renderizado los checkboxes
-            // y después de que el script de importación de JSON pueda haber modificado su estado.
-            // Esta lógica es para la UI inicial y para cuando el usuario hace clic manualmente.
+            const cardsContainer = document.querySelector('.cards__container');
+            const selectedClass = 'card-deck__card--selected';
 
             function moveCardToDeck(cardLabelElement) {
                 const firstSlot = cardDeckContainer.querySelector('article.card-slot:first-of-type');
@@ -482,25 +425,23 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
                     firstSlot.replaceWith(cardLabelElement);
                     cardLabelElement.querySelector('.card').classList.add(selectedClass);
                 } else {
-                    // No hay slots, ¿qué hacer? Podrías desmarcar el checkbox.
                     const checkbox = cardLabelElement.querySelector('input[type=\"checkbox\"]');
                     if (checkbox) checkbox.checked = false;
                 }
             }
 
             function moveCardToAvailable(cardLabelElement) {
-                cardsContainer.prepend(cardLabelElement); // O append, como prefieras
+                cardsContainer.prepend(cardLabelElement);
                 cardLabelElement.querySelector('.card').classList.remove(selectedClass);
 
                 const newSlot = document.createElement('article');
                 newSlot.classList.add('card-slot');
-                cardDeckContainer.appendChild(newSlot); // Añadir un slot vacío al final
+                cardDeckContainer.appendChild(newSlot);
             }
 
-            // Inicializar la UI basada en los checkboxes marcados
             const allCardCheckboxes = document.querySelectorAll('input[name=\"";
-        // line 257
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 257, $this->source); })()), "cards", [], "any", false, false, false, 257), "vars", [], "any", false, false, false, 257), "full_name", [], "any", false, false, false, 257), "html", null, true);
+        // line 209
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 209, $this->source); })()), "cards", [], "any", false, false, false, 209), "vars", [], "any", false, false, false, 209), "full_name", [], "any", false, false, false, 209), "html", null, true);
         yield "[]\"]');
             allCardCheckboxes.forEach(checkbox => {
                 const cardLabel = checkbox.closest('.card__label');
@@ -508,7 +449,6 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
                     moveCardToDeck(cardLabel);
                 }
 
-                // Escuchar cambios en CADA checkbox
                 checkbox.addEventListener('change', function (event) {
                     const currentCardLabel = event.target.closest('.card__label');
                     if (event.target.checked) {
@@ -551,7 +491,7 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  503 => 257,  451 => 208,  440 => 200,  409 => 172,  366 => 131,  360 => 129,  358 => 128,  355 => 126,  351 => 124,  345 => 123,  338 => 118,  324 => 110,  315 => 104,  309 => 101,  306 => 100,  302 => 99,  297 => 97,  287 => 90,  281 => 88,  277 => 85,  274 => 84,  269 => 83,  266 => 82,  263 => 81,  260 => 80,  258 => 79,  255 => 78,  253 => 77,  248 => 76,  245 => 74,  243 => 73,  238 => 70,  231 => 68,  226 => 67,  218 => 61,  212 => 56,  207 => 52,  202 => 48,  200 => 44,  193 => 39,  191 => 35,  183 => 31,  181 => 30,  176 => 27,  166 => 23,  163 => 22,  159 => 21,  155 => 19,  153 => 18,  148 => 16,  145 => 15,  141 => 14,  138 => 13,  136 => 12,  123 => 11,  110 => 8,  106 => 7,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  444 => 209,  400 => 168,  390 => 161,  369 => 143,  344 => 120,  338 => 118,  334 => 116,  328 => 115,  321 => 110,  307 => 102,  298 => 96,  292 => 93,  289 => 92,  285 => 91,  280 => 89,  270 => 82,  265 => 80,  259 => 77,  254 => 76,  252 => 75,  249 => 74,  246 => 73,  243 => 72,  239 => 71,  236 => 70,  234 => 69,  229 => 66,  222 => 64,  218 => 63,  200 => 47,  198 => 43,  191 => 38,  189 => 34,  181 => 30,  179 => 29,  174 => 26,  164 => 22,  161 => 21,  157 => 20,  153 => 18,  151 => 17,  146 => 15,  143 => 14,  139 => 13,  136 => 12,  123 => 11,  110 => 8,  106 => 7,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -567,16 +507,15 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
 {% endblock %}
 
 {% block main %}
-    {# ... (código de selección de mazos sin cambios) ... #}
-    <ul class=\"flex flex-wrap gap-6 mb-6\">
+    <ul class=\"flex flex-wrap gap-6\">
         {% for cardDeck in cardDecks %}
             <li>
                 <a href=\"{{ path('card_deck_edit', {'id': cardDeck.id}) }}\"
-                   class=\"px-4 py-2 rounded-tl-sm rounded-tr-sm font-semibold transition-colors duration-300 border-t border-r border-l
+                   class=\"px-4 font-semibold py-4 border-t rounded-t-2xl border-r border-l bg-white dark:bg-gray-800
                       {% if cardDeck.id == currentCardDeckId %}
-                          bg-grey-600 text-white
+                          text-white
                       {% else %}
-                          bg-grey-200 text-gray-800 hover:bg-grey-100 hover:text-blue-600
+                          text-gray-800 hover:text-blue-600
                       {% endif %}\">
                     {{ cardDeck.name }}
                 </a>
@@ -587,124 +526,97 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
 
     {% if form is defined and form is not null %}
         {{ form_start(form) }}
-        <article class=\"rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 flex flex-col gap-4\">
-            <header class=\"flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-sm\">
-                <section class=\"w-full md:w-1/3\">
-                    {{ form_row(form.name, {
-                        attr: {
-                            class: \"w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500\"
-                        }
-                    }) }}
+            <article class=\"rounded-2xl border rounded-tl-none border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 flex flex-col gap-4\">
+                <header class=\"flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-sm\">
+                    <section class=\"w-full md:w-1/3\">
+                        {{ form_row(form.name, {
+                            attr: {
+                                class: \"w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500\"
+                            }
+                        }) }}
+                    </section>
+
+                    <label class=\"flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300\">
+                        ¿Favorito?
+                        {{ form_widget(form.isFavorite, {
+                            attr: {
+                                class: \"rounded text-blue-600 focus:ring-blue-500\"
+                            }
+                        }) }}
+                    </label>
+
+                    <section class=\"flex items-center gap-2\">
+                        <input type=\"submit\" value=\"Guardar\"
+                               class=\"px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition shadow-sm cursor-pointer\">
+
+                        <input id=\"import-deck-json\" type=\"file\" accept=\"application/json\"
+                               class=\"text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700\">
+
+                        <button type=\"button\" id=\"load-json-btn\"
+                                class=\"px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm font-semibold transition shadow-sm cursor-pointer\">Importar mazo</button>
+                    </section>
+                </header>
+
+                <section class=\"card-deck__container grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4\">
+                    {% for i in 1..8 %}
+                        <article class=\"card-slot\"></article>
+                    {% endfor %}
                 </section>
+            </article>
 
-                <label class=\"flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300\">
-                    ¿Favorito?
-                    {{ form_widget(form.isFavorite, {
-                        attr: {
-                            class: \"rounded text-blue-600 focus:ring-blue-500\"
-                        }
-                    }) }}
-                </label>
+            {% if form.cards is defined %}
+                <section class=\"cards__container grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-6\">
+                    {% for choice_view in form.cards.vars.choices %}
+                        {% set card_entity = choice_view.data %}
+                        {% set card_checkbox_widget = form.cards[choice_view.value] %}
 
-                <section class=\"flex items-center gap-2\"> {# Agrupado para mejor layout #}
-                    <input type=\"submit\" value=\"Guardar\"
-                           class=\"px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition shadow-sm cursor-pointer\">
+                        {% if card_entity is not null and card_entity is not same as(false) %}
+                            <label for=\"{{ card_checkbox_widget.vars.id }}\" class=\"card__label\">
+                                {{ form_widget(card_checkbox_widget, { attr: { class: 'hidden' } }) }}
 
-                    {# Sección de importación #}
-                    <input id=\"import-deck-json\" type=\"file\" accept=\"application/json\"
-                           class=\"text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0
-                                      file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700\">
-
-                    <button type=\"button\" id=\"load-json-btn\" {# Importante: type=\"button\" para no enviar el form #}
-                            class=\"px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm
-                                       font-semibold transition shadow-sm cursor-pointer\">Importar mazo</button>
+                                <article class=\"card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
+                                    <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('{{ asset('/assets/images/card/' ~ card_entity.image) }}');\">
+                                        <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
+                                            <span>{{ card_entity.health }}</span>
+                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                                <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" />
+                                            </svg>
+                                        </data>
+                                    </figure>
+                                    <section class=\"p-3 grid grid-rows-[0.5fr_1.5fr] gap-2\">
+                                        <h4 class=\"text-lg font-bold text-gray-800 dark:text-gray-100\">{{ card_entity.name }}</h4>
+                                        <ul class=\"flex flex-col\">
+                                            {% for ability in card_entity.abilities %}
+                                                <li class=\"flex-1 grid grid-cols-2 items-center\">
+                                                    <span>{{ ability.name }}</span>
+                                                    <div class=\"grid grid-cols-2 gap-8 justify-self-end text-xs\">
+                                                        <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
+                                                            <span>{{ ability.cost }}</span>
+                                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                                                <path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z\" clip-rule=\"evenodd\" />
+                                                            </svg>
+                                                        </data>
+                                                        <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
+                                                            <span>{{ ability.value }}</span>
+                                                            <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
+                                                                <path fill-rule=\"evenodd\" d=\"M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183.395c.447-.15.799.5.948.948l.395-1.183A.75.75 0 0 1 16.5 15Z\" clip-rule=\"evenodd\" />
+                                                            </svg>
+                                                        </data>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </section>
+                                </article>
+                            </label>
+                        {% endif %}
+                    {% endfor %}
                 </section>
-            </header>
-
-            <section class=\"card-deck__container grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4\">
-                {% for i in 1..8 %} {# Asumo que estos son placeholders para las cartas seleccionadas #}
-                    <article class=\"card-slot\"></article>
-                {% endfor %}
-            </section>
-        </article>
-
-        {% if form.cards is defined %}
-            <section class=\"cards__container grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-6\">
-                {# Iterar sobre las 'choices' del campo 'cards' para obtener la entidad #}
-                {% for choice_view in form.cards.vars.choices %}
-                    {# 'choice_view.data' ES la entidad Card real #}
-                    {% set card_entity = choice_view.data %}
-                    {# 'form.cards[choice_view.value]' te da el FormFieldView para el widget del checkbox específico #}
-                    {% set card_checkbox_widget = form.cards[choice_view.value] %}
-
-                    {% if card_entity is not null and card_entity is not same as(false) %} {# Comprobación más robusta #}
-                        <label for=\"{{ card_checkbox_widget.vars.id }}\" class=\"card__label\">
-                            {{ form_widget(card_checkbox_widget, { attr: { class: 'hidden' } }) }} {# El checkbox real, oculto #}
-
-                            <article class=\"card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
-                                {# Ahora card_entity SÍ es un objeto Card #}
-                                <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\" style=\"background-image: url('{{ asset('/assets/images/card/' ~ card_entity.image) }}');\">
-                                    <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
-                                        <span>{{ card_entity.health }}</span>
-                                        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
-                                            <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" />
-                                        </svg>
-                                    </data>
-                                </figure>
-                                <section class=\"p-3 grid grid-rows-[0.5fr_1.5fr] gap-2\">
-                                    <h4 class=\"text-lg font-bold text-gray-800 dark:text-gray-100\">{{ card_entity.name }}</h4>
-                                    <ul class=\"flex flex-col\">
-                                        {% for ability in card_entity.abilities %}
-                                            <li class=\"flex-1 grid grid-cols-2 items-center\">
-                                                <span>{{ ability.name }}</span>
-                                                <div class=\"grid grid-cols-2 gap-8 justify-self-end text-xs\">
-                                                    <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
-                                                        <span>{{ ability.cost }}</span>
-                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
-                                                            <path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z\" clip-rule=\"evenodd\" />
-                                                        </svg>
-                                                    </data>
-                                                    <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
-                                                        <span>{{ ability.value }}</span>
-                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
-                                                            <path fill-rule=\"evenodd\" d=\"M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183.395c.447-.15.799.5.948.948l.395-1.183A.75.75 0 0 1 16.5 15Z\" clip-rule=\"evenodd\" />
-                                                        </svg>
-                                                    </data>
-                                                </div>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </section>
-                            </article>
-                        </label>
-                    {% endif %}
-                {% endfor %}
-            </section>
-        {% endif %}
-
-        {# Ya no necesitas este input oculto manual si 'form.cards' maneja la selección #}
-        {# <input type=\"hidden\" id=\"selected-cards-input\" name=\"selectedCards\" value=\"\"> #}
+            {% endif %}
         {{ form_end(form) }}
     {% endif %}
 
     <script>
-        // Ya no necesitas esta función si EntityType maneja la selección
-        /*
-        function updateSelectedCardsInput() {
-            const selectedCardsInput = document.getElementById('selected-cards-input'); // Este ID ya no existiría
-            const checkboxes = document.querySelectorAll('.cards__container input[type=\"checkbox\"]');
-            const selectedIds = [];
-
-            checkboxes.forEach(cb => {
-                if (cb.checked) {
-                    selectedIds.push(parseInt(cb.value));
-                }
-            });
-
-            selectedCardsInput.value = JSON.stringify(selectedIds);
-        }
-        */
-
         document.getElementById('load-json-btn').addEventListener('click', function () {
             const fileInput = document.getElementById('import-deck-json');
             const file = fileInput.files[0];
@@ -726,42 +638,30 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
                     }
 
                     const selectedCardIdsFromJson = data.cards;
-                    // Obtén todos los checkboxes que Symfony renderizó para 'form.cards'
                     const allCardCheckboxes = document.querySelectorAll('input[name=\"{{ form.cards.vars.full_name }}[]\"]');
 
-                    // Desmarcar todos primero
                     allCardCheckboxes.forEach(cb => {
                         if (cb.checked) {
                             cb.checked = false;
-                            // Disparar evento change para que tu otra lógica de UI reaccione si es necesario
                             cb.dispatchEvent(new Event('change', { bubbles: true }));
                         }
                     });
 
-                    // Marcar los que vienen del JSON
                     selectedCardIdsFromJson.forEach(cardId => {
-                        // Encuentra el checkbox por su valor (que debería ser el ID de la carta)
                         const checkboxToSelect = Array.from(allCardCheckboxes).find(cb => parseInt(cb.value) === cardId);
                         if (checkboxToSelect && !checkboxToSelect.checked) {
                             checkboxToSelect.checked = true;
-                            // Disparar evento change para que tu otra lógica de UI reaccione
                             checkboxToSelect.dispatchEvent(new Event('change', { bubbles: true }));
                         }
                     });
 
-                    // Ya no es necesario llamar a updateSelectedCardsInput()
-                    // updateSelectedCardsInput();
-
-                    // Actualizar el nombre del mazo si viene en el JSON
                     if (data.name) {
-                        // El nombre del input de Symfony para 'name' es 'card_deck_form[name]'
                         const nameInput = document.querySelector('input[name=\"{{ form.name.vars.full_name }}\"]');
                         if (nameInput) {
                             nameInput.value = data.name;
                         }
                     }
 
-                    // Actualizar isFavorite si viene en el JSON
                     if (data.isFavorite !== undefined) {
                         const favoriteInput = document.querySelector('input[name=\"{{ form.isFavorite.vars.full_name }}\"]');
                         if (favoriteInput) {
@@ -779,16 +679,10 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
             reader.readAsText(file);
         });
 
-        // Tu script para mover cartas seleccionadas al \"deck container\"
-        // Asegúrate de que los selectores siguen siendo válidos
         document.addEventListener('DOMContentLoaded', function () {
             const cardDeckContainer = document.querySelector('.card-deck__container');
-            const cardsContainer = document.querySelector('.cards__container'); // Contenedor de todas las cartas disponibles
-            const selectedClass = 'card-deck__card--selected'; // Clase para la carta cuando está en el mazo visual
-
-            // Es importante que esto se ejecute después de que Symfony haya renderizado los checkboxes
-            // y después de que el script de importación de JSON pueda haber modificado su estado.
-            // Esta lógica es para la UI inicial y para cuando el usuario hace clic manualmente.
+            const cardsContainer = document.querySelector('.cards__container');
+            const selectedClass = 'card-deck__card--selected';
 
             function moveCardToDeck(cardLabelElement) {
                 const firstSlot = cardDeckContainer.querySelector('article.card-slot:first-of-type');
@@ -796,22 +690,20 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
                     firstSlot.replaceWith(cardLabelElement);
                     cardLabelElement.querySelector('.card').classList.add(selectedClass);
                 } else {
-                    // No hay slots, ¿qué hacer? Podrías desmarcar el checkbox.
                     const checkbox = cardLabelElement.querySelector('input[type=\"checkbox\"]');
                     if (checkbox) checkbox.checked = false;
                 }
             }
 
             function moveCardToAvailable(cardLabelElement) {
-                cardsContainer.prepend(cardLabelElement); // O append, como prefieras
+                cardsContainer.prepend(cardLabelElement);
                 cardLabelElement.querySelector('.card').classList.remove(selectedClass);
 
                 const newSlot = document.createElement('article');
                 newSlot.classList.add('card-slot');
-                cardDeckContainer.appendChild(newSlot); // Añadir un slot vacío al final
+                cardDeckContainer.appendChild(newSlot);
             }
 
-            // Inicializar la UI basada en los checkboxes marcados
             const allCardCheckboxes = document.querySelectorAll('input[name=\"{{ form.cards.vars.full_name }}[]\"]');
             allCardCheckboxes.forEach(checkbox => {
                 const cardLabel = checkbox.closest('.card__label');
@@ -819,7 +711,6 @@ class __TwigTemplate_f5e1fe332a9a54e084fdc6e6b88c7a2c extends Template
                     moveCardToDeck(cardLabel);
                 }
 
-                // Escuchar cambios en CADA checkbox
                 checkbox.addEventListener('change', function (event) {
                     const currentCardLabel = event.target.closest('.card__label');
                     if (event.target.checked) {

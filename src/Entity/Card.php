@@ -15,6 +15,7 @@ class Card
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['card:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
@@ -36,14 +37,14 @@ class Card
     /**
      * @var Collection<int, Ability>
      */
-    #[ORM\ManyToMany(targetEntity: Ability::class, inversedBy: 'card')]
+    #[ORM\ManyToMany(targetEntity: Ability::class, inversedBy: 'cards')]
     #[Groups(['card:read'])]
     private Collection $abilities;
 
     /**
      * @var Collection<int, CardDeck>
      */
-    #[ORM\ManyToMany(targetEntity: CardDeck::class, mappedBy: 'card')]
+    #[ORM\ManyToMany(targetEntity: CardDeck::class, mappedBy: 'cards')]
     #[Groups(['card:read'])]
     private Collection $cardDecks;
 

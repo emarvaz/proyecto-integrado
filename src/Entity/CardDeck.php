@@ -6,6 +6,7 @@ use App\Repository\CardDeckRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CardDeckRepository::class)]
 class CardDeck
@@ -16,6 +17,7 @@ class CardDeck
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups(['card:read'])]
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'cardDecks')]

@@ -3,11 +3,9 @@
 namespace Container4q1j81Z;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -57,7 +55,7 @@ class App_KernelDevDebugContainer extends Container
             'App\\Controller\\AbilityCategoryController' => 'getAbilityCategoryControllerService',
             'App\\Controller\\AbilityController' => 'getAbilityControllerService',
             'App\\Controller\\AdministrationController' => 'getAdministrationControllerService',
-            'App\\Controller\\CardAPIController' => 'getCardAPIControllerService',
+            'App\\Controller\\Api\\ApiCardController' => 'getCardAPIControllerService',
             'App\\Controller\\CardController' => 'getCardControllerService',
             'App\\Controller\\CardDeckController' => 'getCardDeckControllerService',
             'App\\Controller\\SecurityController' => 'getSecurityControllerService',
@@ -769,7 +767,7 @@ class App_KernelDevDebugContainer extends Container
         }
         $b = new \Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver($container, ($container->privates['logger'] ?? self::getLoggerService($container)));
         $b->allowControllers(['Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController', 'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController']);
-        $b->allowControllers(['App\\Kernel', 'App\\Controller\\AbilityCategoryController', 'App\\Controller\\AbilityController', 'App\\Controller\\AdministrationController', 'App\\Controller\\CardAPIController', 'App\\Controller\\CardController', 'App\\Controller\\CardDeckController', 'App\\Controller\\SecurityController', 'App\\Controller\\UserController', 'Doctrine\\Bundle\\DoctrineBundle\\Controller\\ProfilerController']);
+        $b->allowControllers(['App\\Kernel', 'App\\Controller\\AbilityCategoryController', 'App\\Controller\\AbilityController', 'App\\Controller\\AdministrationController', 'App\\Controller\\Api\\ApiCardController', 'App\\Controller\\CardController', 'App\\Controller\\CardDeckController', 'App\\Controller\\SecurityController', 'App\\Controller\\UserController', 'Doctrine\\Bundle\\DoctrineBundle\\Controller\\ProfilerController']);
         $c = ($container->services['debug.stopwatch'] ??= new \Symfony\Component\Stopwatch\Stopwatch(true));
 
         return $container->services['http_kernel'] = new \Symfony\Component\HttpKernel\HttpKernel($a, new \Symfony\Component\HttpKernel\Controller\TraceableControllerResolver($b, $c), ($container->services['request_stack'] ??= new \Symfony\Component\HttpFoundation\RequestStack()), new \Symfony\Component\HttpKernel\Controller\TraceableArgumentResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver(new \Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory(), new RewindableGenerator(function () use ($container) {

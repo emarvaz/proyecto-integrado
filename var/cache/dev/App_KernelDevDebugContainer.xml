@@ -372,11 +372,25 @@
         <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\AdministrationController"/>
       </call>
     </service>
-    <service id="App\Controller\CardAPIController" class="App\Controller\CardAPIController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\Api\ApiAbilityCategoryController" class="App\Controller\Api\ApiAbilityCategoryController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\CardAPIController"/>
+        <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\Api\ApiAbilityCategoryController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Api\ApiAbilityController" class="App\Controller\Api\ApiAbilityController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\Api\ApiAbilityController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Api\ApiCardController" class="App\Controller\Api\ApiCardController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\Api\ApiCardController"/>
       </call>
     </service>
     <service id="App\Controller\CardController" class="App\Controller\CardController" public="true" autowire="true" autoconfigure="true">
@@ -480,7 +494,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.HOCJlbf"/>
+      <argument type="service" id=".service_locator.SgkSYUU"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -2810,7 +2824,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.HOCJlbf"/>
+      <argument type="service" id=".service_locator.SgkSYUU"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -6234,9 +6248,15 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdministrationController" class="App\Controller\AdministrationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdministrationController" class="App\Controller\AdministrationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdministrationController" class="App\Controller\AdministrationController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CardAPIController" class="App\Controller\CardAPIController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CardAPIController" class="App\Controller\CardAPIController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\CardAPIController" class="App\Controller\CardAPIController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\ApiAbilityCategoryController" class="App\Controller\Api\ApiAbilityCategoryController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\ApiAbilityCategoryController" class="App\Controller\Api\ApiAbilityCategoryController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Api\ApiAbilityCategoryController" class="App\Controller\Api\ApiAbilityCategoryController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\ApiAbilityController" class="App\Controller\Api\ApiAbilityController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\ApiAbilityController" class="App\Controller\Api\ApiAbilityController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Api\ApiAbilityController" class="App\Controller\Api\ApiAbilityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\ApiCardController" class="App\Controller\Api\ApiCardController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\ApiCardController" class="App\Controller\Api\ApiCardController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Api\ApiCardController" class="App\Controller\Api\ApiCardController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CardController" class="App\Controller\CardController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CardController" class="App\Controller\CardController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CardController" class="App\Controller\CardController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6902,18 +6922,70 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.UasAP0g" method="withContext"/>
     </service>
-    <service id=".service_locator.9AEQ_R8" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.ZFQohaj" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service_closure" id="App\Repository\CardRepository"/>
+        <argument key="abilityCategoryRepository" type="service_closure" id="App\Repository\AbilityCategoryRepository"/>
         <argument key="serializer" type="service_closure" id="debug.serializer"/>
       </argument>
     </service>
-    <service id=".service_locator.9AEQ_R8.App\Controller\CardAPIController::list()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\CardAPIController::list()"/>
-      <argument>App\Controller\CardAPIController::list()</argument>
+    <service id=".service_locator.ZFQohaj.App\Controller\Api\ApiAbilityCategoryController::list()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityCategoryController::list()"/>
+      <argument>App\Controller\Api\ApiAbilityCategoryController::list()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.9AEQ_R8" method="withContext"/>
+      <factory service=".service_locator.ZFQohaj" method="withContext"/>
+    </service>
+    <service id=".service_locator.QDr4xRj" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="abilityCategory" type="service_closure" id=".errored..service_locator.QDr4xRj.App\Entity\AbilityCategory"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.QDr4xRj.App\Controller\Api\ApiAbilityCategoryController::show()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityCategoryController::show()"/>
+      <argument>App\Controller\Api\ApiAbilityCategoryController::show()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.QDr4xRj" method="withContext"/>
+    </service>
+    <service id=".service_locator.2y2AOBr" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="abilityRepository" type="service_closure" id="App\Repository\AbilityRepository"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.2y2AOBr.App\Controller\Api\ApiAbilityController::list()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityController::list()"/>
+      <argument>App\Controller\Api\ApiAbilityController::list()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.2y2AOBr" method="withContext"/>
+    </service>
+    <service id=".service_locator.e5IAbY0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="ability" type="service_closure" id=".errored..service_locator.e5IAbY0.App\Entity\Ability"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.e5IAbY0.App\Controller\Api\ApiAbilityController::show()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityController::show()"/>
+      <argument>App\Controller\Api\ApiAbilityController::show()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.e5IAbY0" method="withContext"/>
+    </service>
+    <service id=".service_locator._EfFF5T" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="cardRepository" type="service_closure" id="App\Repository\CardRepository"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator._EfFF5T.App\Controller\Api\ApiCardController::list()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiCardController::list()"/>
+      <argument>App\Controller\Api\ApiCardController::list()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator._EfFF5T" method="withContext"/>
     </service>
     <service id=".service_locator.qWMrN3u" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -6922,24 +6994,11 @@
         <argument key="serializer" type="service_closure" id="debug.serializer"/>
       </argument>
     </service>
-    <service id=".service_locator.qWMrN3u.App\Controller\CardAPIController::show()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\CardAPIController::show()"/>
-      <argument>App\Controller\CardAPIController::show()</argument>
+    <service id=".service_locator.qWMrN3u.App\Controller\Api\ApiCardController::show()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiCardController::show()"/>
+      <argument>App\Controller\Api\ApiCardController::show()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.qWMrN3u" method="withContext"/>
-    </service>
-    <service id=".service_locator.4Oee_pJ" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-        <argument key="serializer" type="service_closure" id="debug.serializer"/>
-      </argument>
-    </service>
-    <service id=".service_locator.4Oee_pJ.App\Controller\CardAPIController::create()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\CardAPIController::create()"/>
-      <argument>App\Controller\CardAPIController::create()</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.4Oee_pJ" method="withContext"/>
     </service>
     <service id=".service_locator.NMBx11d" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -7109,7 +7168,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.d8rsN5P" method="withContext"/>
     </service>
-    <service id=".service_locator.HOCJlbf" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.SgkSYUU" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
@@ -7125,9 +7184,12 @@
         <argument key="App\Controller\AbilityController::abilityEdit" type="service_closure" id=".service_locator.VaGu42r.App\Controller\AbilityController::abilityEdit()"/>
         <argument key="App\Controller\AbilityController::abilityDelete" type="service_closure" id=".service_locator.VaGu42r.App\Controller\AbilityController::abilityDelete()"/>
         <argument key="App\Controller\AdministrationController::index" type="service_closure" id=".service_locator.UasAP0g.App\Controller\AdministrationController::index()"/>
-        <argument key="App\Controller\CardAPIController::list" type="service_closure" id=".service_locator.9AEQ_R8.App\Controller\CardAPIController::list()"/>
-        <argument key="App\Controller\CardAPIController::show" type="service_closure" id=".service_locator.qWMrN3u.App\Controller\CardAPIController::show()"/>
-        <argument key="App\Controller\CardAPIController::create" type="service_closure" id=".service_locator.4Oee_pJ.App\Controller\CardAPIController::create()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController::list" type="service_closure" id=".service_locator.ZFQohaj.App\Controller\Api\ApiAbilityCategoryController::list()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController::show" type="service_closure" id=".service_locator.QDr4xRj.App\Controller\Api\ApiAbilityCategoryController::show()"/>
+        <argument key="App\Controller\Api\ApiAbilityController::list" type="service_closure" id=".service_locator.2y2AOBr.App\Controller\Api\ApiAbilityController::list()"/>
+        <argument key="App\Controller\Api\ApiAbilityController::show" type="service_closure" id=".service_locator.e5IAbY0.App\Controller\Api\ApiAbilityController::show()"/>
+        <argument key="App\Controller\Api\ApiCardController::list" type="service_closure" id=".service_locator._EfFF5T.App\Controller\Api\ApiCardController::list()"/>
+        <argument key="App\Controller\Api\ApiCardController::show" type="service_closure" id=".service_locator.qWMrN3u.App\Controller\Api\ApiCardController::show()"/>
         <argument key="App\Controller\CardController::index" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::index()"/>
         <argument key="App\Controller\CardController::list" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::list()"/>
         <argument key="App\Controller\CardController::administrationCardList" type="service_closure" id=".service_locator.1_hm3sa.App\Controller\CardController::administrationCardList()"/>
@@ -7156,9 +7218,12 @@
         <argument key="App\Controller\AbilityController:abilityEdit" type="service_closure" id=".service_locator.VaGu42r.App\Controller\AbilityController::abilityEdit()"/>
         <argument key="App\Controller\AbilityController:abilityDelete" type="service_closure" id=".service_locator.VaGu42r.App\Controller\AbilityController::abilityDelete()"/>
         <argument key="App\Controller\AdministrationController:index" type="service_closure" id=".service_locator.UasAP0g.App\Controller\AdministrationController::index()"/>
-        <argument key="App\Controller\CardAPIController:list" type="service_closure" id=".service_locator.9AEQ_R8.App\Controller\CardAPIController::list()"/>
-        <argument key="App\Controller\CardAPIController:show" type="service_closure" id=".service_locator.qWMrN3u.App\Controller\CardAPIController::show()"/>
-        <argument key="App\Controller\CardAPIController:create" type="service_closure" id=".service_locator.4Oee_pJ.App\Controller\CardAPIController::create()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController:list" type="service_closure" id=".service_locator.ZFQohaj.App\Controller\Api\ApiAbilityCategoryController::list()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController:show" type="service_closure" id=".service_locator.QDr4xRj.App\Controller\Api\ApiAbilityCategoryController::show()"/>
+        <argument key="App\Controller\Api\ApiAbilityController:list" type="service_closure" id=".service_locator.2y2AOBr.App\Controller\Api\ApiAbilityController::list()"/>
+        <argument key="App\Controller\Api\ApiAbilityController:show" type="service_closure" id=".service_locator.e5IAbY0.App\Controller\Api\ApiAbilityController::show()"/>
+        <argument key="App\Controller\Api\ApiCardController:list" type="service_closure" id=".service_locator._EfFF5T.App\Controller\Api\ApiCardController::list()"/>
+        <argument key="App\Controller\Api\ApiCardController:show" type="service_closure" id=".service_locator.qWMrN3u.App\Controller\Api\ApiCardController::show()"/>
         <argument key="App\Controller\CardController:index" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::index()"/>
         <argument key="App\Controller\CardController:list" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::list()"/>
         <argument key="App\Controller\CardController:administrationCardList" type="service_closure" id=".service_locator.1_hm3sa.App\Controller\CardController::administrationCardList()"/>
@@ -7500,9 +7565,21 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ZyP9f7K" method="withContext"/>
     </service>
-    <service id=".service_locator.ZyP9f7K.App\Controller\CardAPIController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\CardAPIController"/>
-      <argument>App\Controller\CardAPIController</argument>
+    <service id=".service_locator.ZyP9f7K.App\Controller\Api\ApiAbilityCategoryController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityCategoryController"/>
+      <argument>App\Controller\Api\ApiAbilityCategoryController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ZyP9f7K" method="withContext"/>
+    </service>
+    <service id=".service_locator.ZyP9f7K.App\Controller\Api\ApiAbilityController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityController"/>
+      <argument>App\Controller\Api\ApiAbilityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ZyP9f7K" method="withContext"/>
+    </service>
+    <service id=".service_locator.ZyP9f7K.App\Controller\Api\ApiCardController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiCardController"/>
+      <argument>App\Controller\Api\ApiCardController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ZyP9f7K" method="withContext"/>
     </service>
@@ -7684,7 +7761,9 @@
           <argument>App\Controller\AbilityCategoryController</argument>
           <argument>App\Controller\AbilityController</argument>
           <argument>App\Controller\AdministrationController</argument>
-          <argument>App\Controller\CardAPIController</argument>
+          <argument>App\Controller\Api\ApiAbilityCategoryController</argument>
+          <argument>App\Controller\Api\ApiAbilityController</argument>
+          <argument>App\Controller\Api\ApiCardController</argument>
           <argument>App\Controller\CardController</argument>
           <argument>App\Controller\CardDeckController</argument>
           <argument>App\Controller\SecurityController</argument>
@@ -7879,6 +7958,12 @@
     </service>
     <service id=".errored..service_locator.zHyJIs5.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.zHyJIs5&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
+    </service>
+    <service id=".errored..service_locator.QDr4xRj.App\Entity\AbilityCategory" class="App\Entity\AbilityCategory">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.QDr4xRj&quot;: it needs an instance of &quot;App\Entity\AbilityCategory&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.e5IAbY0.App\Entity\Ability" class="App\Entity\Ability">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.e5IAbY0&quot;: it needs an instance of &quot;App\Entity\Ability&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.qWMrN3u.App\Entity\Card" class="App\Entity\Card">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.qWMrN3u&quot;: it needs an instance of &quot;App\Entity\Card&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -8854,7 +8939,7 @@
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.HOCJlbf"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.SgkSYUU"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -8878,9 +8963,12 @@
     <service id=".service_locator.tYKsbrD" alias=".service_locator.Cx3b8LV"/>
     <service id=".service_locator.rmW_qWA" alias=".service_locator.VaGu42r"/>
     <service id=".service_locator.hddQZvf" alias=".service_locator.UasAP0g"/>
-    <service id=".service_locator.D7n10ct" alias=".service_locator.9AEQ_R8"/>
+    <service id=".service_locator.L_QhDI7" alias=".service_locator.ZFQohaj"/>
+    <service id=".service_locator.T.30Rm7" alias=".service_locator.QDr4xRj"/>
+    <service id=".service_locator.ADXVHgb" alias=".service_locator.2y2AOBr"/>
+    <service id=".service_locator.aQKL9Sz" alias=".service_locator.e5IAbY0"/>
+    <service id=".service_locator.qcMjpru" alias=".service_locator._EfFF5T"/>
     <service id=".service_locator..IBg75g" alias=".service_locator.qWMrN3u"/>
-    <service id=".service_locator.SdlY1na" alias=".service_locator.4Oee_pJ"/>
     <service id=".service_locator.YDz831N" alias=".service_locator.NMBx11d"/>
     <service id=".service_locator.wwL4MZM" alias=".service_locator.1_hm3sa"/>
     <service id=".service_locator.7Rz6XGR" alias=".service_locator.Cz_FD95"/>

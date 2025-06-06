@@ -133,7 +133,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
         // line 12
-        yield "    <section class=\"flex flex-col gap-8 py-8\">
+        yield "    <section class=\"flex flex-col gap-8\">
         ";
         // line 13
         $context['_parent'] = $context;
@@ -141,8 +141,8 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
         foreach ($context['_seq'] as $context["_key"] => $context["cardDeck"]) {
             // line 14
             yield "            <article class=\"rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 flex flex-col gap-4\">
-                <header class=\"flex items-center gap-4\">
-                    <section>
+                <header class=\"flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4\">
+                    <div class=\"flex items-center gap-4\">
                         <a href=\"";
             // line 17
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "user", [], "any", false, false, false, 17), "id", [], "any", false, false, false, 17)]), "html", null, true);
@@ -158,76 +158,81 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
                                  class=\"w-12 h-12 rounded-full border border-gray-400 object-cover\">
                         </a>
 
-                        <section class=\"flex flex-col\">
+                        <div class=\"flex flex-col\">
                             <h3 class=\"text-lg font-semibold text-gray-900 dark:text-white\">";
             // line 24
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "name", [], "any", false, false, false, 24), "html", null, true);
             yield "</h3>
-
                             <span class=\"text-sm text-gray-600 dark:text-gray-400\">@";
-            // line 26
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "user", [], "any", false, false, false, 26), "username", [], "any", false, false, false, 26), "html", null, true);
+            // line 25
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "user", [], "any", false, false, false, 25), "username", [], "any", false, false, false, 25), "html", null, true);
             yield "</span>
-                        </section>
-                    </section>
+                        </div>
+                    </div>
 
-                    <section>
+                    <div class=\"flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4\">
                         ";
-            // line 31
-            if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 32
-                yield "                            <p>Inicia sesión para acceder a todas las funcionalidades.</p>
+            // line 30
+            if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 31
+                yield "                            <p class=\"text-sm text-red-500\">Inicia sesión para acceder a todas las funcionalidades.</p>
                         ";
             } else {
+                // line 33
+                yield "                            <div class=\"flex flex-col sm:flex-row items-start sm:items-center gap-2\">
+                                ";
                 // line 34
-                yield "                                ";
                 yield                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 34, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 34), [], "array", false, false, false, 34), 'form_start');
                 yield "
-                                    ";
-                // line 35
-                yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 35, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 35), [], "array", false, false, false, 35), "targetDeck", [], "any", false, false, false, 35), 'row');
-                yield "
+                                <div class=\"flex flex-col sm:flex-row items-center gap-2\">
                                     ";
                 // line 36
-                yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 36, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 36), [], "array", false, false, false, 36), "submit", [], "any", false, false, false, 36), 'widget');
+                yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 36, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 36), [], "array", false, false, false, 36), "targetDeck", [], "any", false, false, false, 36), 'row');
                 yield "
-                                ";
+                                    ";
                 // line 37
-                yield                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 37, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 37), [], "array", false, false, false, 37), 'form_end');
+                yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 37, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 37), [], "array", false, false, false, 37), "submit", [], "any", false, false, false, 37), 'widget');
+                yield "
+                                </div>
+                                ";
+                // line 39
+                yield                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 39, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 39), [], "array", false, false, false, 39), 'form_end');
                 yield "
 
-                            <a href=\"";
-                // line 39
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_deck_export_json", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 39)]), "html", null, true);
+                                <a href=\"";
+                // line 41
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_deck_export_json", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 41)]), "html", null, true);
                 yield "\"
-                               class=\"inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded
-                                      hover:bg-blue-700 transition\">Exportar JSON</a>
+                                   class=\"inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700 transition\">
+                                    Exportar JSON
+                                </a>
+                            </div>
                         ";
             }
-            // line 43
-            yield "                    </section>
+            // line 47
+            yield "                    </div>
                 </header>
 
                 <section class=\"grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4\">
                     ";
-            // line 47
+            // line 51
             $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "cards", [], "any", false, false, false, 47));
+            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "cards", [], "any", false, false, false, 51));
             foreach ($context['_seq'] as $context["_key"] => $context["card"]) {
-                // line 48
+                // line 52
                 yield "                        <a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 48)]), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 52)]), "html", null, true);
                 yield "\">
                             <article class=\"card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
                                 <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\"
                                         style=\"background-image: url('";
-                // line 51
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/content/card/" . CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 51))), "html", null, true);
+                // line 55
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/content/card/" . CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 55))), "html", null, true);
                 yield "');\">
                                     <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
                                         <span>";
-                // line 53
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 53), "html", null, true);
+                // line 57
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 57), "html", null, true);
                 yield "</span>
                                         <!-- Icono de vida -->
                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
@@ -238,28 +243,28 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
 
                                 <section class=\"p-3 grid grid-rows-[0.5fr_1.5fr] gap-2\">
                                     <h4 class=\"text-lg font-bold text-gray-800 dark:text-gray-100\">";
-                // line 62
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 62), "html", null, true);
+                // line 66
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 66), "html", null, true);
                 yield "</h4>
 
                                     <ul class=\"flex flex-col\">
                                         ";
-                // line 65
+                // line 69
                 $context['_parent'] = $context;
-                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 65));
+                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 69));
                 foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-                    // line 66
+                    // line 70
                     yield "                                            <li class=\"flex-1 grid grid-cols-2 items-center\">
                                                 <span>";
-                    // line 67
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 67), "html", null, true);
+                    // line 71
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 71), "html", null, true);
                     yield "</span>
 
                                                 <div class=\"grid grid-cols-2 gap-8 justify-self-end text-xs\">
                                                     <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
                                                         <span>";
-                    // line 71
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 71), "html", null, true);
+                    // line 75
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 75), "html", null, true);
                     yield "</span>
                                                         <!-- Icono de coste -->
                                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
@@ -269,8 +274,8 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
 
                                                     <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
                                                         <span>";
-                    // line 79
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 79), "html", null, true);
+                    // line 83
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 83), "html", null, true);
                     yield "</span>
                                                         <!-- Icono de poder -->
                                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
@@ -284,7 +289,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 88
+                // line 92
                 yield "                                    </ul>
                                 </section>
                             </article>
@@ -294,7 +299,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['card'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 93
+            // line 97
             yield "                </section>
             </article>
         ";
@@ -302,7 +307,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['cardDeck'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 96
+        // line 100
         yield "    </section>
 ";
         
@@ -335,7 +340,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  306 => 96,  298 => 93,  288 => 88,  273 => 79,  262 => 71,  255 => 67,  252 => 66,  248 => 65,  242 => 62,  230 => 53,  225 => 51,  218 => 48,  214 => 47,  208 => 43,  201 => 39,  196 => 37,  192 => 36,  188 => 35,  183 => 34,  179 => 32,  177 => 31,  169 => 26,  164 => 24,  156 => 19,  152 => 18,  148 => 17,  143 => 14,  139 => 13,  136 => 12,  123 => 11,  110 => 8,  106 => 7,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  311 => 100,  303 => 97,  293 => 92,  278 => 83,  267 => 75,  260 => 71,  257 => 70,  253 => 69,  247 => 66,  235 => 57,  230 => 55,  223 => 52,  219 => 51,  213 => 47,  204 => 41,  199 => 39,  194 => 37,  190 => 36,  185 => 34,  182 => 33,  178 => 31,  176 => 30,  168 => 25,  164 => 24,  156 => 19,  152 => 18,  148 => 17,  143 => 14,  139 => 13,  136 => 12,  123 => 11,  110 => 8,  106 => 7,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -351,38 +356,42 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
 {% endblock %}
 
 {% block main %}
-    <section class=\"flex flex-col gap-8 py-8\">
+    <section class=\"flex flex-col gap-8\">
         {% for cardDeck in cardDecks %}
             <article class=\"rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 flex flex-col gap-4\">
-                <header class=\"flex items-center gap-4\">
-                    <section>
+                <header class=\"flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4\">
+                    <div class=\"flex items-center gap-4\">
                         <a href=\"{{ path('profile', { 'id': cardDeck.user.id }) }}\">
                             <img src=\"{{ asset('assets/images/user/' ~ cardDeck.user.profilePic) }}\"
                                  alt=\"{{ cardDeck.user.username }}\"
                                  class=\"w-12 h-12 rounded-full border border-gray-400 object-cover\">
                         </a>
 
-                        <section class=\"flex flex-col\">
+                        <div class=\"flex flex-col\">
                             <h3 class=\"text-lg font-semibold text-gray-900 dark:text-white\">{{ cardDeck.name }}</h3>
-
                             <span class=\"text-sm text-gray-600 dark:text-gray-400\">@{{ cardDeck.user.username }}</span>
-                        </section>
-                    </section>
+                        </div>
+                    </div>
 
-                    <section>
+                    <div class=\"flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4\">
                         {% if not app.user %}
-                            <p>Inicia sesión para acceder a todas las funcionalidades.</p>
+                            <p class=\"text-sm text-red-500\">Inicia sesión para acceder a todas las funcionalidades.</p>
                         {% else %}
+                            <div class=\"flex flex-col sm:flex-row items-start sm:items-center gap-2\">
                                 {{ form_start(copyForms[cardDeck.id]) }}
+                                <div class=\"flex flex-col sm:flex-row items-center gap-2\">
                                     {{ form_row(copyForms[cardDeck.id].targetDeck) }}
                                     {{ form_widget(copyForms[cardDeck.id].submit) }}
+                                </div>
                                 {{ form_end(copyForms[cardDeck.id]) }}
 
-                            <a href=\"{{ path('card_deck_export_json', { id: cardDeck.id }) }}\"
-                               class=\"inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded
-                                      hover:bg-blue-700 transition\">Exportar JSON</a>
+                                <a href=\"{{ path('card_deck_export_json', { id: cardDeck.id }) }}\"
+                                   class=\"inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700 transition\">
+                                    Exportar JSON
+                                </a>
+                            </div>
                         {% endif %}
-                    </section>
+                    </div>
                 </header>
 
                 <section class=\"grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4\">

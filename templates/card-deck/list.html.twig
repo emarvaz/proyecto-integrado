@@ -9,38 +9,42 @@
 {% endblock %}
 
 {% block main %}
-    <section class="flex flex-col gap-8 py-8">
+    <section class="flex flex-col gap-8">
         {% for cardDeck in cardDecks %}
             <article class="rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 flex flex-col gap-4">
-                <header class="flex items-center gap-4">
-                    <section>
+                <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div class="flex items-center gap-4">
                         <a href="{{ path('profile', { 'id': cardDeck.user.id }) }}">
                             <img src="{{ asset('assets/images/user/' ~ cardDeck.user.profilePic) }}"
                                  alt="{{ cardDeck.user.username }}"
                                  class="w-12 h-12 rounded-full border border-gray-400 object-cover">
                         </a>
 
-                        <section class="flex flex-col">
+                        <div class="flex flex-col">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ cardDeck.name }}</h3>
-
                             <span class="text-sm text-gray-600 dark:text-gray-400">@{{ cardDeck.user.username }}</span>
-                        </section>
-                    </section>
+                        </div>
+                    </div>
 
-                    <section>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                         {% if not app.user %}
-                            <p>Inicia sesión para acceder a todas las funcionalidades.</p>
+                            <p class="text-sm text-red-500">Inicia sesión para acceder a todas las funcionalidades.</p>
                         {% else %}
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2">
                                 {{ form_start(copyForms[cardDeck.id]) }}
+                                <div class="flex flex-col sm:flex-row items-center gap-2">
                                     {{ form_row(copyForms[cardDeck.id].targetDeck) }}
                                     {{ form_widget(copyForms[cardDeck.id].submit) }}
+                                </div>
                                 {{ form_end(copyForms[cardDeck.id]) }}
 
-                            <a href="{{ path('card_deck_export_json', { id: cardDeck.id }) }}"
-                               class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded
-                                      hover:bg-blue-700 transition">Exportar JSON</a>
+                                <a href="{{ path('card_deck_export_json', { id: cardDeck.id }) }}"
+                                   class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700 transition">
+                                    Exportar JSON
+                                </a>
+                            </div>
                         {% endif %}
-                    </section>
+                    </div>
                 </header>
 
                 <section class="grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
