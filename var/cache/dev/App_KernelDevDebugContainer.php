@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerPdaCRFN\App_KernelDevDebugContainer([
     'container.build_hash' => 'PdaCRFN',
-    'container.build_id' => 'e548c168',
-    'container.build_time' => 1749197709,
+    'container.build_id' => 'c1650378',
+    'container.build_time' => 1749204030,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerPdaCRFN');

@@ -89,7 +89,7 @@ class RetryStrategyConfig
 
     /**
      * Randomness to apply to the delay (between 0 and 1).
-     * @default 0.1000000000000000055511151231257827021181583404541015625
+     * @default 0.1
      * @param ParamConfigurator|float $value
      * @return $this
      */
