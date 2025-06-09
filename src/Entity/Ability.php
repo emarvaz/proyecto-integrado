@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AbilityRepository::class)]
 class Ability
@@ -18,24 +19,44 @@ class Ability
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['card:read', 'ability:read'])]
+    #[Groups(['card:read', 'ability:read, ability:write'])]
+    #[Assert\NotBlank(message: 'El nombre de la habilidad no puede estar vacío.')]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: 'El nombre debe tener al menos {{ limit }} caracteres.',
+        maxMessage: 'El nombre no puede tener más de {{ limit }} caracteres.'
+    )]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['ability:read'])]
+    #[Groups(['ability:read, ability:write'])]
+    #[Assert\NotBlank(message: 'La descripción no puede estar vacía.')]
+    #[Assert\Length(
+        min: 10,
+        max: 255,
+        minMessage: 'La descripción debe tener al menos {{ limit }} caracteres.',
+        maxMessage: 'La descripción no puede superar los {{ limit }} caracteres.'
+    )]
     private ?string $description = null;
 
     #[ORM\Column]
-    #[Groups(['ability:read'])]
+    #[Groups(['ability:read, ability:write'])]
+    #[Assert\NotNull(message: 'Debes especificar un coste.')]
+    #[Assert\Type(type: 'integer', message: 'El coste debe ser un número.')]
+    #[Assert\PositiveOrZero(message: 'El coste no puede ser un número negativo.')]
     private ?int $cost = null;
 
     #[ORM\Column]
-    #[Groups(['ability:read'])]
+    #[Groups(['ability:read, ability:write'])]
+    #[Assert\NotNull(message: 'Debes especificar un valor.')]
+    #[Assert\Type(type: 'integer', message: 'El valor debe ser un número.')]
     private ?int $value = null;
 
     #[ORM\ManyToOne(inversedBy: 'abilities')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['ability:read'])]
+    #[Groups(['ability:read, ability:write'])]
+    #[Assert\NotNull(message: 'Debes seleccionar una categoría.')]
     private ?AbilityCategory $category = null;
 
     /**
@@ -86,18 +107,6 @@ class Ability
     public function setCost(int $cost): static
     {
         $this->cost = $cost;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): static
-    {
-        $this->type = $type;
 
         return $this;
     }

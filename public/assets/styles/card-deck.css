@@ -51,3 +51,13 @@
         color: #173563;
     }
 }
+
+@media (max-width: 640px) {
+    .card__label .card {
+        grid-template-rows: auto auto;
+    }
+
+    .card__label .card h4 {
+        font-size: 1rem;
+    }
+}

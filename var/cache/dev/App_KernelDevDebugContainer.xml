@@ -465,6 +465,7 @@
     </service>
     <service id="App\Security\AccessDeniedHandler" class="App\Security\AccessDeniedHandler" autowire="true" autoconfigure="true">
       <argument type="service" id="router.default"/>
+      <argument type="service" id="security.helper"/>
     </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
@@ -494,7 +495,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.SgkSYUU"/>
+      <argument type="service" id=".service_locator.gYzBg_M"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -2824,7 +2825,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.SgkSYUU"/>
+      <argument type="service" id=".service_locator.gYzBg_M"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -2935,6 +2936,9 @@
       <call method="setConfigCacheFactory">
         <argument type="service" id="config_cache_factory"/>
       </call>
+      <call method="addExpressionLanguageProvider">
+        <argument type="service" id="router.expression_language_provider"/>
+      </call>
     </service>
     <service id="router.request_context" class="Symfony\Component\Routing\RequestContext" constructor="fromUri">
       <argument></argument>
@@ -2942,6 +2946,14 @@
       <argument>http</argument>
       <argument>80</argument>
       <argument>443</argument>
+      <call method="setParameter">
+        <argument>_functions</argument>
+        <argument type="service" id="router.expression_language_provider" on-invalid="ignore"/>
+      </call>
+    </service>
+    <service id="router.expression_language_provider" class="Symfony\Component\Routing\Matcher\ExpressionLanguageProvider">
+      <tag name="routing.expression_language_provider"/>
+      <argument type="service" id=".service_locator.u.4FiKa"/>
     </service>
     <service id="router.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer">
       <tag name="container.service_subscriber" id="router"/>
@@ -3788,13 +3800,20 @@
     </service>
     <service id="validator.expression" class="Symfony\Component\Validator\Constraints\ExpressionValidator">
       <tag name="validator.constraint_validator" alias="validator.expression"/>
-      <argument>null</argument>
+      <argument type="service" id="validator.expression_language" on-invalid="null"/>
+    </service>
+    <service id="validator.expression_language" class="Symfony\Component\ExpressionLanguage\ExpressionLanguage">
+      <argument type="service" id="cache.validator_expression_language" on-invalid="null"/>
+      <call method="registerProvider">
+        <argument type="service" id="validator.expression_language_provider" on-invalid="ignore"/>
+      </call>
     </service>
     <service id="cache.validator_expression_language" class="Symfony\Component\Cache\Adapter\TraceableAdapter" public="true">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
       <argument type="service" id="cache.validator_expression_language.recorder_inner"/>
     </service>
+    <service id="validator.expression_language_provider" class="Symfony\Component\Validator\Constraints\ExpressionLanguageProvider"/>
     <service id="validator.email" class="Symfony\Component\Validator\Constraints\EmailValidator">
       <tag name="validator.constraint_validator"/>
       <argument>html5</argument>
@@ -3808,7 +3827,7 @@
     </service>
     <service id="validator.when" class="Symfony\Component\Validator\Constraints\WhenValidator">
       <tag name="validator.constraint_validator"/>
-      <argument>null</argument>
+      <argument type="service" id="validator.expression_language" on-invalid="null"/>
     </service>
     <service id="validator.no_suspicious_characters" class="Symfony\Component\Validator\Constraints\NoSuspiciousCharactersValidator">
       <tag name="validator.constraint_validator" alias="Symfony\Component\Validator\Constraints\NoSuspiciousCharactersValidator"/>
@@ -4301,6 +4320,9 @@
         <argument type="service" id="twig.extension.debug.stopwatch"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="twig.extension.expression"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.httpkernel"/>
       </call>
       <call method="addExtension">
@@ -4468,6 +4490,9 @@
       <tag name="twig.extension"/>
       <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
       <argument>true</argument>
+    </service>
+    <service id="twig.extension.expression" class="Symfony\Bridge\Twig\Extension\ExpressionExtension">
+      <tag name="twig.extension"/>
     </service>
     <service id="twig.extension.htmlsanitizer" class="Symfony\Bridge\Twig\Extension\HtmlSanitizerExtension">
       <argument type="service" id=".service_locator.GIuJv7e"/>
@@ -4838,7 +4863,7 @@
     <service id="doctrine.orm.entity_value_resolver" class="Symfony\Bridge\Doctrine\ArgumentResolver\EntityValueResolver">
       <tag name="Symfony\Bridge\Doctrine\ArgumentResolver\EntityValueResolver" priority="110">controller.argument_value_resolver</tag>
       <argument type="service" id="doctrine"/>
-      <argument>null</argument>
+      <argument type="service" id="doctrine.orm.entity_value_resolver.expression_language" on-invalid="ignore"/>
       <argument type="service">
         <service class="Symfony\Bridge\Doctrine\Attribute\MapEntity">
           <argument>null</argument>
@@ -4853,6 +4878,7 @@
         </service>
       </argument>
     </service>
+    <service id="doctrine.orm.entity_value_resolver.expression_language" class="Symfony\Component\ExpressionLanguage\ExpressionLanguage"/>
     <service id="doctrine.cache_clear_metadata_command" class="Doctrine\ORM\Tools\Console\Command\ClearCache\MetadataCommand">
       <tag name="console.command" command="doctrine:cache:clear-metadata"/>
       <tag name="container.no_preload"/>
@@ -5297,6 +5323,9 @@
         <argument key="main" type="service_closure" id="security.user_checker"/>
       </argument>
     </service>
+    <service id="security.expression_language" class="Symfony\Component\Security\Core\Authorization\ExpressionLanguage">
+      <argument type="service" id="cache.security_expression_language" on-invalid="null"/>
+    </service>
     <service id="security.authentication_utils" class="Symfony\Component\Security\Http\Authentication\AuthenticationUtils">
       <argument type="service" id="request_stack"/>
     </service>
@@ -5309,6 +5338,13 @@
     <service id="security.access.authenticated_voter" class="Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter">
       <tag name="security.voter" priority="250"/>
       <argument type="service" id="security.authentication.trust_resolver"/>
+    </service>
+    <service id="security.access.expression_voter" class="Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter">
+      <tag name="security.voter" priority="245"/>
+      <argument type="service" id="security.expression_language"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+      <argument type="service" id="security.authorization_checker"/>
+      <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
     </service>
     <service id="security.impersonate_url_generator" class="Symfony\Component\Security\Http\Impersonate\ImpersonateUrlGenerator">
       <argument type="service" id="request_stack"/>
@@ -5400,16 +5436,29 @@
       <tag name="kernel.reset" method="reset"/>
       <argument type="service" id="cache.security_expression_language.recorder_inner"/>
     </service>
+    <service id="security.cache_warmer.expression" class="Symfony\Bundle\SecurityBundle\CacheWarmer\ExpressionCacheWarmer">
+      <tag name="kernel.cache_warmer"/>
+      <argument type="iterator">
+        <argument type="service" id=".security.expression.lCFtNny"/>
+      </argument>
+      <argument type="service" id="security.expression_language"/>
+    </service>
     <service id="controller.is_granted_attribute_listener" class="Symfony\Component\Security\Http\EventListener\IsGrantedAttributeListener">
       <tag name="kernel.event_subscriber"/>
       <tag name="container.hot_path"/>
       <argument type="service" id="security.authorization_checker"/>
-      <argument>null</argument>
+      <argument type="service" id="security.is_granted_attribute_expression_language" on-invalid="null"/>
+    </service>
+    <service id="security.is_granted_attribute_expression_language" class="Symfony\Component\ExpressionLanguage\ExpressionLanguage">
+      <argument type="service" id="cache.security_is_granted_attribute_expression_language" on-invalid="null"/>
     </service>
     <service id="cache.security_is_granted_attribute_expression_language" class="Symfony\Component\Cache\Adapter\TraceableAdapter" public="true">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
       <argument type="service" id="cache.security_is_granted_attribute_expression_language.recorder_inner"/>
+    </service>
+    <service id="security.is_csrf_token_valid_attribute_expression_language" class="Symfony\Component\ExpressionLanguage\ExpressionLanguage">
+      <argument type="service" id="cache.security_is_csrf_token_valid_attribute_expression_language" on-invalid="null"/>
     </service>
     <service id="cache.security_is_csrf_token_valid_attribute_expression_language" class="Symfony\Component\Cache\Adapter\TraceableAdapter" public="true">
       <tag name="cache.pool"/>
@@ -5463,6 +5512,14 @@
       </argument>
     </service>
     <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap">
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.jVtN2bP"/>
+        <argument type="collection">
+          <argument>IS_AUTHENTICATED_FULLY</argument>
+          <argument type="service" id=".security.expression.lCFtNny"/>
+        </argument>
+        <argument>null</argument>
+      </call>
       <call method="add">
         <argument type="service" id=".security.request_matcher.0ppQeRN"/>
         <argument type="collection">
@@ -6027,20 +6084,23 @@
         <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
       </argument>
     </service>
-    <service id=".security.request_matcher.e5OwGWk" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
-      <argument>^/administration</argument>
-    </service>
-    <service id=".security.request_matcher.0ppQeRN" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
-      <argument type="collection">
-        <argument type="service" id=".security.request_matcher.e5OwGWk"/>
-      </argument>
-    </service>
     <service id=".security.request_matcher.6ZKuark" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
       <argument>^/card-deck</argument>
     </service>
     <service id=".security.request_matcher.jVtN2bP" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
       <argument type="collection">
         <argument type="service" id=".security.request_matcher.6ZKuark"/>
+      </argument>
+    </service>
+    <service id=".security.expression.lCFtNny" class="Symfony\Component\ExpressionLanguage\Expression">
+      <argument>not is_granted('ROLE_ADMIN')</argument>
+    </service>
+    <service id=".security.request_matcher.e5OwGWk" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/administration</argument>
+    </service>
+    <service id=".security.request_matcher.0ppQeRN" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher.e5OwGWk"/>
       </argument>
     </service>
     <service id=".security.request_matcher.l6nTaJG" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
@@ -6948,6 +7008,48 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.QDr4xRj" method="withContext"/>
     </service>
+    <service id=".service_locator.d9uyIPT" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="serializer" type="service_closure" id="debug.serializer"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="validator" type="service_closure" id="debug.validator"/>
+      </argument>
+    </service>
+    <service id=".service_locator.d9uyIPT.App\Controller\Api\ApiAbilityCategoryController::create()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityCategoryController::create()"/>
+      <argument>App\Controller\Api\ApiAbilityCategoryController::create()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.d9uyIPT" method="withContext"/>
+    </service>
+    <service id=".service_locator.4KottKb" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="category" type="service_closure" id=".errored..service_locator.4KottKb.App\Entity\AbilityCategory"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="validator" type="service_closure" id="debug.validator"/>
+      </argument>
+    </service>
+    <service id=".service_locator.4KottKb.App\Controller\Api\ApiAbilityCategoryController::update()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityCategoryController::update()"/>
+      <argument>App\Controller\Api\ApiAbilityCategoryController::update()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.4KottKb" method="withContext"/>
+    </service>
+    <service id=".service_locator.wuYMiXG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="category" type="service_closure" id=".errored..service_locator.wuYMiXG.App\Entity\AbilityCategory"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wuYMiXG.App\Controller\Api\ApiAbilityCategoryController::delete()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityCategoryController::delete()"/>
+      <argument>App\Controller\Api\ApiAbilityCategoryController::delete()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.wuYMiXG" method="withContext"/>
+    </service>
     <service id=".service_locator.2y2AOBr" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6974,6 +7076,40 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.e5IAbY0" method="withContext"/>
     </service>
+    <service id=".service_locator.d9uyIPT.App\Controller\Api\ApiAbilityController::create()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityController::create()"/>
+      <argument>App\Controller\Api\ApiAbilityController::create()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.d9uyIPT" method="withContext"/>
+    </service>
+    <service id=".service_locator.y94IrXW" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="ability" type="service_closure" id=".errored..service_locator.y94IrXW.App\Entity\Ability"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="validator" type="service_closure" id="debug.validator"/>
+      </argument>
+    </service>
+    <service id=".service_locator.y94IrXW.App\Controller\Api\ApiAbilityController::update()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityController::update()"/>
+      <argument>App\Controller\Api\ApiAbilityController::update()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.y94IrXW" method="withContext"/>
+    </service>
+    <service id=".service_locator.ZEvremp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="ability" type="service_closure" id=".errored..service_locator.ZEvremp.App\Entity\Ability"/>
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ZEvremp.App\Controller\Api\ApiAbilityController::delete()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiAbilityController::delete()"/>
+      <argument>App\Controller\Api\ApiAbilityController::delete()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ZEvremp" method="withContext"/>
+    </service>
     <service id=".service_locator._EfFF5T" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6999,6 +7135,40 @@
       <argument>App\Controller\Api\ApiCardController::show()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.qWMrN3u" method="withContext"/>
+    </service>
+    <service id=".service_locator.d9uyIPT.App\Controller\Api\ApiCardController::create()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiCardController::create()"/>
+      <argument>App\Controller\Api\ApiCardController::create()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.d9uyIPT" method="withContext"/>
+    </service>
+    <service id=".service_locator.87QWJaY" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="card" type="service_closure" id=".errored..service_locator.87QWJaY.App\Entity\Card"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="validator" type="service_closure" id="debug.validator"/>
+      </argument>
+    </service>
+    <service id=".service_locator.87QWJaY.App\Controller\Api\ApiCardController::update()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiCardController::update()"/>
+      <argument>App\Controller\Api\ApiCardController::update()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.87QWJaY" method="withContext"/>
+    </service>
+    <service id=".service_locator.s.81slf" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="card" type="service_closure" id=".errored..service_locator.s.81slf.App\Entity\Card"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.s.81slf.App\Controller\Api\ApiCardController::delete()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ApiCardController::delete()"/>
+      <argument>App\Controller\Api\ApiCardController::delete()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.s.81slf" method="withContext"/>
     </service>
     <service id=".service_locator.NMBx11d" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -7168,7 +7338,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.d8rsN5P" method="withContext"/>
     </service>
-    <service id=".service_locator.SgkSYUU" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.gYzBg_M" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
@@ -7186,10 +7356,19 @@
         <argument key="App\Controller\AdministrationController::index" type="service_closure" id=".service_locator.UasAP0g.App\Controller\AdministrationController::index()"/>
         <argument key="App\Controller\Api\ApiAbilityCategoryController::list" type="service_closure" id=".service_locator.ZFQohaj.App\Controller\Api\ApiAbilityCategoryController::list()"/>
         <argument key="App\Controller\Api\ApiAbilityCategoryController::show" type="service_closure" id=".service_locator.QDr4xRj.App\Controller\Api\ApiAbilityCategoryController::show()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController::create" type="service_closure" id=".service_locator.d9uyIPT.App\Controller\Api\ApiAbilityCategoryController::create()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController::update" type="service_closure" id=".service_locator.4KottKb.App\Controller\Api\ApiAbilityCategoryController::update()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController::delete" type="service_closure" id=".service_locator.wuYMiXG.App\Controller\Api\ApiAbilityCategoryController::delete()"/>
         <argument key="App\Controller\Api\ApiAbilityController::list" type="service_closure" id=".service_locator.2y2AOBr.App\Controller\Api\ApiAbilityController::list()"/>
         <argument key="App\Controller\Api\ApiAbilityController::show" type="service_closure" id=".service_locator.e5IAbY0.App\Controller\Api\ApiAbilityController::show()"/>
+        <argument key="App\Controller\Api\ApiAbilityController::create" type="service_closure" id=".service_locator.d9uyIPT.App\Controller\Api\ApiAbilityController::create()"/>
+        <argument key="App\Controller\Api\ApiAbilityController::update" type="service_closure" id=".service_locator.y94IrXW.App\Controller\Api\ApiAbilityController::update()"/>
+        <argument key="App\Controller\Api\ApiAbilityController::delete" type="service_closure" id=".service_locator.ZEvremp.App\Controller\Api\ApiAbilityController::delete()"/>
         <argument key="App\Controller\Api\ApiCardController::list" type="service_closure" id=".service_locator._EfFF5T.App\Controller\Api\ApiCardController::list()"/>
         <argument key="App\Controller\Api\ApiCardController::show" type="service_closure" id=".service_locator.qWMrN3u.App\Controller\Api\ApiCardController::show()"/>
+        <argument key="App\Controller\Api\ApiCardController::create" type="service_closure" id=".service_locator.d9uyIPT.App\Controller\Api\ApiCardController::create()"/>
+        <argument key="App\Controller\Api\ApiCardController::update" type="service_closure" id=".service_locator.87QWJaY.App\Controller\Api\ApiCardController::update()"/>
+        <argument key="App\Controller\Api\ApiCardController::delete" type="service_closure" id=".service_locator.s.81slf.App\Controller\Api\ApiCardController::delete()"/>
         <argument key="App\Controller\CardController::index" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::index()"/>
         <argument key="App\Controller\CardController::list" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::list()"/>
         <argument key="App\Controller\CardController::administrationCardList" type="service_closure" id=".service_locator.1_hm3sa.App\Controller\CardController::administrationCardList()"/>
@@ -7220,10 +7399,19 @@
         <argument key="App\Controller\AdministrationController:index" type="service_closure" id=".service_locator.UasAP0g.App\Controller\AdministrationController::index()"/>
         <argument key="App\Controller\Api\ApiAbilityCategoryController:list" type="service_closure" id=".service_locator.ZFQohaj.App\Controller\Api\ApiAbilityCategoryController::list()"/>
         <argument key="App\Controller\Api\ApiAbilityCategoryController:show" type="service_closure" id=".service_locator.QDr4xRj.App\Controller\Api\ApiAbilityCategoryController::show()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController:create" type="service_closure" id=".service_locator.d9uyIPT.App\Controller\Api\ApiAbilityCategoryController::create()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController:update" type="service_closure" id=".service_locator.4KottKb.App\Controller\Api\ApiAbilityCategoryController::update()"/>
+        <argument key="App\Controller\Api\ApiAbilityCategoryController:delete" type="service_closure" id=".service_locator.wuYMiXG.App\Controller\Api\ApiAbilityCategoryController::delete()"/>
         <argument key="App\Controller\Api\ApiAbilityController:list" type="service_closure" id=".service_locator.2y2AOBr.App\Controller\Api\ApiAbilityController::list()"/>
         <argument key="App\Controller\Api\ApiAbilityController:show" type="service_closure" id=".service_locator.e5IAbY0.App\Controller\Api\ApiAbilityController::show()"/>
+        <argument key="App\Controller\Api\ApiAbilityController:create" type="service_closure" id=".service_locator.d9uyIPT.App\Controller\Api\ApiAbilityController::create()"/>
+        <argument key="App\Controller\Api\ApiAbilityController:update" type="service_closure" id=".service_locator.y94IrXW.App\Controller\Api\ApiAbilityController::update()"/>
+        <argument key="App\Controller\Api\ApiAbilityController:delete" type="service_closure" id=".service_locator.ZEvremp.App\Controller\Api\ApiAbilityController::delete()"/>
         <argument key="App\Controller\Api\ApiCardController:list" type="service_closure" id=".service_locator._EfFF5T.App\Controller\Api\ApiCardController::list()"/>
         <argument key="App\Controller\Api\ApiCardController:show" type="service_closure" id=".service_locator.qWMrN3u.App\Controller\Api\ApiCardController::show()"/>
+        <argument key="App\Controller\Api\ApiCardController:create" type="service_closure" id=".service_locator.d9uyIPT.App\Controller\Api\ApiCardController::create()"/>
+        <argument key="App\Controller\Api\ApiCardController:update" type="service_closure" id=".service_locator.87QWJaY.App\Controller\Api\ApiCardController::update()"/>
+        <argument key="App\Controller\Api\ApiCardController:delete" type="service_closure" id=".service_locator.s.81slf.App\Controller\Api\ApiCardController::delete()"/>
         <argument key="App\Controller\CardController:index" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::index()"/>
         <argument key="App\Controller\CardController:list" type="service_closure" id=".service_locator.NMBx11d.App\Controller\CardController::list()"/>
         <argument key="App\Controller\CardController:administrationCardList" type="service_closure" id=".service_locator.1_hm3sa.App\Controller\CardController::administrationCardList()"/>
@@ -7492,6 +7680,10 @@
       <argument type="service" id="security.access.simple_role_voter"/>
       <argument type="service" id="debug.event_dispatcher"/>
     </service>
+    <service id=".debug.security.voter.security.access.expression_voter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
+      <argument type="service" id="security.access.expression_voter"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
     <service id="security.listener.csrf_protection" class="Symfony\Component\Security\Http\EventListener\CsrfProtectionListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="security.csrf.same_origin_token_manager"/>
@@ -7500,7 +7692,7 @@
       <tag name="kernel.event_subscriber"/>
       <tag name="container.hot_path"/>
       <argument type="service" id="security.csrf.same_origin_token_manager"/>
-      <argument>null</argument>
+      <argument type="service" id="security.is_csrf_token_valid_attribute_expression_language" on-invalid="null"/>
     </service>
     <service id="security.logout.listener.csrf_token_clearing" class="Symfony\Component\Security\Http\EventListener\CsrfTokenClearingLogoutListener">
       <tag name="kernel.event_subscriber"/>
@@ -7702,6 +7894,13 @@
       <argument type="collection">
         <argument key="kernel" type="service_closure" id="kernel"/>
         <argument key="security.route_loader.logout" type="service_closure" id="security.route_loader.logout"/>
+      </argument>
+    </service>
+    <service id=".service_locator.u.4FiKa" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="env" type="service_closure" id="container.getenv"/>
+        <argument key="service" type="service_closure" id="container.get_routing_condition_service"/>
       </argument>
     </service>
     <service id=".service_locator.riiCAol" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7939,6 +8138,7 @@
       <argument type="iterator">
         <argument type="service" id=".debug.security.voter.security.access.authenticated_voter"/>
         <argument type="service" id=".debug.security.voter.security.access.simple_role_voter"/>
+        <argument type="service" id=".debug.security.voter.security.access.expression_voter"/>
       </argument>
       <argument type="service">
         <service class="Symfony\Component\Security\Core\Authorization\Strategy\AffirmativeStrategy">
@@ -7962,11 +8162,29 @@
     <service id=".errored..service_locator.QDr4xRj.App\Entity\AbilityCategory" class="App\Entity\AbilityCategory">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.QDr4xRj&quot;: it needs an instance of &quot;App\Entity\AbilityCategory&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
+    <service id=".errored..service_locator.4KottKb.App\Entity\AbilityCategory" class="App\Entity\AbilityCategory">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.4KottKb&quot;: it needs an instance of &quot;App\Entity\AbilityCategory&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.wuYMiXG.App\Entity\AbilityCategory" class="App\Entity\AbilityCategory">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.wuYMiXG&quot;: it needs an instance of &quot;App\Entity\AbilityCategory&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
     <service id=".errored..service_locator.e5IAbY0.App\Entity\Ability" class="App\Entity\Ability">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.e5IAbY0&quot;: it needs an instance of &quot;App\Entity\Ability&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
+    <service id=".errored..service_locator.y94IrXW.App\Entity\Ability" class="App\Entity\Ability">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y94IrXW&quot;: it needs an instance of &quot;App\Entity\Ability&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.ZEvremp.App\Entity\Ability" class="App\Entity\Ability">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.ZEvremp&quot;: it needs an instance of &quot;App\Entity\Ability&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
     <service id=".errored..service_locator.qWMrN3u.App\Entity\Card" class="App\Entity\Card">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.qWMrN3u&quot;: it needs an instance of &quot;App\Entity\Card&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.87QWJaY.App\Entity\Card" class="App\Entity\Card">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.87QWJaY&quot;: it needs an instance of &quot;App\Entity\Card&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.s.81slf.App\Entity\Card" class="App\Entity\Card">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.s.81slf&quot;: it needs an instance of &quot;App\Entity\Card&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.KvNRweA.App\Entity\CardDeck" class="App\Entity\CardDeck">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.KvNRweA&quot;: it needs an instance of &quot;App\Entity\CardDeck&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -8939,7 +9157,7 @@
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.SgkSYUU"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.gYzBg_M"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -8965,10 +9183,17 @@
     <service id=".service_locator.hddQZvf" alias=".service_locator.UasAP0g"/>
     <service id=".service_locator.L_QhDI7" alias=".service_locator.ZFQohaj"/>
     <service id=".service_locator.T.30Rm7" alias=".service_locator.QDr4xRj"/>
+    <service id=".service_locator.NfJNSu7" alias=".service_locator.d9uyIPT"/>
+    <service id=".service_locator.OCiaEWf" alias=".service_locator.4KottKb"/>
+    <service id=".service_locator.dnJ.9vJ" alias=".service_locator.wuYMiXG"/>
     <service id=".service_locator.ADXVHgb" alias=".service_locator.2y2AOBr"/>
     <service id=".service_locator.aQKL9Sz" alias=".service_locator.e5IAbY0"/>
+    <service id=".service_locator.aUJptHZ" alias=".service_locator.y94IrXW"/>
+    <service id=".service_locator.ipsYdq6" alias=".service_locator.ZEvremp"/>
     <service id=".service_locator.qcMjpru" alias=".service_locator._EfFF5T"/>
     <service id=".service_locator..IBg75g" alias=".service_locator.qWMrN3u"/>
+    <service id=".service_locator.xR93S3v" alias=".service_locator.87QWJaY"/>
+    <service id=".service_locator.LTftGEG" alias=".service_locator.s.81slf"/>
     <service id=".service_locator.YDz831N" alias=".service_locator.NMBx11d"/>
     <service id=".service_locator.wwL4MZM" alias=".service_locator.1_hm3sa"/>
     <service id=".service_locator.7Rz6XGR" alias=".service_locator.Cz_FD95"/>

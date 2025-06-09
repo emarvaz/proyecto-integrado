@@ -1,59 +1,38 @@
-import { ArtElement, defineElement } from 'art';
-import 'card';
+document.addEventListener('DOMContentLoaded', function () {
+    const cardDeckContainer = document.querySelector('.card-deck__container');
+    const cardsContainer = document.querySelector('.cards__container');
+    const selectedClass = 'card-deck__card--selected';
 
-class CardDeck extends ArtElement {
-    static templateRoute = '/templates/card-deck.html';
-    static styleRoute = '/assets/styles/components/card-deck.css';
-    static attributes = {
-        cardCount: {
-            type: Number,
-            prefix: 'data-'
-        }
-    }
-    
-    constructor() {
-        super();
-    }
+    const cards = cardsContainer.querySelectorAll('.card');
 
-    async connectedCallback() {
-        await super.connectedCallback();
+    cards.forEach((card) => {
+        const checkbox = card.querySelector('input[type="checkbox"]');
 
-        const container = this.querySelector('.container');
-
-        this.loadCards(container);
-    }
-
-    async loadCards(container) {
-        try {
-            const response = await fetch('/data/data.json', { cache: 'no-store' });
-            const content = await response.json();
-        
-            this.cardCount = content.cards.count;
-
-            if (!this.cardCount) {
-                throw new Error('no se encontró el número de cartas en la respuesta');
+        if (checkbox.checked) {
+            const firstSlot = cardDeckContainer.querySelector('article.card-slot:first-of-type');
+            if (firstSlot) {
+                firstSlot.replaceWith(card);
+                card.classList.add(selectedClass);
             }
-        } catch (error) {
-            console.error('Error al cargar las cartas:', error.message);
         }
 
-        const cardCountOutput = container.outputSelector('card-count');
-        cardCountOutput.textContent = this.cardCount;
+        checkbox.addEventListener('change', function (event) {
+            if (event.target.checked) {
+                const firstSlot = cardDeckContainer.querySelector('article.card-slot:first-of-type');
+                if (firstSlot) {
+                    firstSlot.replaceWith(card);
+                    card.classList.add(selectedClass);
+                } else {
+                    event.target.checked = false;
+                }
+            } else {
+                cardsContainer.prepend(card);
+                card.classList.remove(selectedClass);
 
-        const cardsOutput = container.outputSelector('card');
-        this.appendChildren(cardsOutput, 'art-card');
-    }
-
-    appendChildren(container, child) {
-        container.replaceChildren();
-
-        for (let i = 0; i < this.cardCount; i++) {            
-            const childElement = document.createElement(child);
-            childElement.index = i + 1;
-
-            container.appendChild(childElement);
-        }
-    }
-}
-
-defineElement('art-card-deck', CardDeck);
+                const newSlot = document.createElement('article');
+                newSlot.classList.add('card-slot');
+                cardDeckContainer.appendChild(newSlot);
+            }
+        });
+    });
+});

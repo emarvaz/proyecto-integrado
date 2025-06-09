@@ -3,36 +3,45 @@
     <head>
         <title>{% block title %}{% endblock %}</title>
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Eduardo Martínez Vázquez" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Eduardo Martínez Vázquez">
 
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 
         {% block styles %}
-            <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/base.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/base.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('resources/sweetalert2/styles/sweetalert2.css') }}">
         {% endblock %}
 
         {% block scripts %}
+            <script type="text/javascript" src="{{ asset('resources/sweetalert2/scripts/sweetalert2.all.js') }}"></script>
             <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+            <script type="module" src="{{ asset('components/back-button.js') }}"></script>
+            <script type="module" src="{{ asset('components/delete-alert.js') }}"></script>
         {% endblock %}
     </head>
 
     <body class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-        {% block header %}
-            {% include '_header.html.twig' %}
-        {% endblock %}
+    {% block header %}
+        {% include '_header.html.twig' %}
+    {% endblock %}
 
-        <div class="flex flex-row">
-            {% block aside %}{% endblock %}
+    <div class="relative flex flex-col md:flex-row">
+        {% block aside %}{% endblock %}
 
-            <main class="flex flex-col mx-18 py-8 flex-1">
-                {% block main %}{% endblock %}
-            </main>
-        </div>
+        <main class="relative flex flex-col px-4 md:mx-10 py-20 flex-1">
+            {% block baseBackButton %}
+                {% include '_back-button.html.twig' %}
+            {% endblock %}
 
-        {% block footer %}
-            {% include '_footer.html.twig' %}
-        {% endblock %}
+            {% block main %}{% endblock %}
+        </main>
+    </div>
+
+    {% block footer %}
+        {% include '_footer.html.twig' %}
+    {% endblock %}
     </body>
 </html>

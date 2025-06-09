@@ -1,17 +1,17 @@
-<header class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
+<header class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50 w-full">
     <div class="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href="{{ path('card_deck_list') }}" class="flex items-center gap-2">
             <img src="https://flowbite.com/docs/images/logo.svg" alt="Logo" class="h-8" />
-            <span class="text-2xl font-semibold">World of Cards</span>
+            <span class="text-2xl font-semibold text-gray-900 dark:text-white">World of Cards</span>
         </a>
 
-        <button id="menu-toggle" class="md:hidden p-2 rounded text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <button id="menu-toggle" class="md:hidden p-2 rounded text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
         </button>
 
-        <nav class="hidden md:flex gap-6">
+        <nav class="hidden md:flex gap-6 flex-1 justify-center">
             <a href="{{ path('card_deck_list') }}" class="hover:text-blue-600">Comunidad</a>
             <a href="{{ path('card_list') }}" class="hover:text-blue-600">Cartas</a>
             {% if app.user %}
@@ -19,7 +19,7 @@
             {% endif %}
         </nav>
 
-        <div class="hidden md:flex gap-4">
+        <div class="hidden md:flex items-center gap-4">
             {% if not app.user %}
                 <a href="{{ path('login') }}" class="text-blue-600 hover:underline">Iniciar sesión</a>
                 <a href="{{ path('sign_in') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Registrarse</a>
@@ -31,8 +31,8 @@
     </div>
 
     <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-        <nav class="px-4 py-2 flex flex-col gap-2">
-            <a href="{{ path('card_deck_list') }}" class="hover:text-blue-600">Sobre nosotros</a>
+        <nav class="px-4 py-4 flex flex-col gap-3">
+            <a href="{{ path('card_deck_list') }}" class="hover:text-blue-600">Comunidad</a>
             <a href="{{ path('card_list') }}" class="hover:text-blue-600">Cartas</a>
             {% if app.user %}
                 <a href="{{ path('card_deck_edit') }}" class="hover:text-blue-600">Mis mazos</a>
@@ -41,6 +41,9 @@
                 <a href="{{ path('login') }}" class="hover:text-blue-600">Iniciar sesión</a>
                 <a href="{{ path('sign_in') }}" class="hover:text-blue-600">Registrarse</a>
             {% else %}
+                {% if 'ROLE_ADMIN' in app.user.roles %}
+                    <a href="{{ path('administration') }}" class="text-yellow-500 hover:text-yellow-400">Administración</a>
+                {% endif %}
                 <a href="{{ path('profile', { 'id': app.user.id }) }}" class="hover:text-blue-600">Perfil</a>
                 <a href="{{ path('logout') }}" class="hover:text-red-600">Cerrar sesión</a>
             {% endif %}

@@ -219,20 +219,18 @@ class __TwigTemplate_df7a17136426e0625045abd9ee75b2f1 extends Template
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 62)]), "html", null, true);
                 yield "\"
                                        class=\"text-[#4a3aff] dark:text-[#7f70ff] hover:underline\">
-                                        <img src=\"";
-                // line 64
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/icons/boton-editar.png"), "html", null, true);
-                yield "\" title=\"Editar usuario\" class=\"w-4\" />
+                                        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"size-6\">
+                                            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10\" />
+                                        </svg>
                                     </a>
                                     <a href=\"";
-                // line 66
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 66)]), "html", null, true);
-                yield "\"
-                                       class=\"text-[#ff4a4a] dark:text-[#ff7373] hover:underline\">
-                                        <img src=\"";
                 // line 68
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/icons/boton-eliminar.png"), "html", null, true);
-                yield "\" title=\"Eliminar usuario\" class=\"w-4\" />
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("administration_user_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 68)]), "html", null, true);
+                yield "\"
+                                       class=\"table__cell__delete text-[#ff4a4a] dark:text-[#ff7373] hover:underline\">
+                                        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"size-6\">
+                                            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0\" />
+                                        </svg>
                                     </a>
                                 </td>
                             </tr>
@@ -241,16 +239,16 @@ class __TwigTemplate_df7a17136426e0625045abd9ee75b2f1 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['user'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 73
+            // line 77
             yield "                    ";
         } else {
-            // line 74
+            // line 78
             yield "                    <tr class=\"hover:bg-[#f2f0ff] dark:hover:bg-[#2a2a3f]\">
                         <td colspan=\"6\" class=\"px-4 py-2\">No hay usuarios registrados.</td>
                     </tr>
                     ";
         }
-        // line 78
+        // line 82
         yield "                </tbody>
             </table>
         </section>
@@ -286,7 +284,7 @@ class __TwigTemplate_df7a17136426e0625045abd9ee75b2f1 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  254 => 78,  248 => 74,  245 => 73,  234 => 68,  229 => 66,  224 => 64,  219 => 62,  215 => 60,  206 => 58,  202 => 57,  197 => 55,  193 => 54,  189 => 53,  185 => 52,  181 => 51,  178 => 50,  173 => 49,  171 => 48,  159 => 39,  151 => 34,  147 => 33,  143 => 32,  139 => 31,  135 => 30,  122 => 20,  110 => 11,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  252 => 82,  246 => 78,  243 => 77,  228 => 68,  219 => 62,  215 => 60,  206 => 58,  202 => 57,  197 => 55,  193 => 54,  189 => 53,  185 => 52,  181 => 51,  178 => 50,  173 => 49,  171 => 48,  159 => 39,  151 => 34,  147 => 33,  143 => 32,  139 => 31,  135 => 30,  122 => 20,  110 => 11,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -354,11 +352,15 @@ class __TwigTemplate_df7a17136426e0625045abd9ee75b2f1 extends Template
                                 <td class=\"flex flex-row justify-end px-4 py-2 space-x-2 whitespace-nowrap\">
                                     <a href=\"{{ path('administration_user_edit', { id: user.id }) }}\"
                                        class=\"text-[#4a3aff] dark:text-[#7f70ff] hover:underline\">
-                                        <img src=\"{{ asset('assets/images/icons/boton-editar.png') }}\" title=\"Editar usuario\" class=\"w-4\" />
+                                        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"size-6\">
+                                            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10\" />
+                                        </svg>
                                     </a>
                                     <a href=\"{{ path('administration_user_delete', { id: user.id }) }}\"
-                                       class=\"text-[#ff4a4a] dark:text-[#ff7373] hover:underline\">
-                                        <img src=\"{{ asset('assets/images/icons/boton-eliminar.png') }}\" title=\"Eliminar usuario\" class=\"w-4\" />
+                                       class=\"table__cell__delete text-[#ff4a4a] dark:text-[#ff7373] hover:underline\">
+                                        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"size-6\">
+                                            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0\" />
+                                        </svg>
                                     </a>
                                 </td>
                             </tr>

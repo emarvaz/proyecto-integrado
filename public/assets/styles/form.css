@@ -1,5 +1,7 @@
 form {
-    max-width: 100%;
+    justify-self: center;
+    align-self: center;
+    width: 50%;
     background-color: #fdfcfa;
     color: #1e1e1e;
     border: 1px solid #d1d5db;
@@ -70,7 +72,6 @@ form select:focus {
     }
 }
 
-/* Checkboxes & Radios estilizados */
 form div input[type="checkbox"],
 form div input[type="radio"] {
     appearance: none;
@@ -105,7 +106,6 @@ form div input[type="radio"]:checked {
     }
 }
 
-/* Etiquetas alineadas con checkboxes */
 form div label {
     display: flex;
     align-items: center;
@@ -114,7 +114,6 @@ form div label {
     margin-bottom: 0.75rem;
 }
 
-/* Botones */
 form button,
 form input[type="submit"] {
     font-size: 0.875rem;
@@ -146,11 +145,22 @@ form input[type="submit"]:hover {
     }
 }
 
-/* Mensajes de error */
 form .form-error,
 form .error {
     color: #ef4444;
     font-size: 0.75rem;
     margin-top: -0.75rem;
     margin-bottom: 1rem;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-error-message {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #dc3545;
 }

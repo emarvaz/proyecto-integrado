@@ -17,15 +17,15 @@ class CardDeckForm extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('isFavorite') // Symfony deducirá CheckboxType
+            ->add('isFavorite')
             ->add('cards', EntityType::class, [
                 'class' => Card::class,
-                'choice_label' => 'name', // Lo que se muestra al usuario
-                'choice_value' => 'id',   // El valor del checkbox será el ID de la carta
+                'choice_label' => 'name',
+                'choice_value' => 'id',
                 'multiple' => true,
-                'expanded' => true,      // ¡Importante! Para renderizar como checkboxes individuales
-                'label' => false,        // Para que no renderice un label general para el grupo de checkboxes
-                'by_reference' => false, // Importante para colecciones Doctrine para que los setters sean llamados
+                'expanded' => true,
+                'label' => false,
+                'by_reference' => false,
             ]);
     }
 

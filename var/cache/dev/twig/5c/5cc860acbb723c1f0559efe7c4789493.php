@@ -60,47 +60,47 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
         yield "</title>
 
-        <meta charset=\"UTF-8\" />
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-        <meta name=\"author\" content=\"Eduardo Martínez Vázquez\" />
+        <meta charset=\"UTF-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+        <meta name=\"author\" content=\"Eduardo Martínez Vázquez\">
 
         <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
 
         ";
         // line 12
         yield from $this->unwrap()->yieldBlock('styles', $context, $blocks);
-        // line 15
+        // line 16
         yield "
         ";
-        // line 16
+        // line 17
         yield from $this->unwrap()->yieldBlock('scripts', $context, $blocks);
-        // line 19
+        // line 23
         yield "    </head>
 
     <body class=\"min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100\">
         ";
-        // line 22
+        // line 26
         yield from $this->unwrap()->yieldBlock('header', $context, $blocks);
-        // line 25
+        // line 29
         yield "
         <div class=\"flex flex-row\">
             ";
-        // line 27
+        // line 31
         yield from $this->unwrap()->yieldBlock('aside', $context, $blocks);
-        // line 28
+        // line 32
         yield "
             <main class=\"flex flex-col mx-18 py-8 flex-1\">
                 ";
-        // line 30
+        // line 34
         yield from $this->unwrap()->yieldBlock('main', $context, $blocks);
-        // line 31
+        // line 35
         yield "            </main>
         </div>
 
         ";
-        // line 34
+        // line 38
         yield from $this->unwrap()->yieldBlock('footer', $context, $blocks);
-        // line 37
+        // line 41
         yield "    </body>
 </html>
 ";
@@ -151,7 +151,11 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         // line 13
         yield "            <link rel=\"stylesheet\" type=\"text/css\" href=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/styles/base.css"), "html", null, true);
-        yield "\" />
+        yield "\">
+            <link rel=\"stylesheet\" type=\"text/css\" href=\"";
+        // line 14
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("resources/sweetalert2/styles/sweetalert2.css"), "html", null, true);
+        yield "\">
         ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -162,7 +166,7 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         yield from [];
     }
 
-    // line 16
+    // line 17
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -175,8 +179,16 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "scripts"));
 
-        // line 17
-        yield "            <script src=\"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4\"></script>
+        // line 18
+        yield "            <script type=\"text/javascript\" src=\"";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("resources/sweetalert2/scripts/sweetalert2.all.js"), "html", null, true);
+        yield "\"></script>
+            <script src=\"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4\"></script>
+
+            <script type=\"text/javascript\" src=\"";
+        // line 21
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("components/delete-alert.js"), "html", null, true);
+        yield "\"></script>
         ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -187,7 +199,7 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         yield from [];
     }
 
-    // line 22
+    // line 26
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -200,10 +212,10 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "header"));
 
-        // line 23
+        // line 27
         yield "            ";
-        yield from $this->load("_header.html.twig", 23)->unwrap()->yield($context);
-        // line 24
+        yield from $this->load("_header.html.twig", 27)->unwrap()->yield($context);
+        // line 28
         yield "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -214,7 +226,7 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         yield from [];
     }
 
-    // line 27
+    // line 31
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -236,7 +248,7 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         yield from [];
     }
 
-    // line 30
+    // line 34
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -258,7 +270,7 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         yield from [];
     }
 
-    // line 34
+    // line 38
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -271,10 +283,10 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 35
+        // line 39
         yield "            ";
-        yield from $this->load("_footer.html.twig", 35)->unwrap()->yield($context);
-        // line 36
+        yield from $this->load("_footer.html.twig", 39)->unwrap()->yield($context);
+        // line 40
         yield "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -298,7 +310,7 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  278 => 36,  275 => 35,  262 => 34,  240 => 30,  218 => 27,  207 => 24,  204 => 23,  191 => 22,  179 => 17,  166 => 16,  152 => 13,  139 => 12,  117 => 4,  104 => 37,  102 => 34,  97 => 31,  95 => 30,  91 => 28,  89 => 27,  85 => 25,  83 => 22,  78 => 19,  76 => 16,  73 => 15,  71 => 12,  60 => 4,  55 => 1,);
+        return array (  290 => 40,  287 => 39,  274 => 38,  252 => 34,  230 => 31,  219 => 28,  216 => 27,  203 => 26,  190 => 21,  183 => 18,  170 => 17,  157 => 14,  152 => 13,  139 => 12,  117 => 4,  104 => 41,  102 => 38,  97 => 35,  95 => 34,  91 => 32,  89 => 31,  85 => 29,  83 => 26,  78 => 23,  76 => 17,  73 => 16,  71 => 12,  60 => 4,  55 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -308,18 +320,22 @@ class __TwigTemplate_b9233fc0739cb920b83f1a89efaa6a49 extends Template
     <head>
         <title>{% block title %}{% endblock %}</title>
 
-        <meta charset=\"UTF-8\" />
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-        <meta name=\"author\" content=\"Eduardo Martínez Vázquez\" />
+        <meta charset=\"UTF-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+        <meta name=\"author\" content=\"Eduardo Martínez Vázquez\">
 
         <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
 
         {% block styles %}
-            <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ asset('assets/styles/base.css') }}\" />
+            <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ asset('assets/styles/base.css') }}\">
+            <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ asset('resources/sweetalert2/styles/sweetalert2.css') }}\">
         {% endblock %}
 
         {% block scripts %}
+            <script type=\"text/javascript\" src=\"{{ asset('resources/sweetalert2/scripts/sweetalert2.all.js') }}\"></script>
             <script src=\"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4\"></script>
+
+            <script type=\"text/javascript\" src=\"{{ asset('components/delete-alert.js') }}\"></script>
         {% endblock %}
     </head>
 

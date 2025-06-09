@@ -78,22 +78,43 @@ return [
                     .')'
                     .'|pi/(?'
                         .'|ability(?'
-                            .'|\\-category/([^/]++)(*:485)'
-                            .'|/([^/]++)(*:502)'
+                            .'|\\-category/(?'
+                                .'|([^/]++)(*:488)'
+                                .'|new(*:499)'
+                                .'|([^/]++)/(?'
+                                    .'|edit(*:523)'
+                                    .'|delete(*:537)'
+                                .')'
+                            .')'
+                            .'|/(?'
+                                .'|([^/]++)(*:559)'
+                                .'|new(*:570)'
+                                .'|([^/]++)/(?'
+                                    .'|edit(*:594)'
+                                    .'|delete(*:608)'
+                                .')'
+                            .')'
                         .')'
-                        .'|card/([^/]++)(*:524)'
+                        .'|card/(?'
+                            .'|([^/]++)(*:635)'
+                            .'|new(*:646)'
+                            .'|([^/]++)/(?'
+                                .'|edit(*:670)'
+                                .'|delete(*:684)'
+                            .')'
+                        .')'
                     .')'
                 .')'
                 .'|/card(?'
-                    .'|/(\\d+)(*:548)'
+                    .'|/(\\d+)(*:710)'
                     .'|\\-deck(?'
-                        .'|/([^/]++)/export(*:581)'
-                        .'|(?:/(\\d+))?(*:600)'
+                        .'|/([^/]++)/export(*:743)'
+                        .'|(?:/(\\d+))?(*:762)'
                     .')'
                 .')'
                 .'|/profile/(?'
-                    .'|([^/]++)(*:630)'
-                    .'|edit/([^/]++)(*:651)'
+                    .'|([^/]++)(*:792)'
+                    .'|edit/([^/]++)(*:813)'
                 .')'
             .')/?$}sDu',
     ],
@@ -114,14 +135,23 @@ return [
         387 => [[['_route' => 'administration_card_delete', '_controller' => 'App\\Controller\\CardController::cardDelete'], ['id'], null, null, false, true, null]],
         417 => [[['_route' => 'administration_user_edit', '_controller' => 'App\\Controller\\UserController::administrationUserEdit'], ['id'], null, null, false, true, null]],
         440 => [[['_route' => 'administration_user_delete', '_controller' => 'App\\Controller\\UserController::administrationUserDelete'], ['id'], null, null, false, true, null]],
-        485 => [[['_route' => 'api_ability_category_show', '_controller' => 'App\\Controller\\Api\\ApiAbilityCategoryController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        502 => [[['_route' => 'api_ability_show', '_controller' => 'App\\Controller\\Api\\ApiAbilityController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        524 => [[['_route' => 'api_card_show', '_controller' => 'App\\Controller\\Api\\ApiCardController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        548 => [[['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null]],
-        581 => [[['_route' => 'card_deck_export_json', '_controller' => 'App\\Controller\\CardDeckController::export'], ['id'], null, null, false, false, null]],
-        600 => [[['_route' => 'card_deck_edit', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
-        630 => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], ['id'], null, null, false, true, null]],
-        651 => [
+        488 => [[['_route' => 'api_ability_category_show', '_controller' => 'App\\Controller\\Api\\ApiAbilityCategoryController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        499 => [[['_route' => 'api_ability_category_create', '_controller' => 'App\\Controller\\Api\\ApiAbilityCategoryController::create'], [], ['POST' => 0], null, false, false, null]],
+        523 => [[['_route' => 'api_ability_category_update', '_controller' => 'App\\Controller\\Api\\ApiAbilityCategoryController::update'], ['id'], ['PUT' => 0], null, false, false, null]],
+        537 => [[['_route' => 'api_ability_category_delete', '_controller' => 'App\\Controller\\Api\\ApiAbilityCategoryController::delete'], ['id'], ['DELETE' => 0], null, false, false, null]],
+        559 => [[['_route' => 'api_ability_show', '_controller' => 'App\\Controller\\Api\\ApiAbilityController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        570 => [[['_route' => 'api_ability_create', '_controller' => 'App\\Controller\\Api\\ApiAbilityController::create'], [], ['POST' => 0], null, false, false, null]],
+        594 => [[['_route' => 'api_ability_update', '_controller' => 'App\\Controller\\Api\\ApiAbilityController::update'], ['id'], ['PUT' => 0], null, false, false, null]],
+        608 => [[['_route' => 'api_ability_delete', '_controller' => 'App\\Controller\\Api\\ApiAbilityController::delete'], ['id'], ['DELETE' => 0], null, false, false, null]],
+        635 => [[['_route' => 'api_card_show', '_controller' => 'App\\Controller\\Api\\ApiCardController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        646 => [[['_route' => 'api_card_create', '_controller' => 'App\\Controller\\Api\\ApiCardController::create'], [], ['POST' => 0], null, false, false, null]],
+        670 => [[['_route' => 'api_card_update', '_controller' => 'App\\Controller\\Api\\ApiCardController::update'], ['id'], ['PUT' => 0], null, false, false, null]],
+        684 => [[['_route' => 'api_card_delete', '_controller' => 'App\\Controller\\Api\\ApiCardController::delete'], ['id'], ['DELETE' => 0], null, false, false, null]],
+        710 => [[['_route' => 'card', '_controller' => 'App\\Controller\\CardController::index'], ['id'], null, null, false, true, null]],
+        743 => [[['_route' => 'card_deck_export_json', '_controller' => 'App\\Controller\\CardDeckController::export'], ['id'], null, null, false, false, null]],
+        762 => [[['_route' => 'card_deck_edit', 'id' => null, '_controller' => 'App\\Controller\\CardDeckController::edit'], ['id'], null, null, false, true, null]],
+        792 => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], ['id'], null, null, false, true, null]],
+        813 => [
             [['_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::profileEdit'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

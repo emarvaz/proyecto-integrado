@@ -5,19 +5,29 @@
 {% block styles %}
     {{ parent() }}
 
-    <link rel="stylesheet" type="text/css" href="/assets/styles/form.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/form.css') }}" />
 {% endblock %}
 
 {% block main %}
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {% for field in form %}
-            <fieldset>
-                {{ form_label(field) }}
-                {{ form_widget(field) }}
-                {{ form_errors(field) }}
-            </fieldset>
+            {% if field.vars.name != '_token' %}
+                <fieldset class="form-group">
+                    {{ form_label(field) }}
+                    {{ form_widget(field) }}
+                    {{ form_errors(field) }}
+                </fieldset>
+            {% endif %}
         {% endfor %}
+
+        {{ form_widget(form._token) }}
 
         <input type="submit" value="Editar">
     {{ form_end(form) }}
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('components/user-validation.js') }}"></script>
 {% endblock %}

@@ -8,8 +8,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: AbilityCategoryRepository::class)]
+#[UniqueEntity(
+    fields: ['name'],
+    message: 'Ya existe una categoría con este nombre. Por favor, elige otro.'
+)]
 class AbilityCategory
 {
     #[ORM\Id]
@@ -19,11 +25,24 @@ class AbilityCategory
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['ability:read', 'abilityCategory:read'])]
+    #[Groups(['ability:read', 'abilityCategory:read, abilityCategory:write'])]
+    #[Assert\NotBlank(message: 'El nombre de la categoría no puede estar vacío.')]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: 'El nombre debe tener al menos {{ limit }} caracteres.',
+        maxMessage: 'El nombre no puede tener más de {{ limit }} caracteres.'
+    )]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['abilityCategory:read'])]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['abilityCategory:read, abilityCategory:write'])]
+    #[Assert\Length(
+        min: 10,
+        max: 1000,
+        minMessage: 'Si se incluye una descripción, debe tener al menos {{ limit }} caracteres.',
+        maxMessage: 'La descripción no puede superar los {{ limit }} caracteres.'
+    )]
     private ?string $description = null;
 
     /**
@@ -87,7 +106,6 @@ class AbilityCategory
     public function removeAbility(Ability $ability): static
     {
         if ($this->abilities->removeElement($ability)) {
-            // set the owning side to null (unless already changed)
             if ($ability->getCategory() === $this) {
                 $ability->setCategory(null);
             }

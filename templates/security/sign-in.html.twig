@@ -9,17 +9,27 @@
 {% endblock %}
 
 {% block main %}
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {% for field in form %}
-            <div>
-                {{ form_label(field) }}
-                {{ form_widget(field) }}
-                {{ form_errors(field) }}
-            </div>
+            {% if field.vars.name != '_token' %}
+                <fieldset class="form-group">
+                    {{ form_label(field) }}
+                    {{ form_widget(field) }}
+                    {{ form_errors(field) }}
+                </fieldset>
+            {% endif %}
         {% endfor %}
 
-        <input type="submit" value="Registrarse">
-    {{ form_end(form) }}
+        {{ form_widget(form._token) }}
 
-    <p>¿Ya tienes una cuenta? <a href="{{ path('login') }}">Inicia sesión</a></p>
+        <input type="submit" value="Registrarse">
+
+        <p>¿Ya tienes una cuenta? <a href="{{ path('login') }}">Inicia sesión</a></p>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('components/user-validation.js') }}"></script>
 {% endblock %}

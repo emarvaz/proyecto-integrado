@@ -163,45 +163,46 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
             // line 24
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "name", [], "any", false, false, false, 24), "html", null, true);
             yield "</h3>
+
                             <span class=\"text-sm text-gray-600 dark:text-gray-400\">@";
-            // line 25
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "user", [], "any", false, false, false, 25), "username", [], "any", false, false, false, 25), "html", null, true);
+            // line 26
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "user", [], "any", false, false, false, 26), "username", [], "any", false, false, false, 26), "html", null, true);
             yield "</span>
                         </div>
                     </div>
 
                     <div class=\"flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4\">
                         ";
-            // line 30
-            if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 31
+            // line 31
+            if ((($tmp =  !CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 32
                 yield "                            <p class=\"text-sm text-red-500\">Inicia sesión para acceder a todas las funcionalidades.</p>
                         ";
             } else {
-                // line 33
+                // line 34
                 yield "                            <div class=\"flex flex-col sm:flex-row items-start sm:items-center gap-2\">
                                 ";
-                // line 34
-                yield                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 34, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 34), [], "array", false, false, false, 34), 'form_start');
+                // line 35
+                yield                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 35, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 35), [], "array", false, false, false, 35), 'form_start');
                 yield "
                                 <div class=\"flex flex-col sm:flex-row items-center gap-2\">
                                     ";
-                // line 36
-                yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 36, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 36), [], "array", false, false, false, 36), "targetDeck", [], "any", false, false, false, 36), 'row');
+                // line 37
+                yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 37, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 37), [], "array", false, false, false, 37), "targetDeck", [], "any", false, false, false, 37), 'row');
                 yield "
                                     ";
-                // line 37
-                yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 37, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 37), [], "array", false, false, false, 37), "submit", [], "any", false, false, false, 37), 'widget');
+                // line 38
+                yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 38, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 38), [], "array", false, false, false, 38), "submit", [], "any", false, false, false, 38), 'widget');
                 yield "
                                 </div>
                                 ";
-                // line 39
-                yield                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 39, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 39), [], "array", false, false, false, 39), 'form_end');
+                // line 40
+                yield                 $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["copyForms"]) || array_key_exists("copyForms", $context) ? $context["copyForms"] : (function () { throw new RuntimeError('Variable "copyForms" does not exist.', 40, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 40), [], "array", false, false, false, 40), 'form_end');
                 yield "
 
                                 <a href=\"";
-                // line 41
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_deck_export_json", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 41)]), "html", null, true);
+                // line 42
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card_deck_export_json", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "id", [], "any", false, false, false, 42)]), "html", null, true);
                 yield "\"
                                    class=\"inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700 transition\">
                                     Exportar JSON
@@ -209,32 +210,32 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
                             </div>
                         ";
             }
-            // line 47
+            // line 48
             yield "                    </div>
                 </header>
 
                 <section class=\"grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4\">
                     ";
-            // line 51
+            // line 52
             $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "cards", [], "any", false, false, false, 51));
+            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["cardDeck"], "cards", [], "any", false, false, false, 52));
             foreach ($context['_seq'] as $context["_key"] => $context["card"]) {
-                // line 52
+                // line 53
                 yield "                        <a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 52)]), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("card", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["card"], "id", [], "any", false, false, false, 53)]), "html", null, true);
                 yield "\">
                             <article class=\"card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700\">
                                 <figure class=\"flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain\"
                                         style=\"background-image: url('";
-                // line 55
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/content/card/" . CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 55))), "html", null, true);
+                // line 56
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/assets/images/content/card/" . CoreExtension::getAttribute($this->env, $this->source, $context["card"], "image", [], "any", false, false, false, 56))), "html", null, true);
                 yield "');\">
                                     <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
                                         <span>";
-                // line 57
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 57), "html", null, true);
+                // line 58
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "health", [], "any", false, false, false, 58), "html", null, true);
                 yield "</span>
-                                        <!-- Icono de vida -->
+
                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
                                             <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" />
                                         </svg>
@@ -243,30 +244,30 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
 
                                 <section class=\"p-3 grid grid-rows-[0.5fr_1.5fr] gap-2\">
                                     <h4 class=\"text-lg font-bold text-gray-800 dark:text-gray-100\">";
-                // line 66
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 66), "html", null, true);
+                // line 67
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "name", [], "any", false, false, false, 67), "html", null, true);
                 yield "</h4>
 
                                     <ul class=\"flex flex-col\">
                                         ";
-                // line 69
+                // line 70
                 $context['_parent'] = $context;
-                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 69));
+                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["card"], "abilities", [], "any", false, false, false, 70));
                 foreach ($context['_seq'] as $context["_key"] => $context["ability"]) {
-                    // line 70
+                    // line 71
                     yield "                                            <li class=\"flex-1 grid grid-cols-2 items-center\">
                                                 <span>";
-                    // line 71
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 71), "html", null, true);
+                    // line 72
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "name", [], "any", false, false, false, 72), "html", null, true);
                     yield "</span>
 
                                                 <div class=\"grid grid-cols-2 gap-8 justify-self-end text-xs\">
                                                     <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
                                                         <span>";
-                    // line 75
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 75), "html", null, true);
+                    // line 76
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "cost", [], "any", false, false, false, 76), "html", null, true);
                     yield "</span>
-                                                        <!-- Icono de coste -->
+
                                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
                                                             <path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z\" clip-rule=\"evenodd\" />
                                                         </svg>
@@ -274,10 +275,10 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
 
                                                     <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
                                                         <span>";
-                    // line 83
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 83), "html", null, true);
+                    // line 84
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["ability"], "value", [], "any", false, false, false, 84), "html", null, true);
                     yield "</span>
-                                                        <!-- Icono de poder -->
+
                                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
                                                             <path fill-rule=\"evenodd\" d=\"M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5Z\" clip-rule=\"evenodd\" />
                                                         </svg>
@@ -289,7 +290,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_key'], $context['ability'], $context['_parent']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 92
+                // line 93
                 yield "                                    </ul>
                                 </section>
                             </article>
@@ -299,7 +300,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['card'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 97
+            // line 98
             yield "                </section>
             </article>
         ";
@@ -307,7 +308,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['cardDeck'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 100
+        // line 101
         yield "    </section>
 ";
         
@@ -340,7 +341,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  311 => 100,  303 => 97,  293 => 92,  278 => 83,  267 => 75,  260 => 71,  257 => 70,  253 => 69,  247 => 66,  235 => 57,  230 => 55,  223 => 52,  219 => 51,  213 => 47,  204 => 41,  199 => 39,  194 => 37,  190 => 36,  185 => 34,  182 => 33,  178 => 31,  176 => 30,  168 => 25,  164 => 24,  156 => 19,  152 => 18,  148 => 17,  143 => 14,  139 => 13,  136 => 12,  123 => 11,  110 => 8,  106 => 7,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  312 => 101,  304 => 98,  294 => 93,  279 => 84,  268 => 76,  261 => 72,  258 => 71,  254 => 70,  248 => 67,  236 => 58,  231 => 56,  224 => 53,  220 => 52,  214 => 48,  205 => 42,  200 => 40,  195 => 38,  191 => 37,  186 => 35,  183 => 34,  179 => 32,  177 => 31,  169 => 26,  164 => 24,  156 => 19,  152 => 18,  148 => 17,  143 => 14,  139 => 13,  136 => 12,  123 => 11,  110 => 8,  106 => 7,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -369,6 +370,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
 
                         <div class=\"flex flex-col\">
                             <h3 class=\"text-lg font-semibold text-gray-900 dark:text-white\">{{ cardDeck.name }}</h3>
+
                             <span class=\"text-sm text-gray-600 dark:text-gray-400\">@{{ cardDeck.user.username }}</span>
                         </div>
                     </div>
@@ -402,7 +404,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
                                         style=\"background-image: url('{{ asset('/assets/images/content/card/' ~ card.image) }}');\">
                                     <data class=\"flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white\">
                                         <span>{{ card.health }}</span>
-                                        <!-- Icono de vida -->
+
                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
                                             <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" />
                                         </svg>
@@ -420,7 +422,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
                                                 <div class=\"grid grid-cols-2 gap-8 justify-self-end text-xs\">
                                                     <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
                                                         <span>{{ ability.cost }}</span>
-                                                        <!-- Icono de coste -->
+
                                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
                                                             <path fill-rule=\"evenodd\" d=\"M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z\" clip-rule=\"evenodd\" />
                                                         </svg>
@@ -428,7 +430,7 @@ class __TwigTemplate_347afff7bd1784853a1be7f584e2ce3a extends Template
 
                                                     <data class=\"flex flex-row gap-2 items-center font-semibold text-black-600 dark:text-white-400\">
                                                         <span>{{ ability.value }}</span>
-                                                        <!-- Icono de poder -->
+
                                                         <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\">
                                                             <path fill-rule=\"evenodd\" d=\"M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5Z\" clip-rule=\"evenodd\" />
                                                         </svg>

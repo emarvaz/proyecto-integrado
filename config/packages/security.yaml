@@ -29,11 +29,21 @@ security:
 
             access_denied_handler: App\Security\AccessDeniedHandler
 
+#    access_control:
+#        - { path: ^/administration, roles: ROLE_ADMIN }
+#        - { path: ^/card-deck, roles: ROLE_USER }
+#        - { path: ^/profile, roles: ROLE_USER }
+#        - { path: ^/, roles: PUBLIC_ACCESS }
+
     access_control:
-        - { path: ^/administration, roles: ROLE_ADMIN }
-        - { path: ^/card-deck, roles: ROLE_USER }
-        - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/, roles: PUBLIC_ACCESS }
+      - { path: ^/card-deck, roles: IS_AUTHENTICATED_FULLY, allow_if: "not is_granted('ROLE_ADMIN')" }
+
+      - { path: ^/administration, roles: ROLE_ADMIN }
+
+      - { path: ^/card-deck, roles: ROLE_USER }
+      - { path: ^/profile, roles: ROLE_USER }
+
+      - { path: ^/, roles: PUBLIC_ACCESS }
 
 when@test:
     security:
