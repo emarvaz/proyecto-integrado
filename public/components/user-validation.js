@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
     if (!form) {
         return;
@@ -6,15 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const usernameField = document.getElementById('user_username');
     const emailField = document.getElementById('user_email');
-    const passwordField = document.getElementById('user_password');
     const nameField = document.getElementById('user_name');
     const lastnameField = document.getElementById('user_lastname');
 
+    const passwordFirstField = document.getElementById('user_plainPassword_first');
+    const passwordSecondField = document.getElementById('user_plainPassword_second');
+
     const showError = (field, message) => {
+        if (field.parentNode.querySelector('.form-error-message')) {
+            return;
+        }
+
         field.classList.add('is-invalid');
+
         const errorContainer = document.createElement('div');
         errorContainer.className = 'form-error-message';
         errorContainer.innerText = message;
+
         field.parentNode.insertBefore(errorContainer, field.nextSibling);
     };
 
@@ -27,11 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (password.length < 8) {
             return 'La contraseña debe tener al menos 8 caracteres.';
         }
-
         if (!/\d/.test(password)) {
             return 'La contraseña debe contener al menos un número.';
         }
-
         if (!/[@$!%*#?&^._-]/.test(password)) {
             return 'La contraseña debe contener al menos un carácter especial.';
         }
@@ -65,17 +71,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (passwordField) {
-            const password = passwordField.value;
-            if (passwordField.required && password === '') {
-                showError(passwordField, 'La contraseña es obligatoria.');
+        if (passwordFirstField && passwordSecondField) {
+            const passwordFirst = passwordFirstField.value;
+            const passwordSecond = passwordSecondField.value;
+
+            if (passwordFirst === '') {
+                showError(passwordFirstField, 'La contraseña es obligatoria.');
                 isValid = false;
-            } else if (password.length > 0) {
-                const passwordError = validatePasswordStrength(password);
+            } else {
+                const passwordError = validatePasswordStrength(passwordFirst);
                 if (passwordError) {
-                    showError(passwordField, passwordError);
+                    showError(passwordFirstField, passwordError);
                     isValid = false;
                 }
+            }
+
+            if (passwordFirst !== passwordSecond) {
+                showError(passwordSecondField, 'Las contraseñas no coinciden.');
+                isValid = false;
             }
         }
 

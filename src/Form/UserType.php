@@ -9,9 +9,13 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
 {
@@ -24,10 +28,25 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Correo electrónico',
             ])
-            ->add('password', PasswordType::class, [
-                'label' => 'Contraseña',
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
                 'mapped' => false,
-                'required' => !$options['edit_mode'],
+                'attr' => ['autocomplete' => 'new-password'],
+                'invalid_message' => 'Los campos de contraseña deben coincidir.',
+                'required' => true,
+                'first_options'  => ['label' => 'Contraseña'],
+                'second_options' => ['label' => 'Confirmar contraseña'],
+                'constraints' => [
+                    new NotBlank(['message' => 'La contraseña es obligatoria.']),
+                    new Length([
+                        'min' => 8,
+                        'minMessage' => 'La contraseña debe tener al menos {{ limit }} caracteres.',
+                    ]),
+                    new Regex([
+                        'pattern' => "/(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^._-])/",
+                        'message' => "La contraseña debe contener al menos una letra, un número y un carácter especial (@$!%*#?&^._-).",
+                    ]),
+                ],
             ])
             ->add('name', TextType::class, [
                 'label' => 'Nombre',

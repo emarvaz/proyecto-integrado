@@ -9,33 +9,40 @@
 {% endblock %}
 
 {% block main %}
-    <main>
-        <form method="post">
-            {% if error %}
-                <p class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
-            {% endif %}
+    {% for label, messages in app.flashes %}
+        {% set flash_classes = {
+            'success': 'bg-green-100 border-green-400 text-green-700',
+            'warning': 'bg-yellow-100 border-yellow-400 text-yellow-700',
+            'danger': 'bg-red-100 border-red-400 text-red-700',
+            'info': 'bg-blue-100 border-blue-400 text-blue-700'
+        } %}
+        {% for message in messages %}
+            <div class="p-4 mb-4 text-sm border rounded-lg {{ flash_classes[label] ?? 'bg-gray-100 border-gray-400 text-gray-700' }}"
+                 role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
 
-            {% if app.user %}
-                <p class="mb-3">Has iniciado sesión como {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}">Cerrar sesión</a></p>
-            {% endif %}
+    <form method="post">
+        {% if error %}
+            <p class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+        {% endif %}
 
-            <label for="username">Nombre de usuario</label>
-            <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+        {% if app.user %}
+            <p class="mb-3">Has iniciado sesión como {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}">Cerrar sesión</a></p>
+        {% endif %}
 
-            <label for="password">Contraseña</label>
-            <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+        <label for="username">Nombre de usuario</label>
+        <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
 
-            <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+        <label for="password">Contraseña</label>
+        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
 
-            <fieldset class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Recuerda  mi contraseña</label>
-            </fieldset>
+        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
+        <button class="btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+    </form>
 
-            <button class="btn btn-lg btn-primary" type="submit">Registrarse</button>
-        </form>
-
-        <p>¿No tienes una cuenta? <a href="{{ path('sign_in') }}">Registrate</a></p>
-    </main>
+    <p class="mt-4">¿No tienes una cuenta? <a href="{{ path('sign_in') }}" class="underline text-blue-400">Registrate</a></p>
 {% endblock %}

@@ -150,6 +150,19 @@ final class UserController extends AbstractController
                 $user->setPassword($originalPassword);
             }
 
+            $profilePic = $form->get('profilePic')->getData();
+
+            if ($profilePic) {
+                $newFilename = uniqid() . '.' . $profilePic->guessExtension();
+
+                $profilePic->move(
+                    $this->getParameter('user_images_directory'),
+                    $newFilename
+                );
+
+                $user->setProfilePic($newFilename);
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('administration_user_list');

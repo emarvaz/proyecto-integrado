@@ -42,7 +42,7 @@
             {% if user.id == app.user.id %}
                 <div class="pt-6 border-t border-gray-300 dark:border-gray-700 text-center md:text-left">
                     <a href="{{ path('user_edit', { 'id': user.id }) }}"
-                       class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition">
+                       class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition">
                         Editar perfil
                     </a>
                 </div>

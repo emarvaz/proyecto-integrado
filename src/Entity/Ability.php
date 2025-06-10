@@ -19,7 +19,7 @@ class Ability
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['card:read', 'ability:read, ability:write'])]
+    #[Groups(['card:read', 'ability:read', 'ability:write'])]
     #[Assert\NotBlank(message: 'El nombre de la habilidad no puede estar vacío.')]
     #[Assert\Length(
         min: 3,
@@ -30,7 +30,7 @@ class Ability
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['ability:read, ability:write'])]
+    #[Groups(['ability:read', 'ability:write'])]
     #[Assert\NotBlank(message: 'La descripción no puede estar vacía.')]
     #[Assert\Length(
         min: 10,
@@ -41,21 +41,21 @@ class Ability
     private ?string $description = null;
 
     #[ORM\Column]
-    #[Groups(['ability:read, ability:write'])]
+    #[Groups(['ability:read', 'ability:write'])]
     #[Assert\NotNull(message: 'Debes especificar un coste.')]
     #[Assert\Type(type: 'integer', message: 'El coste debe ser un número.')]
     #[Assert\PositiveOrZero(message: 'El coste no puede ser un número negativo.')]
     private ?int $cost = null;
 
     #[ORM\Column]
-    #[Groups(['ability:read, ability:write'])]
+    #[Groups(['ability:read', 'ability:write'])]
     #[Assert\NotNull(message: 'Debes especificar un valor.')]
     #[Assert\Type(type: 'integer', message: 'El valor debe ser un número.')]
     private ?int $value = null;
 
     #[ORM\ManyToOne(inversedBy: 'abilities')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['ability:read, ability:write'])]
+    #[Groups(['ability:read', 'ability:write'])]
     #[Assert\NotNull(message: 'Debes seleccionar una categoría.')]
     private ?AbilityCategory $category = null;
 

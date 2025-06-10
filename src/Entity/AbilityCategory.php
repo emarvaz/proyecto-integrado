@@ -25,7 +25,7 @@ class AbilityCategory
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['ability:read', 'abilityCategory:read, abilityCategory:write'])]
+    #[Groups(['ability:read', 'abilityCategory:read', 'abilityCategory:write'])]
     #[Assert\NotBlank(message: 'El nombre de la categoría no puede estar vacío.')]
     #[Assert\Length(
         min: 3,
@@ -36,7 +36,7 @@ class AbilityCategory
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(['abilityCategory:read, abilityCategory:write'])]
+    #[Groups(['abilityCategory:read', 'abilityCategory:write'])]
     #[Assert\Length(
         min: 10,
         max: 1000,

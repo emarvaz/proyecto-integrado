@@ -6,6 +6,7 @@
 parameters:
     user_images_directory: '%kernel.project_dir%/public/assets/images/user'
     card_images_directory: '%kernel.project_dir%/public/assets/images/card'
+    app.sender_email: 'martinez.vazquez.eduardo@iescamas.es'
 
 services:
     # default configuration for services in *this* file
@@ -21,6 +22,13 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+    App\Service\MailerService:
+        arguments:
+            $senderEmail: '%app.sender_email%'
+
+    App\Serializer\ApiDenormalizer:
+        tags: [ serializer.normalizer ]
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

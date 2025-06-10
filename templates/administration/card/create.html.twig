@@ -11,7 +11,12 @@
 {% block main %}
     {% include '_back-button.html.twig' %}
 
-    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_start(form, {
+        'attr': {
+            'novalidate': 'novalidate',
+            'enctype': 'multipart/form-data'
+        }
+    }) }}
         {% for field in form %}
             {% if field.vars.name != '_token' %}
                 <fieldset class="form-group">

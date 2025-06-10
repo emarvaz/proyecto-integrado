@@ -25,7 +25,7 @@ class Card
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['card:read, card:write'])]
+    #[Groups(['card:read', 'card:write'])]
     #[Assert\NotBlank(message: 'El nombre de la carta no puede estar vacío.')]
     #[Assert\Length(
         min: 3,
@@ -36,12 +36,12 @@ class Card
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['card:read, card:write'])]
+    #[Groups(['card:read', 'card:write'])]
     #[Assert\Length(max: 255, maxMessage: 'La ruta de la imagen no puede superar los {{ limit }} caracteres.')]
     private ?string $image = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(['card:read, card:write'])]
+    #[Groups(['card:read', 'card:write'])]
     #[Assert\Length(
         min: 10,
         max: 1000,
@@ -51,7 +51,7 @@ class Card
     private ?string $description = null;
 
     #[ORM\Column]
-    #[Groups(['card:read, card:write'])]
+    #[Groups(['card:read', 'card:write'])]
     #[Assert\NotNull(message: 'La salud de la carta no puede estar vacía.')]
     #[Assert\Type(type: 'integer', message: 'La salud debe ser un número entero.')]
     #[Assert\Positive(message: 'La salud debe ser un número positivo mayor que cero.')]
@@ -62,7 +62,7 @@ class Card
      */
     #[ORM\ManyToMany(targetEntity: Ability::class, inversedBy: 'cards')]
     #[ORM\JoinTable(name: 'card_ability')]
-    #[Groups(['card:read, card:write'])]
+    #[Groups(['card:read', 'card:write'])]
     #[Assert\Count(
         max: 2,
         maxMessage: "No puedes seleccionar más de {{ limit }} habilidades."
@@ -73,7 +73,6 @@ class Card
      * @var Collection<int, CardDeck>
      */
     #[ORM\ManyToMany(targetEntity: CardDeck::class, mappedBy: 'cards')]
-    #[Groups(['card:read'])]
     private Collection $cardDecks;
 
     public function __construct()
