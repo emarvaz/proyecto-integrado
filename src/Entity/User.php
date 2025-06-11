@@ -31,11 +31,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         minMessage: 'El nombre de usuario debe tener al menos {{ limit }} caracteres.',
         maxMessage: 'El nombre de usuario no puede superar los {{ limit }} caracteres.'
     )]
+    #[Assert\Regex(
+        pattern: "/^[a-z0-9_.-]+$/",
+        message: "El nombre de usuario solo puede contener letras minúsculas, números y los caracteres _ . -"
+    )]
     private ?string $username = null;
 
     #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank(message: 'El email es obligatorio.')]
     #[Assert\Email(message: 'El formato del email no es válido.')]
+    #[Assert\Regex(
+        pattern: "/^[a-z0-9_.@-]+\.[a-z]{2,}$/",
+        message: "El email solo puede contener letras minúsculas y caracteres válidos."
+    )]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
@@ -115,7 +123,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setEmail(string $email): static
     {
-        $this->email = $email;
+        $this->email = strtolower($email);
 
         return $this;
     }

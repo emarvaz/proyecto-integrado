@@ -26,7 +26,7 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $plainPassword = $form->get('plainPassword')->getData();
+            $plainPassword = $form->get('password')->getData();
 
             $hashedPassword = $passwordHasher->hashPassword(
                 $user,
@@ -48,9 +48,12 @@ class SecurityController extends AbstractController
 
             $emailSent = $mailerService->sendEmail(
                 $user->getEmail(),
-                'Tu cuenta ha sido creada en nuestra plataforma',
+                'Tu cuenta ha sido creada correctamente en Mundo de Cartas',
                 'security/sign-in-confirmation.html.twig',
-                ['user_email' => $user->getEmail()]
+                [
+                    'user' => $user,
+                    'user_email' => $user->getEmail(),
+                ]
             );
 
             if ($emailSent) {

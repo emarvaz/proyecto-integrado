@@ -5,7 +5,18 @@
 {% block header %}{% endblock %}
 
 {% block main %}
-    <h1>Buena buena.</h1>
+    <p>Estimado/a {{ user.name }},</p>
+
+    <p>Bienvenido/a a <strong>World of Cards</strong>.</p>
+
+    <p>Tu usuario de acceso es {{ user.username }}.</p>
+
+    <p>Tu cuenta ha sido creada exitosamente y ya puedes comenzar a explorar todo lo que nuestra plataforma tiene para ofrecerte.</p>
+
+    <p>Gracias por unirte a nuestra comunidad.</p>
+
+    <p>Atentamente,<br>
+        <strong>El equipo de World of Cards</strong></p>
 {% endblock %}
 
 {% block footer %}{% endblock %}

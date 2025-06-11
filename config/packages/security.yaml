@@ -25,7 +25,7 @@ security:
                 check_path: login
                 username_parameter: _username
                 password_parameter: _password
-                enable_csrf: true
+                enable_csrf: false
 
             logout:
                 path: logout

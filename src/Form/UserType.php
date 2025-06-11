@@ -28,7 +28,7 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Correo electrónico',
             ])
-            ->add('plainPassword', RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],

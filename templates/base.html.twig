@@ -28,10 +28,10 @@
         {% include '_header.html.twig' %}
     {% endblock %}
 
-    <div class="relative flex flex-col md:flex-row">
+    <div class="relative grid md:flex-row">
         {% block aside %}{% endblock %}
 
-        <main class="relative flex flex-col px-4 md:mx-10 py-20 flex-1">
+        <main class="relative flex flex-col px-4 md:mx-10 py-20 flex-1 2xl:max-w-[2000px] justify-self-center self-center">
             {% block baseBackButton %}
                 {% include '_back-button.html.twig' %}
             {% endblock %}

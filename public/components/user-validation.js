@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameField = document.getElementById('user_name');
     const lastnameField = document.getElementById('user_lastname');
 
-    const passwordFirstField = document.getElementById('user_plainPassword_first');
-    const passwordSecondField = document.getElementById('user_plainPassword_second');
+    const passwordFirstField = document.getElementById('user_password_first');
+    const passwordSecondField = document.getElementById('user_password_second');
 
     const showError = (field, message) => {
         if (field.parentNode.querySelector('.form-error-message')) {
@@ -57,16 +57,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 showError(usernameField, 'Debe tener entre 3 y 25 caracteres.');
                 isValid = false;
             }
+
+            if (/[A-Z]/.test(username)) {
+                showError(usernameField, 'El nombre de usuario no puede contener mayúsculas.');
+                isValid = false;
+            }
         }
 
         if (emailField) {
             const email = emailField.value.trim();
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
             if (email === '') {
                 showError(emailField, 'El correo electrónico es obligatorio.');
                 isValid = false;
             } else if (!emailRegex.test(email)) {
                 showError(emailField, 'El formato del email no es válido.');
+                isValid = false;
+            }
+
+            if (/[A-Z]/.test(email)) {
+                showError(emailField, 'El email no puede contener mayúsculas.');
                 isValid = false;
             }
         }
