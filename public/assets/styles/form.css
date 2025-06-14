@@ -1,7 +1,5 @@
 form {
-    justify-self: center;
-    align-self: center;
-    width: 50%;
+    width: 30rem;
     background-color: #fdfcfa;
     color: #1e1e1e;
     border: 1px solid #d1d5db;
@@ -9,6 +7,7 @@ form {
     border-radius: 0.75rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     margin-bottom: 2rem;
+    align-self: center;
 }
 
 @media (prefers-color-scheme: dark) {

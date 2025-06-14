@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
+    const isEditMode = form.action.includes('/edit');
+
     const usernameField = document.getElementById('user_username');
     const emailField = document.getElementById('user_email');
     const nameField = document.getElementById('user_name');
@@ -86,20 +88,22 @@ document.addEventListener('DOMContentLoaded', function () {
             const passwordFirst = passwordFirstField.value;
             const passwordSecond = passwordSecondField.value;
 
-            if (passwordFirst === '') {
-                showError(passwordFirstField, 'La contraseña es obligatoria.');
-                isValid = false;
-            } else {
-                const passwordError = validatePasswordStrength(passwordFirst);
-                if (passwordError) {
-                    showError(passwordFirstField, passwordError);
+            if (!isEditMode || passwordFirst !== '') {
+                if (passwordFirst === '') {
+                    showError(passwordFirstField, 'La contraseña es obligatoria.');
+                    isValid = false;
+                } else {
+                    const passwordError = validatePasswordStrength(passwordFirst);
+                    if (passwordError) {
+                        showError(passwordFirstField, passwordError);
+                        isValid = false;
+                    }
+                }
+
+                if (passwordFirst !== passwordSecond) {
+                    showError(passwordSecondField, 'Las contraseñas no coinciden.');
                     isValid = false;
                 }
-            }
-
-            if (passwordFirst !== passwordSecond) {
-                showError(passwordSecondField, 'Las contraseñas no coinciden.');
-                isValid = false;
             }
         }
 

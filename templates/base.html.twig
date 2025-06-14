@@ -23,15 +23,15 @@
         {% endblock %}
     </head>
 
-    <body class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-    {% block header %}
-        {% include '_header.html.twig' %}
-    {% endblock %}
+    <body class="min-h-screen grid grid-flow-row xl:grid-template-cols-[auto_1fr] bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+        {% block header %}
+            {% include '_header.html.twig' %}
+        {% endblock %}
 
-    <div class="relative grid md:flex-row">
+    <div class="relative flex xl:flex-row flex-col">
         {% block aside %}{% endblock %}
 
-        <main class="relative flex flex-col px-4 md:mx-10 py-20 flex-1 2xl:max-w-[2000px] justify-self-center self-center">
+        <main class="relative flex flex-col px-4 md:mx-10 py-20 flex-1 2xl:max-w-[2000px] justify-self-center self-center w-[90%]">
             {% block baseBackButton %}
                 {% include '_back-button.html.twig' %}
             {% endblock %}

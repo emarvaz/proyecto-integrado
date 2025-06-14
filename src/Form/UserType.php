@@ -27,26 +27,37 @@ class UserType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Correo electrónico',
-            ])
+            ]);
+
+$passwordConstraints = [
+            new Length([
+                'min' => 8,
+                'minMessage' => 'La contraseña debe tener al menos {{ limit }} caracteres.',
+            ]),
+            new Regex([
+                'pattern' => "/(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^._-])/",
+                'message' => "La contraseña debe contener al menos una letra, un número y un carácter especial (@$!%*#?&^._-).",
+            ]),
+        ];
+
+        if (!$options['edit_mode']) {
+            $passwordConstraints[] = new NotBlank(['message' => 'La contraseña es obligatoria.']);
+        }
+
+        $builder
             ->add('password', RepeatedType::class, [
+		'label' => '',
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'invalid_message' => 'Los campos de contraseña deben coincidir.',
-                'required' => true,
+                // <<< CAMBIO: 'required' ahora es condicional.
+                // Es `true` para el registro y `false` para la edición.
+                'required' => !$options['edit_mode'],
                 'first_options'  => ['label' => 'Contraseña'],
                 'second_options' => ['label' => 'Confirmar contraseña'],
-                'constraints' => [
-                    new NotBlank(['message' => 'La contraseña es obligatoria.']),
-                    new Length([
-                        'min' => 8,
-                        'minMessage' => 'La contraseña debe tener al menos {{ limit }} caracteres.',
-                    ]),
-                    new Regex([
-                        'pattern' => "/(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^._-])/",
-                        'message' => "La contraseña debe contener al menos una letra, un número y un carácter especial (@$!%*#?&^._-).",
-                    ]),
-                ],
+                // <<< CAMBIO: Usamos el array de validaciones condicionales que hemos creado.
+                'constraints' => $passwordConstraints,
             ])
             ->add('name', TextType::class, [
                 'label' => 'Nombre',

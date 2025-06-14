@@ -15,9 +15,9 @@
                 <a href="{{ path('card_deck_edit', {'id': cardDeck.id}) }}"
                    class="px-4 font-semibold py-4 border-t rounded-t-2xl border-r border-blue-800 text-black dark:text-white border-l bg-white dark:bg-gray-800
                       {% if cardDeck.id == currentCardDeckId %}
-                          text-white
+                          dark:text-white text-blue-600
                       {% else %}
-                          text-gray-800 hover:text-blue-600
+                          text-gray-800
                       {% endif %}">
                     {{ cardDeck.name }}
                 </a>
@@ -82,10 +82,11 @@
 
                                 <article class="card p-1 aspect-[0.7] grid grid-rows-[1fr_2fr] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700">
                                     <figure class="flex flex-row justify-end rounded-lg px-4 py-2 h-52 bg-black bg-center bg-no-repeat bg-contain" style="background-image: url('{{ asset('/assets/images/card/' ~ card_entity.image) }}');">
-                                        <data class="flex flex-row gap-2 text-xl font-semibold text-black-600 dark:white">
+                                        <data class="flex flex-row gap-2 text-xl font-semibold bg-white dark:bg-black text-black-600 dark:white h-fit rounded-full p-1 bg-opacity-50">
                                             <span>{{ card_entity.health }}</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                                                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                              
+				            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+					        <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                                             </svg>
                                         </data>
                                     </figure>
